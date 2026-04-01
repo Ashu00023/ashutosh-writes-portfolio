@@ -121,7 +121,6 @@ const ContactSection = () => {
                 >
                   {loading ? <><Loader2 size={16} className="animate-spin" /> Sending...</> : <>Send Message <Send size={16} /></>}
                 </button>
-                </button>
               </form>
             )}
           </motion.div>
