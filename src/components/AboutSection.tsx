@@ -22,7 +22,7 @@ const AboutSection = () => (
           Crafting Content That Ranks & Converts
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-6">
-          I am a freelance content writer who helps creators and businesses generate real traffic from Google and YouTube. My approach combines deep research, strategic keyword targeting, and compelling storytelling to produce content that not only ranks but also converts readers into loyal audiences.
+          I am <span className="font-bold text-foreground">Ashutosh</span>, a freelance content writer who helps creators and businesses generate real traffic from Google and YouTube. My approach combines deep research, strategic keyword targeting, and compelling storytelling to produce content that not only ranks but also converts readers into loyal audiences.
         </p>
         <p className="text-muted-foreground leading-relaxed mb-8">
           Every piece of content is crafted manually with deep research and strategic intent — <span className="font-semibold text-accent">no AI shortcuts</span>. I believe in quality over quantity, delivering work that positions my clients in the top 0.1%.
