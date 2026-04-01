@@ -57,13 +57,14 @@ const HeroSection = () => (
         transition={{ duration: 0.7, delay: 0.2 }}
         className="order-1 md:order-2 flex justify-center"
       >
-        <div className="relative">
+        <div className="relative flex flex-col items-center">
           <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-primary/20 to-accent/20 blur-2xl" />
           <img
             src={profileImg}
             alt="Ashutosh Mahapatra — SEO Blog and YouTube Script Writer"
             className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-background shadow-2xl"
           />
+          <h2 className="mt-4 text-xl font-bold text-foreground relative">Ashutosh Mahapatra</h2>
         </div>
       </motion.div>
     </div>
