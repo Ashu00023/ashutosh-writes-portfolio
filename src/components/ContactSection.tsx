@@ -1,13 +1,31 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Instagram, Linkedin, Send } from "lucide-react";
-import { useState, FormEvent } from "react";
+import { Mail, Phone, Instagram, Linkedin, Send, Loader2 } from "lucide-react";
+import { useState, FormEvent, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (!formRef.current) return;
+    setLoading(true);
+    try {
+      await emailjs.sendForm(
+        "service_pe47co8",
+        "template_671jt3b",
+        formRef.current,
+        "-5yVEqYP6bw57Na7A"
+      );
+      setSubmitted(true);
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -65,11 +83,12 @@ const ContactSection = () => {
                 <p className="text-sm text-muted-foreground mt-2">I'll get back to you soon.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1.5">Name</label>
                   <input
                     type="text"
+                    name="from_name"
                     required
                     className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
                     placeholder="Your name"
@@ -79,6 +98,7 @@ const ContactSection = () => {
                   <label className="block text-sm font-medium text-foreground mb-1.5">Email</label>
                   <input
                     type="email"
+                    name="from_email"
                     required
                     className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
                     placeholder="you@example.com"
@@ -87,6 +107,7 @@ const ContactSection = () => {
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1.5">Message</label>
                   <textarea
+                    name="message"
                     required
                     rows={4}
                     className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
@@ -95,9 +116,10 @@ const ContactSection = () => {
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity w-full justify-center"
+                  disabled={loading}
+                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity w-full justify-center disabled:opacity-60"
                 >
-                  Send Message <Send size={16} />
+                  {loading ? <><Loader2 size={16} className="animate-spin" /> Sending...</> : <>Send Message <Send size={16} /></>}
                 </button>
               </form>
             )}
