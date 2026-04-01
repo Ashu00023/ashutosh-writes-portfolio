@@ -1,13 +1,31 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Instagram, Linkedin, Send } from "lucide-react";
-import { useState, FormEvent } from "react";
+import { Mail, Phone, Instagram, Linkedin, Send, Loader2 } from "lucide-react";
+import { useState, FormEvent, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (!formRef.current) return;
+    setLoading(true);
+    try {
+      await emailjs.sendForm(
+        "service_pe47co8",
+        "template_671jt3b",
+        formRef.current,
+        "-5yVEqYP6bw57Na7A"
+      );
+      setSubmitted(true);
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
