@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, Instagram, Linkedin, Send, Loader2 } from "lucide-react";
 import { useState, FormEvent, useRef } from "react";
-import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -13,15 +12,17 @@ const ContactSection = () => {
     if (!formRef.current) return;
     setLoading(true);
     try {
-      await emailjs.sendForm(
-        "service_pe47co8",
-        "template_671jt3b",
-        formRef.current,
-        "-5yVEqYP6bw57Na7A"
-      );
-      setSubmitted(true);
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: new FormData(formRef.current),
+      });
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
     } catch (error) {
-      console.error("EmailJS error:", error);
+      console.error("Web3Forms error:", error);
       alert("Failed to send message. Please try again.");
     } finally {
       setLoading(false);
@@ -55,11 +56,11 @@ const ContactSection = () => {
               Ready to grow your traffic with premium, human-written content? Get in touch and let's discuss your project.
             </p>
             <div className="space-y-4">
-              <a href="mailto:ashutosh.mahapatra00023@outlook.com" className="flex items-center gap-3 text-sm text-foreground hover:text-accent transition-colors duration-200">
+              <a href="mailto:ashutoshwrites.online@gmail.com" className="flex items-center gap-3 text-sm text-foreground hover:text-accent transition-colors duration-200">
                 <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center">
                   <Mail size={16} className="text-accent" />
                 </div>
-                ashutosh.mahapatra00023@outlook.com
+                ashutoshwrites.online@gmail.com
               </a>
               <a href="tel:+919040451510" className="flex items-center gap-3 text-sm text-foreground hover:text-accent transition-colors duration-200">
                 <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center">
@@ -96,11 +97,12 @@ const ContactSection = () => {
               </div>
             ) : (
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+                <input type="hidden" name="access_key" value="8636a3ae-7143-4745-bf1f-5aa9fdde2554" />
                 <div>
                   <label className="block text-xs font-medium text-foreground mb-1.5 uppercase tracking-wide">Name</label>
                   <input
                     type="text"
-                    name="from_name"
+                    name="name"
                     required
                     className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent/40 transition-all"
                     placeholder="Your name"
@@ -110,7 +112,7 @@ const ContactSection = () => {
                   <label className="block text-xs font-medium text-foreground mb-1.5 uppercase tracking-wide">Email</label>
                   <input
                     type="email"
-                    name="from_email"
+                    name="email"
                     required
                     className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent/40 transition-all"
                     placeholder="you@example.com"
