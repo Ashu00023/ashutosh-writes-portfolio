@@ -14,7 +14,7 @@ const projects = [
     description: "A long-form, keyword-optimized blog post exploring the intersection of artificial intelligence and finance, ranked on page 1 for competitive SaaS keywords.",
     tag: "SEO Blog",
     image: aiFinanceImg,
-    embedUrl: "https://drive.google.com/file/d/17YuXGbKU2Qt_yFVn0owwCl-_t0vxL1mb/preview",
+    embedUrl: "https://drive.google.com/file/d/1TBhZ-AC6YgITO7_V0XAqCueOreMdxLWC/preview",
   },
   {
     title: "Spending Psychology",
@@ -22,21 +22,21 @@ const projects = [
     tag: "SEO Blog",
     note: "Also the SEO Blog version of YouTube Script: Spending Psychology",
     image: spendingPsychImg,
-    embedUrl: "https://drive.google.com/file/d/1dDUPzY4ClwXu9mbaWv8mWZC7qUK234hd/preview",
+    embedUrl: "https://drive.google.com/file/d/1DwGNoNbyV4f6asn-lEBDgOxOYhphsXH5/preview",
   },
   {
     title: "Salary and its Trap",
     description: "A high-retention Hindi YouTube script uncovering the psychology behind salary traps, achieving 85%+ average view duration.",
     tag: "YouTube Script · Hindi",
     image: salaryTrapImg,
-    embedUrl: "https://drive.google.com/file/d/1DCUYZ1f7YmBFM4tukg7QPwdF5_tJjpvy/preview",
+    embedUrl: "https://drive.google.com/file/d/1DwGNoNbyV4f6asn-lEBDgOxOYhphsXH5/preview",
   },
   {
     title: "Spending Psychology",
     description: "Storytelling-driven YouTube script on spending psychology that boosted subscriber conversions.",
     tag: "YouTube Script",
     image: spendingYtImg,
-    embedUrl: "https://drive.google.com/file/d/10omV5-yKjRZkUbAhGC_on6_6fdqEvBMs/preview",
+    embedUrl: "https://drive.google.com/file/d/16euJ5_o8zrkSfToHZA7VagzOKMc6iOO6/preview",
   },
 ];
 
