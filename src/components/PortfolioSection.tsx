@@ -138,6 +138,12 @@ const PortfolioSection = () => {
               </ScrollReveal>
             ))}
           </div>
+
+          <ScrollReveal className="text-center mt-12 max-w-2xl mx-auto">
+            <p className="text-sm text-muted-foreground italic">
+              The SEO Blog "<span className="text-foreground font-medium">Spending Psychology</span>" is the blog version of the YouTube script "<span className="text-foreground font-medium">Spending Psychology</span>" — we can create YouTube Scripts and turn them into SEO Blogs.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
