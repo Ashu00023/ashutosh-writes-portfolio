@@ -69,9 +69,11 @@ const PortfolioSection = () => {
             <Play size={compact ? 14 : 18} fill="currentColor" />
           </span>
         </div>
-        <span className={`absolute top-3 left-3 font-bold text-accent-foreground bg-accent/90 backdrop-blur-sm px-3 py-1 rounded-full uppercase tracking-wider ${compact ? "text-[8px] px-2" : "text-[10px]"}`}>
-          {p.tag}
-        </span>
+        {!compact && (
+          <span className="absolute top-3 left-3 text-[10px] font-bold text-accent-foreground bg-accent/90 backdrop-blur-sm px-3 py-1 rounded-full uppercase tracking-wider">
+            {p.tag}
+          </span>
+        )}
       </div>
 
       <div className={compact ? "p-3" : "p-6"}>
