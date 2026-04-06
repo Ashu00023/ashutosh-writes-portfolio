@@ -79,7 +79,7 @@ const PortfolioSection = () => {
         {!compact && (
           <>
             <p className="text-sm text-muted-foreground mb-2 line-clamp-2">{p.description}</p>
-            {p.note && (
+            {"note" in p && p.note && (
               <p className="text-xs text-muted-foreground/70 italic mb-3">{p.note}</p>
             )}
           </>
