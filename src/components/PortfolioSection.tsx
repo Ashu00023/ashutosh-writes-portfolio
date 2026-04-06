@@ -77,7 +77,12 @@ const PortfolioSection = () => {
       </div>
 
       <div className={compact ? "p-3" : "p-6"}>
-        <h3 className={`font-bold text-foreground mb-2 tracking-tight ${compact ? "text-sm" : "text-base"}`}>{p.title}</h3>
+        <h3 className={`font-bold text-foreground mb-2 tracking-tight ${compact ? "text-sm" : "text-base"}`}>
+          {p.title}
+          {p.tag.includes("Hindi") && (
+            <span className="ml-2 text-[9px] font-semibold bg-accent/15 text-accent px-1.5 py-0.5 rounded-full uppercase align-middle">Hindi</span>
+          )}
+        </h3>
         {!compact && (
           <>
             <p className="text-sm text-muted-foreground mb-2 line-clamp-2">{p.description}</p>
