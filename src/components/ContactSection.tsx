@@ -4,8 +4,13 @@ import ScrollReveal from "./ScrollReveal";
 const contacts = [
   {
     icon: Mail,
-    label: "ashutoshwrites.online@gmail.com",
+    label: "For Blogs — ashutoshwrites.online@gmail.com",
     href: "mailto:ashutoshwrites.online@gmail.com",
+  },
+  {
+    icon: Mail,
+    label: "For YouTube Script — ashutoshwrites.online0@gmail.com",
+    href: "mailto:ashutoshwrites.online0@gmail.com",
   },
   {
     icon: Phone,
