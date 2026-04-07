@@ -1,5 +1,7 @@
-import { Mail, Phone, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { Mail, Phone, Instagram, Linkedin, MessageCircle, FileText, Video } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 
 const contacts = [
   {
@@ -34,6 +36,23 @@ const contacts = [
   },
 ];
 
+const forms = [
+  {
+    icon: FileText,
+    label: "SEO Blog Inquiry",
+    description: "Fill out the form to get a custom SEO blog",
+    src: "https://docs.google.com/forms/d/e/1FAIpQLSegRQLlOSz3FnVBjm2atVgRX3HALSXbwUOugWiA0ACFSV3kNg/viewform?embedded=true",
+    height: 1907,
+  },
+  {
+    icon: Video,
+    label: "YouTube Script Inquiry",
+    description: "Fill out the form to get a custom YouTube script",
+    src: "https://docs.google.com/forms/d/e/1FAIpQLSf0iTe4F1qWNsoIvHK0IPjE7EBMTO_2XttIWdwHTX4djBhScg/viewform?embedded=true",
+    height: 1990,
+  },
+];
+
 const ContactSection = () => {
   return (
     <section id="contact" className="py-28">
@@ -47,19 +66,39 @@ const ContactSection = () => {
         </ScrollReveal>
 
         <ScrollReveal className="max-w-2xl mx-auto mb-12">
-          <div className="rounded-2xl border border-border/60 bg-card/50 overflow-hidden">
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLSegRQLlOSz3FnVBjm2atVgRX3HALSXbwUOugWiA0ACFSV3kNg/viewform?embedded=true"
-              width="100%"
-              height="1907"
-              frameBorder="0"
-              marginHeight={0}
-              marginWidth={0}
-              title="Contact Form"
-              className="w-full"
-            >
-              Loading…
-            </iframe>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {forms.map((form) => (
+              <Dialog key={form.label}>
+                <DialogTrigger asChild>
+                  <button className="flex flex-col items-center gap-3 rounded-2xl border border-border/60 bg-card/50 px-6 py-8 hover:border-accent/40 hover:bg-accent/5 transition-all duration-200 group cursor-pointer text-center">
+                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                      <form.icon size={22} className="text-accent" />
+                    </div>
+                    <span className="text-base font-semibold text-foreground group-hover:text-accent transition-colors">
+                      {form.label}
+                    </span>
+                    <span className="text-xs text-muted-foreground">{form.description}</span>
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto p-0">
+                  <DialogHeader className="p-6 pb-0">
+                    <DialogTitle>{form.label}</DialogTitle>
+                  </DialogHeader>
+                  <iframe
+                    src={form.src}
+                    width="100%"
+                    height={form.height}
+                    frameBorder="0"
+                    marginHeight={0}
+                    marginWidth={0}
+                    title={form.label}
+                    className="w-full"
+                  >
+                    Loading…
+                  </iframe>
+                </DialogContent>
+              </Dialog>
+            ))}
           </div>
         </ScrollReveal>
 
