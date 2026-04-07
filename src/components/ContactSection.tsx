@@ -65,19 +65,24 @@ const ContactSection = () => {
           </p>
         </ScrollReveal>
 
-        <ScrollReveal className="max-w-2xl mx-auto mb-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {forms.map((form) => (
-              <Dialog key={form.label}>
+        <div className="max-w-2xl mx-auto mb-12 space-y-4">
+          {forms.map((form, i) => (
+            <ScrollReveal key={form.label} delay={i * 0.1}>
+              <Dialog>
                 <DialogTrigger asChild>
-                  <button className="flex flex-col items-center gap-3 rounded-2xl border border-border/60 bg-card/50 px-6 py-8 hover:border-accent/40 hover:bg-accent/5 transition-all duration-200 group cursor-pointer text-center">
-                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                  <button className="w-full flex items-center gap-5 rounded-2xl border-2 border-accent/30 bg-accent/5 px-6 py-5 hover:border-accent hover:bg-accent/10 transition-all duration-200 group cursor-pointer text-left">
+                    <div className="w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center shrink-0 group-hover:bg-accent/25 transition-colors">
                       <form.icon size={22} className="text-accent" />
                     </div>
-                    <span className="text-base font-semibold text-foreground group-hover:text-accent transition-colors">
-                      {form.label}
+                    <div className="flex-1 min-w-0">
+                      <span className="text-base font-bold text-foreground group-hover:text-accent transition-colors block">
+                        {form.label}
+                      </span>
+                      <span className="text-xs text-muted-foreground">{form.description}</span>
+                    </div>
+                    <span className="text-xs font-semibold text-accent bg-accent/10 px-3 py-1.5 rounded-full shrink-0 group-hover:bg-accent/20 transition-colors">
+                      Open Form →
                     </span>
-                    <span className="text-xs text-muted-foreground">{form.description}</span>
                   </button>
                 </DialogTrigger>
                 <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto p-0">
@@ -98,9 +103,9 @@ const ContactSection = () => {
                   </iframe>
                 </DialogContent>
               </Dialog>
-            ))}
-          </div>
-        </ScrollReveal>
+            </ScrollReveal>
+          ))}
+        </div>
 
         <div className="max-w-lg mx-auto space-y-4">
           {contacts.map((c, i) => (
