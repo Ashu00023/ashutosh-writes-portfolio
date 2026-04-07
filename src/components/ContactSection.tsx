@@ -70,17 +70,17 @@ const ContactSection = () => {
             <ScrollReveal key={form.label} delay={i * 0.1}>
               <Dialog>
                 <DialogTrigger asChild>
-                  <button className="w-full flex items-center gap-5 rounded-2xl border-2 border-accent/30 bg-accent/5 px-6 py-5 hover:border-accent hover:bg-accent/10 transition-all duration-200 group cursor-pointer text-left">
-                    <div className="w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center shrink-0 group-hover:bg-accent/25 transition-colors">
-                      <form.icon size={22} className="text-accent" />
+                  <button className="w-full flex items-center gap-5 rounded-2xl border-2 border-[hsl(25,95%,53%)]/40 bg-[hsl(25,95%,53%)]/10 px-6 py-5 hover:border-[hsl(25,95%,53%)] hover:bg-[hsl(25,95%,53%)]/20 transition-all duration-200 group cursor-pointer text-left shadow-[0_0_20px_hsl(25,95%,53%,0.08)]">
+                    <div className="w-12 h-12 rounded-xl bg-[hsl(25,95%,53%)]/20 flex items-center justify-center shrink-0 group-hover:bg-[hsl(25,95%,53%)]/30 transition-colors">
+                      <form.icon size={22} className="text-[hsl(25,95%,53%)]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="text-base font-bold text-foreground group-hover:text-accent transition-colors block">
+                      <span className="text-base font-bold text-foreground group-hover:text-[hsl(25,95%,53%)] transition-colors block">
                         {form.label}
                       </span>
                       <span className="text-xs text-muted-foreground">{form.description}</span>
                     </div>
-                    <span className="text-xs font-semibold text-accent bg-accent/10 px-3 py-1.5 rounded-full shrink-0 group-hover:bg-accent/20 transition-colors">
+                    <span className="text-xs font-semibold text-[hsl(25,95%,53%)] bg-[hsl(25,95%,53%)]/15 px-3 py-1.5 rounded-full shrink-0 group-hover:bg-[hsl(25,95%,53%)]/25 transition-colors animate-pulse">
                       Open Form →
                     </span>
                   </button>
