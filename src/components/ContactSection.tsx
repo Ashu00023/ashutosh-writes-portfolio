@@ -49,7 +49,7 @@ const forms = [
     label: "YouTube Script Inquiry",
     description: "Fill out the form to get a custom YouTube script",
     src: "https://docs.google.com/forms/d/e/1FAIpQLSf0iTe4F1qWNsoIvHK0IPjE7EBMTO_2XttIWdwHTX4djBhScg/viewform?embedded=true",
-    height: 1990,
+    height: 2125,
   },
 ];
 
