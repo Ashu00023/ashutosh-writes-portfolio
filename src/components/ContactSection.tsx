@@ -42,7 +42,7 @@ const forms = [
     label: "SEO Blog Inquiry",
     description: "Fill out the form to get a custom SEO blog",
     src: "https://docs.google.com/forms/d/e/1FAIpQLSegRQLlOSz3FnVBjm2atVgRX3HALSXbwUOugWiA0ACFSV3kNg/viewform?embedded=true",
-    height: 1907,
+    height: 2042,
   },
   {
     icon: Video,
