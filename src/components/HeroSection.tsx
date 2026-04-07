@@ -53,6 +53,12 @@ const HeroSection = () => (
           >
             Hire Me
           </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-semibold text-accent-foreground hover:brightness-110 transition-all duration-200 shadow-sm"
+          >
+            Fill Contact Form <ArrowRight size={15} />
+          </a>
         </div>
       </motion.div>
 
