@@ -46,6 +46,23 @@ const ContactSection = () => {
           </p>
         </ScrollReveal>
 
+        <ScrollReveal className="max-w-2xl mx-auto mb-12">
+          <div className="rounded-2xl border border-border/60 bg-card/50 overflow-hidden">
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSegRQLlOSz3FnVBjm2atVgRX3HALSXbwUOugWiA0ACFSV3kNg/viewform?embedded=true"
+              width="100%"
+              height="1907"
+              frameBorder="0"
+              marginHeight={0}
+              marginWidth={0}
+              title="Contact Form"
+              className="w-full"
+            >
+              Loading…
+            </iframe>
+          </div>
+        </ScrollReveal>
+
         <div className="max-w-lg mx-auto space-y-4">
           {contacts.map((c, i) => (
             <ScrollReveal key={c.label} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.08}>
