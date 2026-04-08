@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Mail, Phone, Instagram, Linkedin, MessageCircle, FileText, Video } from "lucide-react";
+import { useState, useCallback } from "react";
+import { Mail, Phone, Instagram, Linkedin, MessageCircle, FileText, Video, CheckCircle } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 
 const contacts = [
   {
@@ -53,6 +53,89 @@ const forms = [
   },
 ];
 
+const FormDialog = ({ form, index }: { form: typeof forms[0]; index: number }) => {
+  const [open, setOpen] = useState(false);
+  const [loadCount, setLoadCount] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleOpenChange = useCallback((isOpen: boolean) => {
+    setOpen(isOpen);
+    if (!isOpen) {
+      setLoadCount(0);
+      setSubmitted(false);
+    }
+  }, []);
+
+  const handleIframeLoad = useCallback(() => {
+    setLoadCount((prev) => {
+      const next = prev + 1;
+      if (next > 1) {
+        setSubmitted(true);
+      }
+      return next;
+    });
+  }, []);
+
+  return (
+    <ScrollReveal delay={index * 0.1}>
+      <Dialog open={open} onOpenChange={handleOpenChange}>
+        <button
+          onClick={() => setOpen(true)}
+          className="w-full flex items-center gap-5 rounded-2xl border-2 border-[hsl(25,95%,53%)]/40 bg-[hsl(25,95%,53%)]/10 px-6 py-5 hover:border-[hsl(25,95%,53%)] hover:bg-[hsl(25,95%,53%)]/20 transition-all duration-200 group cursor-pointer text-left shadow-[0_0_20px_hsl(25,95%,53%,0.08)]"
+        >
+          <div className="w-12 h-12 rounded-xl bg-[hsl(25,95%,53%)]/20 flex items-center justify-center shrink-0 group-hover:bg-[hsl(25,95%,53%)]/30 transition-colors">
+            <form.icon size={22} className="text-[hsl(25,95%,53%)]" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <span className="text-base font-bold text-foreground group-hover:text-[hsl(25,95%,53%)] transition-colors block">
+              {form.label}
+            </span>
+            <span className="text-xs text-muted-foreground">{form.description}</span>
+          </div>
+          <span className="text-xs font-semibold text-[hsl(25,95%,53%)] bg-[hsl(25,95%,53%)]/15 px-3 py-1.5 rounded-full shrink-0 group-hover:bg-[hsl(25,95%,53%)]/25 transition-colors animate-pulse">
+            Open Form →
+          </span>
+        </button>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto p-0">
+          <DialogHeader className="p-6 pb-0">
+            <DialogTitle>{form.label}</DialogTitle>
+          </DialogHeader>
+          <div className="relative">
+            <iframe
+              src={form.src}
+              width="100%"
+              height={form.height}
+              frameBorder="0"
+              marginHeight={0}
+              marginWidth={0}
+              title={form.label}
+              className="w-full"
+              onLoad={handleIframeLoad}
+            >
+              Loading…
+            </iframe>
+            {submitted && (
+              <div className="absolute inset-0 bg-background flex flex-col items-center justify-center gap-4 z-10">
+                <CheckCircle size={64} className="text-green-500" />
+                <h3 className="text-xl font-bold text-foreground">Form submitted successfully!</h3>
+                <p className="text-sm text-muted-foreground text-center max-w-xs">
+                  Thank you for reaching out. I'll get back to you soon.
+                </p>
+                <button
+                  onClick={() => handleOpenChange(false)}
+                  className="mt-2 px-6 py-2.5 rounded-xl bg-accent text-accent-foreground font-semibold hover:opacity-90 transition-opacity"
+                >
+                  Close
+                </button>
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+    </ScrollReveal>
+  );
+};
+
 const ContactSection = () => {
   return (
     <section id="contact" className="py-28">
@@ -67,43 +150,7 @@ const ContactSection = () => {
 
         <div className="max-w-2xl mx-auto mb-12 space-y-4">
           {forms.map((form, i) => (
-            <ScrollReveal key={form.label} delay={i * 0.1}>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <button className="w-full flex items-center gap-5 rounded-2xl border-2 border-[hsl(25,95%,53%)]/40 bg-[hsl(25,95%,53%)]/10 px-6 py-5 hover:border-[hsl(25,95%,53%)] hover:bg-[hsl(25,95%,53%)]/20 transition-all duration-200 group cursor-pointer text-left shadow-[0_0_20px_hsl(25,95%,53%,0.08)]">
-                    <div className="w-12 h-12 rounded-xl bg-[hsl(25,95%,53%)]/20 flex items-center justify-center shrink-0 group-hover:bg-[hsl(25,95%,53%)]/30 transition-colors">
-                      <form.icon size={22} className="text-[hsl(25,95%,53%)]" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <span className="text-base font-bold text-foreground group-hover:text-[hsl(25,95%,53%)] transition-colors block">
-                        {form.label}
-                      </span>
-                      <span className="text-xs text-muted-foreground">{form.description}</span>
-                    </div>
-                    <span className="text-xs font-semibold text-[hsl(25,95%,53%)] bg-[hsl(25,95%,53%)]/15 px-3 py-1.5 rounded-full shrink-0 group-hover:bg-[hsl(25,95%,53%)]/25 transition-colors animate-pulse">
-                      Open Form →
-                    </span>
-                  </button>
-                </DialogTrigger>
-                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto p-0">
-                  <DialogHeader className="p-6 pb-0">
-                    <DialogTitle>{form.label}</DialogTitle>
-                  </DialogHeader>
-                  <iframe
-                    src={form.src}
-                    width="100%"
-                    height={form.height}
-                    frameBorder="0"
-                    marginHeight={0}
-                    marginWidth={0}
-                    title={form.label}
-                    className="w-full"
-                  >
-                    Loading…
-                  </iframe>
-                </DialogContent>
-              </Dialog>
-            </ScrollReveal>
+            <FormDialog key={form.label} form={form} index={i} />
           ))}
         </div>
 
