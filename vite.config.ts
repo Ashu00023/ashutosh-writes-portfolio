@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, type PluginOption } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(async ({ mode }) => {
   // Only load prerender in production builds (CommonJS-only package, breaks dev ESM).
-  let prerenderPlugin: unknown = null;
+  let prerenderPlugin: PluginOption = null;
   if (mode === "production") {
     try {
       const { createRequire } = await import("module");
