@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo-new.png";
 
 const links = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Skills", href: "#skills" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Portfolio", href: "/#portfolio" },
+  { label: "Blog", href: "/blog", route: true as const },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
@@ -30,7 +32,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-3 px-6">
-        <a href="#home" className="flex items-center gap-2.5 group">
+        <Link to="/" className="flex items-center gap-2.5 group">
           <img
             src={logo}
             alt="Logo"
@@ -40,24 +42,33 @@ const Navbar = () => {
             <span className="text-foreground">ashutoshwrites.</span>
             <span className="text-accent">online</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop */}
         <ul className="hidden md:flex items-center gap-1">
           {links.map((l) => (
             <li key={l.href}>
-              <a
-                href={l.href}
-                className="px-3.5 py-2 rounded-lg text-[13px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all duration-200"
-              >
-                {l.label}
-              </a>
+              {"route" in l && l.route ? (
+                <Link
+                  to={l.href}
+                  className="px-3.5 py-2 rounded-lg text-[13px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all duration-200"
+                >
+                  {l.label}
+                </Link>
+              ) : (
+                <a
+                  href={l.href}
+                  className="px-3.5 py-2 rounded-lg text-[13px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all duration-200"
+                >
+                  {l.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>
 
         <a
-          href="#contact"
+          href="/#contact"
           className="hidden md:inline-flex items-center rounded-full bg-accent px-5 py-2 text-[13px] font-semibold text-accent-foreground hover:brightness-110 transition-all duration-200 shadow-sm"
         >
           Hire Me
@@ -79,18 +90,28 @@ const Navbar = () => {
           <ul className="flex flex-col gap-1 pt-3">
             {links.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="block px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all"
-                >
-                  {l.label}
-                </a>
+                {"route" in l && l.route ? (
+                  <Link
+                    to={l.href}
+                    onClick={() => setOpen(false)}
+                    className="block px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all"
+                  >
+                    {l.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="block px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all"
+                  >
+                    {l.label}
+                  </a>
+                )}
               </li>
             ))}
             <li className="mt-2">
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={() => setOpen(false)}
                 className="inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground"
               >
