@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { ExternalLink, Play } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ScrollReveal from "./ScrollReveal";
 
 import aiFinanceImg from "@/assets/portfolio-ai-finance.jpg";
-import spendingPsychImg from "@/assets/portfolio-spending-psychology.jpg";
 import salaryTrapImg from "@/assets/portfolio-salary-trap.jpg";
 import spendingYtImg from "@/assets/portfolio-spending-yt.jpg";
+import aiAuthenticityImg from "@/assets/portfolio-ai-authenticity.png";
 
 const seoBlogs = [
   {
@@ -17,12 +18,11 @@ const seoBlogs = [
     embedUrl: "https://drive.google.com/file/d/1TBhZ-AC6YgITO7_V0XAqCueOreMdxLWC/preview",
   },
   {
-    title: "Spending Psychology",
-    description: "Comprehensive SEO blog on spending psychology driving organic visits. Also available as a YouTube script version below.",
+    title: "AI vs Human Creativity 2026",
+    description: "A research-backed long-form analysis on the Authenticity Premium Economy — why audiences are rejecting AI slop and human creators are winning in 2026.",
     tag: "SEO Blog",
-    note: "Also the SEO Blog version of YouTube Script: Spending Psychology",
-    image: spendingPsychImg,
-    embedUrl: "https://drive.google.com/file/d/1DwGNoNbyV4f6asn-lEBDgOxOYhphsXH5/preview",
+    image: aiAuthenticityImg,
+    href: "/blog/human-creativity-vs-ai-authenticity-premium-2026",
   },
 ];
 
@@ -50,11 +50,10 @@ type Project = (typeof allProjects)[0];
 const PortfolioSection = () => {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
-  const renderCard = (p: Project, i: number, compact: boolean) => (
-    <div
-      className={`rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/20 transition-all duration-300 group cursor-pointer h-full`}
-      onClick={() => setActiveProject(p)}
-    >
+  const renderCard = (p: Project, i: number, compact: boolean) => {
+    const hasInternalLink = "href" in p && (p as any).href;
+    const inner = (
+      <>
       <div className="relative overflow-hidden">
         <img
           src={p.image}
@@ -91,12 +90,18 @@ const PortfolioSection = () => {
             )}
           </>
         )}
-        <button className={`inline-flex items-center gap-2 font-semibold text-accent group-hover:gap-3 transition-all duration-200 ${compact ? "text-xs" : "text-sm"}`}>
+        <span className={`inline-flex items-center gap-2 font-semibold text-accent group-hover:gap-3 transition-all duration-200 ${compact ? "text-xs" : "text-sm"}`}>
           View Project <ExternalLink size={compact ? 11 : 13} />
-        </button>
+        </span>
       </div>
-    </div>
-  );
+      </>
+    );
+    const className = `rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/20 transition-all duration-300 group cursor-pointer h-full block`;
+    if (hasInternalLink) {
+      return <Link to={(p as any).href} className={className}>{inner}</Link>;
+    }
+    return <div className={className} onClick={() => setActiveProject(p)}>{inner}</div>;
+  };
 
   return (
     <>
@@ -146,7 +151,7 @@ const PortfolioSection = () => {
 
           <ScrollReveal className="text-center mt-12 max-w-2xl mx-auto">
             <p className="text-sm text-muted-foreground italic">
-              The SEO Blog "<span className="text-foreground font-medium">Spending Psychology</span>" is the blog version of the YouTube script "<span className="text-foreground font-medium">Spending Psychology</span>" — we can create YouTube Scripts and turn them into SEO Blogs.
+              We can also turn YouTube scripts into SEO blogs and vice versa — same story, optimized for each format.
             </p>
           </ScrollReveal>
         </div>
