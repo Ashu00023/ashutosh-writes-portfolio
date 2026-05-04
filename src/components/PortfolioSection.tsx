@@ -4,9 +4,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import ScrollReveal from "./ScrollReveal";
 
 import aiFinanceImg from "@/assets/portfolio-ai-finance.jpg";
-import spendingPsychImg from "@/assets/portfolio-spending-psychology.jpg";
 import salaryTrapImg from "@/assets/portfolio-salary-trap.jpg";
 import spendingYtImg from "@/assets/portfolio-spending-yt.jpg";
+import aiAuthenticityImg from "@/assets/portfolio-ai-authenticity.png";
 
 const seoBlogs = [
   {
@@ -17,12 +17,11 @@ const seoBlogs = [
     embedUrl: "https://drive.google.com/file/d/1TBhZ-AC6YgITO7_V0XAqCueOreMdxLWC/preview",
   },
   {
-    title: "Spending Psychology",
-    description: "Comprehensive SEO blog on spending psychology driving organic visits. Also available as a YouTube script version below.",
+    title: "AI vs Human Creativity 2026",
+    description: "A research-backed long-form analysis on the Authenticity Premium Economy — why audiences are rejecting AI slop and human creators are winning in 2026.",
     tag: "SEO Blog",
-    note: "Also the SEO Blog version of YouTube Script: Spending Psychology",
-    image: spendingPsychImg,
-    embedUrl: "https://drive.google.com/file/d/1DwGNoNbyV4f6asn-lEBDgOxOYhphsXH5/preview",
+    image: aiAuthenticityImg,
+    href: "/blog/human-creativity-vs-ai-authenticity-premium-2026",
   },
 ];
 
