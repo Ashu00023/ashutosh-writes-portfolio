@@ -87,6 +87,12 @@ const BlogPost = () => {
         <title>{post.title} — ashutoshwrites.online</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={url} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="article" />
@@ -135,7 +141,7 @@ const BlogPost = () => {
           )}
 
           <div
-            className="prose prose-invert prose-lg max-w-none prose-headings:tracking-tight prose-a:text-accent prose-img:rounded-xl"
+            className="blog-content"
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content_html) }}
           />
         </article>
