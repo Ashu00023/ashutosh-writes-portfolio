@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ExternalLink, Play } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ScrollReveal from "./ScrollReveal";
 
@@ -49,11 +50,10 @@ type Project = (typeof allProjects)[0];
 const PortfolioSection = () => {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
-  const renderCard = (p: Project, i: number, compact: boolean) => (
-    <div
-      className={`rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/20 transition-all duration-300 group cursor-pointer h-full`}
-      onClick={() => setActiveProject(p)}
-    >
+  const renderCard = (p: Project, i: number, compact: boolean) => {
+    const hasInternalLink = "href" in p && (p as any).href;
+    const inner = (
+      <>
       <div className="relative overflow-hidden">
         <img
           src={p.image}
@@ -90,12 +90,18 @@ const PortfolioSection = () => {
             )}
           </>
         )}
-        <button className={`inline-flex items-center gap-2 font-semibold text-accent group-hover:gap-3 transition-all duration-200 ${compact ? "text-xs" : "text-sm"}`}>
+        <span className={`inline-flex items-center gap-2 font-semibold text-accent group-hover:gap-3 transition-all duration-200 ${compact ? "text-xs" : "text-sm"}`}>
           View Project <ExternalLink size={compact ? 11 : 13} />
-        </button>
+        </span>
       </div>
-    </div>
-  );
+      </>
+    );
+    const className = `rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/20 transition-all duration-300 group cursor-pointer h-full block`;
+    if (hasInternalLink) {
+      return <Link to={(p as any).href} className={className}>{inner}</Link>;
+    }
+    return <div className={className} onClick={() => setActiveProject(p)}>{inner}</div>;
+  };
 
   return (
     <>
