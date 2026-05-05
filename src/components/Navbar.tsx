@@ -32,20 +32,20 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-3 px-6">
-        <Link to="/" className="flex items-center gap-2.5 group">
+        <Link to="/" className="flex items-center gap-2.5 group animate-in fade-in slide-in-from-left-4 duration-700">
           <img
             src={logo}
             alt="Logo"
             className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110"
           />
-          <span className="text-[15px] font-bold tracking-tight">
+          <span className="text-[15px] font-bold tracking-tight animate-in fade-in duration-700 delay-300 fill-mode-both">
             <span className="text-foreground">ashutoshwrites.</span>
             <span className="text-accent">online</span>
           </span>
         </Link>
 
         {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden md:flex items-center gap-1 animate-in fade-in duration-500 delay-700 fill-mode-both">
           {links.map((l) => (
             <li key={l.href}>
               {"route" in l && l.route ? (
@@ -69,7 +69,7 @@ const Navbar = () => {
 
         <a
           href="/#contact"
-          className="hidden md:inline-flex items-center rounded-full bg-accent px-5 py-2 text-[13px] font-semibold text-accent-foreground hover:brightness-110 transition-all duration-200 shadow-sm"
+          className="hidden md:inline-flex items-center rounded-full bg-accent px-5 py-2 text-[13px] font-semibold text-accent-foreground hover:brightness-110 transition-all duration-200 shadow-sm animate-in fade-in slide-in-from-right-4 duration-500 delay-1000 fill-mode-both"
         >
           Hire Me
         </a>
