@@ -1,47 +1,53 @@
-## Goal
+## Why /blog returns 404
 
-Add a public blog to the site. Visitors read posts at `/blog` and `/blog/:slug`. **You hand Lovable an HTML file of the blog post; Lovable inserts it into the database and it goes live.** No writing on Lovable's side, no admin UI, no public signup.
+Your custom domain is on Vercel. The app is a React SPA — only `index.html` exists as a real file. When Google (or any visitor) requests `/blog` directly, Vercel looks for a file at that path, finds none, and returns 404 before React Router ever runs.
 
-## Will it work on Vercel?
+Lovable's own hosting (`*.lovable.app`) handles SPA fallback automatically, which is why the preview works. Vercel does not — it needs an explicit rewrite rule.
 
-Yes. Lovable Cloud runs on hosted infrastructure and is reachable over HTTPS from any frontend host. After Cloud is enabled I'll give you the env vars (`VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_SUPABASE_PROJECT_ID`) to paste into Vercel → Settings → Environment Variables, then redeploy.
+## Changes
 
-## What gets built
+### 1. Add `vercel.json` (the actual fix)
 
-**1. Lovable Cloud + database**
-- Enable Lovable Cloud.
-- `posts` table: `id`, `slug` (unique), `title`, `excerpt`, `cover_image_url`, `content_html` (raw HTML), `published` (bool, default true), `published_at`, `created_at`, `updated_at`.
-- Storage bucket `blog-images` (public read) for cover images / inline images you reference in the HTML.
-- RLS: anyone can `SELECT` rows where `published = true`. No public write.
+Create at the project root:
 
-**2. Public blog pages (styled to match site)**
-- `/blog` — list of published posts (cover, title, excerpt, date), dark theme + accent color + ScrollReveal animations matching the rest of the site.
-- `/blog/:slug` — full post page rendering your HTML inside a Tailwind Typography (`prose prose-invert`) container so headings/lists/links/images look polished without you styling each post.
-- SEO per post: `<title>`, meta description (from excerpt), canonical URL, OpenGraph + Twitter card, JSON-LD `BlogPosting`. Uses `react-helmet-async`.
-- Adds "Blog" link to `Navbar`.
+```json
+{
+  "rewrites": [
+    { "source": "/((?!assets/|.*\\..*).*)", "destination": "/index.html" }
+  ]
+}
+```
 
-**3. Your publishing flow**
-You upload the HTML file into the Lovable chat and say "publish this." I will:
-1. Read the file.
-2. Extract title / excerpt / cover image (from `<title>`, first `<p>`, and `<meta>` if present — or you tell me).
-3. Generate a URL-safe slug from the title.
-4. Insert the row directly into the `posts` table via the database tool. Done — it's live.
+This tells Vercel: for any path that isn't a static asset (no file extension, not under `/assets/`), serve `index.html` so React Router can take over. After redeploying on Vercel, `/blog`, `/blog/human-creativity-vs-ai-authenticity-premium-2026`, etc. will load instead of 404'ing.
 
-For updates: send me the new HTML + the slug, I update the row.
-For unpublish: tell me the slug, I flip `published` to false.
+### 2. Fix `public/robots.txt`
 
-## HTML safety
+Replace the `//` lines with proper `#` comments and add a sitemap reference:
 
-Raw HTML from a trusted source (you) is fine, but I'll still sanitize on render with `dompurify` to strip `<script>` and event handlers. Keeps the site safe even if a post contains pasted third-party embeds. Common embeds (YouTube iframes, images) will still work via an allowlist.
+```
+# Allow all crawlers
+User-agent: *
+Allow: /
 
-## Out of scope (easy to add later)
+Sitemap: https://www.ashutoshwrites.online/sitemap.xml
+```
 
-Categories/tags, search, RSS feed, comments, an admin UI for you to publish without going through chat.
+### 3. Add a static `public/sitemap.xml`
 
-## Technical notes
+A small, hand-maintained sitemap listing `/`, `/blog`, and your published blog post URL(s). This gives Google a reliable discovery path while the site is JS-rendered.
 
-- New routes in `src/App.tsx`: `/blog`, `/blog/:slug`.
-- New files: `src/pages/Blog.tsx`, `src/pages/BlogPost.tsx`, `src/components/BlogCard.tsx`, `src/lib/sanitize.ts`.
-- Add deps: `react-helmet-async`, `dompurify`, `@types/dompurify`, `@tailwindcss/typography`.
-- SEO note: this is a Vite SPA, so meta tags are set client-side. Google indexes this fine; some social scrapers prefer SSR. If rich social previews matter heavily later, we can prerender just the blog routes — flag it and we'll plan separately.
-- Vercel env vars to add after Cloud is enabled: `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_SUPABASE_PROJECT_ID`.
+## After the fix — what you must do
+
+1. Push to Vercel (re-deploy). The `vercel.json` only takes effect on the next deploy.
+2. In Google Search Console, click **Request Indexing** again for `/blog` and the blog post URL.
+3. Submit the sitemap under **Sitemaps** in GSC.
+
+## Heads up — not in this plan, ask me if you want it
+
+Client-side rendered Supabase content can be slow to index even after the 404 is fixed. If `/blog` and posts still don't get indexed after a couple of weeks, the next step is to add server-side rendering or pre-rendering for blog routes — that's a bigger refactor and I'd rather wait to see if the simple fix is enough.
+
+## Files
+
+- **Add:** `vercel.json`
+- **Edit:** `public/robots.txt`
+- **Add:** `public/sitemap.xml`
