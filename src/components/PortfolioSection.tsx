@@ -57,7 +57,7 @@ const PortfolioSection = () => {
       <div className="relative overflow-hidden">
         <img
           src={p.image}
-          alt={p.title}
+          alt={`${p.title} — ${p.tag} Portfolio Sample by Ashutosh Mahapatra`}
           loading="lazy"
           width={800}
           height={512}

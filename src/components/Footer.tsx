@@ -14,7 +14,7 @@ const Footer = () => (
     <ScrollReveal>
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-2.5">
-          <img src={logo} alt="Logo" className="h-7 w-7 object-contain" />
+          <img src={logo} alt="Ashutosh Mahapatra — SEO Blog & YouTube Script Writer Logo" className="h-7 w-7 object-contain" />
           <span className="text-sm font-bold tracking-tight">
             <span className="text-foreground">ashutoshwrites.</span>
             <span className="text-accent">online</span>

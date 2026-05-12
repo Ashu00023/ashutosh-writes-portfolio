@@ -2,9 +2,9 @@ import { Search, PenLine, Youtube, BookOpen } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const skills = [
-  { icon: PenLine, label: "Top 0.1% SEO Blog Writing" },
-  { icon: Youtube, label: "YouTube Script Writing" },
-  { icon: Search, label: "Keyword Research" },
+  { icon: PenLine, label: "Freelance SEO Blog Writing" },
+  { icon: Youtube, label: "YouTube Script Writing Specialist" },
+  { icon: Search, label: "Strategic Keyword Research" },
   { icon: BookOpen, label: "Storytelling" },
 ];
 

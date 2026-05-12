@@ -35,7 +35,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2.5 group animate-in fade-in slide-in-from-left-4 duration-700">
           <img
             src={logo}
-            alt="Logo"
+            alt="Ashutosh Mahapatra — SEO Blog & YouTube Script Writer Logo"
             className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110"
           />
           <span className="text-[15px] font-bold tracking-tight animate-in fade-in duration-700 delay-300 fill-mode-both">

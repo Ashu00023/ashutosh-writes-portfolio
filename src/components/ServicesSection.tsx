@@ -5,7 +5,7 @@ import ScrollReveal from "./ScrollReveal";
 const services = [
   {
     icon: PenLine,
-    title: "SEO Blog Writing",
+    title: "High-Converting SEO Blog Writing",
     points: [
       "High-quality, keyword-optimized blog posts",
       "Designed to rank on Google page 1",
@@ -17,7 +17,7 @@ const services = [
   },
   {
     icon: Youtube,
-    title: "YouTube Script Writing",
+    title: "Retention-Optimized YouTube Script Writing",
     points: [
       "High-retention, engaging scripts",
       "Optimized for watch time and virality",

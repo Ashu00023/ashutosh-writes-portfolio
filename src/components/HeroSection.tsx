@@ -73,7 +73,7 @@ const HeroSection = () => (
           <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-accent/10 to-accent/5 blur-3xl" />
           <img
             src={profileImg}
-            alt="Ashutosh Mahapatra — SEO Blog and YouTube Script Writer"
+            alt="Ashutosh Mahapatra — Freelance SEO Blog Writer & YouTube Script Writer"
             className="relative w-60 h-60 md:w-72 md:h-72 rounded-full object-cover ring-1 ring-border shadow-2xl"
           />
           <h2 className="mt-5 text-lg font-bold text-foreground relative tracking-tight">Ashutosh Mahapatra</h2>
