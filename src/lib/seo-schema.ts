@@ -2,6 +2,7 @@ export const getPersonSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Ashutosh Mahapatra",
+  "alternateName": ["ashutoshw", "ashutoshwrites", "Ashutosh Writes"],
   "url": "https://www.ashutoshwrites.online",
   "jobTitle": "Freelance SEO Blog Writer & YouTube Script Writer",
   "description": "Ashutosh Mahapatra is a freelance content writer specializing in 100% human-written SEO blogs and high-retention YouTube scripts.",

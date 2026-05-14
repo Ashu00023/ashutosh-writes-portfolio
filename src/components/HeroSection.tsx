@@ -32,7 +32,7 @@ const HeroSection = () => (
         </h1>
 
         <p className="text-base md:text-lg text-muted-foreground max-w-lg mb-4 leading-relaxed">
-          I help creators and brands get traffic from Google & YouTube through high-converting content.
+          I am Ashutosh (ashutoshw), helping creators and brands get traffic from Google & YouTube through high-converting content.
         </p>
 
         <div className="inline-flex items-center gap-2 text-sm font-medium text-accent/80 mb-10">

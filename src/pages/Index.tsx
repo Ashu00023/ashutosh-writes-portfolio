@@ -16,8 +16,8 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Ashutosh Mahapatra — Freelance SEO Blog Writer & YouTube Script Writer | High Converting Content</title>
-        <meta name="description" content="Hire Ashutosh Mahapatra, a top 0.1% freelance SEO blog and YouTube script writer. 100% human-written, high-converting content for Google & YouTube growth. No AI used." />
+        <title>Ashutosh Mahapatra (ashutoshw) — Freelance SEO Blog & YouTube Script Writer</title>
+        <meta name="description" content="Hire Ashutosh Mahapatra (ashutoshw), a top 0.1% freelance SEO blog and YouTube script writer. 100% human-written, high-converting content by Ashutosh Writes." />
         <link rel="canonical" href="https://www.ashutoshwrites.online" />
         
         {/* Open Graph */}
