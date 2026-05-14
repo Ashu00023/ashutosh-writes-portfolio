@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => ({
     mode === "development" && componentTagger(),
     mode === "production" && prerender({
       staticDir: path.join(__dirname, "dist"),
-      routes: ["/", "/blog", "/blog/human-creativity-vs-ai-authenticity-premium-2026"],
+      routes: ["/"],
       postProcess(renderedRoute) {
         renderedRoute.html = renderedRoute.html
           .replace(/<script (.*?) src="\/src\/main\.tsx" (.*?)><\/script>/, '<script $1 src="/assets/index.js" $2></script>')

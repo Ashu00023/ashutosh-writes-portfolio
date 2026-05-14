@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import HumanCreativityVsAi from "./pages/blog-posts/HumanCreativityVsAi.tsx";
+
 import SplashScreen from "./components/SplashScreen";
 
 const queryClient = new QueryClient();
@@ -19,7 +19,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-        <Route path="/blog/human-creativity-vs-ai-authenticity-premium-2026" element={<HumanCreativityVsAi />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

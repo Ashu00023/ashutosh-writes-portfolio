@@ -22,7 +22,7 @@ const seoBlogs = [
     description: "A research-backed long-form analysis on the Authenticity Premium Economy — why audiences are rejecting AI slop and human creators are winning in 2026.",
     tag: "SEO Blog",
     image: aiAuthenticityImg,
-    href: "/blog/human-creativity-vs-ai-authenticity-premium-2026",
+    embedUrl: "https://drive.google.com/file/d/1TBhZ-AC6YgITO7_V0XAqCueOreMdxLWC/preview",
   },
 ];
 
