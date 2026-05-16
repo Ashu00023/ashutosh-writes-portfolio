@@ -36,7 +36,7 @@ const HumanCreativityVsAi = () => {
       <Navbar />
 
       <style>{`
-        .awo-article { --ink:#0f0e0d; --paper:#f5f0e8; --accent:#c8382a; --accent-light:#f2e8e6; --mid:#6b6459; --rule:#d4cdc0; --green:#2d7a3e;
+        .awo-article { --ink:#0f0e0d; --paper:#f5f0e8; --accent:#c8382a; --accent-light:#f2e8e6; --mid:#6b6459; --rule:#d4cdc0; --green:#0f0e0d;
           background: var(--paper); color: var(--ink); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.78; font-size:18px; }
         .awo-article .masthead { background:var(--ink); color:var(--paper); text-align:center; padding:13px 24px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; }
         .awo-article .masthead a { color:var(--accent); text-decoration:none; }
