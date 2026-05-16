@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === "development" && componentTagger(),
     mode === "production" && prerender({
-      staticDir: path.join(__dirname, "dist"),
+      staticDir: path.join(path.dirname(new URL(import.meta.url).pathname), "dist"),
       routes: ["/"],
       postProcess(renderedRoute) {
         renderedRoute.html = renderedRoute.html
