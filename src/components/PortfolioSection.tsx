@@ -1,21 +1,19 @@
-import { useState } from "react";
 import { ExternalLink, Play } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ScrollReveal from "./ScrollReveal";
 
 import aiFinanceImg from "@/assets/portfolio-ai-finance.jpg";
-import salaryTrapImg from "@/assets/portfolio-salary-trap.jpg";
-import spendingYtImg from "@/assets/portfolio-spending-yt.jpg";
+import salaryTrapImg from "@/assets/portfolio-tds-deducted.png";
+import spendingYtImg from "@/assets/portfolio-dopamine.png";
 import aiAuthenticityImg from "@/assets/portfolio-ai-authenticity.png";
 
 const seoBlogs = [
   {
     title: "AI and Finance",
-    description: "A long-form, keyword-optimized blog post exploring the intersection of artificial intelligence and finance, ranked on page 1 for competitive SaaS keywords.",
+    description: "A long-form, data-driven blog: 18 verified stats, 5 trends, and the risks most AI-finance coverage misses entirely.",
     tag: "SEO Blog",
     image: aiFinanceImg,
-    embedUrl: "https://drive.google.com/file/d/1TBhZ-AC6YgITO7_V0XAqCueOreMdxLWC/preview",
+    href: "/blog/ai-personal-finance-2026",
   },
   {
     title: "AI vs Human Creativity 2026",
@@ -28,18 +26,18 @@ const seoBlogs = [
 
 const ytScripts = [
   {
-    title: "Salary and its Trap",
-    description: "A high-retention Hindi YouTube script uncovering the psychology behind salary traps, achieving 85%+ average view duration.",
-    tag: "YouTube Script · Hindi",
+    title: "Why 90% of Salaried People Never Build Real Wealth",
+    description: "An 8-minute long-form YouTube script for an Indian personal finance channel — structured for retention with pattern interrupts, humor beats, and a six-stage emotional arc.",
+    tag: "YouTube Script",
     image: salaryTrapImg,
-    embedUrl: "https://drive.google.com/file/d/1DwGNoNbyV4f6asn-lEBDgOxOYhphsXH5/preview",
+    href: "/scripts/salary-trap",
   },
   {
-    title: "Spending Psychology",
-    description: "Storytelling-driven YouTube script on spending psychology that boosted subscriber conversions.",
+    title: "Why Your Brain Can't Stop Craving Things",
+    description: "Long-form neuroscience script reframing dopamine as a prediction signal — built on Wolfram Schultz's monkey experiments and structured-boredom retraining.",
     tag: "YouTube Script",
     image: spendingYtImg,
-    embedUrl: "https://drive.google.com/file/d/16euJ5_o8zrkSfToHZA7VagzOKMc6iOO6/preview",
+    href: "/scripts/prediction-is-the-drug",
   },
 ];
 
@@ -48,10 +46,7 @@ const allProjects = [...seoBlogs, ...ytScripts];
 type Project = (typeof allProjects)[0];
 
 const PortfolioSection = () => {
-  const [activeProject, setActiveProject] = useState<Project | null>(null);
-
   const renderCard = (p: Project, i: number, compact: boolean) => {
-    const hasInternalLink = "href" in p && (p as any).href;
     const inner = (
       <>
       <div className="relative overflow-hidden">
@@ -97,10 +92,7 @@ const PortfolioSection = () => {
       </>
     );
     const className = `rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/20 transition-all duration-300 group cursor-pointer h-full block`;
-    if (hasInternalLink) {
-      return <Link to={(p as any).href} className={className}>{inner}</Link>;
-    }
-    return <div className={className} onClick={() => setActiveProject(p)}>{inner}</div>;
+    return <Link to={(p as any).href} className={className}>{inner}</Link>;
   };
 
   return (
@@ -156,32 +148,6 @@ const PortfolioSection = () => {
           </ScrollReveal>
         </div>
       </section>
-
-      <Dialog open={!!activeProject} onOpenChange={() => setActiveProject(null)}>
-        <DialogContent className="max-w-4xl w-[95vw] h-[85vh] p-0 gap-0">
-          <DialogHeader className="p-4 pb-2 border-b border-border">
-            <DialogTitle className="text-lg font-bold tracking-tight">
-              {activeProject?.title}
-              {activeProject?.tag && (
-                <span className="ml-3 text-[10px] font-medium text-accent bg-accent/10 px-2 py-1 rounded-full">
-                  {activeProject.tag}
-                </span>
-              )}
-            </DialogTitle>
-          </DialogHeader>
-          <div className="flex-1 min-h-0 p-0">
-            {activeProject && (
-              <iframe
-                src={activeProject.embedUrl}
-                className="w-full h-full border-0"
-                style={{ height: "calc(85vh - 60px)" }}
-                allow="autoplay"
-                title={activeProject.title}
-              />
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
     </>
   );
 };
