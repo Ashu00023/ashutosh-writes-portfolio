@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { ExternalLink, Play } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ScrollReveal from "./ScrollReveal";
 
 import aiFinanceImg from "@/assets/portfolio-ai-finance.jpg";
@@ -48,10 +46,7 @@ const allProjects = [...seoBlogs, ...ytScripts];
 type Project = (typeof allProjects)[0];
 
 const PortfolioSection = () => {
-  const [activeProject, setActiveProject] = useState<Project | null>(null);
-
   const renderCard = (p: Project, i: number, compact: boolean) => {
-    const hasInternalLink = "href" in p && (p as any).href;
     const inner = (
       <>
       <div className="relative overflow-hidden">
@@ -97,10 +92,7 @@ const PortfolioSection = () => {
       </>
     );
     const className = `rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/20 transition-all duration-300 group cursor-pointer h-full block`;
-    if (hasInternalLink) {
-      return <Link to={(p as any).href} className={className}>{inner}</Link>;
-    }
-    return <div className={className} onClick={() => setActiveProject(p)}>{inner}</div>;
+    return <Link to={(p as any).href} className={className}>{inner}</Link>;
   };
 
   return (
@@ -156,32 +148,6 @@ const PortfolioSection = () => {
           </ScrollReveal>
         </div>
       </section>
-
-      <Dialog open={!!activeProject} onOpenChange={() => setActiveProject(null)}>
-        <DialogContent className="max-w-4xl w-[95vw] h-[85vh] p-0 gap-0">
-          <DialogHeader className="p-4 pb-2 border-b border-border">
-            <DialogTitle className="text-lg font-bold tracking-tight">
-              {activeProject?.title}
-              {activeProject?.tag && (
-                <span className="ml-3 text-[10px] font-medium text-accent bg-accent/10 px-2 py-1 rounded-full">
-                  {activeProject.tag}
-                </span>
-              )}
-            </DialogTitle>
-          </DialogHeader>
-          <div className="flex-1 min-h-0 p-0">
-            {activeProject && (
-              <iframe
-                src={activeProject.embedUrl}
-                className="w-full h-full border-0"
-                style={{ height: "calc(85vh - 60px)" }}
-                allow="autoplay"
-                title={activeProject.title}
-              />
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
     </>
   );
 };
