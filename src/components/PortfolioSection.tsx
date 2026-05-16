@@ -5,17 +5,17 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import ScrollReveal from "./ScrollReveal";
 
 import aiFinanceImg from "@/assets/portfolio-ai-finance.jpg";
-import salaryTrapImg from "@/assets/portfolio-salary-trap.jpg";
-import spendingYtImg from "@/assets/portfolio-spending-yt.jpg";
+import salaryTrapImg from "@/assets/portfolio-tds-deducted.png";
+import spendingYtImg from "@/assets/portfolio-dopamine.png";
 import aiAuthenticityImg from "@/assets/portfolio-ai-authenticity.png";
 
 const seoBlogs = [
   {
     title: "AI and Finance",
-    description: "A long-form, keyword-optimized blog post exploring the intersection of artificial intelligence and finance, ranked on page 1 for competitive SaaS keywords.",
+    description: "A long-form, data-driven blog: 18 verified stats, 5 trends, and the risks most AI-finance coverage misses entirely.",
     tag: "SEO Blog",
     image: aiFinanceImg,
-    embedUrl: "https://drive.google.com/file/d/1TBhZ-AC6YgITO7_V0XAqCueOreMdxLWC/preview",
+    href: "/blog/ai-personal-finance-2026",
   },
   {
     title: "AI vs Human Creativity 2026",
@@ -28,18 +28,18 @@ const seoBlogs = [
 
 const ytScripts = [
   {
-    title: "Salary and its Trap",
-    description: "A high-retention Hindi YouTube script uncovering the psychology behind salary traps, achieving 85%+ average view duration.",
-    tag: "YouTube Script · Hindi",
+    title: "Why 90% of Salaried People Never Build Real Wealth",
+    description: "An 8-minute long-form YouTube script for an Indian personal finance channel — structured for retention with pattern interrupts, humor beats, and a six-stage emotional arc.",
+    tag: "YouTube Script",
     image: salaryTrapImg,
-    embedUrl: "https://drive.google.com/file/d/1DwGNoNbyV4f6asn-lEBDgOxOYhphsXH5/preview",
+    href: "/scripts/salary-trap",
   },
   {
-    title: "Spending Psychology",
-    description: "Storytelling-driven YouTube script on spending psychology that boosted subscriber conversions.",
+    title: "Why Your Brain Can't Stop Craving Things",
+    description: "Long-form neuroscience script reframing dopamine as a prediction signal — built on Wolfram Schultz's monkey experiments and structured-boredom retraining.",
     tag: "YouTube Script",
     image: spendingYtImg,
-    embedUrl: "https://drive.google.com/file/d/16euJ5_o8zrkSfToHZA7VagzOKMc6iOO6/preview",
+    href: "/scripts/prediction-is-the-drug",
   },
 ];
 
