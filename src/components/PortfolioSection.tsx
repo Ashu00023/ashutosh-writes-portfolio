@@ -101,7 +101,9 @@ const PortfolioSection = () => {
         <div className="container mx-auto px-6">
           <ScrollReveal className="text-center mb-16">
             <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Portfolio</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">Selected Work</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
+              Selected <span className="font-display italic text-accent font-normal">Work</span>
+            </h2>
           </ScrollReveal>
 
           {/* Mobile layout */}

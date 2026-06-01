@@ -14,8 +14,9 @@ const AboutSection = () => (
     <div className="container mx-auto px-6 max-w-3xl">
       <ScrollReveal>
         <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">About Me</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8 tracking-tight">
-          Crafting Content That<br />Ranks & Converts
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8 tracking-tight leading-[1.15]">
+          Crafting Content That<br />
+          <span className="font-display italic text-accent font-normal">Ranks &amp; Converts</span>
         </h2>
       </ScrollReveal>
 
