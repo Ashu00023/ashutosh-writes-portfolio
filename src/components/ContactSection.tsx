@@ -142,7 +142,9 @@ const ContactSection = () => {
       <div className="container mx-auto px-6">
         <ScrollReveal className="text-center mb-16">
           <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Contact</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">Let's Work Together</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
+            Let&rsquo;s Work <span className="font-display italic text-accent font-normal">Together</span>
+          </h2>
           <p className="text-muted-foreground mt-4 max-w-md mx-auto">
             Ready to grow your traffic with premium, human-written content? Reach out through any channel below.
           </p>

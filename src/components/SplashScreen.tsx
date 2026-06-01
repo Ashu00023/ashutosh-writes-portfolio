@@ -2,17 +2,24 @@ import { useEffect, useState } from "react";
 import logo from "@/assets/logo-new.png";
 
 const SplashScreen = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !sessionStorage.getItem("splash-seen");
+  });
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    const fadeTimer = setTimeout(() => setFading(true), 1400);
-    const removeTimer = setTimeout(() => setVisible(false), 2000);
+    if (!visible) return;
+    const fadeTimer = setTimeout(() => setFading(true), 1200);
+    const removeTimer = setTimeout(() => {
+      setVisible(false);
+      sessionStorage.setItem("splash-seen", "1");
+    }, 1700);
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(removeTimer);
     };
-  }, []);
+  }, [visible]);
 
   if (!visible) return null;
 

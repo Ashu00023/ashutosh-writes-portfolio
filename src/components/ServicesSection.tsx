@@ -34,7 +34,9 @@ const ServicesSection = () => (
     <div className="container mx-auto px-6">
       <ScrollReveal className="text-center mb-16">
         <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Services</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">What I Offer</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
+            What I <span className="font-display italic text-accent font-normal">Offer</span>
+          </h2>
       </ScrollReveal>
 
       <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
