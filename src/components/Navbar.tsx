@@ -47,21 +47,12 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-1 animate-in fade-in duration-500 delay-700 fill-mode-both">
           {links.map((l) => (
             <li key={l.href}>
-              {"route" in l && l.route ? (
-                <Link
-                  to={l.href}
-                  className="px-3.5 py-2 rounded-lg text-[13px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all duration-200"
-                >
-                  {l.label}
-                </Link>
-              ) : (
-                <a
-                  href={l.href}
-                  className="px-3.5 py-2 rounded-lg text-[13px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all duration-200"
-                >
-                  {l.label}
-                </a>
-              )}
+              <a
+                href={l.href}
+                className="px-3.5 py-2 rounded-lg text-[13px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all duration-200"
+              >
+                {l.label}
+              </a>
             </li>
           ))}
         </ul>
@@ -89,23 +80,13 @@ const Navbar = () => {
           <ul className="flex flex-col gap-1 pt-3">
             {links.map((l) => (
               <li key={l.href}>
-                {"route" in l && l.route ? (
-                  <Link
-                    to={l.href}
-                    onClick={() => setOpen(false)}
-                    className="block px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all"
-                  >
-                    {l.label}
-                  </Link>
-                ) : (
-                  <a
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="block px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all"
-                  >
-                    {l.label}
-                  </a>
-                )}
+                <a
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="block px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all"
+                >
+                  {l.label}
+                </a>
               </li>
             ))}
             <li className="mt-2">
