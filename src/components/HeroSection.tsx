@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Sparkles } from "lucide-react";
+import { ArrowRight, Shield, Sparkles, Star } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 
 const HeroSection = () => (
@@ -26,18 +26,22 @@ const HeroSection = () => (
           Freelance Content Writer
         </motion.div>
 
-        <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-foreground mb-6">
-          Top 0.1% SEO Blog &{" "}
-          <span className="text-accent">YouTube Script</span> Writer
+        <h1 className="text-[2.5rem] md:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.05] tracking-[-0.02em] text-foreground mb-6">
+          Top <span className="font-display italic text-accent">0.1%</span> SEO Blog &{" "}
+          <span className="accent-underline">YouTube Script</span> Writer
         </h1>
 
         <p className="text-base md:text-lg text-muted-foreground max-w-lg mb-4 leading-relaxed">
-          I help creators and brands get traffic from Google & YouTube through high-converting content.
+          I help creators and brands turn search and watch-time into compounding growth — through deeply researched, high-converting content.
         </p>
 
-        <div className="inline-flex items-center gap-2 text-sm font-medium text-accent/80 mb-10">
-          <Shield size={14} />
-          All content is 100% human-written. No AI used.
+        <div className="flex flex-wrap items-center gap-3 mb-10">
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent bg-accent/10 border border-accent/20 px-3 py-1.5 rounded-full">
+            <Shield size={12} /> 100% Human-Written
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground/80 bg-muted/60 border border-border/60 px-3 py-1.5 rounded-full">
+            <Star size={12} className="fill-current" /> SEO + Retention Focused
+          </span>
         </div>
 
         <div className="flex flex-wrap gap-3">
@@ -49,15 +53,9 @@ const HeroSection = () => (
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-7 py-3 text-sm font-semibold text-foreground hover:bg-muted/60 transition-all duration-200"
-          >
-            Hire Me
-          </a>
-          <a
-            href="#contact"
             className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-semibold text-accent-foreground hover:brightness-110 transition-all duration-200 shadow-sm"
           >
-            Fill Contact Form <ArrowRight size={15} />
+            Hire Me <ArrowRight size={15} />
           </a>
         </div>
       </motion.div>
@@ -70,13 +68,18 @@ const HeroSection = () => (
         className="order-1 md:order-2 flex justify-center"
       >
         <div className="relative flex flex-col items-center">
-          <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-accent/10 to-accent/5 blur-3xl" />
-          <img
-            src={profileImg}
-            alt="Ashutosh Mahapatra — SEO Blog and YouTube Script Writer"
-            className="relative w-60 h-60 md:w-72 md:h-72 rounded-full object-cover ring-1 ring-border shadow-2xl"
-          />
-          <h2 className="mt-5 text-lg font-bold text-foreground relative tracking-tight">Ashutosh Mahapatra</h2>
+          <div className="absolute -inset-10 rounded-full bg-gradient-to-tr from-accent/20 via-accent/5 to-transparent blur-3xl" />
+          <div className="relative p-1.5 rounded-full bg-gradient-to-tr from-accent/40 via-border to-accent/20">
+            <img
+              src={profileImg}
+              alt="Ashutosh Mahapatra — SEO Blog and YouTube Script Writer"
+              className="w-60 h-60 md:w-72 md:h-72 rounded-full object-cover shadow-2xl"
+            />
+          </div>
+          <div className="mt-5 text-center relative">
+            <h2 className="text-lg font-bold text-foreground tracking-tight">Ashutosh Mahapatra</h2>
+            <p className="text-xs text-muted-foreground mt-1 tracking-wide uppercase">Freelance Writer · Bhubaneswar, IN</p>
+          </div>
         </div>
       </motion.div>
     </div>
