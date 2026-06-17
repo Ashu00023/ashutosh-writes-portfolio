@@ -73,12 +73,12 @@ const ytScripts: Script[] = [
 
 const BlogCard = ({ b }: { b: Blog }) => (
   <article className="group flex flex-col rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full">
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden bg-muted aspect-[16/9] flex items-center justify-center">
       <img
         src={b.image}
         alt={b.title}
         loading="lazy"
-        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
       />
     </div>
     <div className="flex flex-col flex-1 p-6">
