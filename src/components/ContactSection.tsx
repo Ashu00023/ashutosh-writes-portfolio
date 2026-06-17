@@ -6,13 +6,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 const contacts = [
   {
     icon: Mail,
-    label: "For Blogs — blog@ashutoshwrites.online",
-    href: "mailto:blog@ashutoshwrites.online",
-  },
-  {
-    icon: Mail,
-    label: "For YouTube Script — scripts@ashutoshwrites.online",
-    href: "mailto:scripts@ashutoshwrites.online",
+    label: "ashutosh@email.ashutoshwrites.online",
+    href: "mailto:ashutosh@email.ashutoshwrites.online",
   },
   {
     icon: Phone,
