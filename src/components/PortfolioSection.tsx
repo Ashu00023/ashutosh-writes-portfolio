@@ -27,15 +27,6 @@ type Script = {
 
 const seoBlogs: Blog[] = [
   {
-    niche: "AI Fintech",
-    title: "Scaling Trust for an AI-Powered Personal Finance Audience",
-    summary:
-      "AI finance content was crowded with surface-level listicles and zero verified data. We built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.",
-    image: aiFinanceImg,
-    liveUrl: "/static-blogs/ai-personal-finance-2026.html",
-    transcriptHref: "/blog/ai-personal-finance-2026",
-  },
-  {
     niche: "Creator Economy",
     title: "Winning the Authenticity Premium in the AI-Slop Era",
     summary:
@@ -43,6 +34,15 @@ const seoBlogs: Blog[] = [
     image: aiAuthenticityImg,
     liveUrl: "/static-blogs/ai-authenticity-premium-2026.html",
     transcriptHref: "/blog/human-creativity-vs-ai-authenticity-premium-2026",
+  },
+  {
+    niche: "AI Fintech",
+    title: "Scaling Trust for an AI-Powered Personal Finance Audience",
+    summary:
+      "AI finance content was crowded with surface-level listicles and zero verified data. We built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.",
+    image: aiFinanceImg,
+    liveUrl: "/static-blogs/ai-personal-finance-2026.html",
+    transcriptHref: "/blog/ai-personal-finance-2026",
   },
 ];
 
