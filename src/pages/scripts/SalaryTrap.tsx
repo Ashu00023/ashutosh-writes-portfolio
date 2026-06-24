@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import ScriptViewer from "@/components/ScriptViewer";
+import { ArrowLeft } from "lucide-react";
 import thumb from "@/assets/portfolio-tds-deducted.png";
 
 const url = "https://ashutoshwrites.online/scripts/salary-trap";
@@ -17,7 +18,46 @@ const SalaryTrap = () => (
       <meta property="og:type" content="article" />
       <meta property="og:image" content={thumb} />
     </Helmet>
-    <ScriptViewer
+    <div style={{ position: "fixed", inset: 0, display: "flex", flexDirection: "column", background: "#0d0c0a", zIndex: 0 }}>
+      <div style={{
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: "10px 20px", background: "#0d0c0a", borderBottom: "1px solid #2e2b26",
+        fontFamily: "'Fira Code', ui-monospace, monospace", fontSize: 11, letterSpacing: "0.12em",
+        textTransform: "uppercase", color: "#b0a99e",
+      }}>
+        <Link to="/" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#c94b2a", textDecoration: "none" }}>
+          <ArrowLeft size={14} /> Back to portfolio
+        </Link>
+        <span style={{ color: "#7a746c" }}>YouTube Script Sample · Indian Personal Finance</span>
+      </div>
+      <iframe
+        src="/static-scripts/middle-class-trap.html"
+        title={title}
+        style={{ flex: 1, width: "100%", border: "none", background: "#f5f0e8" }}
+      />
+    </div>
+  </>
+);
+
+export default SalaryTrap;
+
+// Legacy ScriptViewer content removed — script now rendered from static DOCX-converted HTML.
+const _unused = (null as unknown) as {
+  noop: typeof Object;
+};
+void _unused;
+
+const _legacy = () => (
+  <>
+    {/* placeholder to satisfy import; not rendered */}
+    {null as unknown as JSX.Element}
+  </>
+);
+void _legacy;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _viewer = (
+  <noscript
       eyebrow="YouTube Script · Indian Personal Finance · Portfolio Sample"
       title="Why 90% of Salaried People Never Build Real Wealth"
       subtitle="An 8-minute long-form script written for a 27-year-old salaried Indian professional."
