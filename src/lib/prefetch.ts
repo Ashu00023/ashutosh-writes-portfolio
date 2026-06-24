@@ -7,6 +7,20 @@ const SAMPLE_URLS = [
 ];
 
 let warmed = false;
+const prefetchedHrefs = new Set<string>();
+
+/** Prefetch a single URL on demand (e.g. on card hover). Idempotent. */
+export function prefetchOne(href: string) {
+  if (typeof document === "undefined") return;
+  if (prefetchedHrefs.has(href)) return;
+  prefetchedHrefs.add(href);
+  if (document.head.querySelector(`link[rel="prefetch"][href="${href}"]`)) return;
+  const link = document.createElement("link");
+  link.rel = "prefetch";
+  link.href = href;
+  link.as = href.endsWith(".css") ? "style" : "document";
+  document.head.appendChild(link);
+}
 
 /**
  * Quietly prefetches the portfolio sample HTML files into the browser's HTTP
