@@ -1,53 +1,50 @@
-## Why /blog returns 404
+# Make the 4 samples open instantly (without lightening them)
 
-Your custom domain is on Vercel. The app is a React SPA — only `index.html` exists as a real file. When Google (or any visitor) requests `/blog` directly, Vercel looks for a file at that path, finds none, and returns 404 before React Router ever runs.
-
-Lovable's own hosting (`*.lovable.app`) handles SPA fallback automatically, which is why the preview works. Vercel does not — it needs an explicit rewrite rule.
-
-## Changes
-
-### 1. Add `vercel.json` (the actual fix)
-
-Create at the project root:
-
-```json
-{
-  "rewrites": [
-    { "source": "/((?!assets/|.*\\..*).*)", "destination": "/index.html" }
-  ]
-}
-```
-
-This tells Vercel: for any path that isn't a static asset (no file extension, not under `/assets/`), serve `index.html` so React Router can take over. After redeploying on Vercel, `/blog`, `/blog/human-creativity-vs-ai-authenticity-premium-2026`, etc. will load instead of 404'ing.
-
-### 2. Fix `public/robots.txt`
-
-Replace the `//` lines with proper `#` comments and add a sitemap reference:
+The files themselves stay exactly as they are. The delay isn't the file size — it's the **sequence of round-trips** that happens when you click a sample:
 
 ```
-# Allow all crawlers
-User-agent: *
-Allow: /
-
-Sitemap: https://www.ashutoshwrites.online/sitemap.xml
+click → React Router navigates → lazy JS chunk downloads
+      → page renders → <iframe> requests the static HTML
+      → browser parses HTML/CSS → first paint
 ```
 
-### 3. Add a static `public/sitemap.xml`
+Each arrow is a fresh network request that only starts *after* the click. Goal: do all of that work *before* the click, while the user is still on the homepage.
 
-A small, hand-maintained sitemap listing `/`, `/blog`, and your published blog post URL(s). This gives Google a reliable discovery path while the site is JS-rendered.
+## Options (ranked by impact vs. cost)
 
-## After the fix — what you must do
+### 1. Prefetch the sample HTML on idle  ← biggest, safest win
+After the homepage finishes loading, quietly fetch all 4 static files in the background using `<link rel="prefetch">` injected at idle time (via `requestIdleCallback`). Browser stores them in the HTTP cache. When the user clicks, the iframe loads from cache → essentially instant, zero network wait.
 
-1. Push to Vercel (re-deploy). The `vercel.json` only takes effect on the next deploy.
-2. In Google Search Console, click **Request Indexing** again for `/blog` and the blog post URL.
-3. Submit the sitemap under **Sitemaps** in GSC.
+- Cost: ~4 background requests totalling ~120 KB, fired only after the page is interactive, so no impact on initial paint.
+- Works on every modern browser.
 
-## Heads up — not in this plan, ask me if you want it
+### 2. Prefetch the route JS chunks the same way
+Same trick for the React route bundles (`SalaryTrap`, `PredictionDrug`, `AiPersonalFinance2026`, `HumanCreativityVsAi`). Vite supports this with a dynamic `import()` warmed at idle, or `<link rel="modulepreload">`. Removes the second round-trip (the JS chunk).
 
-Client-side rendered Supabase content can be slow to index even after the 404 is fixed. If `/blog` and posts still don't get indexed after a couple of weeks, the next step is to add server-side rendering or pre-rendering for blog routes — that's a bigger refactor and I'd rather wait to see if the simple fix is enough.
+### 3. Use the Speculation Rules API for true prerender
+Add a `<script type="speculationrules">` block that tells Chromium-based browsers to **prerender** the four sample routes when the user hovers/touches a card. The browser builds the full page off-screen; click swaps it in with literally 0 ms paint.
 
-## Files
+- Cost: extra CPU/memory while prerendering. Limited to Chrome/Edge — Safari/Firefox fall back to (1)+(2), which is still near-instant.
 
-- **Add:** `vercel.json`
-- **Edit:** `public/robots.txt`
-- **Add:** `public/sitemap.xml`
+### 4. Hover/visible prefetch as a backup trigger
+In addition to idle prefetch, trigger a prefetch the moment a sample card scrolls into view or the cursor enters it. Buys an extra 200–800 ms on slower connections.
+
+### 5. Switch the iframe to `srcdoc` with cached HTML (optional refinement)
+Fetch the HTML once on idle, keep it in memory, and feed it to the iframe via `srcdoc` instead of `src`. Eliminates the iframe's own network request entirely on click. Adds a small amount of code; only worth doing if (1)–(3) aren't enough.
+
+## What I'd actually implement (recommended bundle)
+
+1. A tiny `src/lib/prefetch.ts` helper that, on `requestIdleCallback`, injects:
+   - `<link rel="prefetch" href="/static-blogs/...">` × 2
+   - `<link rel="prefetch" href="/static-scripts/...">` × 2
+   - `<link rel="modulepreload">` for the 4 route chunks (or warm them via dynamic `import()`).
+2. A `<script type="speculationrules">` block in `index.html` listing the 4 sample routes with `eagerness: "moderate"` (fires on hover/touch).
+3. Call the helper from `PortfolioSection` once it mounts.
+
+Result: first visit ≈ same homepage speed; clicking any sample feels instantaneous because the HTML + JS are already sitting in the browser cache (and on Chrome, the whole page is pre-rendered).
+
+Nothing in the four sample files is touched. No content removed, no styling stripped, no images compressed.
+
+## Confirm before I build
+
+Want me to ship the full bundle (1 + 2 + 3 + 4)? Or start with just **(1) idle prefetch of the 4 HTML files** — which alone usually makes the click feel instant on a warm network — and add the others if it isn't enough?
