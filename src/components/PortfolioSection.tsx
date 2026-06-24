@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { ArrowUpRight, FileText, PlayCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { prefetchSamples, prefetchOne } from "@/lib/prefetch";
 
 import aiFinanceImg from "@/assets/portfolio-ai-finance.jpg";
 import salaryTrapImg from "@/assets/portfolio-tds-deducted.png";
@@ -72,7 +74,11 @@ const ytScripts: Script[] = [
 ];
 
 const BlogCard = ({ b }: { b: Blog }) => (
-  <article className="group flex flex-col rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full">
+  <article
+    className="group flex flex-col rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full"
+    onMouseEnter={() => prefetchOne(b.liveUrl)}
+    onTouchStart={() => prefetchOne(b.liveUrl)}
+  >
     <div className="relative overflow-hidden bg-muted aspect-[16/9] flex items-center justify-center">
       <img
         src={b.image}
@@ -112,7 +118,11 @@ const BlogCard = ({ b }: { b: Blog }) => (
 );
 
 const ScriptCard = ({ s }: { s: Script }) => (
-  <article className="group flex flex-col rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full">
+  <article
+    className="group flex flex-col rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full"
+    onMouseEnter={() => prefetchOne(s.href === "/scripts/salary-trap" ? "/static-scripts/middle-class-trap.html" : "/static-scripts/reboot-human.html")}
+    onTouchStart={() => prefetchOne(s.href === "/scripts/salary-trap" ? "/static-scripts/middle-class-trap.html" : "/static-scripts/reboot-human.html")}
+  >
     <div className="relative overflow-hidden aspect-video bg-muted">
       <img
         src={s.image}
@@ -153,6 +163,9 @@ const ScriptCard = ({ s }: { s: Script }) => (
 );
 
 const PortfolioSection = () => {
+  useEffect(() => {
+    prefetchSamples();
+  }, []);
   return (
     <section id="portfolio" className="py-28 bg-card/40">
       <div className="container mx-auto px-6">
