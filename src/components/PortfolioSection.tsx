@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { ArrowUpRight, FileText, PlayCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { prefetchSamples } from "@/lib/prefetch";
 
 import aiFinanceImg from "@/assets/portfolio-ai-finance.jpg";
 import salaryTrapImg from "@/assets/portfolio-tds-deducted.png";
@@ -153,6 +155,9 @@ const ScriptCard = ({ s }: { s: Script }) => (
 );
 
 const PortfolioSection = () => {
+  useEffect(() => {
+    prefetchSamples();
+  }, []);
   return (
     <section id="portfolio" className="py-28 bg-card/40">
       <div className="container mx-auto px-6">
