@@ -1,24 +1,28 @@
+import { Suspense, lazy } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ServicesSection from "@/components/ServicesSection";
-import SkillsSection from "@/components/SkillsSection";
-import PortfolioSection from "@/components/PortfolioSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
+
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const SkillsSection = lazy(() => import("@/components/SkillsSection"));
+const PortfolioSection = lazy(() => import("@/components/PortfolioSection"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => (
   <>
     <Navbar />
     <HeroSection />
-    <AboutSection />
-    <ServicesSection />
-    <SkillsSection />
-    <PortfolioSection />
-    <TestimonialsSection />
-    <ContactSection />
-    <Footer />
+    <Suspense fallback={<div className="min-h-[40vh]" />}>
+      <AboutSection />
+      <ServicesSection />
+      <SkillsSection />
+      <PortfolioSection />
+      <TestimonialsSection />
+      <ContactSection />
+      <Footer />
+    </Suspense>
   </>
 );
 
