@@ -10,11 +10,11 @@ const SplashScreen = () => {
 
   useEffect(() => {
     if (!visible) return;
-    const fadeTimer = setTimeout(() => setFading(true), 1200);
+    const fadeTimer = setTimeout(() => setFading(true), 700);
     const removeTimer = setTimeout(() => {
       setVisible(false);
       sessionStorage.setItem("splash-seen", "1");
-    }, 1700);
+    }, 1100);
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(removeTimer);
