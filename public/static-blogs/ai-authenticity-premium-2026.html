@@ -1643,64 +1643,10 @@ table.comparison {
       <p class="reveal">No outrage involved. Just instinct — scroll, close the tab, skip the follow. Done.</p>
 
       <!-- ENGAGEMENT CHART (SVG) -->
-      <div class="chart-container reveal">
-        <div class="chart-title">Human-Led vs. AI Content — Engagement Trend (Q3 2025 – Q2 2026)</div>
-        <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;overflow:visible;">
-          <defs>
-            <linearGradient id="humanGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#e8460a" stop-opacity="0.3"/>
-              <stop offset="100%" stop-color="#e8460a" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="aiGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#555" stop-opacity="0.2"/>
-              <stop offset="100%" stop-color="#555" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <!-- Grid -->
-          <line x1="60" y1="20" x2="60" y2="200" stroke="#252525" stroke-width="1"/>
-          <line x1="60" y1="200" x2="660" y2="200" stroke="#252525" stroke-width="1"/>
-          <line x1="60" y1="155" x2="660" y2="155" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4,4"/>
-          <line x1="60" y1="110" x2="660" y2="110" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4,4"/>
-          <line x1="60" y1="65" x2="660" y2="65" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4,4"/>
-          <!-- Y Labels -->
-          <text x="50" y="204" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="#555">0%</text>
-          <text x="50" y="159" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="#555">25%</text>
-          <text x="50" y="114" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="#555">50%</text>
-          <text x="50" y="69" text-anchor="end" font-family="IBM Plex Mono" font-size="9" fill="#555">75%</text>
-          <!-- X Labels -->
-          <text x="130" y="218" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#555">Q3 '25</text>
-          <text x="250" y="218" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#555">Q4 '25</text>
-          <text x="370" y="218" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#555">Q1 '26</text>
-          <text x="490" y="218" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#555">Q2 '26</text>
-          <!-- AI line (declining): 60% → 45% → 35% → 28% -->
-          <polyline fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="6,3"
-            points="130,116 250,136 370,152 490,168"/>
-          <!-- AI area -->
-          <polygon fill="url(#aiGrad)" points="130,116 250,136 370,152 490,168 490,200 130,200"/>
-          <!-- Human line (rising): 52% → 62% → 70% → 78% -->
-          <polyline fill="none" stroke="#e8460a" stroke-width="2.5"
-            points="130,124 250,104 370,88 490,72"/>
-          <!-- Human area -->
-          <polygon fill="url(#humanGrad)" points="130,124 250,104 370,88 490,72 490,200 130,200"/>
-          <!-- Dots Human -->
-          <circle cx="130" cy="124" r="4" fill="#e8460a"/>
-          <circle cx="250" cy="104" r="4" fill="#e8460a"/>
-          <circle cx="370" cy="88" r="4" fill="#e8460a"/>
-          <circle cx="490" cy="72" r="4" fill="#e8460a"/>
-          <!-- Dots AI -->
-          <circle cx="130" cy="116" r="3" fill="#444"/>
-          <circle cx="250" cy="136" r="3" fill="#444"/>
-          <circle cx="370" cy="152" r="3" fill="#444"/>
-          <circle cx="490" cy="168" r="3" fill="#444"/>
-          <!-- Labels end -->
-          <text x="500" y="70" font-family="IBM Plex Mono" font-size="9" fill="#e8460a">Human-led ↑</text>
-          <text x="500" y="170" font-family="IBM Plex Mono" font-size="9" fill="#555">AI-generated ↓</text>
-        </svg>
-        <div class="chart-legend">
-          <div class="chart-legend-item"><div class="legend-dot" style="background:#e8460a"></div>Human-led content</div>
-          <div class="chart-legend-item"><div class="legend-dot" style="background:#444"></div>AI-generated content</div>
-        </div>
-      </div>
+      <figure class="reveal" style="margin:36px 0;padding:18px;background:#fafaf5;border:1px solid #e6e2d6;border-radius:6px;">
+        <img src="/static-blogs/charts/engagement.png" alt="Human-led content vs AI content engagement, click-through, and retention rates Q3 2025 – Q2 2026" style="width:100%;height:auto;display:block;border-radius:4px;" loading="lazy" />
+        <figcaption style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6b6457;text-align:center;">Fig 2 · Human-led vs. AI Content Engagement · Gemini Output 1, Sendtric 2026</figcaption>
+      </figure>
 
       <h3 class="reveal">Platform Algorithm Dynamics: Google, YouTube, and TikTok Are Responding</h3>
 
