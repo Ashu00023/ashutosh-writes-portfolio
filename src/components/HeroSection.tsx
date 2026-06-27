@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Sparkles, Star } from "lucide-react";
+import { ArrowRight, PenLine, Shield } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 
 const HeroSection = () => (
@@ -22,25 +22,25 @@ const HeroSection = () => (
           transition={{ duration: 0.5, delay: 0.2 }}
           className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-semibold text-accent mb-8"
         >
-          <Sparkles size={12} />
-          Freelance Content Writer
+          <PenLine size={12} />
+          SEO Blogs &middot; YouTube Scripts
         </motion.div>
 
         <h1 className="text-[2.5rem] md:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.05] tracking-[-0.02em] text-foreground mb-6">
-          Top <span className="font-display italic text-accent">0.1%</span> SEO Blog &{" "}
-          <span className="accent-underline">YouTube Script</span> Writer
+          Long-form content that <span className="font-display italic text-accent">earns</span> attention &mdash;{" "}
+          <span className="accent-underline">not chases it.</span>
         </h1>
 
         <p className="text-base md:text-lg text-muted-foreground max-w-lg mb-4 leading-relaxed">
-          I help creators and brands turn search and watch-time into compounding growth — through deeply researched, high-converting content.
+          I write deeply researched SEO blogs and YouTube scripts for founders, creators, and brands who want readers to finish the article and viewers to stay till the end.
         </p>
 
         <div className="flex flex-wrap items-center gap-3 mb-10">
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent bg-accent/10 border border-accent/20 px-3 py-1.5 rounded-full">
-            <Shield size={12} /> 100% Human-Written
+            <Shield size={12} /> Human-Written
           </span>
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground/80 bg-muted/60 border border-border/60 px-3 py-1.5 rounded-full">
-            <Star size={12} className="fill-current" /> SEO + Retention Focused
+            Research-Led
           </span>
         </div>
 
@@ -73,6 +73,9 @@ const HeroSection = () => (
             <img
               src={profileImg}
               alt="Ashutosh Mahapatra — SEO Blog and YouTube Script Writer"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="w-60 h-60 md:w-72 md:h-72 rounded-full object-cover shadow-2xl"
             />
           </div>
