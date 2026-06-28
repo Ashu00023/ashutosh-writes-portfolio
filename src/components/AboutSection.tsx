@@ -1,12 +1,11 @@
-import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const highlights = [
-  "Specializing in high-performance SEO blog writing",
-  "YouTube script writing optimized for retention & virality",
-  "Deep keyword research & strategic content planning",
-  "Quality over quantity — top 0.1% content positioning",
+  "Long-form SEO blogs built around search intent, not word count",
+  "YouTube scripts engineered for retention from hook to payoff",
+  "Original research, primary sources, and a clear point of view",
+  "Every line written by hand — no AI drafts, no spun copy",
 ];
 
 const AboutSection = () => (
@@ -15,17 +14,17 @@ const AboutSection = () => (
       <ScrollReveal>
         <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">About Me</p>
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8 tracking-tight leading-[1.15]">
-          Crafting Content That<br />
-          <span className="font-display italic text-accent font-normal">Ranks &amp; Converts</span>
+          I write the kind of content<br />
+          <span className="font-display italic text-accent font-normal">people actually finish.</span>
         </h2>
       </ScrollReveal>
 
       <ScrollReveal delay={0.15}>
         <p className="text-muted-foreground leading-relaxed mb-5">
-          I am <span className="font-bold text-foreground">Ashutosh</span>, a freelance content writer who helps creators and businesses generate real traffic from Google and YouTube. My approach combines deep research, strategic keyword targeting, and compelling storytelling to produce content that not only ranks but also converts readers into loyal audiences.
+          I am <span className="font-bold text-foreground">Ashutosh</span> — a freelance writer working with founders, creators, and brands who care more about the reader than the algorithm. Most online content is written to be skimmed. I write to be <span className="font-semibold text-foreground">read</span>.
         </p>
         <p className="text-muted-foreground leading-relaxed mb-10">
-          Every piece of content is crafted manually with deep research and strategic intent — <span className="font-semibold text-accent">no AI shortcuts</span>. I believe in quality over quantity, delivering work that positions my clients in the top 0.1%.
+          My process is slow on purpose: real research, primary sources, a clear argument, and language that respects the reader&rsquo;s time. The result is work that ranks on Google, holds attention on YouTube, and sounds like a person &mdash; <span className="font-semibold text-accent">because a person wrote it</span>.
         </p>
       </ScrollReveal>
 
