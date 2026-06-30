@@ -1,0 +1,5 @@
+Drop your 1200x630 OG cover image at:
+  public/og-cover.jpg
+
+It will be served at https://ashutoshwrites.online/og-cover.jpg
+and is referenced by Helmet og:image / twitter:image tags on every page.

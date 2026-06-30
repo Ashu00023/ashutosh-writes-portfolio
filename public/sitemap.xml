@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.ashutoshwrites.online/</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://ashutoshwrites.online/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.ashutoshwrites.online/blog/human-creativity-vs-ai-authenticity-premium-2026</loc>
-    <lastmod>2026-05-02</lastmod>
+    <loc>https://ashutoshwrites.online/blog/human-creativity-vs-ai-authenticity-premium-2026</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.ashutoshwrites.online/blog/ai-personal-finance-2026</loc>
-    <lastmod>2026-04-10</lastmod>
+    <loc>https://ashutoshwrites.online/blog/ai-personal-finance-2026</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.ashutoshwrites.online/scripts/salary-trap</loc>
+    <loc>https://ashutoshwrites.online/scripts/salary-trap</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.ashutoshwrites.online/scripts/prediction-is-the-drug</loc>
+    <loc>https://ashutoshwrites.online/scripts/prediction-is-the-drug</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

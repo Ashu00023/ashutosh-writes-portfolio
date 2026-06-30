@@ -16,7 +16,13 @@ const SalaryTrap = () => (
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="article" />
+      <meta property="og:url" content={url} />
+      <meta property="og:image" content="https://ashutoshwrites.online/og-cover.jpg" />
       <meta property="og:image" content={thumb} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={thumb} />
     </Helmet>
     <div style={{ position: "fixed", inset: 0, display: "flex", flexDirection: "column", background: "#0d0c0a", zIndex: 0 }}>
       <div style={{
