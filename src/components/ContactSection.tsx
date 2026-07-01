@@ -1,7 +1,9 @@
-import { useState, useCallback } from "react";
-import { Mail, Phone, Instagram, Linkedin, MessageCircle, FileText, Video, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { Mail, Phone, Instagram, Linkedin, MessageCircle, FileText, Video } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
+import SeoBlogInquiryForm from "./forms/SeoBlogInquiryForm";
+import YouTubeScriptInquiryForm from "./forms/YouTubeScriptInquiryForm";
 
 const contacts = [
   {
@@ -31,107 +33,65 @@ const contacts = [
   },
 ];
 
-const forms = [
+type InquiryKind = "seo" | "yt";
+
+const inquiryCards: {
+  kind: InquiryKind;
+  icon: typeof FileText;
+  title: string;
+  copy: string;
+  cta: string;
+}[] = [
   {
+    kind: "seo",
     icon: FileText,
-    label: "SEO Blog Inquiry",
-    description: "Fill out the form to get a custom SEO blog",
-    src: "https://docs.google.com/forms/d/e/1FAIpQLSegRQLlOSz3FnVBjm2atVgRX3HALSXbwUOugWiA0ACFSV3kNg/viewform?embedded=true",
-    height: 2042,
+    title: "SEO Blog Inquiry",
+    copy: "Tell me about your brand, target keywords, and goals. I'll reply within 24 hours with a scope and quote.",
+    cta: "Start inquiry",
   },
   {
+    kind: "yt",
     icon: Video,
-    label: "YouTube Script Inquiry",
-    description: "Fill out the form to get a custom YouTube script",
-    src: "https://docs.google.com/forms/d/e/1FAIpQLSf0iTe4F1qWNsoIvHK0IPjE7EBMTO_2XttIWdwHTX4djBhScg/viewform?embedded=true",
-    height: 2125,
+    title: "YouTube Script Inquiry",
+    copy: "Share your channel, niche, and video vision. You'll get a tailored script proposal in your inbox.",
+    cta: "Start inquiry",
   },
 ];
 
-const FormDialog = ({ form, index }: { form: typeof forms[0]; index: number }) => {
-  const [open, setOpen] = useState(false);
-  const [loadCount, setLoadCount] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleOpenChange = useCallback((isOpen: boolean) => {
-    setOpen(isOpen);
-    if (!isOpen) {
-      setLoadCount(0);
-      setSubmitted(false);
-    }
-  }, []);
-
-  const handleIframeLoad = useCallback(() => {
-    setLoadCount((prev) => {
-      const next = prev + 1;
-      if (next > 1) {
-        setSubmitted(true);
-      }
-      return next;
-    });
-  }, []);
-
-  return (
-    <ScrollReveal delay={index * 0.1}>
-      <Dialog open={open} onOpenChange={handleOpenChange}>
-        <button
-          onClick={() => setOpen(true)}
-          className="w-full flex items-center gap-5 rounded-2xl border-2 border-[hsl(25,95%,53%)]/40 bg-[hsl(25,95%,53%)]/10 px-6 py-5 hover:border-[hsl(25,95%,53%)] hover:bg-[hsl(25,95%,53%)]/20 transition-all duration-200 group cursor-pointer text-left shadow-[0_0_20px_hsl(25,95%,53%,0.08)]"
-        >
-          <div className="w-12 h-12 rounded-xl bg-[hsl(25,95%,53%)]/20 flex items-center justify-center shrink-0 group-hover:bg-[hsl(25,95%,53%)]/30 transition-colors">
-            <form.icon size={22} className="text-[hsl(25,95%,53%)]" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <span className="text-base font-bold text-foreground group-hover:text-[hsl(25,95%,53%)] transition-colors block">
-              {form.label}
-            </span>
-            <span className="text-xs text-muted-foreground">{form.description}</span>
-          </div>
-          <span className="text-xs font-semibold text-[hsl(25,95%,53%)] bg-[hsl(25,95%,53%)]/15 px-3 py-1.5 rounded-full shrink-0 group-hover:bg-[hsl(25,95%,53%)]/25 transition-colors animate-pulse">
-            Open Form →
-          </span>
-        </button>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto p-0">
-          <DialogHeader className="p-6 pb-0">
-            <DialogTitle>{form.label}</DialogTitle>
-          </DialogHeader>
-          <div className="relative">
-            <iframe
-              src={form.src}
-              width="100%"
-              height={form.height}
-              frameBorder="0"
-              marginHeight={0}
-              marginWidth={0}
-              title={form.label}
-              className="w-full"
-              onLoad={handleIframeLoad}
-            >
-              Loading…
-            </iframe>
-            {submitted && (
-              <div className="absolute inset-0 bg-background flex flex-col items-center justify-center gap-4 z-10">
-                <CheckCircle size={64} className="text-green-500" />
-                <h3 className="text-xl font-bold text-foreground">Form submitted successfully!</h3>
-                <p className="text-sm text-muted-foreground text-center max-w-xs">
-                  Thank you for reaching out. I'll get back to you soon.
-                </p>
-                <button
-                  onClick={() => handleOpenChange(false)}
-                  className="mt-2 px-6 py-2.5 rounded-xl bg-accent text-accent-foreground font-semibold hover:opacity-90 transition-opacity"
-                >
-                  Close
-                </button>
-              </div>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
-    </ScrollReveal>
-  );
-};
+const InquiryCard = ({
+  card,
+  index,
+  onOpen,
+}: {
+  card: (typeof inquiryCards)[number];
+  index: number;
+  onOpen: (kind: InquiryKind) => void;
+}) => (
+  <ScrollReveal delay={index * 0.1}>
+    <button
+      onClick={() => onOpen(card.kind)}
+      className="w-full flex items-center gap-5 rounded-2xl border-2 border-[hsl(25,95%,53%)]/40 bg-[hsl(25,95%,53%)]/10 px-6 py-5 hover:border-[hsl(25,95%,53%)] hover:bg-[hsl(25,95%,53%)]/20 transition-all duration-200 group cursor-pointer text-left shadow-[0_0_20px_hsl(25,95%,53%,0.08)]"
+    >
+      <div className="w-12 h-12 rounded-xl bg-[hsl(25,95%,53%)]/20 flex items-center justify-center shrink-0 group-hover:bg-[hsl(25,95%,53%)]/30 transition-colors">
+        <card.icon size={22} className="text-[hsl(25,95%,53%)]" />
+      </div>
+      <div className="flex-1 min-w-0">
+        <span className="text-base font-bold text-foreground group-hover:text-[hsl(25,95%,53%)] transition-colors block">
+          {card.title}
+        </span>
+        <span className="text-xs text-muted-foreground line-clamp-2">{card.copy}</span>
+      </div>
+      <span className="text-xs font-semibold text-[hsl(25,95%,53%)] bg-[hsl(25,95%,53%)]/15 px-3 py-1.5 rounded-full shrink-0 group-hover:bg-[hsl(25,95%,53%)]/25 transition-colors">
+        {card.cta} →
+      </span>
+    </button>
+  </ScrollReveal>
+);
 
 const ContactSection = () => {
+  const [openKind, setOpenKind] = useState<InquiryKind | null>(null);
+  const active = inquiryCards.find((c) => c.kind === openKind);
+
   return (
     <section id="contact" className="py-28">
       <div className="container mx-auto px-6">
@@ -146,10 +106,30 @@ const ContactSection = () => {
         </ScrollReveal>
 
         <div className="max-w-2xl mx-auto mb-12 space-y-4">
-          {forms.map((form, i) => (
-            <FormDialog key={form.label} form={form} index={i} />
+          {inquiryCards.map((card, i) => (
+            <InquiryCard key={card.kind} card={card} index={i} onOpen={setOpenKind} />
           ))}
         </div>
+
+        <Dialog open={!!openKind} onOpenChange={(o) => !o && setOpenKind(null)}>
+          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            {active && (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="text-2xl">{active.title}</DialogTitle>
+                  <DialogDescription>{active.copy}</DialogDescription>
+                </DialogHeader>
+                <div className="mt-4">
+                  {active.kind === "seo" ? (
+                    <SeoBlogInquiryForm />
+                  ) : (
+                    <YouTubeScriptInquiryForm />
+                  )}
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
 
         <div className="max-w-lg mx-auto space-y-4">
           {contacts.map((c, i) => (

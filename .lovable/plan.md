@@ -1,50 +1,58 @@
-# Make the 4 samples open instantly (without lightening them)
+## Goal
 
-The files themselves stay exactly as they are. The delay isn't the file size — it's the **sequence of round-trips** that happens when you click a sample:
+Replace the two Google Form iframes in the Contact section with fast, on-brand native React forms. Every submission gets emailed to `ashutosh@email.ashutoshwrites.online` and stored in your backend as a backup.
 
-```
-click → React Router navigates → lazy JS chunk downloads
-      → page renders → <iframe> requests the static HTML
-      → browser parses HTML/CSS → first paint
-```
+## Why native > Google Form (short version)
 
-Each arrow is a fresh network request that only starts *after* the click. Goal: do all of that work *before* the click, while the user is still on the homepage.
+- Faster load, no iframe, no Google branding — matches the premium look you've been building.
+- You get a formatted email in your inbox on every submission (subject line includes the person's name + inquiry type).
+- Every submission is also saved in your backend as a backup, so leads can never be lost.
+- Full control of validation, success message, and design.
+- Only "cost": one-time DNS setup for the sending subdomain (below).
 
-## Options (ranked by impact vs. cost)
+## What gets built
 
-### 1. Prefetch the sample HTML on idle  ← biggest, safest win
-After the homepage finishes loading, quietly fetch all 4 static files in the background using `<link rel="prefetch">` injected at idle time (via `requestIdleCallback`). Browser stores them in the HTTP cache. When the user clicks, the iframe loads from cache → essentially instant, zero network wait.
+### 1. Two native forms (replacing the current Google Form iframes)
+- `SeoBlogInquiryForm.tsx` — same questions as the current SEO blog Google Form, rebuilt with react-hook-form + zod validation.
+- `YouTubeScriptInquiryForm.tsx` — same questions as the current YouTube script Google Form, rebuilt the same way.
+- Inline field validation, honeypot field for bots, disabled button while sending, success and error states.
 
-- Cost: ~4 background requests totalling ~120 KB, fired only after the page is interactive, so no impact on initial paint.
-- Works on every modern browser.
+### 2. Updated Contact section copy
+- **SEO Blog Inquiry** card: heading + short psychological description ("Tell me about your brand, target keywords, and goals — I'll reply within 24 hours with a scope and quote.")
+- **YouTube Script Inquiry** card: heading + short description ("Share your channel, niche, and video vision — you'll get a tailored script proposal in your inbox.")
+- Old Google Form iframes and the `loadCount`/`submitted` iframe hack removed.
 
-### 2. Prefetch the route JS chunks the same way
-Same trick for the React route bundles (`SalaryTrap`, `PredictionDrug`, `AiPersonalFinance2026`, `HumanCreativityVsAi`). Vite supports this with a dynamic `import()` warmed at idle, or `<link rel="modulepreload">`. Removes the second round-trip (the JS chunk).
+### 3. Sending setup — `notify.ashutoshwrites.online`
+- Lovable provisions this subdomain automatically. You add 2 NS records at your registrar (one-click copy in the setup dialog). Takes ~5 min of your time, then DNS propagates in the background.
+- This does NOT affect or replace your existing `ashutosh@email.ashutoshwrites.online` inbox — that keeps working exactly as it does now. The two subdomains are independent.
 
-### 3. Use the Speculation Rules API for true prerender
-Add a `<script type="speculationrules">` block that tells Chromium-based browsers to **prerender** the four sample routes when the user hovers/touches a card. The browser builds the full page off-screen; click swaps it in with literally 0 ms paint.
+### 4. Email delivery
+- Emails send from `inquiries@notify.ashutoshwrites.online` → land in `ashutosh@email.ashutoshwrites.online`.
+- Reply-To is set to the person who submitted the form, so hitting "Reply" writes back to the client directly.
+- Subject: e.g. `New SEO Blog Inquiry — Priya Sharma` or `New YouTube Script Inquiry — Rahul Kapoor`.
+- Body: clean HTML email with all form fields laid out, brand-styled to match the site.
 
-- Cost: extra CPU/memory while prerendering. Limited to Chrome/Edge — Safari/Firefox fall back to (1)+(2), which is still near-instant.
+### 5. Backup storage
+- New `inquiries` table (id, type, payload, created_at) with RLS locked to service-role only.
+- Every submission is inserted here before the email fires — so even if email delivery hiccups, no lead is lost.
 
-### 4. Hover/visible prefetch as a backup trigger
-In addition to idle prefetch, trigger a prefetch the moment a sample card scrolls into view or the cursor enters it. Buys an extra 200–800 ms on slower connections.
+## Technical details (for reference)
 
-### 5. Switch the iframe to `srcdoc` with cached HTML (optional refinement)
-Fetch the HTML once on idle, keep it in memory, and feed it to the iframe via `srcdoc` instead of `src`. Eliminates the iframe's own network request entirely on click. Adds a small amount of code; only worth doing if (1)–(3) aren't enough.
+- **Frontend**: react-hook-form + zod, matching existing shadcn form components. Client-side + server-side validation.
+- **Backend**: one edge function `send-inquiry-email` that (a) validates payload with zod, (b) inserts into `inquiries` table, (c) enqueues the transactional email through Lovable Emails.
+- **Email template**: React Email component in `supabase/functions/_shared/transactional-email-templates/inquiry-notification.tsx`, styled with your Instrument Serif + Inter palette.
+- **No new client secrets** — LOVABLE_API_KEY is auto-provisioned.
+- **Spam protection**: honeypot field + basic rate-limit-friendly validation (min message length, valid email, etc.).
 
-## What I'd actually implement (recommended bundle)
+## What you need to do (once, after I build it)
 
-1. A tiny `src/lib/prefetch.ts` helper that, on `requestIdleCallback`, injects:
-   - `<link rel="prefetch" href="/static-blogs/...">` × 2
-   - `<link rel="prefetch" href="/static-scripts/...">` × 2
-   - `<link rel="modulepreload">` for the 4 route chunks (or warm them via dynamic `import()`).
-2. A `<script type="speculationrules">` block in `index.html` listing the 4 sample routes with `eagerness: "moderate"` (fires on hover/touch).
-3. Call the helper from `PortfolioSection` once it mounts.
+1. When I finish setup, a small "Set up sending domain" dialog appears — click it and it walks you through adding 2 NS records at your registrar for `notify.ashutoshwrites.online`. That's it.
+2. DNS propagates in the background (usually minutes, up to 72h max). Forms work immediately for storage; emails start flowing the moment DNS verifies.
 
-Result: first visit ≈ same homepage speed; clicking any sample feels instantaneous because the HTML + JS are already sitting in the browser cache (and on Chrome, the whole page is pre-rendered).
+## Files touched
 
-Nothing in the four sample files is touched. No content removed, no styling stripped, no images compressed.
-
-## Confirm before I build
-
-Want me to ship the full bundle (1 + 2 + 3 + 4)? Or start with just **(1) idle prefetch of the 4 HTML files** — which alone usually makes the click feel instant on a warm network — and add the others if it isn't enough?
+- New: `src/components/forms/SeoBlogInquiryForm.tsx`, `src/components/forms/YouTubeScriptInquiryForm.tsx`
+- Edited: `src/components/ContactSection.tsx` (remove iframes, add form cards + copy)
+- New: `supabase/functions/send-inquiry-email/index.ts`
+- New: `supabase/functions/_shared/transactional-email-templates/inquiry-notification.tsx` (+ registry update)
+- New migration: `inquiries` table + RLS
