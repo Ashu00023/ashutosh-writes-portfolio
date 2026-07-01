@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      inquiries: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          name: string | null
+          payload: Json
+          type: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string | null
+          payload: Json
+          type: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string | null
+          payload?: Json
+          type?: string
+        }
+        Relationships: []
+      }
       posts: {
         Row: {
           content_html: string
