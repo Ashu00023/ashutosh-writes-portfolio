@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
-import thumb from "@/assets/portfolio-tds-deducted.png";
+import thumb from "@/assets/portfolio-tds-deducted.webp";
 
 const url = "https://ashutoshwrites.online/scripts/salary-trap";
 const title = "Why 90% of Salaried People Never Build Real Wealth — YouTube Script Sample";
