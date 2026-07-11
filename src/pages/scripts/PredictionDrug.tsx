@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
-import thumb from "@/assets/portfolio-dopamine.png";
+import thumb from "@/assets/portfolio-dopamine.webp";
 
 const url = "https://ashutoshwrites.online/scripts/prediction-is-the-drug";
 const title = "Why Your Brain Can't Stop Craving Things — YouTube Script Sample";
