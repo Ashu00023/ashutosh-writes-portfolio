@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
-import thumbnail from "@/assets/portfolio-ai-authenticity.png";
+import thumbnail from "@/assets/portfolio-ai-authenticity.webp";
 
 const url = "https://ashutoshwrites.online/blog/human-creativity-vs-ai-authenticity-premium-2026";
 const title = "AI Took Over the Internet. Now Audiences Are Revolting — and Human Creators Are Winning";
