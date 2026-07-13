@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft } from "lucide-react";
 import thumb from "@/assets/portfolio-tds-deducted.webp";
+import StaticHtmlPage from "@/components/StaticHtmlPage";
+import rawHtml from "../../../public/static-scripts/middle-class-trap.html?raw";
 
 const url = "https://ashutoshwrites.online/scripts/salary-trap";
 const title = "Why 90% of Salaried People Never Build Real Wealth — YouTube Script Sample";
@@ -24,24 +24,7 @@ const SalaryTrap = () => (
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={thumb} />
     </Helmet>
-    <div style={{ position: "fixed", inset: 0, display: "flex", flexDirection: "column", background: "#0d0c0a", zIndex: 0 }}>
-      <div style={{
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "10px 20px", background: "#0d0c0a", borderBottom: "1px solid #2e2b26",
-        fontFamily: "'Fira Code', ui-monospace, monospace", fontSize: 11, letterSpacing: "0.12em",
-        textTransform: "uppercase", color: "#b0a99e",
-      }}>
-        <Link to="/" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#c94b2a", textDecoration: "none" }}>
-          <ArrowLeft size={14} /> Back to portfolio
-        </Link>
-        <span style={{ color: "#7a746c" }}>YouTube Script Sample · Indian Personal Finance</span>
-      </div>
-      <iframe
-        src="/static-scripts/middle-class-trap.html"
-        title={title}
-        style={{ flex: 1, width: "100%", border: "none", background: "#f5f0e8" }}
-      />
-    </div>
+    <StaticHtmlPage rawHtml={rawHtml} rightLabel="YouTube Script Sample · Indian Personal Finance" />
   </>
 );
 
