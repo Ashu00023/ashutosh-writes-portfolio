@@ -11,6 +11,7 @@ interface Props {
 interface ExtractedScript {
   src?: string;
   code?: string;
+  type?: string;
 }
 
 const extract = (raw: string) => {
@@ -31,8 +32,10 @@ const extract = (raw: string) => {
     /<script([^>]*)>([\s\S]*?)<\/script>/gi,
     (_full, attrs: string, code: string) => {
       const srcMatch = attrs.match(/src=["']([^"']+)["']/i);
-      if (srcMatch) scripts.push({ src: srcMatch[1] });
-      else if (code.trim()) scripts.push({ code });
+      const typeMatch = attrs.match(/type=["']([^"']+)["']/i);
+      const type = typeMatch ? typeMatch[1] : undefined;
+      if (srcMatch) scripts.push({ src: srcMatch[1], type });
+      else if (code.trim()) scripts.push({ code, type });
       return "";
     }
   );
@@ -50,6 +53,7 @@ const StaticHtmlPage = ({ rawHtml, rightLabel, background = "#f5f0e8" }: Props) 
     const timer = window.setTimeout(() => {
       scripts.forEach((s) => {
         const el = document.createElement("script");
+        if (s.type) el.type = s.type;
         if (s.src) el.src = s.src;
         if (s.code) el.textContent = s.code;
         document.body.appendChild(el);
