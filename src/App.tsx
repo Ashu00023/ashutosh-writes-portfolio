@@ -9,14 +9,11 @@ import HumanCreativityVsAi from "./pages/blog-posts/HumanCreativityVsAi.tsx";
 import AiPersonalFinance2026 from "./pages/blog-posts/AiPersonalFinance2026.tsx";
 import SalaryTrap from "./pages/scripts/SalaryTrap.tsx";
 import PredictionDrug from "./pages/scripts/PredictionDrug.tsx";
-import SplashScreen from "./components/SplashScreen";
-
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <SplashScreen />
       <Toaster />
       <Sonner />
       <BrowserRouter>
