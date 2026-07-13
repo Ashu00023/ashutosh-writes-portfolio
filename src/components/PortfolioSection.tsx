@@ -32,7 +32,7 @@ const seoBlogs: Blog[] = [
     niche: "Creator Economy",
     title: "Winning the Authenticity Premium in the AI-Slop Era",
     summary:
-      "Audiences were tuning out AI-generated content but the niche had no anchor article. We produced a research-backed analysis on why human creators are winning in 2026 — built to rank and to convert.",
+      "Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026 — built to rank and to convert.",
     image: aiAuthenticityImg,
     liveUrl: "/static-blogs/ai-authenticity-premium-2026.html",
     transcriptHref: "/blog/human-creativity-vs-ai-authenticity-premium-2026",
@@ -41,7 +41,7 @@ const seoBlogs: Blog[] = [
     niche: "AI Fintech",
     title: "Scaling Trust for an AI-Powered Personal Finance Audience",
     summary:
-      "AI finance content was crowded with surface-level listicles and zero verified data. We built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.",
+      "AI finance content was crowded with surface-level listicles and zero verified data. I built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.",
     image: aiFinanceImg,
     liveUrl: "/static-blogs/ai-personal-finance-2026.html",
     transcriptHref: "/blog/ai-personal-finance-2026",
@@ -220,7 +220,7 @@ const PortfolioSection = () => {
 
         <ScrollReveal className="text-center mt-12 max-w-2xl mx-auto">
           <p className="text-sm text-muted-foreground italic">
-            We can also turn YouTube scripts into SEO blogs and vice versa — same story, optimized for each format.
+            I can also turn YouTube scripts into SEO blogs and vice versa — same story, optimized for each format.
           </p>
         </ScrollReveal>
       </div>

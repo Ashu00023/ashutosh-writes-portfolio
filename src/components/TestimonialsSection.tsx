@@ -11,7 +11,7 @@ const TestimonialsSection = () => {
             What <span className="font-display italic text-accent font-normal">Clients Say</span>
           </h2>
           <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
-            Real outcomes from founders, marketers, and creators we have shipped work for.
+            Building a track record — here&rsquo;s what&rsquo;s coming as client work ships.
           </p>
         </ScrollReveal>
 
