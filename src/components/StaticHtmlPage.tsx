@@ -1,11 +1,19 @@
 import { useEffect, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
+
+export interface BreadcrumbItem {
+  label: string;
+  href?: string; // omit for current page
+}
 
 interface Props {
   rawHtml: string;
   rightLabel: string;
   background?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  canonicalUrl?: string;
 }
 
 interface ExtractedScript {
@@ -43,7 +51,7 @@ const extract = (raw: string) => {
   return { styles, links, body: bodyNoScripts, scripts };
 };
 
-const StaticHtmlPage = ({ rawHtml, rightLabel, background = "#f5f0e8" }: Props) => {
+const StaticHtmlPage = ({ rawHtml, rightLabel, background = "#f5f0e8", breadcrumbs, canonicalUrl }: Props) => {
   const { styles, links, body, scripts } = useMemo(() => extract(rawHtml), [rawHtml]);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -68,6 +76,26 @@ const StaticHtmlPage = ({ rawHtml, rightLabel, background = "#f5f0e8" }: Props) 
 
   return (
     <div style={{ background, minHeight: "100vh" }}>
+      {breadcrumbs && breadcrumbs.length > 0 && canonicalUrl && (
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: breadcrumbs.map((b, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: b.label,
+                item: b.href
+                  ? b.href.startsWith("http")
+                    ? b.href
+                    : `https://ashutoshwrites.online${b.href}`
+                  : canonicalUrl,
+              })),
+            })}
+          </script>
+        </Helmet>
+      )}
       <div
         style={{
           position: "sticky",
@@ -94,6 +122,34 @@ const StaticHtmlPage = ({ rawHtml, rightLabel, background = "#f5f0e8" }: Props) 
         </Link>
         <span style={{ color: "#7a746c" }}>{rightLabel}</span>
       </div>
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <nav
+          aria-label="Breadcrumb"
+          style={{
+            padding: "12px 20px",
+            background: "rgba(13,12,10,0.04)",
+            borderBottom: "1px solid rgba(13,12,10,0.08)",
+            fontFamily: "'Fira Code', ui-monospace, monospace",
+            fontSize: 12,
+            color: "#5a544b",
+          }}
+        >
+          <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexWrap: "wrap", gap: 6 }}>
+            {breadcrumbs.map((b, i) => (
+              <li key={i} style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                {b.href ? (
+                  <Link to={b.href} style={{ color: "#c94b2a", textDecoration: "none" }}>
+                    {b.label}
+                  </Link>
+                ) : (
+                  <span aria-current="page" style={{ color: "#0d0c0a" }}>{b.label}</span>
+                )}
+                {i < breadcrumbs.length - 1 && <span style={{ color: "#a49b8f" }}>›</span>}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
       <div ref={contentRef} dangerouslySetInnerHTML={{ __html: links + styles + body }} />
     </div>
   );

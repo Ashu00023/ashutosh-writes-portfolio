@@ -24,7 +24,17 @@ const AiPersonalFinance2026 = () => {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={thumbnail} />
       </Helmet>
-      <StaticHtmlPage rawHtml={rawHtml} rightLabel="SEO Blog Sample · Finance + AI" background="#f4f1eb" />
+      <StaticHtmlPage
+        rawHtml={rawHtml}
+        rightLabel="SEO Blog Sample · Finance + AI"
+        background="#f4f1eb"
+        canonicalUrl={url}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Portfolio", href: "/#portfolio" },
+          { label: "AI Personal Finance 2026" },
+        ]}
+      />
     </>
   );
 };

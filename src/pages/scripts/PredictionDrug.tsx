@@ -23,7 +23,16 @@ const PredictionDrug = () => (
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={thumb} />
     </Helmet>
-    <StaticHtmlPage rawHtml={rawHtml} rightLabel="YouTube Script Sample · Neuroscience & Productivity" />
+    <StaticHtmlPage
+      rawHtml={rawHtml}
+      rightLabel="YouTube Script Sample · Neuroscience & Productivity"
+      canonicalUrl={url}
+      breadcrumbs={[
+        { label: "Home", href: "/" },
+        { label: "Portfolio", href: "/#portfolio" },
+        { label: "Prediction Is the Drug" },
+      ]}
+    />
   </>
 );
 

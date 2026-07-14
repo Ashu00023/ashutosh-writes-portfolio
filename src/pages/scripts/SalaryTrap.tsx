@@ -24,7 +24,16 @@ const SalaryTrap = () => (
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={thumb} />
     </Helmet>
-    <StaticHtmlPage rawHtml={rawHtml} rightLabel="YouTube Script Sample · Indian Personal Finance" />
+    <StaticHtmlPage
+      rawHtml={rawHtml}
+      rightLabel="YouTube Script Sample · Indian Personal Finance"
+      canonicalUrl={url}
+      breadcrumbs={[
+        { label: "Home", href: "/" },
+        { label: "Portfolio", href: "/#portfolio" },
+        { label: "Salary Trap" },
+      ]}
+    />
   </>
 );
 

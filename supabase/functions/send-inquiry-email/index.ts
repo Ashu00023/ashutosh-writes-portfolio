@@ -11,7 +11,7 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
-const OWNER_EMAIL = "ashutosh@email.ashutoshwrites.online";
+const OWNER_EMAIL = "ashutosh@mail.ashutoshwrites.online";
 
 type Body = {
   type: "seo_blog" | "youtube_script";
