@@ -24,7 +24,16 @@ const HumanCreativityVsAi = () => {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={thumbnail} />
       </Helmet>
-      <StaticHtmlPage rawHtml={rawHtml} rightLabel="SEO Blog Sample · Authenticity Premium" />
+      <StaticHtmlPage
+        rawHtml={rawHtml}
+        rightLabel="SEO Blog Sample · Authenticity Premium"
+        canonicalUrl={url}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Portfolio", href: "/#portfolio" },
+          { label: "Human Creativity vs AI" },
+        ]}
+      />
     </>
   );
 };
