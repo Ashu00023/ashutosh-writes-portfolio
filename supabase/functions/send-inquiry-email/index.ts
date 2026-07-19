@@ -11,7 +11,8 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
-const OWNER_EMAIL = "ashutosh@mail.ashutoshwrites.online";
+const OWNER_EMAIL = "ashutosh@email.ashutoshwrites.online";
+const FROM_EMAIL = Deno.env.get("FROM_EMAIL") || "inquiries@ashutoshwrites.online";
 
 type Body = {
   type: "seo_blog" | "youtube_script";
@@ -94,25 +95,34 @@ Deno.serve(async (req) => {
     const subject = `New ${title} — ${body.data.name || "Unnamed visitor"}`;
     const html = renderHtml(title, body.data);
 
-    // Try to send the email through the project's transactional email
-    // function. This function is created when the sending domain is set up.
-    // If it doesn't exist yet, we still return success — the submission is
-    // saved in the `inquiries` table so no lead is lost.
-    try {
-      const { error: emailErr } = await supabase.functions.invoke(
-        "send-transactional-email",
-        {
-          body: {
-            to: OWNER_EMAIL,
+    // Send via Resend if configured. If the API key is missing or the send
+    // fails, the submission is still safely stored in the `inquiries` table.
+    const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    if (resendApiKey) {
+      try {
+        const res = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${resendApiKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: FROM_EMAIL,
+            to: [OWNER_EMAIL],
             subject,
             html,
             reply_to: body.data.email || undefined,
-          },
-        },
-      );
-      if (emailErr) console.warn("email dispatch failed", emailErr);
-    } catch (err) {
-      console.warn("send-transactional-email not available yet", err);
+          }),
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          console.warn("resend send failed", res.status, text);
+        }
+      } catch (err) {
+        console.warn("resend send error", err);
+      }
+    } else {
+      console.warn("RESEND_API_KEY not set; inquiry saved but not emailed");
     }
 
     return new Response(JSON.stringify({ ok: true }), {
