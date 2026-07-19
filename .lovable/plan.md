@@ -1,58 +1,41 @@
 ## Goal
 
-Replace the two Google Form iframes in the Contact section with fast, on-brand native React forms. Every submission gets emailed to `ashutosh@email.ashutoshwrites.online` and stored in your backend as a backup.
+Stop relying on Lovable's premium transactional-email setup. Instead, send contact-form notifications using **Resend's free tier** (3,000 emails/month) called directly from the existing `send-inquiry-email` Edge Function. Submissions still get saved to the backend `inquiries` table as a backup.
 
-## Why native > Google Form (short version)
+## Why Resend instead of Cloudflare alone
 
-- Faster load, no iframe, no Google branding — matches the premium look you've been building.
-- You get a formatted email in your inbox on every submission (subject line includes the person's name + inquiry type).
-- Every submission is also saved in your backend as a backup, so leads can never be lost.
-- Full control of validation, success message, and design.
-- Only "cost": one-time DNS setup for the sending subdomain (below).
+Cloudflare Email Routing only forwards **incoming** emails — it cannot send outbound mail. To actually send email you still need a transactional provider. Resend has the cleanest free tier and does not require a paid Lovable plan.
 
-## What gets built
+## What gets changed
 
-### 1. Two native forms (replacing the current Google Form iframes)
-- `SeoBlogInquiryForm.tsx` — same questions as the current SEO blog Google Form, rebuilt with react-hook-form + zod validation.
-- `YouTubeScriptInquiryForm.tsx` — same questions as the current YouTube script Google Form, rebuilt the same way.
-- Inline field validation, honeypot field for bots, disabled button while sending, success and error states.
+### 1. Edge Function (`supabase/functions/send-inquiry-email/index.ts`)
+- Remove the call to the non-existent `send-transactional-email` function.
+- Add a direct HTTPS call to `https://api.resend.com/emails` with the rendered HTML email.
+- Keep all existing behavior: validation, honeypot bot check, database backup insert, CORS, and error handling.
+- Set `from` to a verified domain address (e.g., `inquiries@ashutoshwrites.online`) and `reply_to` to the submitter's email so you can hit Reply and write back directly.
 
-### 2. Updated Contact section copy
-- **SEO Blog Inquiry** card: heading + short psychological description ("Tell me about your brand, target keywords, and goals — I'll reply within 24 hours with a scope and quote.")
-- **YouTube Script Inquiry** card: heading + short description ("Share your channel, niche, and video vision — you'll get a tailored script proposal in your inbox.")
-- Old Google Form iframes and the `loadCount`/`submitted` iframe hack removed.
+### 2. Secrets
+- Add `RESEND_API_KEY` as a runtime secret (you will create this in Resend and paste it in).
 
-### 3. Sending setup — `notify.ashutoshwrites.online`
-- Lovable provisions this subdomain automatically. You add 2 NS records at your registrar (one-click copy in the setup dialog). Takes ~5 min of your time, then DNS propagates in the background.
-- This does NOT affect or replace your existing `ashutosh@email.ashutoshwrites.online` inbox — that keeps working exactly as it does now. The two subdomains are independent.
+### 3. No frontend changes
+- `SeoBlogInquiryForm.tsx` and `YouTubeScriptInquiryForm.tsx` already call `send-inquiry-email`; they stay exactly as-is.
 
-### 4. Email delivery
-- Emails send from `inquiries@notify.ashutoshwrites.online` → land in `ashutosh@email.ashutoshwrites.online`.
-- Reply-To is set to the person who submitted the form, so hitting "Reply" writes back to the client directly.
-- Subject: e.g. `New SEO Blog Inquiry — Priya Sharma` or `New YouTube Script Inquiry — Rahul Kapoor`.
-- Body: clean HTML email with all form fields laid out, brand-styled to match the site.
+## What you need to do once
 
-### 5. Backup storage
-- New `inquiries` table (id, type, payload, created_at) with RLS locked to service-role only.
-- Every submission is inserted here before the email fires — so even if email delivery hiccups, no lead is lost.
+1. **Sign up at resend.com** (free, no credit card).
+2. **Add and verify your domain** in Resend:
+   - Recommended sender: `ashutoshwrites.online` (so you can send from `inquiries@ashutoshwrites.online`).
+   - Resend will give you DNS records (SPF, DKIM, DMARC) to add at your domain registrar/Cloudflare DNS.
+3. **Create an API key** in Resend and copy it.
+4. **Paste the API key** when I request it as a secret.
 
-## Technical details (for reference)
-
-- **Frontend**: react-hook-form + zod, matching existing shadcn form components. Client-side + server-side validation.
-- **Backend**: one edge function `send-inquiry-email` that (a) validates payload with zod, (b) inserts into `inquiries` table, (c) enqueues the transactional email through Lovable Emails.
-- **Email template**: React Email component in `supabase/functions/_shared/transactional-email-templates/inquiry-notification.tsx`, styled with your Instrument Serif + Inter palette.
-- **No new client secrets** — LOVABLE_API_KEY is auto-provisioned.
-- **Spam protection**: honeypot field + basic rate-limit-friendly validation (min message length, valid email, etc.).
-
-## What you need to do (once, after I build it)
-
-1. When I finish setup, a small "Set up sending domain" dialog appears — click it and it walks you through adding 2 NS records at your registrar for `notify.ashutoshwrites.online`. That's it.
-2. DNS propagates in the background (usually minutes, up to 72h max). Forms work immediately for storage; emails start flowing the moment DNS verifies.
+After that, form submissions will email you instantly and still be stored in the backend.
 
 ## Files touched
 
-- New: `src/components/forms/SeoBlogInquiryForm.tsx`, `src/components/forms/YouTubeScriptInquiryForm.tsx`
-- Edited: `src/components/ContactSection.tsx` (remove iframes, add form cards + copy)
-- New: `supabase/functions/send-inquiry-email/index.ts`
-- New: `supabase/functions/_shared/transactional-email-templates/inquiry-notification.tsx` (+ registry update)
-- New migration: `inquiries` table + RLS
+- `supabase/functions/send-inquiry-email/index.ts` (edit)
+- Project secrets: add `RESEND_API_KEY`
+
+## Cost
+
+Free while under 3,000 emails/month. This is well above the volume a portfolio contact form will generate.
