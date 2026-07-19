@@ -1,6 +1,6 @@
 // Edge function: receives contact form submissions, stores them in the
-// `inquiries` table as a backup, and emails the site owner via the
-// project's transactional email function (once the sending domain is set up).
+// `inquiries` table as a backup, and emails the site owner via Resend
+// (free tier: 3,000 emails/month). Set RESEND_API_KEY as a secret.
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
