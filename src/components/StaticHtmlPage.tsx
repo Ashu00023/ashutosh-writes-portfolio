@@ -35,6 +35,11 @@ const extract = (raw: string) => {
     .map((m) => m[0])
     .join("\n");
 
+  // Capture JSON-LD structured data from <head> so it can be re-emitted via Helmet.
+  const jsonLd: string[] = Array.from(
+    head.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)
+  ).map((m) => m[1].trim()).filter(Boolean);
+
   const scripts: ExtractedScript[] = [];
   const bodyNoScripts = bodyRaw.replace(
     /<script([^>]*)>([\s\S]*?)<\/script>/gi,
@@ -42,17 +47,22 @@ const extract = (raw: string) => {
       const srcMatch = attrs.match(/src=["']([^"']+)["']/i);
       const typeMatch = attrs.match(/type=["']([^"']+)["']/i);
       const type = typeMatch ? typeMatch[1] : undefined;
+      // JSON-LD found in the body is also promoted to <head> via Helmet.
+      if (type && type.toLowerCase() === "application/ld+json") {
+        if (code.trim()) jsonLd.push(code.trim());
+        return "";
+      }
       if (srcMatch) scripts.push({ src: srcMatch[1], type });
       else if (code.trim()) scripts.push({ code, type });
       return "";
     }
   );
 
-  return { styles, links, body: bodyNoScripts, scripts };
+  return { styles, links, body: bodyNoScripts, scripts, jsonLd };
 };
 
 const StaticHtmlPage = ({ rawHtml, rightLabel, background = "#f5f0e8", breadcrumbs, canonicalUrl }: Props) => {
-  const { styles, links, body, scripts } = useMemo(() => extract(rawHtml), [rawHtml]);
+  const { styles, links, body, scripts, jsonLd } = useMemo(() => extract(rawHtml), [rawHtml]);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -76,6 +86,13 @@ const StaticHtmlPage = ({ rawHtml, rightLabel, background = "#f5f0e8", breadcrum
 
   return (
     <div style={{ background, minHeight: "100vh" }}>
+      {jsonLd.length > 0 && (
+        <Helmet>
+          {jsonLd.map((json, i) => (
+            <script key={`ld-${i}`} type="application/ld+json">{json}</script>
+          ))}
+        </Helmet>
+      )}
       {breadcrumbs && breadcrumbs.length > 0 && canonicalUrl && (
         <Helmet>
           <script type="application/ld+json">
