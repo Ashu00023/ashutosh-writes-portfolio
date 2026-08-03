@@ -11,7 +11,7 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
-const OWNER_EMAIL = "ashutosh@email.ashutoshwrites.online";
+const OWNER_EMAIL = "ashutosh@mail.ashutoshwrites.online";
 const FROM_EMAIL = Deno.env.get("FROM_EMAIL") || "inquiries@ashutoshwrites.online";
 
 type Body = {

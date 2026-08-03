@@ -8,8 +8,8 @@ import YouTubeScriptInquiryForm from "./forms/YouTubeScriptInquiryForm";
 const contacts = [
   {
     icon: Mail,
-    label: "ashutosh@email.ashutoshwrites.online",
-    href: "mailto:ashutosh@email.ashutoshwrites.online",
+    label: "ashutosh@mail.ashutoshwrites.online",
+    href: "mailto:ashutosh@mail.ashutoshwrites.online",
   },
   {
     icon: Phone,
