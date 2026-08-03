@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import thumbnail from "@/assets/portfolio-ai-finance.jpg";
+import thumbnail from "@/assets/portfolio-ai-finance.webp";
 import StaticHtmlPage from "@/components/StaticHtmlPage";
 import rawHtml from "../../../public/static-blogs/ai-personal-finance-2026.html?raw";
 
