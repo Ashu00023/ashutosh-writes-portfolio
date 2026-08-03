@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { z } from "zod";
 import { CheckCircle, Loader2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { TextField, TextArea } from "./InquiryField";
 
 const schema = z.object({

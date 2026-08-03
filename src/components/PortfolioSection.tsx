@@ -5,7 +5,7 @@ import ScrollReveal from "./ScrollReveal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { prefetchSamples, prefetchOne } from "@/lib/prefetch";
 
-import aiFinanceImg from "@/assets/portfolio-ai-finance.jpg";
+import aiFinanceImg from "@/assets/portfolio-ai-finance.webp";
 import salaryTrapImg from "@/assets/portfolio-tds-deducted.webp";
 import spendingYtImg from "@/assets/portfolio-dopamine.webp";
 import aiAuthenticityImg from "@/assets/portfolio-ai-authenticity.webp";

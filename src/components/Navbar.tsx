@@ -34,7 +34,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2.5 group animate-in fade-in slide-in-from-left-4 duration-700">
           <img
             src={logo}
-            alt="Logo"
+            alt="Ashutosh Writes logo"
             className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110"
           />
           <span className="text-[15px] font-bold tracking-tight animate-in fade-in duration-700 delay-300 fill-mode-both">
@@ -69,6 +69,8 @@ const Navbar = () => {
           className="md:hidden text-foreground p-2 rounded-lg hover:bg-muted/60 transition-colors"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -76,7 +78,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border/50 px-6 pb-6 animate-in slide-in-from-top-2 duration-200">
+        <div id="mobile-menu" className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border/50 px-6 pb-6 animate-in slide-in-from-top-2 duration-200">
           <ul className="flex flex-col gap-1 pt-3">
             {links.map((l) => (
               <li key={l.href}>

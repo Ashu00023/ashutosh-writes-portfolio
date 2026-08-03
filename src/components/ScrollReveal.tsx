@@ -1,4 +1,4 @@
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { type ReactNode } from "react";
 
 type Direction = "up" | "down" | "left" | "right";
@@ -28,14 +28,17 @@ const ScrollReveal = ({
   once = true,
 }: ScrollRevealProps) => {
   const offset = offsets[direction];
+  const reduceMotion = useReducedMotion();
 
   const variants: Variants = {
-    hidden: { opacity: 0, x: offset.x, y: offset.y },
+    hidden: reduceMotion ? { opacity: 0, x: 0, y: 0 } : { opacity: 0, x: offset.x, y: offset.y },
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
-      transition: { duration, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: reduceMotion
+        ? { duration: 0.2, delay: 0 }
+        : { duration, delay, ease: [0.25, 0.46, 0.45, 0.94] },
     },
   };
 
