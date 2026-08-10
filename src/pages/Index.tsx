@@ -30,6 +30,7 @@ const Index = () => (
     </Helmet>
     <Navbar />
     <HeroSection />
+    <LatestBlogsSection />
     <Suspense fallback={<div className="min-h-[40vh]" />}>
       <AboutSection />
       <ServicesSection />
