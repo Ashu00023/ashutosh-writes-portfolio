@@ -3,16 +3,16 @@ import ScrollReveal from "./ScrollReveal";
 
 const posts = [
   {
-    label: "Latest Blog",
-    title: "Blog Post One",
-    summary: "A deep-dive piece on strategy, research, and the ideas that shape the work I do.",
-    href: "/blog1.html",
+    label: "AI + Finance",
+    title: "AI Personal Finance 2026",
+    summary: "Verified stats, structural trends, and the risks most AI finance coverage misses — built for readers who want signal over noise.",
+    href: "/ai-finance-blog-human.html",
   },
   {
-    label: "Latest Blog",
-    title: "Blog Post Two",
-    summary: "Another recent article exploring patterns, insights, and lessons worth sharing.",
-    href: "/blog2.html",
+    label: "AI + Content",
+    title: "The Authenticity Premium in the AI-Slop Era",
+    summary: "Why human creativity is winning in 2026 and how creators can turn authenticity into a durable competitive advantage.",
+    href: "/ai-content-blog-human.html",
   },
 ];
 
