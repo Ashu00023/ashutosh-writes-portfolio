@@ -1,0 +1,59 @@
+import { ArrowUpRight, BookOpen } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
+
+const posts = [
+  {
+    label: "Latest Blog",
+    title: "Blog Post One",
+    summary: "A deep-dive piece on strategy, research, and the ideas that shape the work I do.",
+    href: "/blog1.html",
+  },
+  {
+    label: "Latest Blog",
+    title: "Blog Post Two",
+    summary: "Another recent article exploring patterns, insights, and lessons worth sharing.",
+    href: "/blog2.html",
+  },
+];
+
+const LatestBlogsSection = () => (
+  <section id="latest-blogs" className="py-28 bg-background">
+    <div className="container mx-auto px-6">
+      <ScrollReveal className="text-center mb-12">
+        <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">From the Blog</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
+          Latest <span className="font-display italic text-accent font-normal">Writing</span>
+        </h2>
+        <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
+          Recent posts on content strategy, finance, AI, and the craft of writing that holds attention.
+        </p>
+      </ScrollReveal>
+
+      <div className="grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
+        {posts.map((post, i) => (
+          <ScrollReveal key={post.href} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
+            <a
+              href={post.href}
+              className="group flex flex-col h-full rounded-2xl bg-card border border-border/60 p-8 hover:shadow-xl hover:border-accent/30 transition-all duration-300"
+            >
+              <span className="self-start inline-flex items-center gap-1.5 text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-full uppercase tracking-[0.15em] mb-5">
+                <BookOpen size={11} /> {post.label}
+              </span>
+              <h3 className="text-xl font-bold text-foreground tracking-tight leading-snug mb-3 group-hover:text-accent transition-colors duration-200">
+                {post.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-8 flex-1">
+                {post.summary}
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-200">
+                Read the post <ArrowUpRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+            </a>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+export default LatestBlogsSection;
