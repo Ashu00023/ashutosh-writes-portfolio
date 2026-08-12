@@ -27,6 +27,40 @@ const Index = () => (
       <meta name="twitter:title" content="Ashutosh Mahapatra — SEO Blog & YouTube Script Writer" />
       <meta name="twitter:description" content="Hire Ashutosh Mahapatra — SEO blog and YouTube script writer specializing in finance and AI. 100% human-written content built to rank on Google and retain on YouTube." />
       <meta name="twitter:image" content="https://ashutoshwrites.online/og-cover.jpg" />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Person",
+              "@id": "https://ashutoshwrites.online/#person",
+              name: "Ashutosh Mahapatra",
+              url: "https://ashutoshwrites.online/",
+              jobTitle: "SEO Blog & YouTube Script Writer",
+              knowsAbout: [
+                "SEO content strategy",
+                "Personal finance writing",
+                "Artificial intelligence",
+                "YouTube scriptwriting",
+                "Long-form content",
+                "Search intent research",
+              ],
+              sameAs: ["https://linkedin.com/in/ashutosh-mahapatra"],
+            },
+            {
+              "@type": "ProfessionalService",
+              "@id": "https://ashutoshwrites.online/#service",
+              name: "Ashutosh Writes",
+              url: "https://ashutoshwrites.online/",
+              description:
+                "Human-written SEO blog posts and YouTube scripts for finance and AI brands.",
+              founder: { "@id": "https://ashutoshwrites.online/#person" },
+              areaServed: "Worldwide",
+              serviceType: ["SEO blog writing", "YouTube script writing"],
+            },
+          ],
+        })}
+      </script>
     </Helmet>
     <Navbar />
     <HeroSection />
