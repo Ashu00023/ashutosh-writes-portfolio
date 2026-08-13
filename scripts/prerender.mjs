@@ -4,7 +4,15 @@ import { createServer } from "node:http";
 import { readFile, mkdir, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { extname, join, resolve } from "node:path";
-import puppeteer from "puppeteer";
+// Prerender is a best-effort SEO enhancement. If Chromium is unavailable in the
+// build environment (common on CI/Vercel), we skip it instead of failing the build.
+let puppeteer;
+try {
+  puppeteer = (await import("puppeteer")).default;
+} catch (err) {
+  console.warn(`[prerender] skipped: puppeteer unavailable (${err?.message ?? err})`);
+  process.exit(0);
+}
 
 const DIST = resolve("dist");
 const ROUTES = [
@@ -53,36 +61,54 @@ const server = createServer(async (req, res) => {
   }
 });
 
+if (!existsSync(join(DIST, "index.html"))) {
+  console.warn("[prerender] skipped: dist/index.html not found");
+  process.exit(0);
+}
+
 await new Promise((r) => server.listen(0, "127.0.0.1", r));
 const { port } = server.address();
 const base = `http://127.0.0.1:${port}`;
 
-const browser = await puppeteer.launch({
-  headless: "new",
-  args: ["--no-sandbox", "--disable-setuid-sandbox"],
-});
+let browser;
+try {
+  browser = await puppeteer.launch({
+    headless: "new",
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+  });
+} catch (err) {
+  console.warn(`[prerender] skipped: could not launch Chromium (${err?.message ?? err})`);
+  server.close();
+  process.exit(0);
+}
 
 try {
   for (const route of ROUTES) {
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1280, height: 900 });
-    await page.goto(`${base}${route}`, { waitUntil: "networkidle0", timeout: 60_000 });
-    // Wait until React has mounted and Helmet has written the document title.
-    await page.waitForFunction(
-      () => {
-        const root = document.getElementById("root");
-        return !!root && root.childElementCount > 0 && !!document.title;
-      },
-      { timeout: 30_000 },
-    );
-    const html = await page.content();
-    const outDir = route === "/" ? DIST : join(DIST, route);
-    await mkdir(outDir, { recursive: true });
-    await writeFile(join(outDir, "index.html"), html, "utf8");
-    console.log(`prerendered ${route} -> ${join(outDir, "index.html").replace(`${DIST}/`, "dist/")}`);
-    await page.close();
+    let page;
+    try {
+      page = await browser.newPage();
+      await page.setViewport({ width: 1280, height: 900 });
+      await page.goto(`${base}${route}`, { waitUntil: "networkidle0", timeout: 60_000 });
+      // Wait until React has mounted and Helmet has written the document title.
+      await page.waitForFunction(
+        () => {
+          const root = document.getElementById("root");
+          return !!root && root.childElementCount > 0 && !!document.title;
+        },
+        { timeout: 30_000 },
+      );
+      const html = await page.content();
+      const outDir = route === "/" ? DIST : join(DIST, route);
+      await mkdir(outDir, { recursive: true });
+      await writeFile(join(outDir, "index.html"), html, "utf8");
+      console.log(`prerendered ${route} -> ${join(outDir, "index.html").replace(`${DIST}/`, "dist/")}`);
+    } catch (err) {
+      console.warn(`[prerender] skipped ${route}: ${err?.message ?? err}`);
+    } finally {
+      await page?.close().catch(() => {});
+    }
   }
 } finally {
-  await browser.close();
+  await browser.close().catch(() => {});
   server.close();
 }
