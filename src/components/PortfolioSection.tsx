@@ -75,7 +75,7 @@ const ytScripts: Script[] = [
 
 const BlogCard = ({ b }: { b: Blog }) => (
   <article
-    className="group flex flex-col rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full"
+    className="group flex flex-col rounded-xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full"
     onMouseEnter={() => prefetchOne(b.liveUrl)}
     onTouchStart={() => prefetchOne(b.liveUrl)}
   >
@@ -88,7 +88,7 @@ const BlogCard = ({ b }: { b: Blog }) => (
       />
     </div>
     <div className="flex flex-col flex-1 p-6">
-      <span className="self-start text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-full uppercase tracking-[0.15em] mb-4">
+      <span className="self-start text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em] mb-4">
         {b.niche}
       </span>
       <h3 className="text-lg font-bold text-foreground tracking-tight leading-snug mb-3">
@@ -102,13 +102,13 @@ const BlogCard = ({ b }: { b: Blog }) => (
           href={b.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-accent transition-colors duration-200"
+          className="inline-flex items-center gap-1.5 bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-accent transition-colors duration-200"
         >
           View Live Article <ArrowUpRight size={15} />
         </a>
         <Link
           to={b.transcriptHref}
-          className="inline-flex items-center gap-1.5 border border-border text-foreground text-sm font-semibold px-4 py-2.5 rounded-full hover:border-accent hover:text-accent transition-colors duration-200"
+          className="inline-flex items-center gap-1.5 border border-border text-foreground text-sm font-semibold px-4 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-colors duration-200"
         >
           <FileText size={14} /> Read Clean Transcript
         </Link>
@@ -119,7 +119,7 @@ const BlogCard = ({ b }: { b: Blog }) => (
 
 const ScriptCard = ({ s }: { s: Script }) => (
   <article
-    className="group flex flex-col rounded-2xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full"
+    className="group flex flex-col rounded-xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full"
     onMouseEnter={() => prefetchOne(s.href === "/scripts/salary-trap" ? "/static-scripts/middle-class-trap.html" : "/static-scripts/reboot-human.html")}
     onTouchStart={() => prefetchOne(s.href === "/scripts/salary-trap" ? "/static-scripts/middle-class-trap.html" : "/static-scripts/reboot-human.html")}
   >
@@ -154,7 +154,7 @@ const ScriptCard = ({ s }: { s: Script }) => (
       </ul>
       <Link
         to={s.href}
-        className="inline-flex items-center gap-1.5 self-start bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-accent transition-colors duration-200 mt-auto"
+        className="inline-flex items-center gap-1.5 self-start bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-accent transition-colors duration-200 mt-auto"
       >
         View Script Blueprint <ArrowUpRight size={15} />
       </Link>
@@ -181,16 +181,16 @@ const PortfolioSection = () => {
 
         <Tabs defaultValue="blogs" className="max-w-6xl mx-auto">
           <div className="flex justify-center mb-10">
-            <TabsList className="h-11 p-1 bg-secondary/80 rounded-full border border-border/60">
+            <TabsList className="h-11 p-1 bg-secondary/80 rounded-lg border border-border/60">
               <TabsTrigger
                 value="blogs"
-                className="rounded-full px-5 text-sm data-[state=active]:bg-foreground data-[state=active]:text-background"
+                className="rounded-md px-5 text-sm data-[state=active]:bg-foreground data-[state=active]:text-background"
               >
                 SEO Blog Content
               </TabsTrigger>
               <TabsTrigger
                 value="scripts"
-                className="rounded-full px-5 text-sm data-[state=active]:bg-foreground data-[state=active]:text-background"
+                className="rounded-md px-5 text-sm data-[state=active]:bg-foreground data-[state=active]:text-background"
               >
                 YouTube Scripts
               </TabsTrigger>

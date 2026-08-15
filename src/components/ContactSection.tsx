@@ -70,9 +70,9 @@ const InquiryCard = ({
   <ScrollReveal delay={index * 0.1}>
     <button
       onClick={() => onOpen(card.kind)}
-      className="w-full flex items-center gap-5 rounded-2xl border-2 border-accent/40 bg-accent/10 px-6 py-5 hover:border-accent hover:bg-accent/20 transition-all duration-200 group cursor-pointer text-left shadow-[0_0_20px_hsl(var(--accent)/0.08)]"
+      className="w-full flex items-center gap-5 rounded-xl border border-accent/40 bg-accent/10 px-6 py-5 hover:border-accent hover:bg-accent/20 transition-all duration-200 group cursor-pointer text-left"
     >
-      <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent/30 transition-colors">
+      <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent/30 transition-colors">
         <card.icon size={22} className="text-accent" />
       </div>
       <div className="flex-1 min-w-0">
@@ -81,7 +81,7 @@ const InquiryCard = ({
         </span>
         <span className="text-xs text-muted-foreground line-clamp-2">{card.copy}</span>
       </div>
-      <span className="text-xs font-semibold text-accent bg-accent/15 px-3 py-1.5 rounded-full shrink-0 group-hover:bg-accent/25 transition-colors">
+      <span className="text-xs font-semibold text-accent bg-accent/15 px-3 py-1.5 rounded-md shrink-0 group-hover:bg-accent/25 transition-colors">
         {card.cta} →
       </span>
     </button>
@@ -138,9 +138,9 @@ const ContactSection = () => {
                 href={c.href}
                 target={c.href.startsWith("http") ? "_blank" : undefined}
                 rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-4 rounded-2xl border border-border/60 bg-card/50 px-6 py-4 hover:border-accent/40 hover:bg-accent/5 transition-all duration-200 group"
+                className="flex items-center gap-4 rounded-xl border border-border/60 bg-card/50 px-6 py-4 hover:border-accent/40 hover:bg-accent/5 transition-all duration-200 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent/20 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent/20 transition-colors">
                   <c.icon size={18} className="text-accent" />
                 </div>
                 <span className="text-sm font-medium text-foreground group-hover:text-accent transition-colors">
