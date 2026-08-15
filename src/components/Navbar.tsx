@@ -60,7 +60,7 @@ const Navbar = () => {
 
         <a
           href="/#contact"
-          className="hidden md:inline-flex items-center rounded-full bg-accent px-5 py-2 text-[13px] font-semibold text-accent-foreground hover:brightness-110 transition-all duration-200 shadow-sm animate-in fade-in slide-in-from-right-4 duration-500 delay-1000 fill-mode-both"
+          className="hidden md:inline-flex items-center rounded-lg bg-foreground px-5 py-2 text-[13px] font-semibold text-background hover:bg-accent transition-all duration-200 animate-in fade-in slide-in-from-right-4 duration-500 delay-1000 fill-mode-both"
         >
           Hire Me
         </a>
@@ -96,7 +96,7 @@ const Navbar = () => {
               <a
                 href="/#contact"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground"
+                className="inline-flex items-center rounded-lg bg-foreground px-5 py-2.5 text-sm font-semibold text-background"
               >
                 Hire Me
               </a>
