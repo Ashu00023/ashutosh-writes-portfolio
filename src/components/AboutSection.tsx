@@ -23,8 +23,11 @@ const AboutSection = () => (
         <p className="text-muted-foreground leading-relaxed mb-5">
           I am <span className="font-bold text-foreground">Ashutosh</span> — a freelance writer working with founders, creators, and brands who care more about the reader than the algorithm. Most online content is written to be skimmed. I write to be <span className="font-semibold text-foreground">read</span>.
         </p>
-        <p className="text-muted-foreground leading-relaxed mb-10">
+        <p className="text-muted-foreground leading-relaxed mb-5">
           My process is slow on purpose: real research, primary sources, a clear argument, and language that respects the reader&rsquo;s time. The result is work that ranks on Google, holds attention on YouTube, and sounds like a person &mdash; <span className="font-semibold text-accent">because a person wrote it</span>.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-10">
+          Where it helps, I use AI for structural research and SEO — but every argument, transition, and final line is still written by hand.
         </p>
       </ScrollReveal>
 
