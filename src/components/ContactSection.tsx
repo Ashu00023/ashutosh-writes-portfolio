@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Mail, Phone, Instagram, Linkedin, MessageCircle, FileText, Video } from "lucide-react";
+import { Mail, Phone, Instagram, Linkedin, MessageCircle, FileText } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
 import SeoBlogInquiryForm from "./forms/SeoBlogInquiryForm";
-import YouTubeScriptInquiryForm from "./forms/YouTubeScriptInquiryForm";
 
 const contacts = [
   {
@@ -33,64 +32,15 @@ const contacts = [
   },
 ];
 
-type InquiryKind = "seo" | "yt";
-
-const inquiryCards: {
-  kind: InquiryKind;
-  icon: typeof FileText;
-  title: string;
-  copy: string;
-  cta: string;
-}[] = [
-  {
-    kind: "seo",
-    icon: FileText,
-    title: "SEO Blog Inquiry",
-    copy: "Tell me about your brand, target keywords, and goals. I'll reply within 24 hours with a scope and quote.",
-    cta: "Start inquiry",
-  },
-  {
-    kind: "yt",
-    icon: Video,
-    title: "YouTube Script Inquiry",
-    copy: "Share your channel, niche, and video vision. You'll get a tailored script proposal in your inbox.",
-    cta: "Start inquiry",
-  },
-];
-
-const InquiryCard = ({
-  card,
-  index,
-  onOpen,
-}: {
-  card: (typeof inquiryCards)[number];
-  index: number;
-  onOpen: (kind: InquiryKind) => void;
-}) => (
-  <ScrollReveal delay={index * 0.1}>
-    <button
-      onClick={() => onOpen(card.kind)}
-      className="w-full flex items-center gap-5 rounded-xl border border-accent/40 bg-accent/10 px-6 py-5 hover:border-accent hover:bg-accent/20 transition-all duration-200 group cursor-pointer text-left"
-    >
-      <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent/30 transition-colors">
-        <card.icon size={22} className="text-accent" />
-      </div>
-      <div className="flex-1 min-w-0">
-        <span className="text-base font-bold text-foreground group-hover:text-accent transition-colors block">
-          {card.title}
-        </span>
-        <span className="text-xs text-muted-foreground line-clamp-2">{card.copy}</span>
-      </div>
-      <span className="text-xs font-semibold text-accent bg-accent/15 px-3 py-1.5 rounded-md shrink-0 group-hover:bg-accent/25 transition-colors">
-        {card.cta} →
-      </span>
-    </button>
-  </ScrollReveal>
-);
+const inquiryCard = {
+  icon: FileText,
+  title: "SEO Blog Inquiry",
+  copy: "Tell me about your brand, target keywords, and goals. I'll reply within 24 hours with a scope and quote.",
+  cta: "Start inquiry",
+};
 
 const ContactSection = () => {
-  const [openKind, setOpenKind] = useState<InquiryKind | null>(null);
-  const active = inquiryCards.find((c) => c.kind === openKind);
+  const [open, setOpen] = useState(false);
 
   return (
     <section id="contact" className="py-28">
@@ -105,29 +55,37 @@ const ContactSection = () => {
           </p>
         </ScrollReveal>
 
-        <div className="max-w-2xl mx-auto mb-12 space-y-4">
-          {inquiryCards.map((card, i) => (
-            <InquiryCard key={card.kind} card={card} index={i} onOpen={setOpenKind} />
-          ))}
+        <div className="max-w-2xl mx-auto mb-12">
+          <ScrollReveal>
+            <button
+              onClick={() => setOpen(true)}
+              className="w-full flex items-center gap-5 rounded-xl border border-accent/40 bg-accent/10 px-6 py-5 hover:border-accent hover:bg-accent/20 transition-all duration-200 group cursor-pointer text-left"
+            >
+              <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent/30 transition-colors">
+                <inquiryCard.icon size={22} className="text-accent" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <span className="text-base font-bold text-foreground group-hover:text-accent transition-colors block">
+                  {inquiryCard.title}
+                </span>
+                <span className="text-xs text-muted-foreground line-clamp-2">{inquiryCard.copy}</span>
+              </div>
+              <span className="text-xs font-semibold text-accent bg-accent/15 px-3 py-1.5 rounded-md shrink-0 group-hover:bg-accent/25 transition-colors">
+                {inquiryCard.cta} →
+              </span>
+            </button>
+          </ScrollReveal>
         </div>
 
-        <Dialog open={!!openKind} onOpenChange={(o) => !o && setOpenKind(null)}>
+        <Dialog open={open} onOpenChange={setOpen}>
           <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-            {active && (
-              <>
-                <DialogHeader>
-                  <DialogTitle className="text-2xl">{active.title}</DialogTitle>
-                  <DialogDescription>{active.copy}</DialogDescription>
-                </DialogHeader>
-                <div className="mt-4">
-                  {active.kind === "seo" ? (
-                    <SeoBlogInquiryForm />
-                  ) : (
-                    <YouTubeScriptInquiryForm />
-                  )}
-                </div>
-              </>
-            )}
+            <DialogHeader>
+              <DialogTitle className="text-2xl">{inquiryCard.title}</DialogTitle>
+              <DialogDescription>{inquiryCard.copy}</DialogDescription>
+            </DialogHeader>
+            <div className="mt-4">
+              <SeoBlogInquiryForm />
+            </div>
           </DialogContent>
         </Dialog>
 

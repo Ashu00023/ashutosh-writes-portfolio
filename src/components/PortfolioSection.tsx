@@ -1,13 +1,10 @@
 import { useEffect } from "react";
-import { ArrowUpRight, FileText, PlayCircle } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { prefetchSamples, prefetchOne } from "@/lib/prefetch";
 
 import aiFinanceImg from "@/assets/portfolio-ai-finance.webp";
-import salaryTrapImg from "@/assets/portfolio-tds-deducted.webp";
-import spendingYtImg from "@/assets/portfolio-dopamine.webp";
 import aiAuthenticityImg from "@/assets/portfolio-ai-authenticity.webp";
 
 type Blog = {
@@ -17,14 +14,6 @@ type Blog = {
   image: string;
   liveUrl: string;
   transcriptHref: string;
-};
-
-type Script = {
-  metric: string;
-  title: string;
-  bullets: string[];
-  image: string;
-  href: string;
 };
 
 const seoBlogs: Blog[] = [
@@ -45,31 +34,6 @@ const seoBlogs: Blog[] = [
     image: aiFinanceImg,
     liveUrl: "/static-blogs/ai-personal-finance-2026.html",
     transcriptHref: "/blog/ai-personal-finance-2026",
-  },
-];
-
-const ytScripts: Script[] = [
-  {
-    metric: "Indian Personal Finance · Long-form",
-    title: "Why 90% of Salaried People Never Build Real Wealth",
-    bullets: [
-      "Cold open built around a relatable salary-slip pattern interrupt",
-      "Six-stage emotional arc with humor beats every 45–60 seconds",
-      "Retention engineered for the 8-minute mid-roll drop-off",
-    ],
-    image: salaryTrapImg,
-    href: "/scripts/salary-trap",
-  },
-  {
-    metric: "Neuroscience / Productivity · Long-form",
-    title: "Why Your Brain Can't Stop Craving Things",
-    bullets: [
-      "Hook reframes dopamine as a prediction signal, not a pleasure chemical",
-      "Visual pacing notes built around Wolfram Schultz's monkey experiments",
-      "Closes with a structured-boredom CTA designed for comment velocity",
-    ],
-    image: spendingYtImg,
-    href: "/scripts/prediction-is-the-drug",
   },
 ];
 
@@ -117,51 +81,6 @@ const BlogCard = ({ b }: { b: Blog }) => (
   </article>
 );
 
-const ScriptCard = ({ s }: { s: Script }) => (
-  <article
-    className="group flex flex-col rounded-xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full"
-    onMouseEnter={() => prefetchOne(s.href === "/scripts/salary-trap" ? "/static-scripts/middle-class-trap.html" : "/static-scripts/reboot-human.html")}
-    onTouchStart={() => prefetchOne(s.href === "/scripts/salary-trap" ? "/static-scripts/middle-class-trap.html" : "/static-scripts/reboot-human.html")}
-  >
-    <div className="relative overflow-hidden aspect-video bg-muted">
-      <img
-        src={s.image}
-        alt={s.title}
-        loading="lazy"
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-      />
-      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center">
-        <PlayCircle
-          size={56}
-          className="text-background drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
-        />
-      </div>
-    </div>
-    <div className="flex flex-col flex-1 p-6">
-      <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.15em] mb-3">
-        {s.metric}
-      </p>
-      <h3 className="text-lg font-bold text-foreground tracking-tight leading-snug mb-4">
-        {s.title}
-      </h3>
-      <ul className="space-y-2 mb-6 flex-1">
-        {s.bullets.map((bullet) => (
-          <li key={bullet} className="flex gap-2.5 text-sm text-muted-foreground leading-relaxed">
-            <span className="text-accent mt-1.5 shrink-0 h-1 w-1 rounded-full bg-accent" />
-            <span>{bullet}</span>
-          </li>
-        ))}
-      </ul>
-      <Link
-        to={s.href}
-        className="inline-flex items-center gap-1.5 self-start bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-accent transition-colors duration-200 mt-auto"
-      >
-        View Script Blueprint <ArrowUpRight size={15} />
-      </Link>
-    </div>
-  </article>
-);
-
 const PortfolioSection = () => {
   useEffect(() => {
     prefetchSamples();
@@ -175,52 +94,21 @@ const PortfolioSection = () => {
             Featured <span className="font-display italic text-accent font-normal">Case Studies</span>
           </h2>
           <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
-            Selected assets shipped for AI, fintech, and creator-economy clients — engineered for ranking, retention, and revenue.
+            Selected SEO articles shipped for AI, fintech, and creator-economy clients — engineered for ranking, retention, and revenue.
           </p>
         </ScrollReveal>
 
-        <Tabs defaultValue="blogs" className="max-w-6xl mx-auto">
-          <div className="flex justify-center mb-10">
-            <TabsList className="h-11 p-1 bg-secondary/80 rounded-lg border border-border/60">
-              <TabsTrigger
-                value="blogs"
-                className="rounded-md px-5 text-sm data-[state=active]:bg-foreground data-[state=active]:text-background"
-              >
-                SEO Blog Content
-              </TabsTrigger>
-              <TabsTrigger
-                value="scripts"
-                className="rounded-md px-5 text-sm data-[state=active]:bg-foreground data-[state=active]:text-background"
-              >
-                YouTube Scripts
-              </TabsTrigger>
-            </TabsList>
-          </div>
-
-          <TabsContent value="blogs" className="mt-0">
-            <div className="grid gap-6 sm:grid-cols-2">
-              {seoBlogs.map((b, i) => (
-                <ScrollReveal key={b.title} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
-                  <BlogCard b={b} />
-                </ScrollReveal>
-              ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="scripts" className="mt-0">
-            <div className="grid gap-6 sm:grid-cols-2">
-              {ytScripts.map((s, i) => (
-                <ScrollReveal key={s.title} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
-                  <ScriptCard s={s} />
-                </ScrollReveal>
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
+        <div className="grid gap-6 sm:grid-cols-2 max-w-6xl mx-auto">
+          {seoBlogs.map((b, i) => (
+            <ScrollReveal key={b.title} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
+              <BlogCard b={b} />
+            </ScrollReveal>
+          ))}
+        </div>
 
         <ScrollReveal className="text-center mt-12 max-w-2xl mx-auto">
           <p className="text-sm text-muted-foreground italic">
-            I can also turn YouTube scripts into SEO blogs and vice versa — same story, optimized for each format.
+            Every piece starts with search intent and primary research — then gets written by hand, line by line.
           </p>
         </ScrollReveal>
       </div>

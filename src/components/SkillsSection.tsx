@@ -1,10 +1,10 @@
-import { Search, PenLine, Youtube, BookOpen } from "lucide-react";
+import { Search, PenLine, LineChart, BookOpen } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const skills = [
   { icon: PenLine, label: "Long-Form SEO Writing" },
-  { icon: Youtube, label: "YouTube Script Writing" },
   { icon: Search, label: "Keyword Research" },
+  { icon: LineChart, label: "Search Intent Strategy" },
   { icon: BookOpen, label: "Storytelling" },
 ];
 
