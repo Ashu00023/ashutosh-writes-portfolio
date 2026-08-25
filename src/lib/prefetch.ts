@@ -1,9 +1,6 @@
 const SAMPLE_URLS = [
   "/static-blogs/ai-authenticity-premium-2026.html",
   "/static-blogs/ai-personal-finance-2026.html",
-  "/static-scripts/middle-class-trap.html",
-  "/static-scripts/reboot-human.html",
-  "/static-scripts/style.css",
 ];
 
 let warmed = false;
@@ -24,7 +21,7 @@ export function prefetchOne(href: string) {
 
 /**
  * Quietly prefetches the portfolio sample HTML files into the browser's HTTP
- * cache so that when the user clicks a sample card, the iframe loads instantly
+ * cache so that when the user clicks a sample card, the article loads instantly
  * with no network round-trip. Fires on idle so it never competes with the
  * homepage's initial paint.
  */

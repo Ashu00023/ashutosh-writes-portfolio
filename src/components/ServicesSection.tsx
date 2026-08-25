@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { PenLine, Youtube, ArrowRight } from "lucide-react";
+import { PenLine, Search, ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const services = [
@@ -16,15 +15,15 @@ const services = [
     href: "#contact",
   },
   {
-    icon: Youtube,
-    title: "YouTube Script Writing",
+    icon: Search,
+    title: "Search Intent & Content Strategy",
     points: [
-      "High-retention, engaging scripts",
-      "Optimized for watch time and virality",
-      "Storytelling-driven structure",
-      "100% human-written scripts",
+      "Keyword and competitor gap research",
+      "Topic clusters mapped to buyer intent",
+      "Briefs built from primary sources",
+      "Structured for featured snippets and AI answers",
     ],
-    cta: "Get Scripts",
+    cta: "Plan My Content",
     href: "#contact",
   },
 ];
