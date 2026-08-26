@@ -14,7 +14,7 @@ const HeroSection = () => (
       >
         <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-foreground mb-6">
           <span className="h-px w-8 bg-accent" aria-hidden="true" />
-          SEO Blogs &middot; YouTube Scripts
+          SEO Blog Writing
         </p>
 
         <h1 className="text-[3rem] sm:text-[3.75rem] md:text-[4.25rem] lg:text-[5.25rem] font-extrabold leading-[0.95] tracking-[-0.045em] text-foreground mb-8">
@@ -23,7 +23,7 @@ const HeroSection = () => (
         </h1>
 
         <p className="text-[15px] md:text-base text-muted-foreground max-w-md mb-6 leading-relaxed">
-          I write deeply researched SEO blogs and YouTube scripts for founders, creators, and brands who want readers to finish the article and viewers to stay till the end.
+          I write deeply researched SEO blogs for founders and brands who want readers to finish the article &mdash; and search engines to rank it.
         </p>
 
         <p className="text-xs font-medium tracking-[0.14em] uppercase text-muted-foreground/80 border-l border-border pl-4 mb-10">
@@ -57,7 +57,7 @@ const HeroSection = () => (
           <div className="relative p-1 rounded-2xl border border-border bg-card">
             <img
               src={profileImg}
-              alt="Ashutosh Mahapatra — SEO Blog and YouTube Script Writer"
+              alt="Ashutosh Mahapatra — SEO Blog Writer"
               loading="eager"
               fetchPriority="high"
               decoding="async"
