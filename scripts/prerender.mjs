@@ -20,8 +20,6 @@ const ROUTES = [
   "/blog",
   "/blog/human-creativity-vs-ai-authenticity-premium-2026",
   "/blog/ai-personal-finance-2026",
-  "/scripts/salary-trap",
-  "/scripts/prediction-is-the-drug",
 ];
 
 const MIME = {
