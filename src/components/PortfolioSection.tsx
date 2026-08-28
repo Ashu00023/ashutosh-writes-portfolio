@@ -63,7 +63,7 @@ const BlogCard = ({ b }: { b: Blog }) => (
         {b.summary}
       </p>
       <div className="flex flex-wrap gap-3 mt-auto">
-        
+        <a
           href={b.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
