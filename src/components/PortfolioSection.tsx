@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
 import { prefetchSamples, prefetchOne } from "@/lib/prefetch";
@@ -13,7 +13,8 @@ type Blog = {
   title: string;
   summary: string;
   image: string;
-  href: string;
+  liveUrl: string;
+  transcriptHref: string;
 };
 
 const seoBlogs: Blog[] = [
@@ -23,7 +24,8 @@ const seoBlogs: Blog[] = [
     summary:
       "Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026 — built to rank and to convert.",
     image: aiAuthenticityImg,
-    href: seo.routes.humanCreativityVsAi.path,
+    liveUrl: "/static-blogs/ai-authenticity-premium-2026.html",
+    transcriptHref: seo.routes.humanCreativityVsAi.path,
   },
   {
     niche: "AI Fintech",
@@ -31,15 +33,16 @@ const seoBlogs: Blog[] = [
     summary:
       "AI finance content was crowded with surface-level listicles and zero verified data. I built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.",
     image: aiFinanceImg,
-    href: seo.routes.aiPersonalFinance2026.path,
+    liveUrl: "/static-blogs/ai-personal-finance-2026.html",
+    transcriptHref: seo.routes.aiPersonalFinance2026.path,
   },
 ];
 
 const BlogCard = ({ b }: { b: Blog }) => (
   <article
     className="group flex flex-col rounded-xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full"
-    onMouseEnter={() => prefetchOne(b.href)}
-    onTouchStart={() => prefetchOne(b.href)}
+    onMouseEnter={() => prefetchOne(b.liveUrl)}
+    onTouchStart={() => prefetchOne(b.liveUrl)}
   >
     <div className="relative overflow-hidden bg-muted aspect-[16/9] flex items-center justify-center">
       <img
@@ -60,11 +63,19 @@ const BlogCard = ({ b }: { b: Blog }) => (
         {b.summary}
       </p>
       <div className="flex flex-wrap gap-3 mt-auto">
-        <Link
-          to={b.href}
+        
+          href={b.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-accent transition-colors duration-200"
         >
-          Read Case Study <ArrowUpRight size={15} />
+          View Live Article <ArrowUpRight size={15} />
+        </a>
+        <Link
+          to={b.transcriptHref}
+          className="inline-flex items-center gap-1.5 border border-border text-foreground text-sm font-semibold px-4 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-colors duration-200"
+        >
+          <FileText size={14} /> Read Clean Transcript
         </Link>
       </div>
     </div>
