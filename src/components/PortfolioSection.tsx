@@ -22,7 +22,7 @@ const seoBlogs: Blog[] = [
     niche: "Creator Economy",
     title: "Winning the Authenticity Premium in the AI-Slop Era",
     summary:
-      "Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026 — built to rank and to convert.",
+      "Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026 - built to rank and to convert.",
     image: aiAuthenticityImg,
     liveUrl: "/static-blogs/ai-authenticity-premium-2026.html",
     transcriptHref: seo.routes.humanCreativityVsAi.path,
@@ -67,7 +67,7 @@ const BlogCard = ({ b }: { b: Blog }) => (
           href={b.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-accent transition-colors duration-200"
+          className="inline-flex items-center gap-1.5 bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-accent transition-colors duration-200"
         >
           View Live Article <ArrowUpRight size={15} />
         </a>
@@ -95,7 +95,7 @@ const PortfolioSection = () => {
             Featured <span className="font-display italic text-accent font-normal">Case Studies</span>
           </h2>
           <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
-            Selected SEO articles shipped for AI, fintech, and creator-economy clients — engineered for ranking, retention, and revenue.
+            Selected SEO articles shipped for AI, fintech, and creator-economy clients - engineered for ranking, retention, and revenue.
           </p>
         </ScrollReveal>
 
@@ -109,7 +109,7 @@ const PortfolioSection = () => {
 
         <ScrollReveal className="text-center mt-12 max-w-2xl mx-auto">
           <p className="text-sm text-muted-foreground italic">
-            Every piece starts with search intent and primary research — then gets written by hand, line by line.
+            Every piece starts with search intent and primary research - then gets written by hand, line by line.
           </p>
         </ScrollReveal>
       </div>
