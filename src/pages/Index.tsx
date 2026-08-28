@@ -3,6 +3,10 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import LatestBlogsSection from "@/components/LatestBlogsSection";
+import seo from "@/data/seo-data.json";
+
+const { home } = seo.routes;
+const canonical = `${seo.siteUrl}${home.path}`;
 
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
@@ -15,50 +19,22 @@ const Footer = lazy(() => import("@/components/Footer"));
 const Index = () => (
   <>
     <Helmet>
-      <title>Ashutosh Mahapatra — SEO Blog & YouTube Script Writer</title>
-      <meta name="description" content="Hire Ashutosh Mahapatra — SEO blog and YouTube script writer specializing in finance and AI. 100% human-written content built to rank on Google and retain on YouTube." />
-      <link rel="canonical" href="https://ashutoshwrites.online/" />
-      <meta property="og:title" content="Ashutosh Mahapatra — SEO Blog & YouTube Script Writer" />
-      <meta property="og:description" content="Hire Ashutosh Mahapatra — SEO blog and YouTube script writer specializing in finance and AI. 100% human-written content built to rank on Google and retain on YouTube." />
-      <meta property="og:url" content="https://ashutoshwrites.online/" />
-      <meta property="og:type" content="website" />
-      <meta property="og:image" content="https://ashutoshwrites.online/og-cover.jpg" />
+      <title>{home.title}</title>
+      <meta name="description" content={home.description} />
+      <link rel="canonical" href={canonical} />
+      <meta property="og:title" content={home.title} />
+      <meta property="og:description" content={home.description} />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:type" content={home.ogType} />
+      <meta property="og:image" content={home.ogImage} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Ashutosh Mahapatra — SEO Blog & YouTube Script Writer" />
-      <meta name="twitter:description" content="Hire Ashutosh Mahapatra — SEO blog and YouTube script writer specializing in finance and AI. 100% human-written content built to rank on Google and retain on YouTube." />
-      <meta name="twitter:image" content="https://ashutoshwrites.online/og-cover.jpg" />
+      <meta name="twitter:title" content={home.title} />
+      <meta name="twitter:description" content={home.description} />
+      <meta name="twitter:image" content={home.ogImage} />
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Person",
-              "@id": "https://ashutoshwrites.online/#person",
-              name: "Ashutosh Mahapatra",
-              url: "https://ashutoshwrites.online/",
-              jobTitle: "SEO Blog & YouTube Script Writer",
-              knowsAbout: [
-                "SEO content strategy",
-                "Personal finance writing",
-                "Artificial intelligence",
-                "YouTube scriptwriting",
-                "Long-form content",
-                "Search intent research",
-              ],
-              sameAs: ["https://linkedin.com/in/ashutosh-mahapatra"],
-            },
-            {
-              "@type": "ProfessionalService",
-              "@id": "https://ashutoshwrites.online/#service",
-              name: "Ashutosh Writes",
-              url: "https://ashutoshwrites.online/",
-              description:
-                "Human-written SEO blog posts and YouTube scripts for finance and AI brands.",
-              founder: { "@id": "https://ashutoshwrites.online/#person" },
-              areaServed: "Worldwide",
-              serviceType: ["SEO blog writing", "YouTube script writing"],
-            },
-          ],
+          "@graph": [seo.person, seo.professionalService],
         })}
       </script>
     </Helmet>

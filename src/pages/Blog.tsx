@@ -1,37 +1,42 @@
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import seo from "@/data/seo-data.json";
+
+const { blogIndex, aiPersonalFinance2026, humanCreativityVsAi } = seo.routes;
+const canonical = `${seo.siteUrl}${blogIndex.path}`;
 
 const posts = [
   {
     label: "AI + Finance",
     title: "AI Personal Finance 2026",
     summary: "Verified stats, structural trends, and the risks most AI finance coverage misses — built for readers who want signal over noise.",
-    href: "/ai-finance-blog-human.html",
+    href: aiPersonalFinance2026.path,
   },
   {
     label: "AI + Content",
     title: "The Authenticity Premium in the AI-Slop Era",
     summary: "Why human creativity is winning in 2026 and how creators can turn authenticity into a durable competitive advantage.",
-    href: "/ai-content-blog-human.html",
+    href: humanCreativityVsAi.path,
   },
 ];
 
 const Blog = () => (
   <>
     <Helmet>
-      <title>Blog — Ashutosh Mahapatra</title>
-      <meta name="description" content="Latest writing on AI, finance, content strategy, and the craft of human-led storytelling." />
-      <link rel="canonical" href="https://ashutoshwrites.online/blog" />
-      <meta property="og:title" content="Blog — Ashutosh Mahapatra" />
-      <meta property="og:description" content="Latest writing on AI, finance, content strategy, and the craft of human-led storytelling." />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://ashutoshwrites.online/blog" />
+      <title>{blogIndex.title}</title>
+      <meta name="description" content={blogIndex.description} />
+      <link rel="canonical" href={canonical} />
+      <meta property="og:title" content={blogIndex.title} />
+      <meta property="og:description" content={blogIndex.description} />
+      <meta property="og:type" content={blogIndex.ogType} />
+      <meta property="og:url" content={canonical} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Blog — Ashutosh Mahapatra" />
-      <meta name="twitter:description" content="Latest writing on AI, finance, content strategy, and the craft of human-led storytelling." />
+      <meta name="twitter:title" content={blogIndex.title} />
+      <meta name="twitter:description" content={blogIndex.description} />
     </Helmet>
     <Navbar />
     <main className="min-h-screen pt-28 pb-20">
@@ -49,8 +54,8 @@ const Blog = () => (
         <div className="grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
           {posts.map((post, i) => (
             <ScrollReveal key={post.href} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
-              <a
-                href={post.href}
+              <Link
+                to={post.href}
                 className="group flex flex-col h-full rounded-2xl bg-card border border-border/60 p-8 hover:shadow-xl hover:border-accent/30 transition-all duration-300"
               >
                 <span className="self-start inline-flex items-center gap-1.5 text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em] mb-5">
@@ -65,7 +70,7 @@ const Blog = () => (
                 <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-200">
                   Read the post <ArrowUpRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
-              </a>
+              </Link>
             </ScrollReveal>
           ))}
         </div>

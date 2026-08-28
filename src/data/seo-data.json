@@ -1,0 +1,65 @@
+{
+  "siteUrl": "https://ashutoshwrites.online",
+  "person": {
+    "@type": "Person",
+    "@id": "https://ashutoshwrites.online/#person",
+    "name": "Ashutosh Mahapatra",
+    "url": "https://ashutoshwrites.online/",
+    "jobTitle": "SEO Blog & YouTube Script Writer",
+    "knowsAbout": [
+      "SEO content strategy",
+      "Personal finance writing",
+      "Artificial intelligence",
+      "YouTube scriptwriting",
+      "Long-form content",
+      "Search intent research"
+    ],
+    "sameAs": ["https://linkedin.com/in/ashutosh-mahapatra"]
+  },
+  "professionalService": {
+    "@type": "ProfessionalService",
+    "@id": "https://ashutoshwrites.online/#service",
+    "name": "Ashutosh Writes",
+    "url": "https://ashutoshwrites.online/",
+    "description": "Human-written SEO blog posts and YouTube scripts for finance and AI brands.",
+    "founder": { "@id": "https://ashutoshwrites.online/#person" },
+    "areaServed": "Worldwide",
+    "serviceType": ["SEO blog writing", "YouTube script writing"]
+  },
+  "routes": {
+    "home": {
+      "path": "/",
+      "outFile": "index.html",
+      "title": "Ashutosh Mahapatra — SEO Blog & YouTube Script Writer",
+      "description": "Hire Ashutosh Mahapatra — SEO blog and YouTube script writer specializing in finance and AI. 100% human-written content built to rank on Google and retain on YouTube.",
+      "ogType": "website",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
+    "blogIndex": {
+      "path": "/blog",
+      "outFile": "blog/index.html",
+      "title": "Blog — Ashutosh Mahapatra",
+      "description": "Latest writing on AI, finance, content strategy, and the craft of human-led storytelling.",
+      "ogType": "website",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
+    "aiPersonalFinance2026": {
+      "path": "/blog/ai-personal-finance-2026",
+      "outFile": "blog/ai-personal-finance-2026/index.html",
+      "title": "AI Personal Finance 2026: Stats, Tools & Risks Explained",
+      "description": "18 verified stats, 5 structural trends, and the risks most coverage misses — a data-driven look at how AI is reshaping personal finance in 2026.",
+      "ogType": "article",
+      "ogImage": "https://ashutoshwrites.online/ai-finance-blog-thumbnail.png",
+      "staticSource": "ai-personal-finance-2026.html"
+    },
+    "humanCreativityVsAi": {
+      "path": "/blog/human-creativity-vs-ai-authenticity-premium-2026",
+      "outFile": "blog/human-creativity-vs-ai-authenticity-premium-2026/index.html",
+      "title": "AI Took Over the Internet. Now Audiences Are Revolting — and Human Creators Are Winning",
+      "description": "AI content is flooding the internet, but audiences are rejecting it. Discover the data behind the Authenticity Premium and why human creativity is your best SEO strategy for 2026.",
+      "ogType": "article",
+      "ogImage": "https://ashutoshwrites.online/ai-content-blog-thumbnail.jpg",
+      "staticSource": "ai-authenticity-premium-2026.html"
+    }
+  }
+}

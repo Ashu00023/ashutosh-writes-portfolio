@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { ArrowUpRight, FileText } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
 import { prefetchSamples, prefetchOne } from "@/lib/prefetch";
+import seo from "@/data/seo-data.json";
 
 import aiFinanceImg from "@/assets/portfolio-ai-finance.webp";
 import aiAuthenticityImg from "@/assets/portfolio-ai-authenticity.webp";
@@ -12,8 +13,7 @@ type Blog = {
   title: string;
   summary: string;
   image: string;
-  liveUrl: string;
-  transcriptHref: string;
+  href: string;
 };
 
 const seoBlogs: Blog[] = [
@@ -23,8 +23,7 @@ const seoBlogs: Blog[] = [
     summary:
       "Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026 — built to rank and to convert.",
     image: aiAuthenticityImg,
-    liveUrl: "/static-blogs/ai-authenticity-premium-2026.html",
-    transcriptHref: "/blog/human-creativity-vs-ai-authenticity-premium-2026",
+    href: seo.routes.humanCreativityVsAi.path,
   },
   {
     niche: "AI Fintech",
@@ -32,16 +31,15 @@ const seoBlogs: Blog[] = [
     summary:
       "AI finance content was crowded with surface-level listicles and zero verified data. I built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.",
     image: aiFinanceImg,
-    liveUrl: "/static-blogs/ai-personal-finance-2026.html",
-    transcriptHref: "/blog/ai-personal-finance-2026",
+    href: seo.routes.aiPersonalFinance2026.path,
   },
 ];
 
 const BlogCard = ({ b }: { b: Blog }) => (
   <article
     className="group flex flex-col rounded-xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full"
-    onMouseEnter={() => prefetchOne(b.liveUrl)}
-    onTouchStart={() => prefetchOne(b.liveUrl)}
+    onMouseEnter={() => prefetchOne(b.href)}
+    onTouchStart={() => prefetchOne(b.href)}
   >
     <div className="relative overflow-hidden bg-muted aspect-[16/9] flex items-center justify-center">
       <img
@@ -62,19 +60,11 @@ const BlogCard = ({ b }: { b: Blog }) => (
         {b.summary}
       </p>
       <div className="flex flex-wrap gap-3 mt-auto">
-        <a
-          href={b.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to={b.href}
           className="inline-flex items-center gap-1.5 bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-accent transition-colors duration-200"
         >
-          View Live Article <ArrowUpRight size={15} />
-        </a>
-        <Link
-          to={b.transcriptHref}
-          className="inline-flex items-center gap-1.5 border border-border text-foreground text-sm font-semibold px-4 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-colors duration-200"
-        >
-          <FileText size={14} /> Read Clean Transcript
+          Read Case Study <ArrowUpRight size={15} />
         </Link>
       </div>
     </div>

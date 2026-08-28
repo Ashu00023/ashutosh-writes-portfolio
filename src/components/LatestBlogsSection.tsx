@@ -1,18 +1,22 @@
+import { Link } from "react-router-dom";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import seo from "@/data/seo-data.json";
+
+const { aiPersonalFinance2026, humanCreativityVsAi } = seo.routes;
 
 const posts = [
   {
     label: "AI + Finance",
     title: "AI Personal Finance 2026",
     summary: "Verified stats, structural trends, and the risks most AI finance coverage misses — built for readers who want signal over noise.",
-    href: "/ai-finance-blog-human.html",
+    href: aiPersonalFinance2026.path,
   },
   {
     label: "AI + Content",
     title: "The Authenticity Premium in the AI-Slop Era",
     summary: "Why human creativity is winning in 2026 and how creators can turn authenticity into a durable competitive advantage.",
-    href: "/ai-content-blog-human.html",
+    href: humanCreativityVsAi.path,
   },
 ];
 
@@ -32,8 +36,8 @@ const LatestBlogsSection = () => (
       <div className="grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
         {posts.map((post, i) => (
           <ScrollReveal key={post.href} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
-            <a
-              href={post.href}
+            <Link
+              to={post.href}
               className="group flex flex-col h-full rounded-xl bg-card border border-border/60 p-8 hover:shadow-xl hover:border-accent/30 transition-all duration-300"
             >
               <span className="self-start inline-flex items-center gap-1.5 text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em] mb-5">
@@ -48,7 +52,7 @@ const LatestBlogsSection = () => (
               <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-200">
                 Read the post <ArrowUpRight size={15} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
-            </a>
+            </Link>
           </ScrollReveal>
         ))}
       </div>

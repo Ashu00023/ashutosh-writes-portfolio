@@ -1,6 +1,8 @@
+import seo from "@/data/seo-data.json";
+
 const SAMPLE_URLS = [
-  "/static-blogs/ai-authenticity-premium-2026.html",
-  "/static-blogs/ai-personal-finance-2026.html",
+  seo.routes.humanCreativityVsAi.path,
+  seo.routes.aiPersonalFinance2026.path,
 ];
 
 let warmed = false;
