@@ -67,7 +67,7 @@ const BlogCard = ({ b }: { b: Blog }) => (
           href={b.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-accent transition-colors duration-200"
+                    className="inline-flex items-center gap-1.5 bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-accent transition-colors duration-200"
         >
           View Live Article <ArrowUpRight size={15} />
         </a>
