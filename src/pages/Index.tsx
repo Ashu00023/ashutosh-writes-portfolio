@@ -11,7 +11,6 @@ const canonical = `${seo.siteUrl}${home.path}`;
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
 const SkillsSection = lazy(() => import("@/components/SkillsSection"));
-const PortfolioSection = lazy(() => import("@/components/PortfolioSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 const Footer = lazy(() => import("@/components/Footer"));
@@ -45,7 +44,6 @@ const Index = () => (
       <AboutSection />
       <ServicesSection />
       <SkillsSection />
-      <PortfolioSection />
       <TestimonialsSection />
       <ContactSection />
       <Footer />
