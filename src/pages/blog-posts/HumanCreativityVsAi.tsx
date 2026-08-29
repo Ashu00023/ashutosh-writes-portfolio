@@ -30,7 +30,6 @@ const HumanCreativityVsAi = () => {
         canonicalUrl={url}
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Portfolio", href: "/#portfolio" },
           { label: "Human Creativity vs AI" },
         ]}
       />
