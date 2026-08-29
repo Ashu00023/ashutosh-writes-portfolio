@@ -1,8 +1,4 @@
 {
-  "redirects": [
-    { "source": "/ai-finance-blog-human.html", "destination": "/blog/ai-personal-finance-2026", "permanent": true },
-    { "source": "/ai-content-blog-human.html", "destination": "/blog/human-creativity-vs-ai-authenticity-premium-2026", "permanent": true }
-  ],
   "rewrites": [
     { "source": "/((?!assets/|.*\\..*).*)", "destination": "/index.html" }
   ]

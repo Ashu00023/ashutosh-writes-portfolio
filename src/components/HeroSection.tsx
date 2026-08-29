@@ -32,6 +32,12 @@ const HeroSection = () => (
 
         <div className="flex flex-wrap gap-3">
           <a
+            href="#portfolio"
+            className="inline-flex items-center gap-2 rounded-lg bg-foreground px-7 py-3 text-sm font-semibold text-background hover:opacity-90 transition-all duration-200"
+          >
+            View Portfolio <ArrowRight size={15} />
+          </a>
+          <a
             href="#contact"
             className="inline-flex items-center gap-2 rounded-lg border border-border bg-transparent px-7 py-3 text-sm font-semibold text-foreground hover:border-accent hover:text-accent transition-all duration-200"
           >

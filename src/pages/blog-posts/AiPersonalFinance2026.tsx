@@ -30,6 +30,7 @@ const AiPersonalFinance2026 = () => {
         canonicalUrl={url}
         breadcrumbs={[
           { label: "Home", href: "/" },
+          { label: "Portfolio", href: "/#portfolio" },
           { label: "AI Personal Finance 2026" },
         ]}
       />

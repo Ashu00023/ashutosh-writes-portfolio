@@ -169,16 +169,16 @@ function homeBodyHtml(seo) {
     <p><a href="/#portfolio">View Portfolio</a> <a href="/#contact">Hire Me</a></p>
   </section>
 
-  <section id="latest-blogs">
-    <h2>Latest Writing</h2>
-    <p>Recent posts on content strategy, finance, AI, and the craft of writing that holds attention.</p>
+  <section id="portfolio">
+    <h2>Featured Case Studies</h2>
+    <p>Selected SEO articles shipped for AI, fintech, and creator-economy clients &mdash; engineered for ranking, retention, and revenue.</p>
     <article>
-      <h3><a href="${seo.routes.aiPersonalFinance2026.path}">AI Personal Finance 2026</a></h3>
-      <p>Verified stats, structural trends, and the risks most AI finance coverage misses &mdash; built for readers who want signal over noise.</p>
+      <h3><a href="${seo.routes.humanCreativityVsAi.path}">Winning the Authenticity Premium in the AI-Slop Era</a></h3>
+      <p>Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026 &mdash; built to rank and to convert.</p>
     </article>
     <article>
-      <h3><a href="${seo.routes.humanCreativityVsAi.path}">The Authenticity Premium in the AI-Slop Era</a></h3>
-      <p>Why human creativity is winning in 2026 and how creators can turn authenticity into a durable competitive advantage.</p>
+      <h3><a href="${seo.routes.aiPersonalFinance2026.path}">Scaling Trust for an AI-Powered Personal Finance Audience</a></h3>
+      <p>AI finance content was crowded with surface-level listicles and zero verified data. I built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.</p>
     </article>
   </section>
 
@@ -225,19 +225,6 @@ function homeBodyHtml(seo) {
       <li>Search Intent Strategy</li>
       <li>Storytelling</li>
     </ul>
-  </section>
-
-  <section id="portfolio">
-    <h2>Featured Case Studies</h2>
-    <p>Selected SEO articles shipped for AI, fintech, and creator-economy clients &mdash; engineered for ranking, retention, and revenue.</p>
-    <article>
-      <h3><a href="${seo.routes.humanCreativityVsAi.path}">Winning the Authenticity Premium in the AI-Slop Era</a></h3>
-      <p>Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026 &mdash; built to rank and to convert.</p>
-    </article>
-    <article>
-      <h3><a href="${seo.routes.aiPersonalFinance2026.path}">Scaling Trust for an AI-Powered Personal Finance Audience</a></h3>
-      <p>AI finance content was crowded with surface-level listicles and zero verified data. I built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.</p>
-    </article>
   </section>
 
   <section id="testimonials">

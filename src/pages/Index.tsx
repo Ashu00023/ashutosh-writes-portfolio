@@ -2,7 +2,7 @@ import { Suspense, lazy } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import LatestBlogsSection from "@/components/LatestBlogsSection";
+import PortfolioSection from "@/components/PortfolioSection";
 import seo from "@/data/seo-data.json";
 
 const { home } = seo.routes;
@@ -39,7 +39,7 @@ const Index = () => (
     </Helmet>
     <Navbar />
     <HeroSection />
-    <LatestBlogsSection />
+    <PortfolioSection />
     <Suspense fallback={<div className="min-h-[40vh]" />}>
       <AboutSection />
       <ServicesSection />
