@@ -60,8 +60,8 @@ const SeoBlogInquiryForm = ({ onSuccess }: { onSuccess?: () => void }) => {
       if (error) throw error;
       setDone(true);
       onSuccess?.();
-    } catch (err: any) {
-      setServerError(err?.message || "Something went wrong. Please try again or email me directly.");
+    } catch (err) {
+      setServerError(err instanceof Error ? err.message : "Something went wrong. Please try again or email me directly.");
     } finally {
       setSubmitting(false);
     }
