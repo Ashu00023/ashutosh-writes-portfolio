@@ -294,7 +294,7 @@ async function buildRoutes(seo) {
     bodyHtml: blogIndexBodyHtml(seo),
   });
 
-  for (const key of ["aiPersonalFinance2026", "humanCreativityVsAi"]) {
+  for (const key of ["aiPersonalFinance2026", "humanCreativityVsAi", "byoaShadowAi"]) {
     const meta = seo.routes[key];
     const sourcePath = join(PUBLIC, "static-blogs", meta.staticSource);
     if (!existsSync(sourcePath)) {
