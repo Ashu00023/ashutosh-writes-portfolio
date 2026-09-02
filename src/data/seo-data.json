@@ -60,6 +60,15 @@
       "ogType": "article",
       "ogImage": "https://ashutoshwrites.online/ai-content-blog-thumbnail.jpg",
       "staticSource": "ai-authenticity-premium-2026.html"
+    },
+    "byoaShadowAi": {
+      "path": "/blog/byoa-shadow-ai-b2b-saas-2026",
+      "outFile": "blog/byoa-shadow-ai-b2b-saas-2026/index.html",
+      "title": "The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare",
+      "description": "AI agents aren't sneaking in through shadow IT anymore. They're inheriting OAuth scope from platforms you already approved. Here's what that means for your security program.",
+      "ogType": "article",
+      "ogImage": "https://ashutoshwrites.online/byoa-shadow-ai-blog-thumbnail.png",
+      "staticSource": "byoa-shadow-ai-blog.html"
     }
   }
 }
