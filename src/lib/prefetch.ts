@@ -1,6 +1,7 @@
 const SAMPLE_URLS = [
   "/static-blogs/ai-authenticity-premium-2026.html",
   "/static-blogs/ai-personal-finance-2026.html",
+  "/static-blogs/byoa-shadow-ai-blog.html",
 ];
 
 let warmed = false;
