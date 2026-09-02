@@ -33,6 +33,15 @@ const seoBlogs: Blog[] = [
     liveUrl: "/static-blogs/ai-personal-finance-2026.html",
     transcriptHref: seo.routes.aiPersonalFinance2026.path,
   },
+  {
+    niche: "Cybersecurity",
+    title: "Why BYOA Is B2B SaaS's Next Data Nightmare",
+    summary:
+      "Shadow AI coverage was stuck describing 2019-era shadow IT. I wrote a threat brief on how agents ship pre-embedded inside approved platforms, inheriting OAuth scope nobody reviewed, backed by CVE-2025-32711 and a three-pillar governance framework.",
+    image: "/byoa-shadow-ai-blog-thumbnail.png",
+    liveUrl: "/static-blogs/byoa-shadow-ai-blog.html",
+    transcriptHref: seo.routes.byoaShadowAi.path,
+  },
 ];
 
 const BlogCard = ({ b }: { b: Blog }) => (
@@ -60,7 +69,7 @@ const BlogCard = ({ b }: { b: Blog }) => (
         {b.summary}
       </p>
       <div className="flex flex-wrap gap-3 mt-auto">
-        <a
+        
           href={b.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -96,7 +105,7 @@ const PortfolioSection = () => {
           </p>
         </ScrollReveal>
 
-        <div className="grid gap-6 sm:grid-cols-2 max-w-6xl mx-auto">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {seoBlogs.map((b, i) => (
             <ScrollReveal key={b.title} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
               <BlogCard b={b} />
