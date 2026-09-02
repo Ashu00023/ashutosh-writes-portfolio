@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import seo from "@/data/seo-data.json";
 
-const { blogIndex, aiPersonalFinance2026, humanCreativityVsAi } = seo.routes;
+const { blogIndex, aiPersonalFinance2026, humanCreativityVsAi, byoaShadowAi } = seo.routes;
 const canonical = `${seo.siteUrl}${blogIndex.path}`;
 
 const posts = [
@@ -21,6 +21,12 @@ const posts = [
     title: "The Authenticity Premium in the AI-Slop Era",
     summary: "Why human creativity is winning in 2026 and how creators can turn authenticity into a durable competitive advantage.",
     href: humanCreativityVsAi.path,
+  },
+  {
+    label: "Cybersecurity",
+    title: "The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare",
+    summary: "AI agents aren't sneaking in through shadow IT anymore — they're inheriting OAuth scope from platforms you already approved.",
+    href: byoaShadowAi.path,
   },
 ];
 
@@ -51,7 +57,7 @@ const Blog = () => (
           </p>
         </ScrollReveal>
 
-        <div className="grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {posts.map((post, i) => (
             <ScrollReveal key={post.href} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
               <Link
