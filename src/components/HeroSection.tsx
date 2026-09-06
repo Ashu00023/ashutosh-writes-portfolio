@@ -63,6 +63,27 @@ const HeroSection = () => (
               decoding="async"
               className="w-60 h-60 md:w-72 md:h-72 rounded-xl object-cover"
             />
+            <motion.span
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+              className="layer-2 absolute -top-3 -left-6 text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em]"
+            >
+              AI / Cybersecurity
+            </motion.span>
+            <motion.span
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 1.1 }}
+              className="layer-2 absolute top-1/3 -right-7 text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em]"
+            >
+              Fintech
+            </motion.span>
+            <motion.span
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 2.2 }}
+              className="layer-2 absolute -bottom-3 -left-4 text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em]"
+            >
+              Creator Economy
+            </motion.span>
           </div>
           <div className="mt-5 text-center relative">
             <h2 className="text-base font-bold text-foreground tracking-tight">Ashutosh Mahapatra</h2>

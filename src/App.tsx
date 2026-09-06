@@ -18,7 +18,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Suspense fallback={<div style={{ minHeight: "100vh", background: "#0d0c0a" }} />}>
+        <Suspense fallback={<div style={{ minHeight: "100vh", background: "hsl(60 10% 98%)" }} />}>
+          <div className="bg-bloom min-h-screen">
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />
@@ -28,6 +29,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </div>
         </Suspense>
       </BrowserRouter>
     </TooltipProvider>

@@ -8,6 +8,8 @@ import seo from "@/data/seo-data.json";
 const { home } = seo.routes;
 const canonical = `${seo.siteUrl}${home.path}`;
 
+const TrustStrip = lazy(() => import("@/components/TrustStrip"));
+const ConvergenceSection = lazy(() => import("@/components/ConvergenceSection"));
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
 const SkillsSection = lazy(() => import("@/components/SkillsSection"));
@@ -39,8 +41,12 @@ const Index = () => (
     </Helmet>
     <Navbar />
     <HeroSection />
+    <Suspense fallback={<div className="min-h-[10vh]" />}>
+      <TrustStrip />
+    </Suspense>
     <PortfolioSection />
     <Suspense fallback={<div className="min-h-[40vh]" />}>
+      <ConvergenceSection />
       <AboutSection />
       <ServicesSection />
       <SkillsSection />
