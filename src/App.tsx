@@ -18,7 +18,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Suspense fallback={<div style={{ minHeight: "100vh", background: "#0d0c0a" }} />}>
+        <Suspense fallback={<div style={{ minHeight: "100vh", background: "hsl(60 10% 98%)" }} />}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />
