@@ -22,6 +22,7 @@ const services = [
       "Topic clusters mapped to buyer intent",
       "Briefs built from primary sources",
       "Structured for featured snippets and AI answers",
+      "Long-form content built around search intent, not word count",
     ],
     cta: "Plan My Content",
     href: "#contact",
