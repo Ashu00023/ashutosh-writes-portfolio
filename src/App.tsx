@@ -19,6 +19,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Suspense fallback={<div style={{ minHeight: "100vh", background: "hsl(60 10% 98%)" }} />}>
+          <div className="bg-bloom min-h-screen">
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />
