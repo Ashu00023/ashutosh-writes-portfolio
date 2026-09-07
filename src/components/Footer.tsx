@@ -2,7 +2,24 @@ import logo from "@/assets/logo-new.png";
 import ScrollReveal from "./ScrollReveal";
 import { contacts } from "./ContactSection";
 
-const contactLabels = ["ashutosh@mail.ashutoshwrites.online", "WhatsApp", "Ashutosh Mahapatra", "@ashutosh.writes"];
+const connectOrder = [
+  (href: string) => href.startsWith("mailto:"),
+  (href: string) => href.includes("wa.me"),
+  (href: string) => href.includes("linkedin.com"),
+  (href: string) => href.includes("instagram.com"),
+];
+
+const connectLinks = connectOrder
+  .map((matches) => contacts.find((contact) => matches(contact.href)))
+  .filter((contact): contact is (typeof contacts)[number] => Boolean(contact))
+  .map((contact) => ({
+    label: contact.href.startsWith("mailto:")
+      ? "Email"
+      : contact.href.includes("linkedin.com")
+        ? "LinkedIn"
+        : contact.label,
+    href: contact.href,
+  }));
 
 const columns = [
   {
@@ -23,13 +40,7 @@ const columns = [
   },
   {
     title: "Connect",
-    links: contacts
-      .filter((contact) => contactLabels.includes(contact.label))
-      .sort((a, b) => contactLabels.indexOf(a.label) - contactLabels.indexOf(b.label))
-      .map((contact) => ({
-        label: contact.label === "ashutosh@mail.ashutoshwrites.online" ? "Email" : contact.label === "Ashutosh Mahapatra" ? "LinkedIn" : contact.label,
-        href: contact.href,
-      })),
+    links: connectLinks,
   },
   {
     title: "Site",
