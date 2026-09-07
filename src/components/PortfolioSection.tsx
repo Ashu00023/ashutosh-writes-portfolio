@@ -1,50 +1,13 @@
 import { useEffect } from "react";
-import { ArrowUpRight, FileText } from "lucide-react";
+import { ArrowUpRight, FileText, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
 import { prefetchSamples, prefetchOne } from "@/lib/prefetch";
-import seo from "@/data/seo-data.json";
+import { workItems, type WorkItem } from "@/data/work";
 
-type Blog = {
-  niche: string;
-  title: string;
-  summary: string;
-  image: string;
-  liveUrl: string;
-  transcriptHref: string;
-};
+const featured = workItems.slice(0, 3);
 
-const seoBlogs: Blog[] = [
-  {
-    niche: "Creator Economy",
-    title: "Winning the Authenticity Premium in the AI-Slop Era",
-    summary:
-      "Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026 - built to rank and to convert.",
-    image: "/ai-content-blog-thumbnail.jpg",
-    liveUrl: "/static-blogs/ai-authenticity-premium-2026.html",
-    transcriptHref: seo.routes.humanCreativityVsAi.path,
-  },
-  {
-    niche: "AI Fintech",
-    title: "Scaling Trust for an AI-Powered Personal Finance Audience",
-    summary:
-      "AI finance content was crowded with surface-level listicles and zero verified data. I built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.",
-    image: "/ai-finance-blog-thumbnail.png",
-    liveUrl: "/static-blogs/ai-personal-finance-2026.html",
-    transcriptHref: seo.routes.aiPersonalFinance2026.path,
-  },
-  {
-    niche: "Cybersecurity",
-    title: "Why BYOA Is B2B SaaS's Next Data Nightmare",
-    summary:
-      "Shadow AI coverage was stuck describing 2019-era shadow IT. I wrote a threat brief on how agents ship pre-embedded inside approved platforms, inheriting OAuth scope nobody reviewed, backed by CVE-2025-32711 and a three-pillar governance framework.",
-    image: "/byoa-shadow-ai-blog-thumbnail.png",
-    liveUrl: "/static-blogs/byoa-shadow-ai-blog.html",
-    transcriptHref: seo.routes.byoaShadowAi.path,
-  },
-];
-
-const BlogCard = ({ b }: { b: Blog }) => (
+const BlogCard = ({ b }: { b: WorkItem }) => (
   <article
     className="group flex flex-col rounded-xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full"
     onMouseEnter={() => prefetchOne(b.liveUrl)}
@@ -96,7 +59,7 @@ const PortfolioSection = () => {
     <section id="portfolio" className="py-28 bg-card/40">
       <div className="container mx-auto px-6">
         <ScrollReveal className="text-center mb-12">
-          <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Portfolio</p>
+          <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Featured Work</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
             Featured <span className="font-display italic text-accent font-normal">Case Studies</span>
           </h2>
@@ -106,14 +69,23 @@ const PortfolioSection = () => {
         </ScrollReveal>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-          {seoBlogs.map((b, i) => (
+          {featured.map((b, i) => (
             <ScrollReveal key={b.title} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
               <BlogCard b={b} />
             </ScrollReveal>
           ))}
         </div>
 
-        <ScrollReveal className="text-center mt-12 max-w-2xl mx-auto">
+        <ScrollReveal className="text-center mt-12">
+          <Link
+            to="/work"
+            className="inline-flex items-center gap-2 border border-border text-foreground text-sm font-semibold px-5 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-colors duration-200"
+          >
+            View all work <ArrowRight size={15} />
+          </Link>
+        </ScrollReveal>
+
+        <ScrollReveal className="text-center mt-8 max-w-2xl mx-auto">
           <p className="text-sm text-muted-foreground italic">
             Every piece starts with search intent and primary research - then gets written by hand, line by line.
           </p>
