@@ -10,9 +10,9 @@ const canonical = `${seo.siteUrl}${home.path}`;
 
 const TrustStrip = lazy(() => import("@/components/TrustStrip"));
 const ConvergenceSection = lazy(() => import("@/components/ConvergenceSection"));
+const ProcessSection = lazy(() => import("@/components/ProcessSection"));
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
-const SkillsSection = lazy(() => import("@/components/SkillsSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 const Footer = lazy(() => import("@/components/Footer"));
@@ -47,9 +47,9 @@ const Index = () => (
     <PortfolioSection />
     <Suspense fallback={<div className="min-h-[40vh]" />}>
       <ConvergenceSection />
+      <ProcessSection />
       <AboutSection />
       <ServicesSection />
-      <SkillsSection />
       <TestimonialsSection />
       <ContactSection />
       <Footer />

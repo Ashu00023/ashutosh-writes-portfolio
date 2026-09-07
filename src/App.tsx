@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 const Blog = lazy(() => import("./pages/Blog.tsx"));
+const Work = lazy(() => import("./pages/Work.tsx"));
 const HumanCreativityVsAi = lazy(() => import("./pages/blog-posts/HumanCreativityVsAi.tsx"));
 const AiPersonalFinance2026 = lazy(() => import("./pages/blog-posts/AiPersonalFinance2026.tsx"));
 const ByoaShadowAi = lazy(() => import("./pages/blog-posts/ByoaShadowAi.tsx"));
@@ -23,6 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/work" element={<Work />} />
             <Route path="/blog/human-creativity-vs-ai-authenticity-premium-2026" element={<HumanCreativityVsAi />} />
             <Route path="/blog/ai-personal-finance-2026" element={<AiPersonalFinance2026 />} />
             <Route path="/blog/byoa-shadow-ai-b2b-saas-2026" element={<ByoaShadowAi />} />
