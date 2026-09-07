@@ -1,6 +1,56 @@
-import { motion } from "framer-motion";
+import type { MouseEvent, ReactNode } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
+
+type MagneticCtaProps = {
+  href: string;
+  children: ReactNode;
+  variant: "primary" | "secondary";
+};
+
+const ctaStyles = {
+  primary: "bg-foreground text-background hover:opacity-90",
+  secondary: "border border-border bg-transparent text-foreground hover:border-accent hover:text-accent",
+};
+
+const canUseMagneticHover = () =>
+  typeof window !== "undefined" && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+const MagneticCta = ({ href, children, variant }: MagneticCtaProps) => {
+  const cursorX = useMotionValue(0);
+  const cursorY = useMotionValue(0);
+  const x = useTransform(cursorX, [-1, 1], [-6, 6]);
+  const y = useTransform(cursorY, [-1, 1], [-6, 6]);
+
+  const handleMouseMove = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (!canUseMagneticHover()) return;
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const relativeX = (event.clientX - rect.left) / rect.width;
+    const relativeY = (event.clientY - rect.top) / rect.height;
+
+    cursorX.set((relativeX - 0.5) * 2);
+    cursorY.set((relativeY - 0.5) * 2);
+  };
+
+  const handleMouseLeave = () => {
+    cursorX.set(0);
+    cursorY.set(0);
+  };
+
+  return (
+    <motion.a
+      href={href}
+      style={{ x, y }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={`inline-flex items-center gap-2 rounded-lg px-7 py-3 text-sm font-semibold transition-all duration-200 ${ctaStyles[variant]}`}
+    >
+      {children}
+    </motion.a>
+  );
+};
 
 const HeroSection = () => (
   <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -31,18 +81,12 @@ const HeroSection = () => (
         </p>
 
         <div className="flex flex-wrap gap-3">
-          <a
-            href="#portfolio"
-            className="inline-flex items-center gap-2 rounded-lg bg-foreground px-7 py-3 text-sm font-semibold text-background hover:opacity-90 transition-all duration-200"
-          >
+          <MagneticCta href="#portfolio" variant="primary">
             View Portfolio <ArrowRight size={15} />
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-lg border border-border bg-transparent px-7 py-3 text-sm font-semibold text-foreground hover:border-accent hover:text-accent transition-all duration-200"
-          >
+          </MagneticCta>
+          <MagneticCta href="#contact" variant="secondary">
             Hire Me <ArrowRight size={15} />
-          </a>
+          </MagneticCta>
         </div>
       </motion.div>
 

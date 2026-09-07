@@ -4,7 +4,7 @@ import ScrollReveal from "./ScrollReveal";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
 import SeoBlogInquiryForm from "./forms/SeoBlogInquiryForm";
 
-const contacts = [
+export const contacts = [
   {
     icon: Mail,
     label: "ashutosh@mail.ashutoshwrites.online",

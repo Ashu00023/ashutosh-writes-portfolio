@@ -61,10 +61,10 @@ const PortfolioSection = () => {
         <ScrollReveal className="text-center mb-12">
           <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Featured Work</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
-            Featured <span className="font-display italic text-accent font-normal">Case Studies</span>
+            Featured <span className="font-display italic text-accent font-normal">Writing Samples</span>
           </h2>
           <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
-            Selected SEO articles shipped for AI, fintech, and creator-economy clients - engineered for ranking, retention, and revenue.
+            Self-directed samples across AI, fintech, and creator-economy topics — researched, structured, and written exactly as I’d deliver for a client, engineered for ranking, retention, and revenue.
           </p>
         </ScrollReveal>
 

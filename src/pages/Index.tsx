@@ -13,7 +13,6 @@ const ConvergenceSection = lazy(() => import("@/components/ConvergenceSection"))
 const ProcessSection = lazy(() => import("@/components/ProcessSection"));
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
-const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 
@@ -50,7 +49,6 @@ const Index = () => (
       <ProcessSection />
       <AboutSection />
       <ServicesSection />
-      <TestimonialsSection />
       <ContactSection />
       <Footer />
     </Suspense>
