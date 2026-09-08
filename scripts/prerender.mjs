@@ -213,4 +213,339 @@ function homeBodyHtml(seo) {
     <p>Every piece I ship sits at the intersection of three things:</p>
     <article>
       <h3>Research</h3>
-      <p>Primary sources, verified data, no AI-hallucinated
+      <p>Primary sources, verified data, no AI-hallucinated stats. 18 verified stats per authority piece, primary sources over aggregator lists, every claim traceable to a report or CVE.</p>
+    </article>
+    <article>
+      <h3>SEO Strategy</h3>
+      <p>Search intent, structure, featured-snippet ready. Question-based headings mapped to real queries, answer blocks sized for featured snippets, internal-link architecture planned up front.</p>
+    </article>
+    <article>
+      <h3>Craft</h3>
+      <p>Sentence-level writing, narrative pacing, editing by hand. Line-by-line editing passes, narrative pacing that holds past 2,000 words, zero spun or AI-generated copy.</p>
+    </article>
+  </section>
+
+  <section id="process">
+    <h2>How a piece actually gets made</h2>
+    <ol>
+      <li><strong>Brief &amp; Research</strong> &mdash; Understand the audience, gather primary sources, verify every stat before writing a word</li>
+      <li><strong>Outline &amp; SEO Mapping</strong> &mdash; Structure built around search intent and featured-snippet formatting, not word count targets</li>
+      <li><strong>Draft</strong> &mdash; Written by hand, sentence by sentence &mdash; no AI-generated drafts</li>
+      <li><strong>Structural Edit</strong> &mdash; Cut anything that doesn't earn its place; check argument flow and pacing</li>
+      <li><strong>Delivery &amp; Handoff</strong> &mdash; Clean formatting, source list, and a short rationale note on key decisions</li>
+    </ol>
+  </section>
+
+  <section id="about">
+    <h2>I write the kind of content people actually finish.</h2>
+    <p>I am Ashutosh &mdash; a freelance writer working with founders, creators, and brands who care more about the reader than the algorithm. Most online content is written to be skimmed. I write to be read.</p>
+    <p>My process is slow on purpose: real research, primary sources, a clear argument, and language that respects the reader&rsquo;s time. The result is work that ranks on Google, holds attention to the last line, and sounds like a person &mdash; because a person wrote it.</p>
+    <p>Where it helps, I use AI for structural research and SEO &mdash; but every argument, transition, and final line is still written by hand.</p>
+    <ul>
+      <li>Long-form SEO blogs built around search intent, not word count</li>
+      <li>Structured for featured snippets, AI answers, and page-one rankings</li>
+      <li>Original research, primary sources, and a clear point of view</li>
+      <li>Every line written by hand &mdash; no AI drafts, no spun copy</li>
+    </ul>
+  </section>
+
+  <section id="services">
+    <h2>What I Offer</h2>
+    <article>
+      <h3>SEO Blog Writing</h3>
+      <ul>
+        <li>High-quality, keyword-optimized blog posts</li>
+        <li>Designed to rank on Google page 1</li>
+        <li>100% human-written content</li>
+        <li>Focus on traffic + conversions</li>
+      </ul>
+    </article>
+    <article>
+      <h3>Search Intent &amp; Content Strategy</h3>
+      <ul>
+        <li>Keyword and competitor gap research</li>
+        <li>Topic clusters mapped to buyer intent</li>
+        <li>Briefs built from primary sources</li>
+        <li>Structured for featured snippets and AI answers</li>
+        <li>Long-form content built around search intent, not word count</li>
+      </ul>
+    </article>
+  </section>
+
+  <section id="contact">
+    <h2>Let&rsquo;s Work Together</h2>
+    <p>Ready to grow your traffic with premium, human-written content? Reach out through any channel below.</p>
+    <ul>
+      <li><a href="mailto:ashutosh@mail.ashutoshwrites.online">ashutosh@mail.ashutoshwrites.online</a></li>
+      <li><a href="tel:+919040451510">+91 9040451510</a></li>
+      <li><a href="https://wa.me/919040451510">WhatsApp</a></li>
+      <li><a href="https://instagram.com/ashutosh.writes">@ashutosh.writes</a></li>
+      <li><a href="https://linkedin.com/in/ashutosh-mahapatra">Ashutosh Mahapatra on LinkedIn</a></li>
+    </ul>
+  </section>
+</main>
+<footer>
+  <nav aria-label="Work">
+    <h2>Work</h2>
+    <ul>
+      <li><a href="/#portfolio">Featured Work</a></li>
+      <li><a href="/work">All Work</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+  </nav>
+  <nav aria-label="Services">
+    <h2>Services</h2>
+    <ul>
+      <li><a href="/#services">SEO Blogs</a></li>
+      <li><a href="/#services">Content Strategy</a></li>
+    </ul>
+  </nav>
+  <nav aria-label="Connect">
+    <h2>Connect</h2>
+    <ul>
+      <li><a href="mailto:ashutosh@mail.ashutoshwrites.online">Email</a></li>
+      <li><a href="https://wa.me/919040451510">WhatsApp</a></li>
+      <li><a href="https://linkedin.com/in/ashutosh-mahapatra">LinkedIn</a></li>
+      <li><a href="https://instagram.com/ashutosh.writes">@ashutosh.writes</a></li>
+    </ul>
+  </nav>
+  <nav aria-label="Site">
+    <h2>Site</h2>
+    <ul>
+      <li><a href="/#home">Home</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#process">Process</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <p>&copy; ${new Date().getFullYear()} Ashutosh Mahapatra</p>
+</footer>`.trim();
+}
+
+function blogIndexBodyHtml(seo) {
+  return `
+<nav aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; Blog</nav>
+<main>
+  <h1>Latest Writing</h1>
+  <p>Long-form pieces on the ideas shaping AI, finance, and content.</p>
+  <article>
+    <h2><a href="${seo.routes.aiPersonalFinance2026.path}">AI Personal Finance 2026</a></h2>
+    <p>Verified stats, structural trends, and the risks most AI finance coverage misses &mdash; built for readers who want signal over noise.</p>
+  </article>
+  <article>
+    <h2><a href="${seo.routes.humanCreativityVsAi.path}">The Authenticity Premium in the AI-Slop Era</a></h2>
+    <p>Why human creativity is winning in 2026 and how creators can turn authenticity into a durable competitive advantage.</p>
+  </article>
+</main>`.trim();
+}
+
+function workIndexBodyHtml(seo) {
+  return `
+<nav aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; Work</nav>
+<main>
+  <h1>Selected Work</h1>
+  <p>Every piece here started with search intent and primary research &mdash; then got written by hand, line by line.</p>
+  <article>
+    <h2><a href="${seo.routes.humanCreativityVsAi.path}">Winning the Authenticity Premium in the AI-Slop Era</a></h2>
+    <p>Creator Economy &middot; SEO Blog &middot; research-backed anchor article</p>
+    <p>Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026 - built to rank and to convert.</p>
+  </article>
+  <article>
+    <h2><a href="${seo.routes.aiPersonalFinance2026.path}">Scaling Trust for an AI-Powered Personal Finance Audience</a></h2>
+    <p>Fintech &middot; SEO Blog &middot; 18 verified stats</p>
+    <p>AI finance content was crowded with surface-level listicles and zero verified data. I built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.</p>
+  </article>
+  <article>
+    <h2><a href="${seo.routes.byoaShadowAi.path}">Why BYOA Is B2B SaaS's Next Data Nightmare</a></h2>
+    <p>AI &amp; Cybersecurity &middot; SEO Blog &middot; CVE-2025-32711 cited</p>
+    <p>Shadow AI coverage was stuck describing 2019-era shadow IT. I wrote a threat brief on how agents ship pre-embedded inside approved platforms, inheriting OAuth scope nobody reviewed, backed by CVE-2025-32711 and a three-pillar governance framework.</p>
+  </article>
+</main>`.trim();
+}
+
+// Per-post Challenge/Approach/Craft Notes copy, mirrored from the
+// <CaseStudyFrame> props in src/pages/blog-posts/*.tsx. Keep in sync with
+// those files — if you edit the props there, edit the matching entry here.
+const caseStudyFrames = {
+  aiPersonalFinance2026: {
+    niche: "AI Fintech",
+    format: "SEO Blog",
+    statHighlight: "18 verified stats",
+    challenge:
+      "AI finance content was crowded with surface-level listicles and zero verified data, so nothing in the niche earned a reader's trust.",
+    approach:
+      "I built a long-form authority piece carrying 18 verified stats, 5 trends, and the risks most coverage skips entirely.",
+    craftNotes: [
+      "Verified every statistic before it went in, so each number can be traced to a primary source.",
+      "Rewrote section headings as the direct questions readers ask, formatted for featured snippets and AI answers.",
+      "Added a short standalone summary under the headline and a Key Takeaway line closing each major section.",
+    ],
+  },
+  byoaShadowAi: {
+    niche: "Cybersecurity",
+    format: "SEO Blog",
+    statHighlight: "CVE-2025-32711 cited",
+    challenge:
+      "Shadow AI coverage was stuck describing 2019-era shadow IT — employees smuggling in unapproved tools — which no longer matches how AI actually enters a company.",
+    approach:
+      "I wrote it as a threat brief: how agents ship pre-embedded inside already-approved platforms and inherit OAuth scope nobody reviewed, anchored to CVE-2025-32711 and closed with a three-pillar governance framework.",
+    craftNotes: [
+      "Led with the gap in existing coverage so security readers immediately see why the 2019 shadow-IT frame fails.",
+      "Anchored the core claim to a citable CVE rather than vendor commentary, so the piece holds up under scrutiny.",
+      "Ended on a three-pillar framework, giving the article a reusable structure teams can act on and other pages can cite.",
+    ],
+  },
+  humanCreativityVsAi: {
+    niche: "Creator Economy",
+    format: "SEO Blog",
+    statHighlight: "research-backed anchor article",
+    challenge:
+      "Audiences were already tuning out AI-generated content, but the niche had no anchor article explaining what was happening.",
+    approach:
+      "I produced a research-backed analysis of why human creators are winning in 2026 — built to rank and to convert, not just to describe the trend.",
+    craftNotes: [
+      "Positioned the piece as the niche's missing anchor article so it could absorb search demand around the topic.",
+      "Supported the argument with original charts instead of restating other people's summaries.",
+      "Kept the through-line on why human creators win, so every section pays off the headline promise.",
+    ],
+  },
+};
+
+function caseStudyFrameHtml(meta, frame) {
+  const notes = frame.craftNotes.map((n) => `<li>${n}</li>`).join("");
+  return `
+<section>
+  <p>${frame.niche}</p>
+  <h1>${meta.title}</h1>
+  <h2>Challenge</h2>
+  <p>${frame.challenge}</p>
+  <h2>Approach</h2>
+  <p>${frame.approach}</p>
+  <dl>
+    <dt>Format</dt><dd>${frame.format}</dd>
+    <dt>Niche</dt><dd>${frame.niche}</dd>
+    <dt>Key stat</dt><dd>${frame.statHighlight}</dd>
+  </dl>
+  <h2>Craft Notes</h2>
+  <ul>${notes}</ul>
+</section>`;
+}
+
+async function buildRoutes(seo) {
+  const routes = [];
+
+  routes.push({
+    key: "home",
+    ...seo.routes.home,
+    canonical: `${seo.siteUrl}${seo.routes.home.path}`,
+    jsonLdList: [JSON.stringify({ "@context": "https://schema.org", "@graph": [seo.person, seo.professionalService] })],
+    bodyHtml: homeBodyHtml(seo),
+  });
+
+  routes.push({
+    key: "blogIndex",
+    ...seo.routes.blogIndex,
+    canonical: `${seo.siteUrl}${seo.routes.blogIndex.path}`,
+    jsonLdList: [
+      JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: seo.siteUrl },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${seo.siteUrl}${seo.routes.blogIndex.path}` },
+        ],
+      }),
+    ],
+    bodyHtml: blogIndexBodyHtml(seo),
+  });
+
+  routes.push({
+    key: "work",
+    ...seo.routes.work,
+    canonical: `${seo.siteUrl}${seo.routes.work.path}`,
+    jsonLdList: [
+      JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: seo.siteUrl },
+          { "@type": "ListItem", position: 2, name: "Work", item: `${seo.siteUrl}${seo.routes.work.path}` },
+        ],
+      }),
+    ],
+    bodyHtml: workIndexBodyHtml(seo),
+  });
+
+  for (const key of ["aiPersonalFinance2026", "humanCreativityVsAi", "byoaShadowAi"]) {
+    const meta = seo.routes[key];
+    const sourcePath = join(PUBLIC, "static-blogs", meta.staticSource);
+    if (!existsSync(sourcePath)) {
+      fail(`missing static source for route "${key}": ${sourcePath}`);
+    }
+    const raw = await readFile(sourcePath, "utf8");
+    const { styles, body, jsonLd } = extractStaticBlogParts(raw);
+    const frame = caseStudyFrames[key];
+    const frameHtml = frame ? caseStudyFrameHtml(meta, frame) : "";
+    routes.push({
+      key,
+      ...meta,
+      canonical: `${seo.siteUrl}${meta.path}`,
+      jsonLdList: jsonLd.length
+        ? jsonLd
+        : [JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: meta.title })],
+      bodyHtml: `${frameHtml}\n${styles}\n<article>${body}</article>`,
+    });
+  }
+
+  return routes;
+}
+
+async function main() {
+  if (!existsSync(join(DIST, "index.html"))) {
+    fail("dist/index.html not found — run `vite build` before this script (it runs automatically as \"postbuild\").");
+  }
+
+  const seoRaw = await readFile(join(ROOT, "src/data/seo-data.json"), "utf8");
+  const seo = JSON.parse(seoRaw);
+  const template = await readFile(join(DIST, "index.html"), "utf8");
+  const routes = await buildRoutes(seo);
+
+  let failures = 0;
+  for (const route of routes) {
+    try {
+      const headHtml = buildHeadTags({
+        title: route.title,
+        description: route.description,
+        canonical: route.canonical,
+        ogType: route.ogType,
+        ogImage: route.ogImage,
+        jsonLdList: route.jsonLdList,
+      });
+      const html = stampTemplate(template, { headHtml, bodyHtml: route.bodyHtml });
+
+      const outPath = join(DIST, route.outFile);
+      await mkdir(dirname(outPath), { recursive: true });
+      await writeFile(outPath, html, "utf8");
+
+      // Sanity check: confirm the write actually contains real content and
+      // not an empty shell, so a bug here fails loudly instead of shipping
+      // silently-broken output like the old Puppeteer script could.
+      if (!html.includes(escapeHtml(route.title)) || html.includes('<div id="root"></div>')) {
+        throw new Error("output does not contain expected title/body content (empty-shell check failed)");
+      }
+
+      console.log(`[prerender] OK   ${route.path} -> dist/${route.outFile} (${(html.length / 1024).toFixed(0)} KB)`);
+    } catch (err) {
+      failures += 1;
+      console.error(`[prerender] FAIL ${route.path}: ${err?.message ?? err}`);
+    }
+  }
+
+  if (failures > 0) {
+    fail(`${failures} of ${routes.length} route(s) failed to prerender. Build should not be treated as SEO-safe.`);
+  }
+
+  console.log(`[prerender] done — ${routes.length} route(s) prerendered successfully.`);
+}
+
+main().catch((err) => fail(err?.stack ?? String(err)));
