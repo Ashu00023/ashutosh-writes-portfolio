@@ -34,7 +34,6 @@ const columns = [
     title: "Services",
     links: [
       { label: "SEO Blogs", href: "/#services" },
-      { label: "YouTube Scripts", href: "/#services" },
       { label: "Content Strategy", href: "/#services" },
     ],
   },
