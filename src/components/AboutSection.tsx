@@ -8,6 +8,11 @@ const highlights = [
   "Every line written by hand — no AI drafts, no spun copy",
 ];
 
+const stats: { value: string; label: string }[] = [
+  // Add only verified figures supplied by Ashutosh:
+  // { value: "[NEEDS REAL NUMBER]", label: "[NEEDS REAL LABEL]" },
+];
+
 const AboutSection = () => (
   <section id="about" className="py-28">
     <div className="container mx-auto px-6 max-w-3xl">
@@ -19,21 +24,18 @@ const AboutSection = () => (
         </h2>
       </ScrollReveal>
 
-      <ScrollReveal delay={0.08}>
-        <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-          {/* TODO: Replace [NEEDS REAL NUMBER] with real proof points once Ashutosh provides exact numbers. */}
-          {[
-            { value: "[NEEDS REAL NUMBER]", label: "published SEO samples" },
-            { value: "[NEEDS REAL NUMBER]", label: "verified sources used" },
-            { value: "[NEEDS REAL NUMBER]", label: "focused writing niches" },
-          ].map((stat) => (
-            <div key={stat.label} className="sm:flex-1">
-              <p className="text-2xl font-bold text-foreground tracking-tight">{stat.value}</p>
-              <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </ScrollReveal>
+      {stats.length > 0 && (
+        <ScrollReveal delay={0.08}>
+          <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+            {stats.map((stat) => (
+              <div key={stat.label} className="sm:flex-1">
+                <p className="text-2xl font-bold text-foreground tracking-tight">{stat.value}</p>
+                <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
+      )}
 
       <ScrollReveal delay={0.15}>
         <p className="text-muted-foreground leading-relaxed mb-5">
