@@ -1,6 +1,6 @@
 const facts = [
   { number: "18+ verified stats", label: "research-backed" },
-  { number: "1 CVE cited", label: "in production security writing" },
+  { number: "1 CVE cited", label: "fully sourced and verified" },
   { number: "3 niches", label: "fintech, AI, cybersecurity" },
   { number: "100%", label: "human-written, zero spun copy" },
 ];

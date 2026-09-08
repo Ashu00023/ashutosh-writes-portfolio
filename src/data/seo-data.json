@@ -5,12 +5,11 @@
     "@id": "https://ashutoshwrites.online/#person",
     "name": "Ashutosh Mahapatra",
     "url": "https://ashutoshwrites.online/",
-    "jobTitle": "SEO Blog & YouTube Script Writer",
+    "jobTitle": "SEO Blog Writer",
     "knowsAbout": [
       "SEO content strategy",
       "Personal finance writing",
       "Artificial intelligence",
-      "YouTube scriptwriting",
       "Long-form content",
       "Search intent research"
     ],
@@ -21,17 +20,17 @@
     "@id": "https://ashutoshwrites.online/#service",
     "name": "Ashutosh Writes",
     "url": "https://ashutoshwrites.online/",
-    "description": "Human-written SEO blog posts and YouTube scripts for finance and AI brands.",
+    "description": "Human-written SEO blog posts specializing in finance and AI topics.",
     "founder": { "@id": "https://ashutoshwrites.online/#person" },
     "areaServed": "Worldwide",
-    "serviceType": ["SEO blog writing", "YouTube script writing"]
+    "serviceType": ["SEO blog writing"]
   },
   "routes": {
     "home": {
       "path": "/",
       "outFile": "index.html",
-      "title": "Ashutosh Mahapatra — SEO Blog & YouTube Script Writer",
-      "description": "Hire Ashutosh Mahapatra — SEO blog and YouTube script writer specializing in finance and AI. 100% human-written content built to rank on Google and retain on YouTube.",
+      "title": "Ashutosh Mahapatra — SEO Blog Writer",
+      "description": "Ashutosh Mahapatra — SEO blog writer specializing in finance and AI topics. 100% human-written, research-backed content built to rank.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
