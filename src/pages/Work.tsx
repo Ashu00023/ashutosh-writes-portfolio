@@ -79,16 +79,16 @@ const Work = () => {
   return (
     <>
       <Helmet>
-        <title>Selected Work — SEO Blog Case Studies | Ashutosh Mahapatra</title>
+        <title>Selected Work — SEO Blog Samples | Ashutosh Mahapatra</title>
         <meta
           name="description"
-          content="Selected SEO blog case studies across AI, cybersecurity, fintech, and the creator economy — each engineered for ranking, retention, and revenue."
+          content="Self-directed SEO blog samples across AI, cybersecurity, fintech, and the creator economy — each written and structured exactly as I'd deliver for a client, engineered for ranking, retention, and revenue."
         />
         <link rel="canonical" href={canonical} />
-        <meta property="og:title" content="Selected Work — SEO Blog Case Studies" />
+        <meta property="og:title" content="Selected Work — SEO Blog Samples" />
         <meta
           property="og:description"
-          content="Selected SEO blog case studies across AI, cybersecurity, fintech, and the creator economy."
+          content="Self-directed SEO blog samples across AI, cybersecurity, fintech, and the creator economy."
         />
         <meta property="og:url" content={canonical} />
         <meta property="og:type" content="website" />
