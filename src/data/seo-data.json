@@ -42,6 +42,14 @@
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
+    "work": {
+      "path": "/work",
+      "outFile": "work/index.html",
+      "title": "Selected Work — SEO Blog Samples | Ashutosh Mahapatra",
+      "description": "Self-directed SEO blog samples across AI, cybersecurity, fintech, and the creator economy — each written and structured exactly as I'd deliver for a client, engineered for ranking, retention, and revenue.",
+      "ogType": "website",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
     "aiPersonalFinance2026": {
       "path": "/blog/ai-personal-finance-2026",
       "outFile": "blog/ai-personal-finance-2026/index.html",
