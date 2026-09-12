@@ -1280,6 +1280,29 @@ table.comparison {
   margin: 0 !important;
 }
 
+.related-reading {
+  margin: 40px 0 0;
+  padding: 32px 0 0;
+  border-top: 1px solid var(--border);
+}
+.related-reading h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 0 0 14px;
+}
+.related-reading-list { list-style: none; margin: 0; padding: 0; }
+.related-reading-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+.related-reading-list li:last-child { border-bottom: none; }
+.related-reading-list a { color: var(--silver); text-decoration: none; transition: color 0.15s; }
+.related-reading-list a:hover { color: var(--ember); }
+
 /* ── ANIMATIONS ── */
 @keyframes riseUp {
   from { opacity: 0; transform: translateY(28px); }
@@ -1990,12 +2013,20 @@ table.comparison {
       <div class="bio-text">
         <div class="bio-name">Ashutosh Mahapatra</div>
         <div class="bio-role">SEO Content Strategist · ashutoshwrites.online</div>
-        <p>Ashutosh writes long-form, research-backed content for brands that want to actually rank and actually resonate — not just slide past a keyword checker. Built on real competitor audits, real research, and a fairly low tolerance for slop. His own included.</p>
+                <p>Ashutosh writes long-form, research-backed content for brands that want to actually rank and actually resonate — not just slide past a keyword checker. Built on real competitor audits, real research, and a fairly low tolerance for slop. His own included.</p>
       </div>
     </div>
 
-  </article>
+    <div class="related-reading">
+      <h2>Related Reading</h2>
+      <ul class="related-reading-list">
+        <li><a href="https://ashutoshwrites.online/visa-agentic-commerce-disputes-seo.html">Visa Already Decided Who Eats the Loss When Your AI Agent Buys the Wrong Thing</a></li>
+        <li><a href="https://ashutoshwrites.online/blog/ai-personal-finance-2026">AI Personal Finance 2026: Stats, Tools &amp; Risks Explained</a></li>
+        <li><a href="https://ashutoshwrites.online/blog/byoa-shadow-ai-b2b-saas-2026">The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare</a></li>
+      </ul>
+    </div>
 
+  </article>
   <!-- RIGHT SIDEBAR -->
   <aside class="sidebar-right">
     <div class="sidebar-stat">
