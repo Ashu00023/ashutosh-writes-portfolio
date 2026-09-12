@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo-new.png";
 
@@ -10,12 +10,15 @@ const links = [
   { label: "Portfolio", href: "/#portfolio" },
   { label: "Work", href: "/work" },
   { label: "Blog", href: "/blog" },
+  { label: "Author", href: "/author/ashutosh-mahapatra" },
   { label: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isCurrent = (href: string) => !href.includes("#") && (pathname === href || pathname.startsWith(`${href}/`));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -50,7 +53,10 @@ const Navbar = () => {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="px-3.5 py-2 rounded-lg text-[13px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all duration-200"
+                aria-current={isCurrent(l.href) ? "page" : undefined}
+                className={`px-3.5 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 hover:bg-muted/60 ${
+                  isCurrent(l.href) ? "text-accent" : "text-muted-foreground hover:text-foreground"
+                }`}
               >
                 {l.label}
               </a>
@@ -86,7 +92,10 @@ const Navbar = () => {
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all"
+                  aria-current={isCurrent(l.href) ? "page" : undefined}
+                  className={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-all hover:bg-muted/60 ${
+                    isCurrent(l.href) ? "text-accent" : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
                   {l.label}
                 </a>
