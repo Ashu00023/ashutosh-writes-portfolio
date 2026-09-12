@@ -46,8 +46,20 @@ export const workItems: WorkItem[] = [
     summary:
       "Shadow AI coverage was stuck describing 2019-era shadow IT. I wrote a threat brief on how agents ship pre-embedded inside approved platforms, inheriting OAuth scope nobody reviewed, backed by CVE-2025-32711 and a three-pillar governance framework.",
     image: "/byoa-shadow-ai-blog-thumbnail.png",
-    liveUrl: "/static-blogs/byoa-shadow-ai-blog.html",
+        liveUrl: "/static-blogs/byoa-shadow-ai-blog.html",
     transcriptHref: seo.routes.byoaShadowAi.path,
+  },
+  {
+    niche: "Fintech & AI",
+    category: "Fintech",
+    format: "SEO Blog",
+    stat: "12 primary sources cited",
+    title: "Untangling Liability in Visa's New Agentic Commerce Dispute Rules",
+    summary:
+      "Visa quietly routed AI-agent purchases into its existing card-not-present dispute rules, and most coverage skipped the actual liability question. I wrote a fact-checked breakdown of who eats the loss when an agent buys the wrong thing, sourced against Visa and Mastercard's own rule text.",
+    image: "/visa-agentic-commerce-dispute-seo-thumbnail",
+    liveUrl: "/visa-agentic-commerce-disputes-seo.html",
+    transcriptHref: seo.routes.visaAgenticCommerceDisputes.path,
   },
 ];
 
