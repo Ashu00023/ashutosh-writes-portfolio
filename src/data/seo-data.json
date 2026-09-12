@@ -50,6 +50,14 @@
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
+    "author": {
+      "path": "/author/ashutosh-mahapatra",
+      "outFile": "author/ashutosh-mahapatra/index.html",
+      "title": "Ashutosh Mahapatra — Technology Writer (AI, Cybersecurity, Business)",
+      "description": "About Ashutosh Mahapatra: independent technology writer covering AI, cybersecurity, and business, with an archive of every published article.",
+      "ogType": "profile",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
     "aiPersonalFinance2026": {
       "path": "/blog/ai-personal-finance-2026",
       "outFile": "blog/ai-personal-finance-2026/index.html",
