@@ -336,8 +336,71 @@ function blogIndexBodyHtml(seo) {
     <h2><a href="${seo.routes.humanCreativityVsAi.path}">The Authenticity Premium in the AI-Slop Era</a></h2>
     <p>Why human creativity is winning in 2026 and how creators can turn authenticity into a durable competitive advantage.</p>
   </article>
+  <article>
+    <h2><a href="${seo.routes.byoaShadowAi.path}">The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare</a></h2>
+    <p>AI agents aren&rsquo;t sneaking in through shadow IT anymore &mdash; they&rsquo;re inheriting OAuth scope from platforms you already approved.</p>
+  </article>
 </main>`.trim();
 }
+
+function authorBodyHtml(seo) {
+  const items = ["aiPersonalFinance2026", "humanCreativityVsAi", "byoaShadowAi"]
+    .map((key) => `    <li><a href="${seo.routes[key].path}">${seo.routes[key].title}</a></li>`)
+    .join("\n");
+  return `
+<nav aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; Author</nav>
+<main>
+  <h1>Ashutosh Mahapatra</h1>
+  <p>Technology writer &mdash; AI, cybersecurity, and business.</p>
+  <p>I write long-form, research-backed articles about technology and money. My work starts with primary sources &mdash; filings, CVEs, vendor documentation, published research &mdash; and every piece is written by hand. Where AI helps, I use it for structural research and SEO mapping, never to generate the prose.</p>
+  <h2>Articles by Ashutosh Mahapatra</h2>
+  <ul>
+${items}
+  </ul>
+</main>`.trim();
+}
+
+function legalBodyHtml(meta, sections) {
+  const items = sections.map((section) => `    <li>${section}</li>`).join("\n");
+  return `
+<nav aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; ${meta.title.split("|")[0].trim()}</nav>
+<main>
+  <h1>${meta.title.split("|")[0].trim()}</h1>
+  <p>${meta.description}</p>
+  <h2>What this page covers</h2>
+  <ul>
+${items}
+  </ul>
+  <p>Questions? Email <a href="mailto:ashutosh@mail.ashutoshwrites.online">ashutosh@mail.ashutoshwrites.online</a>.</p>
+</main>`.trim();
+}
+
+const legalSections = {
+  privacyPolicy: [
+    "Information collected and how it is used",
+    "Third-party services, analytics, and Google AdSense",
+    "Legal bases, retention, and international transfers",
+    "Your GDPR and CCPA rights, and how to exercise them",
+  ],
+  termsOfUse: [
+    "Intellectual property and content ownership",
+    "Permitted use, attribution, and republication limits",
+    "Acceptable use and third-party links",
+    "Limitation of liability and governing law",
+  ],
+  cookiePolicy: [
+    "Essential cookies",
+    "Analytics cookies",
+    "Advertising cookies, including Google AdSense",
+    "Consent and browser-level controls",
+  ],
+  disclaimer: [
+    "Educational purpose of all content",
+    "No financial, legal, or professional advice",
+    "Research, sourcing, and how AI is used",
+    "Accuracy, timeliness, and advertising independence",
+  ],
+};
 
 function workIndexBodyHtml(seo) {
   return `

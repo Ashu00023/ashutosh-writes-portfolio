@@ -58,6 +58,38 @@
       "ogType": "profile",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
+    "privacyPolicy": {
+      "path": "/privacy-policy",
+      "outFile": "privacy-policy/index.html",
+      "title": "Privacy Policy | Ashutosh Mahapatra",
+      "description": "How ashutoshwrites.online handles personal data, cookies, analytics, advertising partners, and your privacy rights under GDPR and CCPA.",
+      "ogType": "website",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
+    "termsOfUse": {
+      "path": "/terms-of-use",
+      "outFile": "terms-of-use/index.html",
+      "title": "Terms of Use | Ashutosh Mahapatra",
+      "description": "The terms that govern your use of ashutoshwrites.online, including intellectual property, acceptable use, and limitation of liability.",
+      "ogType": "website",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
+    "cookiePolicy": {
+      "path": "/cookie-policy",
+      "outFile": "cookie-policy/index.html",
+      "title": "Cookie Policy | Ashutosh Mahapatra",
+      "description": "Which cookies ashutoshwrites.online uses — essential, analytics, and advertising — and how you can control them.",
+      "ogType": "website",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
+    "disclaimer": {
+      "path": "/disclaimer",
+      "outFile": "disclaimer/index.html",
+      "title": "Disclaimer | Ashutosh Mahapatra",
+      "description": "Editorial disclaimer for ashutoshwrites.online: content is educational, is not financial, legal, or professional advice, and how research and AI are used.",
+      "ogType": "website",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
     "aiPersonalFinance2026": {
       "path": "/blog/ai-personal-finance-2026",
       "outFile": "blog/ai-personal-finance-2026/index.html",
