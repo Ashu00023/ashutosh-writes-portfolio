@@ -108,7 +108,7 @@
       "ogImage": "https://ashutoshwrites.online/ai-content-blog-thumbnail.jpg",
       "staticSource": "ai-authenticity-premium-2026.html"
     },
-    "byoaShadowAi": {
+        "byoaShadowAi": {
       "path": "/blog/byoa-shadow-ai-b2b-saas-2026",
       "outFile": "blog/byoa-shadow-ai-b2b-saas-2026/index.html",
       "title": "The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare",
@@ -116,6 +116,13 @@
       "ogType": "article",
       "ogImage": "https://ashutoshwrites.online/byoa-shadow-ai-blog-thumbnail.png",
       "staticSource": "byoa-shadow-ai-blog.html"
+    },
+    "visaAgenticCommerceDisputes": {
+      "path": "/visa-agentic-commerce-disputes-seo.html",
+      "title": "Visa Already Decided Who Eats the Loss When Your AI Agent Buys the Wrong Thing",
+      "description": "Visa's April 2026 Core Rules update routed agent purchases into existing card-not-present dispute rules. Fact-checked against primary sources.",
+      "ogType": "article",
+      "ogImage": "https://ashutoshwrites.online/visa-agentic-commerce-dispute-seo-thumbnail"
     }
   }
 }
