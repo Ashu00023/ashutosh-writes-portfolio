@@ -163,31 +163,43 @@ const Author = () => (
             Articles by Ashutosh <span className="font-display italic text-accent font-normal">Mahapatra</span>
           </h2>
           <ul className="space-y-4">
-            {posts.map((post, i) => (
-              <ScrollReveal key={post.href} direction="up" delay={i * 0.06}>
-                <li>
-                  <Link
-                    to={post.href}
-                    className="group flex items-start justify-between gap-6 rounded-xl border border-border/60 bg-card p-6 hover:border-accent/30 hover:shadow-xl transition-all duration-300"
-                  >
-                    <span className="min-w-0">
-                      <span className="block text-[10px] font-semibold text-accent uppercase tracking-[0.15em] mb-2">
-                        {post.label}
-                      </span>
-                      <span className="block text-lg font-bold text-foreground leading-snug group-hover:text-accent transition-colors">
-                        {post.title}
-                      </span>
-                      <span className="mt-2 block text-sm text-muted-foreground leading-relaxed">{post.summary}</span>
+                        {posts.map((post, i) => {
+              const cardClassName =
+                "group flex items-start justify-between gap-6 rounded-xl border border-border/60 bg-card p-6 hover:border-accent/30 hover:shadow-xl transition-all duration-300";
+              const cardInner = (
+                <>
+                  <span className="min-w-0">
+                    <span className="block text-[10px] font-semibold text-accent uppercase tracking-[0.15em] mb-2">
+                      {post.label}
                     </span>
-                    <ArrowUpRight
-                      size={18}
-                      aria-hidden="true"
-                      className="shrink-0 text-muted-foreground group-hover:text-accent transition-colors"
-                    />
-                  </Link>
-                </li>
-              </ScrollReveal>
-            ))}
+                    <span className="block text-lg font-bold text-foreground leading-snug group-hover:text-accent transition-colors">
+                      {post.title}
+                    </span>
+                    <span className="mt-2 block text-sm text-muted-foreground leading-relaxed">{post.summary}</span>
+                  </span>
+                  <ArrowUpRight
+                    size={18}
+                    aria-hidden="true"
+                    className="shrink-0 text-muted-foreground group-hover:text-accent transition-colors"
+                  />
+                </>
+              );
+              return (
+                <ScrollReveal key={post.href} direction="up" delay={i * 0.06}>
+                  <li>
+                    {post.external ? (
+                      <a href={post.href} className={cardClassName}>
+                        {cardInner}
+                      </a>
+                    ) : (
+                      <Link to={post.href} className={cardClassName}>
+                        {cardInner}
+                      </Link>
+                    )}
+                  </li>
+                </ScrollReveal>
+              );
+            })}
           </ul>
         </section>
       </div>
