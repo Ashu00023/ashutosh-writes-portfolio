@@ -5,7 +5,9 @@ import ScrollReveal from "./ScrollReveal";
 import { prefetchSamples, prefetchOne } from "@/lib/prefetch";
 import { workItems, type WorkItem } from "@/data/work";
 
-const featured = workItems.slice(0, 3);
+const featured = workItems.slice(0, 4);
+
+const isSpaRoute = (href: string) => href.startsWith("/blog/");
 
 const BlogCard = ({ b }: { b: WorkItem }) => (
   <article
@@ -40,12 +42,23 @@ const BlogCard = ({ b }: { b: WorkItem }) => (
         >
           View Live Article <ArrowUpRight size={15} />
         </a>
-        <Link
-          to={b.transcriptHref}
-          className="inline-flex items-center gap-1.5 border border-border text-foreground text-sm font-semibold px-4 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-colors duration-200"
-        >
-          <FileText size={14} /> Read Clean Transcript
-        </Link>
+                {isSpaRoute(b.transcriptHref) ? (
+          <Link
+            to={b.transcriptHref}
+            className="inline-flex items-center gap-1.5 border border-border text-foreground text-sm font-semibold px-4 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-colors duration-200"
+          >
+            <FileText size={14} /> Read Clean Transcript
+          </Link>
+        ) : (
+          
+            href={b.transcriptHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 border border-border text-foreground text-sm font-semibold px-4 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-colors duration-200"
+          >
+            <FileText size={14} /> Read Clean Transcript
+          </a>
+        )}
       </div>
     </div>
   </article>
