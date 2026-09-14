@@ -105,13 +105,12 @@ const Blog = () => {
             </p>
           </ScrollReveal>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            {visible.map((post, i) => (
-              <ScrollReveal key={post.href} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
-                <Link
-                  to={post.href}
-                  className="group flex flex-col h-full rounded-2xl bg-card border border-border/60 p-8 hover:shadow-xl hover:border-accent/30 transition-all duration-300"
-                >
+                  <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+            {visible.map((post, i) => {
+              const cardClassName =
+                "group flex flex-col h-full rounded-2xl bg-card border border-border/60 p-8 hover:shadow-xl hover:border-accent/30 transition-all duration-300";
+              const cardInner = (
+                <>
                   <span className="self-start inline-flex items-center gap-1.5 text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em] mb-5">
                     <BookOpen size={11} aria-hidden="true" /> {post.label}
                   </span>
@@ -127,11 +126,23 @@ const Blog = () => {
                       className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     />
                   </span>
-                </Link>
-              </ScrollReveal>
-            ))}
+                </>
+              );
+              return (
+                <ScrollReveal key={post.href} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
+                  {post.external ? (
+                    <a href={post.href} className={cardClassName}>
+                      {cardInner}
+                    </a>
+                  ) : (
+                    <Link to={post.href} className={cardClassName}>
+                      {cardInner}
+                    </Link>
+                  )}
+                </ScrollReveal>
+              );
+            })}
           </div>
-
           {totalPages > 1 && (
             <nav aria-label="Blog pagination" className="mt-14 flex items-center justify-center gap-2">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
