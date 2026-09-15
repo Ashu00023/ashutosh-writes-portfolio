@@ -64,20 +64,20 @@ const HeroSection = () => (
       >
         <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-foreground mb-6">
           <span className="h-px w-8 bg-accent" aria-hidden="true" />
-          SEO Blog Writing
+          Research-Driven Content
         </p>
 
         <h1 className="text-[3rem] sm:text-[3.75rem] md:text-[4.25rem] lg:text-[5.25rem] font-extrabold leading-[0.95] tracking-[-0.045em] text-foreground mb-8">
-          Long-form content that <span className="font-display italic font-normal tracking-[-0.02em] text-accent">earns</span> attention &mdash;{" "}
-          <span className="accent-underline">not chases it.</span>
+          Research-Driven SEO Content for{" "}
+          <span className="accent-underline">AI, Fintech &amp; SaaS</span>
         </h1>
 
         <p className="text-[15px] md:text-base text-muted-foreground max-w-md mb-6 leading-relaxed">
-          I write deeply researched SEO blogs for founders and brands who want readers to finish the article &mdash; and search engines to rank it.
+          I turn complex industry topics into authoritative long-form content built around search intent, primary research, and clear editorial thinking.
         </p>
 
         <p className="text-xs font-medium tracking-[0.14em] uppercase text-muted-foreground/80 border-l border-border pl-4 mb-10">
-          Human-Written <span className="text-border mx-1.5">/</span> Research-Led
+          Primary Research / Original Analysis / Human Editorial Judgment
         </p>
 
         <div className="flex flex-wrap gap-3">
@@ -85,7 +85,7 @@ const HeroSection = () => (
             View Portfolio <ArrowRight size={15} />
           </MagneticCta>
           <MagneticCta href="#contact" variant="secondary">
-            Hire Me <ArrowRight size={15} />
+            Start a Project <ArrowRight size={15} />
           </MagneticCta>
         </div>
       </motion.div>

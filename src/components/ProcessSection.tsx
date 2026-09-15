@@ -2,26 +2,24 @@ import ScrollReveal from "./ScrollReveal";
 
 const steps = [
   {
-    title: "Brief & Research",
-    description:
-      "Understand the audience, gather primary sources, verify every stat before writing a word",
+    title: "Brief & Audience",
+    description: "Understand the business, reader, search intent and desired outcome",
   },
   {
-    title: "Outline & SEO Mapping",
-    description:
-      "Structure built around search intent and featured-snippet formatting, not word count targets",
+    title: "Research & Verification",
+    description: "Gather primary sources and verify important claims before drafting",
   },
   {
-    title: "Draft",
-    description: "Written by hand, sentence by sentence — no AI-generated drafts",
+    title: "Search & Editorial Architecture",
+    description: "Build the article around search intent, information hierarchy and the strongest original angle",
   },
   {
-    title: "Structural Edit",
-    description: "Cut anything that doesn't earn its place; check argument flow and pacing",
+    title: "Writing & Refinement",
+    description: "Write, edit, tighten and test the argument for clarity and flow",
   },
   {
     title: "Delivery & Handoff",
-    description: "Clean formatting, source list, and a short rationale note on key decisions",
+    description: "Deliver the finished article, source list, SEO structure and useful implementation notes",
   },
 ];
 

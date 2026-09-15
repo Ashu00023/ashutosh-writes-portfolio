@@ -34,8 +34,8 @@ export const contacts = [
 
 const inquiryCard = {
   icon: FileText,
-  title: "SEO Blog Inquiry",
-  copy: "Tell me about your brand, target keywords, and goals. I'll reply within 24 hours with a scope and quote.",
+  title: "Start a Project",
+  copy: "Tell me what you're building, who it is for, and what you need written.",
   cta: "Start inquiry",
 };
 
@@ -48,10 +48,10 @@ const ContactSection = () => {
         <ScrollReveal className="text-center mb-16">
           <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Contact</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
-            Let&rsquo;s Work <span className="font-display italic text-accent font-normal">Together</span>
+            Tell me what you&rsquo;re trying to publish.
           </h2>
           <p className="text-muted-foreground mt-4 max-w-md mx-auto">
-            Ready to grow your traffic with premium, human-written content? Reach out through any channel below.
+            Send the topic, business context or content problem. I&rsquo;ll review it and come back with a practical scope and quote.
           </p>
         </ScrollReveal>
 

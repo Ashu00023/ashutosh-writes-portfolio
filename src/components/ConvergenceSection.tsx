@@ -12,20 +12,20 @@ type Pillar = {
 const pillars: Pillar[] = [
   {
     name: "Research",
-    sub: "primary sources, verified data, no AI-hallucinated stats",
-    specifics: ["18 verified stats per authority piece", "Primary sources over aggregator lists", "Every claim traceable to a report or CVE"],
+    sub: "Primary-source research, evidence checking, source traceability and original synthesis.",
+    specifics: ["18 sourced statistics in the finance authority piece", "Primary sources over aggregator lists", "Every claim traceable to a report, filing or CVE"],
     fill: "bg-accent/5",
   },
   {
-    name: "SEO Strategy",
-    sub: "search intent, structure, featured-snippet ready",
+    name: "Search Strategy",
+    sub: "Search intent, content gaps, topical structure and pages designed to answer real questions.",
     specifics: ["Question-based headings mapped to real queries", "Answer blocks sized for featured snippets", "Internal-link architecture planned up front"],
     fill: "bg-foreground/5",
   },
   {
-    name: "Craft",
-    sub: "sentence-level writing, narrative pacing, editing by hand",
-    specifics: ["Line-by-line editing passes", "Narrative pacing that holds past 2,000 words", "Zero spun or AI-generated copy"],
+    name: "Editorial Craft",
+    sub: "Clear arguments, strong pacing, precise language and rigorous editing.",
+    specifics: ["Line-by-line editing passes", "Narrative pacing that holds past 2,000 words", "Precise language over filler"],
     fill: "bg-muted",
   },
 ];
@@ -34,13 +34,16 @@ const ConvergenceSection = () => {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section className="py-28">
+    <section id="approach" className="py-28">
       <div className="container mx-auto px-6">
         <ScrollReveal className="text-center mb-14">
           <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Approach</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
-            Where rankings meet <span className="font-display italic text-accent font-normal">retention</span>
+            Where research meets the reader
           </h2>
+          <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
+            AI can accelerate research and SEO workflows. Human judgment decides what is true, useful and worth publishing.
+          </p>
         </ScrollReveal>
 
         {/* Desktop: Venn diagram */}

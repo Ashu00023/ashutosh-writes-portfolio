@@ -37,10 +37,26 @@ const WorkCard = ({ item }: { item: WorkItem }) => (
       <span className="self-start text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em] mb-4">
         {item.niche}
       </span>
-      <h3 className="text-lg font-bold text-foreground tracking-tight leading-snug mb-3">
+      <h3 className="text-lg font-bold text-foreground tracking-tight leading-snug mb-2">
         {item.title}
       </h3>
-      <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">{item.summary}</p>
+      <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/70 mb-4">
+        Independent research sample
+      </p>
+      <div className="space-y-3 mb-6 flex-1">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent mb-1">Problem / Opportunity</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">{item.problem}</p>
+        </div>
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent mb-1">Approach</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">{item.approach}</p>
+        </div>
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent mb-1">What it demonstrates</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">{item.demonstrates}</p>
+        </div>
+      </div>
       <div className="flex flex-wrap gap-3">
         <a        
           href={item.liveUrl}
@@ -92,16 +108,16 @@ const Work = () => {
   return (
     <>
       <Helmet>
-        <title>Selected Work — SEO Blog Samples | Ashutosh Mahapatra</title>
+        <title>Research-Driven Content Samples | Ashutosh Mahapatra</title>
         <meta
           name="description"
-          content="Self-directed SEO blog samples across AI, cybersecurity, fintech, and the creator economy — each written and structured exactly as I'd deliver for a client, engineered for ranking, retention, and revenue."
+          content="Independent research and writing samples across AI, fintech, cybersecurity and technology."
         />
         <link rel="canonical" href={canonical} />
-        <meta property="og:title" content="Selected Work — SEO Blog Samples" />
+        <meta property="og:title" content="Research-Driven Content Samples" />
         <meta
           property="og:description"
-          content="Self-directed SEO blog samples across AI, cybersecurity, fintech, and the creator economy."
+          content="Independent research and writing samples across AI, fintech, cybersecurity and technology."
         />
         <meta property="og:url" content={canonical} />
         <meta property="og:type" content="website" />
@@ -118,8 +134,8 @@ const Work = () => {
               Selected <span className="font-display italic text-accent font-normal">Work</span>
             </h1>
             <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
-              Every piece here started with search intent and primary research — then got written by
-              hand, line by line.
+              Independent research samples showing how I approach complex topics, source evidence,
+              structure information and turn it into publishable content.
             </p>
           </ScrollReveal>
 
