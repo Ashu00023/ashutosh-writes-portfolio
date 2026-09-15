@@ -34,7 +34,24 @@ const Index = () => (
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
-          "@graph": [seo.person, seo.professionalService],
+          "@graph": [
+            seo.person,
+            seo.professionalService,
+            {
+              "@type": "WebSite",
+              "@id": `${seo.siteUrl}/#website`,
+              url: `${seo.siteUrl}/`,
+              name: "Ashutosh Writes",
+              publisher: { "@id": seo.person["@id"] },
+            },
+            {
+              "@type": "Organization",
+              "@id": `${seo.siteUrl}/#organization`,
+              name: "Ashutosh Writes",
+              url: `${seo.siteUrl}/`,
+              founder: { "@id": seo.person["@id"] },
+            },
+          ],
         })}
       </script>
     </Helmet>

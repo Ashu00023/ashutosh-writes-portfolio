@@ -539,6 +539,48 @@ async function buildRoutes(seo) {
     bodyHtml: workIndexBodyHtml(seo),
   });
 
+  routes.push({
+    key: "author",
+    ...seo.routes.author,
+    canonical: `${seo.siteUrl}${seo.routes.author.path}`,
+    jsonLdList: [
+      JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          { ...seo.person, mainEntityOfPage: `${seo.siteUrl}${seo.routes.author.path}` },
+          {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: seo.siteUrl },
+              { "@type": "ListItem", position: 2, name: "Author", item: `${seo.siteUrl}${seo.routes.author.path}` },
+            ],
+          },
+        ],
+      }),
+    ],
+    bodyHtml: authorBodyHtml(seo),
+  });
+
+  for (const key of ["privacyPolicy", "termsOfUse", "cookiePolicy", "disclaimer"]) {
+    const meta = seo.routes[key];
+    routes.push({
+      key,
+      ...meta,
+      canonical: `${seo.siteUrl}${meta.path}`,
+      jsonLdList: [
+        JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: seo.siteUrl },
+            { "@type": "ListItem", position: 2, name: meta.title.split("|")[0].trim(), item: `${seo.siteUrl}${meta.path}` },
+          ],
+        }),
+      ],
+      bodyHtml: legalBodyHtml(meta, legalSections[key]),
+    });
+  }
+
   for (const key of ["aiPersonalFinance2026", "humanCreativityVsAi", "byoaShadowAi"]) {
     const meta = seo.routes[key];
     const sourcePath = join(PUBLIC, "static-blogs", meta.staticSource);

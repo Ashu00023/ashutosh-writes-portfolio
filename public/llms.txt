@@ -4,8 +4,17 @@
 
 ## Pages
 
-- [Homepage](https://ashutoshwrites.online/): Services, portfolio samples, testimonials, and contact details for hiring me as an SEO blog writer.
+- [Homepage](https://ashutoshwrites.online/): Services, portfolio samples, and contact details for hiring me as an SEO blog writer.
 - [Blog](https://ashutoshwrites.online/blog): Index of my long-form writing on AI, finance, content strategy, and human-led storytelling.
+- [Selected Work](https://ashutoshwrites.online/work): Case-study view of my writing samples across AI, cybersecurity, fintech, and the creator economy.
+- [Author: Ashutosh Mahapatra](https://ashutoshwrites.online/author/ashutosh-mahapatra): Biography, coverage areas, social profiles, and an archive of every published article.
 - [AI Personal Finance 2026](https://ashutoshwrites.online/blog/ai-personal-finance-2026): 18 verified stats, 5 structural trends, and the risks most AI-finance coverage misses.
 - [Human Creativity vs AI: The Authenticity Premium](https://ashutoshwrites.online/blog/human-creativity-vs-ai-authenticity-premium-2026): Data on why audiences reject AI slop and how human creators win in 2026.
 - [The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare](https://ashutoshwrites.online/blog/byoa-shadow-ai-b2b-saas-2026): How AI agents inherit OAuth scope from platforms already approved, the BYOA risk chain, and a governance framework for enterprise security teams.
+
+## Policies
+
+- [Privacy Policy](https://ashutoshwrites.online/privacy-policy): Data handling, cookies, analytics, advertising partners, and GDPR/CCPA rights.
+- [Terms of Use](https://ashutoshwrites.online/terms-of-use): Intellectual property, acceptable use, and limitation of liability.
+- [Cookie Policy](https://ashutoshwrites.online/cookie-policy): Essential, analytics, and advertising cookies, plus consent controls.
+- [Disclaimer](https://ashutoshwrites.online/disclaimer): Educational content only — no financial, legal, or professional advice.
