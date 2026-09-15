@@ -27,12 +27,26 @@ const BlogCard = ({ b }: { b: WorkItem }) => (
       <span className="self-start text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em] mb-4">
         {b.niche}
       </span>
-      <h3 className="text-lg font-bold text-foreground tracking-tight leading-snug mb-3">
+      <h3 className="text-lg font-bold text-foreground tracking-tight leading-snug mb-2">
         {b.title}
       </h3>
-      <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
-        {b.summary}
+      <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/70 mb-4">
+        Independent research sample
       </p>
+      <div className="space-y-3 mb-6 flex-1">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent mb-1">Problem / Opportunity</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">{b.problem}</p>
+        </div>
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent mb-1">Approach</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">{b.approach}</p>
+        </div>
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent mb-1">What it demonstrates</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">{b.demonstrates}</p>
+        </div>
+      </div>
       <div className="flex flex-wrap gap-3 mt-auto">
         <a        
           href={b.liveUrl}
@@ -77,7 +91,7 @@ const PortfolioSection = () => {
             Featured <span className="font-display italic text-accent font-normal">Writing Samples</span>
           </h2>
           <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
-            Self-directed samples across AI, fintech, and creator-economy topics — researched, structured, and written exactly as I’d deliver for a client, engineered for ranking, retention, and revenue.
+            Independent research samples across AI, fintech, cybersecurity and technology — researched, structured and written exactly as I would deliver for a client.
           </p>
         </ScrollReveal>
 
@@ -100,7 +114,7 @@ const PortfolioSection = () => {
 
         <ScrollReveal className="text-center mt-8 max-w-2xl mx-auto">
           <p className="text-sm text-muted-foreground italic">
-            Every piece starts with search intent and primary research - then gets written by hand, line by line.
+            Every piece starts with search intent and primary research, then goes through structural and line editing.
           </p>
         </ScrollReveal>
       </div>

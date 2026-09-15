@@ -2,10 +2,10 @@ import { CheckCircle } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const highlights = [
-  "Long-form SEO blogs built around search intent, not word count",
-  "Structured for featured snippets, AI answers, and page-one rankings",
+  "Long-form content built around search intent, not word count",
+  "Structured for featured snippets and AI-generated answers",
   "Original research, primary sources, and a clear point of view",
-  "Every line written by hand — no AI drafts, no spun copy",
+  "Editorial judgment and final decisions made by a human editor",
 ];
 
 const stats: { value: string; label: string }[] = [
@@ -19,8 +19,7 @@ const AboutSection = () => (
       <ScrollReveal>
         <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">About Me</p>
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8 tracking-tight leading-[1.15]">
-          I write the kind of content<br />
-          <span className="font-display italic text-accent font-normal">people actually finish.</span>
+          Research first. Writing second.
         </h2>
       </ScrollReveal>
 
@@ -39,13 +38,13 @@ const AboutSection = () => (
 
       <ScrollReveal delay={0.15}>
         <p className="text-muted-foreground leading-relaxed mb-5">
-          I am <span className="font-bold text-foreground">Ashutosh</span> — a freelance writer working with founders, creators, and brands who care more about the reader than the algorithm. Most online content is written to be skimmed. I write to be <span className="font-semibold text-foreground">read</span>.
+          I am <span className="font-bold text-foreground">Ashutosh</span> — an independent writer focused on AI, fintech, cybersecurity and SaaS. Most online content is written to be skimmed. I write to be <span className="font-semibold text-foreground">read</span>.
         </p>
         <p className="text-muted-foreground leading-relaxed mb-5">
-          My process is slow on purpose: real research, primary sources, a clear argument, and language that respects the reader&rsquo;s time. The result is work that ranks on Google, holds attention to the last line, and sounds like a person &mdash; <span className="font-semibold text-accent">because a person wrote it</span>.
+          I specialize in long-form content where the difficult part is not filling a page — it is understanding the subject, finding reliable evidence, identifying what existing coverage misses, and turning that research into something people can actually understand.
         </p>
         <p className="text-muted-foreground leading-relaxed mb-10">
-          Where it helps, I use AI for structural research and SEO — but every argument, transition, and final line is still written by hand.
+          I use AI where it improves research and workflow efficiency, but the argument, judgment, structure and final editorial decisions remain mine.
         </p>
       </ScrollReveal>
 

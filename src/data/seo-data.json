@@ -5,13 +5,15 @@
     "@id": "https://ashutoshwrites.online/#person",
     "name": "Ashutosh Mahapatra",
     "url": "https://ashutoshwrites.online/",
-    "jobTitle": "SEO Blog Writer",
+    "jobTitle": "Research-Driven Content Writer — AI, Fintech & SaaS",
     "knowsAbout": [
-      "SEO content strategy",
-      "Personal finance writing",
-      "Artificial intelligence",
-      "Long-form content",
-      "Search intent research"
+      "AI content strategy",
+      "Fintech writing",
+      "Cybersecurity content",
+      "SaaS content",
+      "Search intent",
+      "Technical writing",
+      "Research-driven editorial"
     ],
     "sameAs": ["https://linkedin.com/in/ashutosh-mahapatra"]
   },
@@ -20,17 +22,17 @@
     "@id": "https://ashutoshwrites.online/#service",
     "name": "Ashutosh Writes",
     "url": "https://ashutoshwrites.online/",
-    "description": "Human-written SEO blog posts specializing in finance and AI topics.",
+    "description": "Research-driven SEO and thought-leadership content for AI, fintech, SaaS, cybersecurity and technology companies.",
     "founder": { "@id": "https://ashutoshwrites.online/#person" },
     "areaServed": "Worldwide",
-    "serviceType": ["SEO blog writing"]
+    "serviceType": ["Research-driven SEO content", "B2B thought leadership", "Content strategy", "Technical content"]
   },
   "routes": {
     "home": {
       "path": "/",
       "outFile": "index.html",
-      "title": "Ashutosh Mahapatra — SEO Blog Writer",
-      "description": "Ashutosh Mahapatra — SEO blog writer specializing in finance and AI topics. 100% human-written, research-backed content built to rank.",
+      "title": "Research-Driven SEO Content for AI, Fintech & SaaS | Ashutosh Mahapatra",
+      "description": "Research-driven long-form content for AI, fintech, SaaS and technology companies — combining primary-source research, search strategy and strong editorial thinking.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
@@ -45,8 +47,8 @@
     "work": {
       "path": "/work",
       "outFile": "work/index.html",
-      "title": "Selected Work — SEO Blog Samples | Ashutosh Mahapatra",
-      "description": "Self-directed SEO blog samples across AI, cybersecurity, fintech, and the creator economy — each written and structured exactly as I'd deliver for a client, engineered for ranking, retention, and revenue.",
+      "title": "Research-Driven Content Samples | Ashutosh Mahapatra",
+      "description": "Independent research and writing samples across AI, fintech, cybersecurity and technology.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },

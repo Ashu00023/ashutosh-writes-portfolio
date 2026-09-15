@@ -5,10 +5,10 @@ import logo from "@/assets/logo-new.png";
 
 const links = [
   { label: "Home", href: "/#home" },
-  { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" },
-  { label: "Portfolio", href: "/#portfolio" },
   { label: "Work", href: "/work" },
+  { label: "Services", href: "/#services" },
+  { label: "Approach", href: "/#approach" },
+  { label: "About", href: "/#about" },
   { label: "Blog", href: "/blog" },
   { label: "Author", href: "/author/ashutosh-mahapatra" },
   { label: "Contact", href: "/#contact" },
@@ -68,7 +68,7 @@ const Navbar = () => {
           href="/#contact"
           className="hidden md:inline-flex items-center rounded-lg bg-foreground px-5 py-2 text-[13px] font-semibold text-background hover:bg-accent transition-all duration-200 animate-in fade-in slide-in-from-right-4 duration-500 delay-1000 fill-mode-both"
         >
-          Hire Me
+          Start a Project
         </a>
 
         {/* Mobile toggle */}
@@ -107,7 +107,7 @@ const Navbar = () => {
                 onClick={() => setOpen(false)}
                 className="inline-flex items-center rounded-lg bg-foreground px-5 py-2.5 text-sm font-semibold text-background"
               >
-                Hire Me
+                Start a Project
               </a>
             </li>
           </ul>

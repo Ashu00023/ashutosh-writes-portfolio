@@ -1,8 +1,8 @@
 const facts = [
-  { number: "18+ verified stats", label: "research-backed" },
-  { number: "1 CVE cited", label: "fully sourced and verified" },
-  { number: "3 niches", label: "fintech, AI, cybersecurity" },
-  { number: "100%", label: "human-written, zero spun copy" },
+  { number: "4 research samples", label: "AI, fintech, cybersecurity & technology" },
+  { number: "18+ sourced statistics", label: "used in the finance authority piece" },
+  { number: "Primary-source research", label: "reports, filings, rules & technical sources" },
+  { number: "Technical + financial topics", label: "complex subjects translated clearly" },
 ];
 
 const TrustStrip = () => (
