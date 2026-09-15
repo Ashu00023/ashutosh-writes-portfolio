@@ -34,7 +34,7 @@ const BlogCard = ({ b }: { b: WorkItem }) => (
         {b.summary}
       </p>
       <div className="flex flex-wrap gap-3 mt-auto">
-       <a 
+        
           href={b.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -42,7 +42,7 @@ const BlogCard = ({ b }: { b: WorkItem }) => (
         >
           View Live Article <ArrowUpRight size={15} />
         </a>
-                {isSpaRoute(b.transcriptHref) ? (
+        {isSpaRoute(b.transcriptHref) ? (
           <Link
             to={b.transcriptHref}
             className="inline-flex items-center gap-1.5 border border-border text-foreground text-sm font-semibold px-4 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-colors duration-200"
