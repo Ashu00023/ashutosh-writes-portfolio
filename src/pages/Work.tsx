@@ -1,14 +1,14 @@
 import { useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-
-const isSpaRoute = (href: string) => href.startsWith("/blog/");
 import { ArrowUpRight, FileText } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ScrollReveal from "@/components/ScrollReveal";
 import { workItems, nicheFilters, formatFilters, type WorkItem } from "@/data/work";
 import { prefetchOne } from "@/lib/prefetch";
 import seo from "@/data/seo-data.json";
+
+const isSpaRoute = (href: string) => href.startsWith("/blog/");
 
 const canonical = `${seo.siteUrl}/work`;
 
