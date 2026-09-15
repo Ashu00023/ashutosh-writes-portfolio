@@ -42,7 +42,7 @@ const WorkCard = ({ item }: { item: WorkItem }) => (
       </h3>
       <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">{item.summary}</p>
       <div className="flex flex-wrap gap-3">
-        
+        <a        
           href={item.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -58,7 +58,7 @@ const WorkCard = ({ item }: { item: WorkItem }) => (
             <FileText size={14} /> Read Clean Transcript
           </Link>
         ) : (
-          
+           <a         
             href={item.transcriptHref}
             target="_blank"
             rel="noopener noreferrer"
