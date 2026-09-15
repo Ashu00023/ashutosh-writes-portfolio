@@ -34,7 +34,7 @@ const BlogCard = ({ b }: { b: WorkItem }) => (
         {b.summary}
       </p>
       <div className="flex flex-wrap gap-3 mt-auto">
-        
+        <a        
           href={b.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -50,7 +50,7 @@ const BlogCard = ({ b }: { b: WorkItem }) => (
             <FileText size={14} /> Read Clean Transcript
           </Link>
         ) : (
-          
+          <a          
             href={b.transcriptHref}
             target="_blank"
             rel="noopener noreferrer"
