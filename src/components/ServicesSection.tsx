@@ -1,30 +1,48 @@
-import { PenLine, Search, ArrowRight } from "lucide-react";
+import { PenLine, Cpu, Search, ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const services = [
   {
     icon: PenLine,
-    title: "SEO Blog Writing",
+    title: "Research-Driven Authority Articles",
     points: [
-      "High-quality, keyword-optimized blog posts",
-      "Designed to rank on Google page 1",
-      "100% human-written content",
-      "Focus on traffic + conversions",
+      "Search-intent research",
+      "Competitor and content-gap analysis",
+      "Primary-source research",
+      "Original angle and thesis",
+      "SEO architecture",
+      "Long-form writing and editing",
+      "Citations and source list",
+      "Tables and visuals when useful",
     ],
-    cta: "Get SEO Blogs",
+    cta: "Start a Project",
+    href: "#contact",
+  },
+  {
+    icon: Cpu,
+    title: "B2B Technical & Thought-Leadership Content",
+    points: [
+      "Industry analysis for AI, SaaS, fintech and cybersecurity",
+      "Technical explainers",
+      "Emerging-trend analysis",
+      "Regulatory and market developments",
+      "Founder and executive thought leadership",
+    ],
+    cta: "Start a Project",
     href: "#contact",
   },
   {
     icon: Search,
-    title: "Search Intent & Content Strategy",
+    title: "Content Strategy & Research",
     points: [
-      "Keyword and competitor gap research",
-      "Topic clusters mapped to buyer intent",
-      "Briefs built from primary sources",
-      "Structured for featured snippets and AI answers",
-      "Long-form content built around search intent, not word count",
+      "Keyword research",
+      "Search intent mapping",
+      "Topic clusters",
+      "Content-gap analysis",
+      "Editorial roadmap",
+      "Research-backed briefs",
     ],
-    cta: "Plan My Content",
+    cta: "Start a Project",
     href: "#contact",
   },
 ];
@@ -34,12 +52,12 @@ const ServicesSection = () => (
     <div className="container mx-auto px-6">
       <ScrollReveal className="text-center mb-16">
         <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Services</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
-            What I <span className="font-display italic text-accent font-normal">Offer</span>
-          </h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
+          What I Offer
+        </h2>
       </ScrollReveal>
 
-      <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {services.map((s, i) => (
           <ScrollReveal key={s.title} direction={i === 0 ? "left" : "right"} delay={i * 0.15}>
             <div className="rounded-2xl bg-background border border-border/60 p-8 hover:shadow-xl hover:border-accent/20 transition-all duration-300 group h-full">
