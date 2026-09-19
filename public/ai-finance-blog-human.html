@@ -184,8 +184,9 @@
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
-<style>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fira+Code:wght@400&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fira+Code:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fira+Code:wght@400&display=swap" rel="stylesheet"></noscript>
 /* ─── TOKENS ─── */
 :root {
   --white: #fafaf8;
@@ -243,8 +244,14 @@ nav {
   letter-spacing: 0.08em;
   color: var(--ink-4);
   text-decoration: none;
+  padding: 4px 2px;
 }
 .nav-logo strong { color: var(--white); font-weight: 400; }
+.nav-logo:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 .nav-section {
   font-family: 'Fira Code', monospace;
   font-size: 10px;
@@ -1234,7 +1241,7 @@ footer p + p { margin-top: 6px; }
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#"><strong>Ashutosh Mahapatra</strong> &nbsp;·&nbsp; Finance &amp; AI</a>
+  <a class="nav-logo" href="https://www.ashutoshwrites.online/" aria-label="Return to portfolio homepage"><strong>Ashutosh Mahapatra</strong> &nbsp;·&nbsp; Finance &amp; AI</a>
   <span class="nav-section">Finance &middot; AI &middot; April 2026</span>
   <a class="nav-hire" href="https://www.ashutoshwrites.online/" target="_blank" rel="noopener">Portfolio &rarr;</a>
 </nav>
