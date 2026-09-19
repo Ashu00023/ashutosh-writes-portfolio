@@ -40,7 +40,7 @@ const HumanCreativityVsAi = () => {
         <StaticHtmlPage
           rawHtml={rawHtml}
           rightLabel="SEO Blog Sample · Authenticity Premium"
-          background="#080808"
+          background="#faf7f1"
           canonicalUrl={url}
           breadcrumbs={[
             { label: "Home", href: "/" },
