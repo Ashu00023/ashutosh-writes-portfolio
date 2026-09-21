@@ -581,12 +581,6 @@ async function buildRoutes(seo) {
     });
   }
 
-  for (const key of ["aiPersonalFinance2026", "humanCreativityVsAi", "byoaShadowAi"]) {
-    const meta = seo.routes[key];
-    const sourcePath = join(PUBLIC, "static-blogs", meta.staticSource);
-    if (!existsSync(sourcePath)) {
-      fail(`missing static source for route "${key}": ${sourcePath}`);
-    }
     const raw = await readFile(sourcePath, "utf8");
     const { styles, body, jsonLd } = extractStaticBlogParts(raw);
     const frame = caseStudyFrames[key];
