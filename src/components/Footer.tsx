@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo-new.png";
+import logo from "@/assets/logo-new.webp";
 import ScrollReveal from "./ScrollReveal";
 import { contacts } from "./ContactSection";
 

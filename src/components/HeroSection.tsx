@@ -1,7 +1,6 @@
 import type { MouseEvent, ReactNode } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import profileImg from "@/assets/profile.jpg";
 
 type MagneticCtaProps = {
   href: string;
@@ -99,14 +98,16 @@ const HeroSection = () => (
       >
         <div className="relative flex flex-col items-center">
           <div className="relative p-1 rounded-2xl border border-border bg-card">
-            <img
-              src={profileImg}
-              alt="Ashutosh Mahapatra — SEO Blog Writer"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              className="w-60 h-60 md:w-72 md:h-72 rounded-xl object-cover"
-            />
+<img
+  src="/profile.webp"
+  alt="Ashutosh Mahapatra — SEO Blog Writer"
+  width={288}
+  height={288}
+  loading="eager"
+  fetchPriority="high"
+  decoding="async"
+  className="w-60 h-60 md:w-72 md:h-72 rounded-xl object-cover"
+/>
             <motion.span
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}

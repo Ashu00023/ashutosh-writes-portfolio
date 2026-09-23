@@ -23,7 +23,7 @@ export const posts: Post[] = [
     label: "AI + Finance",
     summary:
       "Verified stats, structural trends, and the risks most AI finance coverage misses — built for readers who want signal over noise.",
-    image: "/ai-finance-blog-thumbnail.png",
+    image: "/ai-content-blog-thumbnail.webp",
   },
   {
     href: seo.routes.humanCreativityVsAi.path,
@@ -31,7 +31,7 @@ export const posts: Post[] = [
     label: "AI + Content",
     summary:
       "Why human creativity is winning in 2026 and how creators can turn authenticity into a durable competitive advantage.",
-    image: "/ai-content-blog-thumbnail.jpg",
+    image: "/ai-finance-blog-thumbnail.webp",
   },
     {
     href: seo.routes.byoaShadowAi.path,
@@ -39,7 +39,7 @@ export const posts: Post[] = [
     label: "Cybersecurity",
     summary:
       "AI agents aren't sneaking in through shadow IT anymore — they're inheriting OAuth scope from platforms you already approved.",
-    image: "/byoa-shadow-ai-blog-thumbnail.png",
+    image: "/byoa-shadow-ai-blog-thumbnail.webp",
   },
   {
     href: seo.routes.visaAgenticCommerceDisputes.path,
@@ -47,7 +47,7 @@ export const posts: Post[] = [
     label: "Fintech & AI",
     summary:
       "Visa's April 2026 Core Rules update routed agent purchases into existing card-not-present dispute rules — fact-checked against primary sources.",
-    image: "/visa-agentic-commerce-dispute-seo-thumbnail",
+    image: "/visa-agentic-commerce-dispute-seo-thumbnail.webp",
     external: true,
   },
 ];

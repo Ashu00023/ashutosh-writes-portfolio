@@ -4,7 +4,6 @@ import { ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import profile from "@/assets/profile.jpg";
 import { posts } from "@/data/posts";
 import seo from "@/data/seo-data.json";
 
@@ -92,10 +91,10 @@ const Author = () => (
         <ScrollReveal className="max-w-5xl mx-auto">
           <div className="grid gap-10 md:grid-cols-[220px_1fr] md:items-start">
             <img
-              src={profile}
+              src="/profile.webp"
               alt="Portrait of Ashutosh Mahapatra"
-              width={220}
-              height={220}
+            width={220}
+            height={220}
               loading="eager"
               decoding="async"
               className="w-40 h-40 md:w-[220px] md:h-[220px] rounded-2xl object-cover border border-border/60 layer-2"
