@@ -1,20 +1,18 @@
-import { Suspense, lazy } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import TrustStrip from "@/components/TrustStrip";
+import ConvergenceSection from "@/components/ConvergenceSection";
+import ProcessSection from "@/components/ProcessSection";
+import AboutSection from "@/components/AboutSection";
+import ServicesSection from "@/components/ServicesSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 import seo from "@/data/seo-data.json";
 
 const { home } = seo.routes;
 const canonical = `${seo.siteUrl}${home.path}`;
-
-const TrustStrip = lazy(() => import("@/components/TrustStrip"));
-const ConvergenceSection = lazy(() => import("@/components/ConvergenceSection"));
-const ProcessSection = lazy(() => import("@/components/ProcessSection"));
-const AboutSection = lazy(() => import("@/components/AboutSection"));
-const ServicesSection = lazy(() => import("@/components/ServicesSection"));
-const ContactSection = lazy(() => import("@/components/ContactSection"));
-const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => (
   <>
@@ -56,19 +54,17 @@ const Index = () => (
       </script>
     </Helmet>
     <Navbar />
-    <HeroSection />
-    <Suspense fallback={<div className="min-h-[10vh]" />}>
+    <main>
+      <HeroSection />
       <TrustStrip />
-    </Suspense>
-    <PortfolioSection />
-    <Suspense fallback={<div className="min-h-[40vh]" />}>
+      <PortfolioSection />
       <ConvergenceSection />
       <ProcessSection />
       <AboutSection />
       <ServicesSection />
       <ContactSection />
-      <Footer />
-    </Suspense>
+    </main>
+    <Footer />
   </>
 );
 

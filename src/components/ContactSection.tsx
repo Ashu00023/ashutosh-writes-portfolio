@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Mail, Phone, Instagram, Linkedin, MessageCircle, FileText } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
-import SeoBlogInquiryForm from "./forms/SeoBlogInquiryForm";
+
+const SeoBlogInquiryForm = lazy(() => import("./forms/SeoBlogInquiryForm"));
 
 export const contacts = [
   {
@@ -84,7 +85,11 @@ const ContactSection = () => {
               <DialogDescription>{inquiryCard.copy}</DialogDescription>
             </DialogHeader>
             <div className="mt-4">
-              <SeoBlogInquiryForm />
+              {open && (
+                <Suspense fallback={<div className="py-10 text-center text-sm text-muted-foreground">Loading form…</div>}>
+                  <SeoBlogInquiryForm />
+                </Suspense>
+              )}
             </div>
           </DialogContent>
         </Dialog>
@@ -92,7 +97,7 @@ const ContactSection = () => {
         <div className="max-w-lg mx-auto space-y-4">
           {contacts.map((c, i) => (
             <ScrollReveal key={c.label} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.08}>
-              <a
+              
                 href={c.href}
                 target={c.href.startsWith("http") ? "_blank" : undefined}
                 rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
