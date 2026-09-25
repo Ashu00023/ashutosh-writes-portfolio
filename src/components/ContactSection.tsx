@@ -97,7 +97,7 @@ const ContactSection = () => {
         <div className="max-w-lg mx-auto space-y-4">
           {contacts.map((c, i) => (
             <ScrollReveal key={c.label} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.08}>
-              
+            <a  
                 href={c.href}
                 target={c.href.startsWith("http") ? "_blank" : undefined}
                 rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
