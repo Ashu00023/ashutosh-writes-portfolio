@@ -1,139 +1,84 @@
-import type { MouseEvent, ReactNode } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import type { ReactNode } from "react";
+import { motion } from "framer-motion";
+import { workItems } from "@/data/work";
 
-type MagneticCtaProps = {
-  href: string;
-  children: ReactNode;
-  variant: "primary" | "secondary";
-};
+const anchorPiece = workItems[0];
 
 const ctaStyles = {
-  primary: "bg-foreground text-background hover:opacity-90",
-  secondary: "border border-border bg-transparent text-foreground hover:border-accent hover:text-accent",
+  primary: "bg-foreground text-background hover:bg-accent",
+  secondary: "border border-border text-foreground hover:border-accent hover:text-accent",
 };
 
-const canUseMagneticHover = () =>
-  typeof window !== "undefined" && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-const MagneticCta = ({ href, children, variant }: MagneticCtaProps) => {
-  const cursorX = useMotionValue(0);
-  const cursorY = useMotionValue(0);
-  const x = useTransform(cursorX, [-1, 1], [-6, 6]);
-  const y = useTransform(cursorY, [-1, 1], [-6, 6]);
-
-  const handleMouseMove = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (!canUseMagneticHover()) return;
-
-    const rect = event.currentTarget.getBoundingClientRect();
-    const relativeX = (event.clientX - rect.left) / rect.width;
-    const relativeY = (event.clientY - rect.top) / rect.height;
-
-    cursorX.set((relativeX - 0.5) * 2);
-    cursorY.set((relativeY - 0.5) * 2);
-  };
-
-  const handleMouseLeave = () => {
-    cursorX.set(0);
-    cursorY.set(0);
-  };
-
-  return (
-    <motion.a
-      href={href}
-      style={{ x, y }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className={`inline-flex items-center gap-2 rounded-lg px-7 py-3 text-sm font-semibold transition-all duration-200 ${ctaStyles[variant]}`}
-    >
-      {children}
-    </motion.a>
-  );
-};
+const CtaLink = ({ href, children, variant }: { href: string; children: ReactNode; variant: "primary" | "secondary" }) => (
+  
+    href={href}
+    className={`inline-flex items-center rounded-md px-6 py-3 text-sm font-medium transition-colors duration-200 ${ctaStyles[variant]}`}
+  >
+    {children}
+  </a>
+);
 
 const HeroSection = () => (
-  <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-    <div className="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
-      {/* Text */}
+  <section id="home" className="relative min-h-screen flex items-center pt-24 pb-16">
+    <div className="container mx-auto px-6 grid md:grid-cols-[1.3fr_1fr] gap-16 items-center">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="order-2 md:order-1"
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-foreground mb-6">
-          <span className="h-px w-8 bg-accent" aria-hidden="true" />
-          Research-Driven Content
+        <p className="text-sm text-muted-foreground mb-5">
+          Ashutosh Mahapatra — Bhubaneswar, India
         </p>
 
-        <h1 className="text-[3rem] sm:text-[3.75rem] md:text-[4.25rem] lg:text-[5.25rem] font-extrabold leading-[0.95] tracking-[-0.045em] text-foreground mb-8">
-          Research-Driven SEO Content for{" "}
-          <span className="accent-underline">AI, Fintech &amp; SaaS</span>
+        <h1 className="font-heading text-[2.75rem] sm:text-[3.5rem] md:text-[4rem] font-medium leading-[1.05] tracking-[-0.02em] text-foreground mb-7 max-w-xl">
+          Research-driven content for AI, fintech, and SaaS.
         </h1>
 
-        <p className="text-[15px] md:text-base text-muted-foreground max-w-md mb-6 leading-relaxed">
-          I turn complex industry topics into authoritative long-form content built around search intent, primary research, and clear editorial thinking.
+        <p className="text-base text-muted-foreground max-w-md mb-10 leading-relaxed">
+          I turn complex industry topics into authoritative long-form content built around search intent, primary research, and editorial judgment — not word count.
         </p>
 
-        <p className="text-xs font-medium tracking-[0.14em] uppercase text-muted-foreground/80 border-l border-border pl-4 mb-10">
-          Primary Research / Original Analysis / Human Editorial Judgment
-        </p>
+        <div className="flex flex-wrap gap-4 mb-12">
+          <CtaLink href="#portfolio" variant="primary">View Portfolio</CtaLink>
+          <CtaLink href="#contact" variant="secondary">Start a Project</CtaLink>
+        </div>
 
-        <div className="flex flex-wrap gap-3">
-          <MagneticCta href="#portfolio" variant="primary">
-            View Portfolio <ArrowRight size={15} />
-          </MagneticCta>
-          <MagneticCta href="#contact" variant="secondary">
-            Start a Project <ArrowRight size={15} />
-          </MagneticCta>
+        <div className="border-l-2 border-accent/40 pl-5 max-w-md">
+          <p className="text-xs uppercase tracking-wide text-muted-foreground mb-1.5">
+            Anchor piece
+          </p>
+          
+            href={anchorPiece.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-heading text-lg text-foreground hover:text-accent transition-colors"
+          >
+            {anchorPiece.title}
+          </a>
+          <p className="text-sm text-muted-foreground mt-1.5">{anchorPiece.approach}</p>
         </div>
       </motion.div>
 
-      {/* Image */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-        className="order-1 md:order-2 flex justify-center"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+        className="flex justify-center md:justify-end"
       >
-        <div className="relative flex flex-col items-center">
-          <div className="relative p-1 rounded-2xl border border-border bg-card">
-<img
-  src="/profile.webp"
-  alt="Ashutosh Mahapatra — SEO Blog Writer"
-  width={288}
-  height={288}
-  loading="eager"
-  fetchPriority="high"
-  decoding="async"
-  className="w-60 h-60 md:w-72 md:h-72 rounded-xl object-cover"
-/>
-            <motion.span
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-              className="layer-2 absolute -top-3 -left-6 text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em]"
-            >
-              AI / Cybersecurity
-            </motion.span>
-            <motion.span
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 1.1 }}
-              className="layer-2 absolute top-1/3 -right-7 text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em]"
-            >
-              Fintech
-            </motion.span>
-            <motion.span
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 2.2 }}
-              className="layer-2 absolute -bottom-3 -left-4 text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em]"
-            >
-              Creator Economy
-            </motion.span>
-          </div>
-          <div className="mt-5 text-center relative">
-            <h2 className="text-base font-bold text-foreground tracking-tight">Ashutosh Mahapatra</h2>
-            <p className="text-[11px] text-muted-foreground mt-1 tracking-[0.18em] uppercase">Freelance Writer · Bhubaneswar, IN</p>
-          </div>
+        <div className="text-center">
+          <img
+            src="/profile.webp"
+            alt="Ashutosh Mahapatra — SEO Blog Writer"
+            width={272}
+            height={272}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="w-56 h-56 md:w-64 md:h-64 rounded-lg object-cover border border-border"
+          />
+          <p className="mt-4 text-sm text-muted-foreground">
+            Freelance writer — AI, fintech &amp; cybersecurity
+          </p>
         </div>
       </motion.div>
     </div>

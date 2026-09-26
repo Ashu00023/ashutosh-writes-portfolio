@@ -22,7 +22,7 @@
     --muted: 60 6% 94%;
     --muted-foreground: 220 10% 46%;
 
-    --accent: 160 45% 32%;
+    --accent: 355 55% 32%;
     --accent-foreground: 60 10% 98%;
 
     --destructive: 0 84.2% 60.2%;
@@ -30,9 +30,9 @@
 
     --border: 60 6% 90%;
     --input: 60 6% 90%;
-    --ring: 160 45% 32%;
+    --ring: 355 55% 32%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -41,14 +41,12 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 160 45% 40%;
+    --sidebar-ring: 355 55% 40%;
 
-    --font-heading: 'Plus Jakarta Sans', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-display: 'Instrument Serif', 'Plus Jakarta Sans', serif;
+    --font-heading: 'Newsreader', Georgia, serif;
+    --font-body: 'General Sans', -apple-system, sans-serif;
     --shadow-tint: 220 20% 10%;
   }
-
 }
 
 @layer base {
@@ -68,29 +66,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Premium underline accent for hero */
-.accent-underline {
-  position: relative;
-  display: inline-block;
-}
-.accent-underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.05em;
-  height: 0.35em;
-  background: hsl(var(--accent) / 0.18);
-  border-radius: 999px;
-  z-index: -1;
-}
-
-.font-display {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
-
 .layer-1 {
   box-shadow: 0 1px 2px hsl(var(--shadow-tint) / 0.05),
               0 12px 32px -12px hsl(var(--shadow-tint) / 0.10);
@@ -102,8 +77,8 @@ html {
 
 .bg-bloom {
   background-image:
-    radial-gradient(ellipse 60% 40% at 85% 0%, hsl(var(--accent) / 0.06), transparent),
-    radial-gradient(ellipse 50% 40% at 10% 100%, hsl(var(--accent) / 0.05), transparent);
+    radial-gradient(ellipse 60% 40% at 85% 0%, hsl(var(--accent) / 0.05), transparent),
+    radial-gradient(ellipse 50% 40% at 10% 100%, hsl(var(--accent) / 0.04), transparent);
   background-attachment: fixed;
 }
 
@@ -153,4 +128,3 @@ html {
   outline-offset: 2px;
   border-radius: 0.375rem;
 }
-

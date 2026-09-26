@@ -1,121 +1,110 @@
-import { lazy, Suspense, useState } from "react";
-import { Mail, Phone, Instagram, Linkedin, MessageCircle, FileText } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo-new.webp";
 
-const SeoBlogInquiryForm = lazy(() => import("./forms/SeoBlogInquiryForm"));
-
-export const contacts = [
-  {
-    icon: Mail,
-    label: "ashutosh@mail.ashutoshwrites.online",
-    href: "mailto:ashutosh@mail.ashutoshwrites.online",
-  },
-  {
-    icon: Phone,
-    label: "+91 9040451510",
-    href: "tel:+919040451510",
-  },
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    href: "https://wa.me/919040451510",
-  },
-  {
-    icon: Instagram,
-    label: "@ashutosh.writes",
-    href: "https://instagram.com/ashutosh.writes",
-  },
-  {
-    icon: Linkedin,
-    label: "Ashutosh Mahapatra",
-    href: "https://linkedin.com/in/ashutosh-mahapatra",
-  },
+const links = [
+  { label: "Home", href: "/#home" },
+  { label: "Work", href: "/work" },
+  { label: "Services", href: "/#services" },
+  { label: "Approach", href: "/#approach" },
+  { label: "About", href: "/#about" },
+  { label: "Blog", href: "/blog" },
+  { label: "Author", href: "/author/ashutosh-mahapatra" },
+  { label: "Contact", href: "/#contact" },
 ];
 
-const inquiryCard = {
-  icon: FileText,
-  title: "Start a Project",
-  copy: "Tell me what you're building, who it is for, and what you need written.",
-  cta: "Start inquiry",
-};
-
-const ContactSection = () => {
+const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isCurrent = (href: string) => !href.includes("#") && (pathname === href || pathname.startsWith(`${href}/`));
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <section id="contact" className="py-28">
-      <div className="container mx-auto px-6">
-        <ScrollReveal className="text-center mb-16">
-          <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Contact</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
-            Tell me what you&rsquo;re trying to publish.
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-md mx-auto">
-            Send the topic, business context or content problem. I&rsquo;ll review it and come back with a practical scope and quote.
-          </p>
-        </ScrollReveal>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 bg-background ${
+        scrolled ? "border-b border-border/60" : "border-b border-transparent"
+      }`}
+    >
+      <div className="container mx-auto flex items-center justify-between py-3 px-6">
+        <Link to="/" className="flex items-center gap-2.5">
+          <img src={logo} alt="Ashutosh Writes logo" className="h-8 w-8 object-contain" />
+          <span className="font-heading text-[15px] font-medium tracking-tight text-foreground">
+            ashutoshwrites.online
+          </span>
+        </Link>
 
-        <div className="max-w-2xl mx-auto mb-12">
-          <ScrollReveal>
-            <button
-              onClick={() => setOpen(true)}
-              className="w-full flex items-center gap-5 rounded-xl border border-accent/40 bg-accent/10 px-6 py-5 hover:border-accent hover:bg-accent/20 transition-all duration-200 group cursor-pointer text-left"
-            >
-              <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent/30 transition-colors">
-                <inquiryCard.icon size={22} className="text-accent" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <span className="text-base font-bold text-foreground group-hover:text-accent transition-colors block">
-                  {inquiryCard.title}
-                </span>
-                <span className="text-xs text-muted-foreground line-clamp-2">{inquiryCard.copy}</span>
-              </div>
-              <span className="text-xs font-semibold text-accent bg-accent/15 px-3 py-1.5 rounded-md shrink-0 group-hover:bg-accent/25 transition-colors">
-                {inquiryCard.cta} →
-              </span>
-            </button>
-          </ScrollReveal>
-        </div>
-
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle className="text-2xl">{inquiryCard.title}</DialogTitle>
-              <DialogDescription>{inquiryCard.copy}</DialogDescription>
-            </DialogHeader>
-            <div className="mt-4">
-              {open && (
-                <Suspense fallback={<div className="py-10 text-center text-sm text-muted-foreground">Loading form…</div>}>
-                  <SeoBlogInquiryForm />
-                </Suspense>
-              )}
-            </div>
-          </DialogContent>
-        </Dialog>
-
-        <div className="max-w-lg mx-auto space-y-4">
-          {contacts.map((c, i) => (
-            <ScrollReveal key={c.label} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.08}>
-              <a
-                href={c.href}
-                target={c.href.startsWith("http") ? "_blank" : undefined}
-                rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-4 rounded-xl border border-border/60 bg-card/50 px-6 py-4 hover:border-accent/40 hover:bg-accent/5 transition-all duration-200 group"
+        <ul className="hidden md:flex items-center gap-1">
+          {links.map((l) => (
+            <li key={l.href}>
+              
+                href={l.href}
+                aria-current={isCurrent(l.href) ? "page" : undefined}
+                className={`px-3.5 py-2 text-[13px] font-medium transition-colors duration-200 ${
+                  isCurrent(l.href) ? "text-accent" : "text-muted-foreground hover:text-foreground"
+                }`}
               >
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent/20 transition-colors">
-                  <c.icon size={18} className="text-accent" />
-                </div>
-                <span className="text-sm font-medium text-foreground group-hover:text-accent transition-colors">
-                  {c.label}
-                </span>
+                {l.label}
               </a>
-            </ScrollReveal>
+            </li>
           ))}
-        </div>
+        </ul>
+
+        
+          href="/#contact"
+          className="hidden md:inline-flex items-center rounded-md bg-foreground px-5 py-2 text-[13px] font-medium text-background hover:bg-accent transition-colors duration-200"
+        >
+          Start a Project
+        </a>
+
+        <button
+          className="md:hidden text-foreground p-2"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
-    </section>
+
+      {open && (
+        <div id="mobile-menu" className="md:hidden bg-background border-t border-border/60 px-6 pb-6">
+          <ul className="flex flex-col gap-1 pt-3">
+            {links.map((l) => (
+              <li key={l.href}>
+                
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={isCurrent(l.href) ? "page" : undefined}
+                  className={`block px-3 py-2.5 text-sm font-medium transition-colors ${
+                    isCurrent(l.href) ? "text-accent" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+            <li className="mt-2">
+              
+                href="/#contact"
+                onClick={() => setOpen(false)}
+                className="inline-flex items-center rounded-md bg-foreground px-5 py-2.5 text-sm font-medium text-background"
+              >
+                Start a Project
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
+    </nav>
   );
 };
 
-export default ContactSection;
+export default Navbar;

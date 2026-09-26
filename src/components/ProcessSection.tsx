@@ -1,72 +1,27 @@
-import ScrollReveal from "./ScrollReveal";
-
 const steps = [
-  {
-    title: "Brief & Audience",
-    description: "Understand the business, reader, search intent and desired outcome",
-  },
-  {
-    title: "Research & Verification",
-    description: "Gather primary sources and verify important claims before drafting",
-  },
-  {
-    title: "Search & Editorial Architecture",
-    description: "Build the article around search intent, information hierarchy and the strongest original angle",
-  },
-  {
-    title: "Writing & Refinement",
-    description: "Write, edit, tighten and test the argument for clarity and flow",
-  },
-  {
-    title: "Delivery & Handoff",
-    description: "Deliver the finished article, source list, SEO structure and useful implementation notes",
-  },
+  { title: "Brief & Audience", description: "Understand the business, reader, search intent and desired outcome" },
+  { title: "Research & Verification", description: "Gather primary sources and verify important claims before drafting" },
+  { title: "Search & Editorial Architecture", description: "Build the article around search intent, information hierarchy and the strongest original angle" },
+  { title: "Writing & Refinement", description: "Write, edit, tighten and test the argument for clarity and flow" },
+  { title: "Delivery & Handoff", description: "Deliver the finished article, source list, SEO structure and useful implementation notes" },
 ];
 
 const ProcessSection = () => (
-  <section id="process" className="py-28">
-    <div className="container mx-auto px-6">
-      <ScrollReveal className="text-center mb-16">
-        <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Process</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
-          How a piece actually gets{" "}
-          <span className="font-display italic text-accent font-normal">made</span>
-        </h2>
-      </ScrollReveal>
+  <section id="process" className="py-24 bg-card/40">
+    <div className="container mx-auto px-6 max-w-5xl">
+      <h2 className="font-heading text-3xl md:text-4xl text-foreground tracking-tight mb-14">
+        How a piece actually gets made
+      </h2>
 
-      {/* Desktop timeline */}
-      <div className="hidden md:block max-w-6xl mx-auto">
-        <div className="grid grid-cols-5 gap-6">
-          {steps.map((s, i) => (
-            <ScrollReveal key={s.title} direction="up" delay={i * 0.1}>
-              <div className="relative pt-8">
-                <span className="absolute top-0 left-0 right-0 border-t border-border/60" />
-                <span className="absolute -top-[3px] left-0 w-1.5 h-1.5 rounded-full bg-accent" />
-                <div className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center text-xs font-bold mb-4">
-                  {i + 1}
-                </div>
-                <h3 className="text-sm font-bold text-foreground tracking-tight mb-2">{s.title}</h3>
-                <p className="text-[13px] text-muted-foreground leading-relaxed">{s.description}</p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </div>
-
-      {/* Mobile timeline */}
-      <div className="md:hidden max-w-md mx-auto border-l border-border/60 pl-6 space-y-8">
+      <ol className="grid md:grid-cols-5 gap-8 md:gap-6">
         {steps.map((s, i) => (
-          <ScrollReveal key={s.title} direction="up" delay={i * 0.1}>
-            <div>
-              <div className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center text-xs font-bold mb-3">
-                {i + 1}
-              </div>
-              <h3 className="text-sm font-bold text-foreground tracking-tight mb-2">{s.title}</h3>
-              <p className="text-[13px] text-muted-foreground leading-relaxed">{s.description}</p>
-            </div>
-          </ScrollReveal>
+          <li key={s.title} className="border-t-2 border-foreground/80 pt-4">
+            <span className="font-heading text-2xl text-muted-foreground/60">{String(i + 1).padStart(2, "0")}</span>
+            <h3 className="text-sm font-semibold text-foreground mt-2 mb-2">{s.title}</h3>
+            <p className="text-[13px] text-muted-foreground leading-relaxed">{s.description}</p>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 );

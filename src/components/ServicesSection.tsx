@@ -1,9 +1,7 @@
-import { PenLine, Cpu, Search, ArrowRight } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
+import { ArrowUpRight } from "lucide-react";
 
 const services = [
   {
-    icon: PenLine,
     title: "Research-Driven Authority Articles",
     points: [
       "Search-intent research",
@@ -15,11 +13,8 @@ const services = [
       "Citations and source list",
       "Tables and visuals when useful",
     ],
-    cta: "Start a Project",
-    href: "#contact",
   },
   {
-    icon: Cpu,
     title: "B2B Technical & Thought-Leadership Content",
     points: [
       "Industry analysis for AI, SaaS, fintech and cybersecurity",
@@ -28,11 +23,8 @@ const services = [
       "Regulatory and market developments",
       "Founder and executive thought leadership",
     ],
-    cta: "Start a Project",
-    href: "#contact",
   },
   {
-    icon: Search,
     title: "Content Strategy & Research",
     points: [
       "Keyword research",
@@ -42,45 +34,32 @@ const services = [
       "Editorial roadmap",
       "Research-backed briefs",
     ],
-    cta: "Start a Project",
-    href: "#contact",
   },
 ];
 
 const ServicesSection = () => (
-  <section id="services" className="py-28 bg-card/40">
-    <div className="container mx-auto px-6">
-      <ScrollReveal className="text-center mb-16">
-        <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Services</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
-          What I Offer
-        </h2>
-      </ScrollReveal>
+  <section id="services" className="py-24">
+    <div className="container mx-auto px-6 max-w-4xl">
+      <h2 className="font-heading text-3xl md:text-4xl text-foreground tracking-tight mb-14">
+        What I offer
+      </h2>
 
-      <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {services.map((s, i) => (
-          <ScrollReveal key={s.title} direction={i === 0 ? "left" : "right"} delay={i * 0.15}>
-            <div className="rounded-2xl bg-background border border-border/60 p-8 hover:shadow-xl hover:border-accent/20 transition-all duration-300 group h-full">
-              <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
-                <s.icon size={20} className="text-accent" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-5 tracking-tight">{s.title}</h3>
-              <ul className="space-y-2.5 mb-8">
-                {s.points.map((p) => (
-                  <li key={p} className="text-sm text-muted-foreground flex items-start gap-2.5">
-                    <span className="w-1 h-1 rounded-full bg-accent mt-2 shrink-0" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={s.href}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-accent group-hover:gap-3 transition-all duration-200"
-              >
-                {s.cta} <ArrowRight size={14} />
-              </a>
-            </div>
-          </ScrollReveal>
+      <div className="divide-y divide-border/60 border-t border-border/60">
+        {services.map((s) => (
+          <div key={s.title} className="py-8">
+            <h3 className="font-heading text-xl text-foreground mb-3">{s.title}</h3>
+            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-1.5 mb-4">
+              {s.points.map((p) => (
+                <li key={p} className="text-sm text-muted-foreground">{p}</li>
+              ))}
+            </ul>
+            
+              href="#contact"
+              className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline underline-offset-4"
+            >
+              Start a project <ArrowUpRight size={14} />
+            </a>
+          </div>
         ))}
       </div>
     </div>

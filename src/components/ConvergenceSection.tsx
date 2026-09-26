@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ScrollReveal from "./ScrollReveal";
 
 type Pillar = {
   name: string;
@@ -34,22 +33,21 @@ const ConvergenceSection = () => {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="approach" className="py-28">
+    <section id="approach" className="py-24">
       <div className="container mx-auto px-6">
-        <ScrollReveal className="text-center mb-14">
-          <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">Approach</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.15]">
+        <div className="text-center mb-14 max-w-xl mx-auto">
+          <h2 className="font-heading text-3xl md:text-4xl text-foreground tracking-tight mb-4">
             Where research meets the reader
           </h2>
-          <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
+          <p className="text-base text-muted-foreground">
             AI can accelerate research and SEO workflows. Human judgment decides what is true, useful and worth publishing.
           </p>
-        </ScrollReveal>
+        </div>
 
         {/* Desktop: Venn diagram */}
         <div className="relative mx-auto hidden md:block h-[380px] w-[480px]">
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[55%] z-10 pointer-events-none">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            <span className="text-[10px] font-medium uppercase tracking-[0.1em] text-muted-foreground">
               Every piece I ship
             </span>
           </div>
@@ -70,7 +68,7 @@ const ConvergenceSection = () => {
                 transition={{ duration: 0.25 }}
                 className={`absolute h-[220px] w-[220px] rounded-full border border-border/60 ${p.fill} ${positions[i]} flex items-center justify-center mix-blend-multiply cursor-pointer`}
               >
-                <span className="text-sm font-bold text-foreground tracking-tight mix-blend-normal px-6 text-center">
+                <span className="font-heading text-base text-foreground mix-blend-normal px-6 text-center">
                   {p.name}
                 </span>
               </motion.button>
@@ -78,7 +76,6 @@ const ConvergenceSection = () => {
           })}
         </div>
 
-        {/* Desktop caption */}
         <div className="hidden md:block max-w-md mx-auto text-center min-h-[64px] mt-8">
           <AnimatePresence mode="wait">
             {active !== null && (
@@ -89,9 +86,7 @@ const ConvergenceSection = () => {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.2 }}
               >
-                <p className="text-xs font-semibold text-accent uppercase tracking-[0.18em] mb-2">
-                  {pillars[active].name}
-                </p>
+                <p className="text-xs font-medium text-accent mb-2">{pillars[active].name}</p>
                 <ul className="space-y-1">
                   {pillars[active].specifics.map((s) => (
                     <li key={s} className="text-sm text-muted-foreground">{s}</li>
@@ -102,20 +97,18 @@ const ConvergenceSection = () => {
           </AnimatePresence>
         </div>
 
-        {/* Mobile: stacked cards */}
-        <div className="grid gap-6 md:hidden">
-          {pillars.map((p, i) => (
-            <ScrollReveal key={p.name} direction="up" delay={i * 0.1}>
-              <div className="rounded-xl bg-card border border-border/60 p-6">
-                <h3 className="text-base font-bold text-foreground tracking-tight mb-1">{p.name}</h3>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-accent mb-3">{p.sub}</p>
-                <ul className="space-y-1.5">
-                  {p.specifics.map((s) => (
-                    <li key={s} className="text-sm text-muted-foreground">{s}</li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollReveal>
+        {/* Mobile: divided list */}
+        <div className="grid gap-6 md:hidden divide-y divide-border/60">
+          {pillars.map((p) => (
+            <div key={p.name} className="pt-6 first:pt-0">
+              <h3 className="font-heading text-lg text-foreground mb-1">{p.name}</h3>
+              <p className="text-sm text-accent mb-3">{p.sub}</p>
+              <ul className="space-y-1.5">
+                {p.specifics.map((s) => (
+                  <li key={s} className="text-sm text-muted-foreground">{s}</li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
