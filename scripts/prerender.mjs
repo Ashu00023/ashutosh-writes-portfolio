@@ -170,7 +170,8 @@ function homeBodyHtml(seo) {
   </ul>
 </nav>
 <main>
-  <section id="home">
+<section id="home">
+    <img src="/profile.webp" alt="Ashutosh Mahapatra — SEO Blog Writer" width="288" height="288" fetchpriority="high">
     <p>SEO Blog Writing</p>
     <h1>Long-form content that earns attention &mdash; not chases it.</h1>
     <p>I write deeply researched SEO blogs for founders and brands who want readers to finish the article &mdash; and search engines to rank it.</p>
