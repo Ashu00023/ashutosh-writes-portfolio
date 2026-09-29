@@ -10,7 +10,7 @@ const ctaStyles = {
 };
 
 const CtaLink = ({ href, children, variant }: { href: string; children: ReactNode; variant: "primary" | "secondary" }) => (
-  
+  <a
     href={href}
     className={`inline-flex items-center rounded-md px-6 py-3 text-sm font-medium transition-colors duration-200 ${ctaStyles[variant]}`}
   >
@@ -47,7 +47,7 @@ const HeroSection = () => (
           <p className="text-xs uppercase tracking-wide text-muted-foreground mb-1.5">
             Anchor piece
           </p>
-          
+          <a
             href={anchorPiece.liveUrl}
             target="_blank"
             rel="noopener noreferrer"

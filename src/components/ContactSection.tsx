@@ -43,7 +43,7 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-1">
           {links.map((l) => (
             <li key={l.href}>
-              
+             <a 
                 href={l.href}
                 aria-current={isCurrent(l.href) ? "page" : undefined}
                 className={`px-3.5 py-2 text-[13px] font-medium transition-colors duration-200 ${
@@ -56,7 +56,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        
+        <a
           href="/#contact"
           className="hidden md:inline-flex items-center rounded-md bg-foreground px-5 py-2 text-[13px] font-medium text-background hover:bg-accent transition-colors duration-200"
         >
@@ -79,7 +79,7 @@ const Navbar = () => {
           <ul className="flex flex-col gap-1 pt-3">
             {links.map((l) => (
               <li key={l.href}>
-                
+               <a 
                   href={l.href}
                   onClick={() => setOpen(false)}
                   aria-current={isCurrent(l.href) ? "page" : undefined}
@@ -92,7 +92,7 @@ const Navbar = () => {
               </li>
             ))}
             <li className="mt-2">
-              
+            <a  
                 href="/#contact"
                 onClick={() => setOpen(false)}
                 className="inline-flex items-center rounded-md bg-foreground px-5 py-2.5 text-sm font-medium text-background"

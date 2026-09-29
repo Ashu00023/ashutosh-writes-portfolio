@@ -53,7 +53,7 @@ const ServicesSection = () => (
                 <li key={p} className="text-sm text-muted-foreground">{p}</li>
               ))}
             </ul>
-            
+            <a
               href="#contact"
               className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline underline-offset-4"
             >
