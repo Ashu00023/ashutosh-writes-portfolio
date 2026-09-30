@@ -16,7 +16,7 @@ const App = () => (
   <TooltipProvider>
    <BrowserRouter>
          <RouteScroll />
-      <Suspense fallback={<div style={{ minHeight: "100vh",  }}background: "hsl(70 15% 92%)" />}>
+      <Suspense fallback={<div style={{ minHeight: "100vh", background: "hsl(70 15% 92%)" }} />}>
         <div className="min-h-screen">
         <Routes>
           <Route path="/" element={<Index />} />
