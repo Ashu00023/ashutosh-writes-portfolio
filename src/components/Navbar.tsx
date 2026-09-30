@@ -1,119 +1,132 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo-new.webp";
+import TransitionLink from "@/components/TransitionLink";
 
 const links = [
-  { label: "Home", href: "/#home" },
-  { label: "Work", href: "/work" },
-  { label: "Services", href: "/#services" },
-  { label: "Approach", href: "/#approach" },
-  { label: "About", href: "/#about" },
-  { label: "Blog", href: "/blog" },
-  { label: "Author", href: "/author/ashutosh-mahapatra" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Work", id: "portfolio" },
+  { label: "Method", id: "process" },
+  { label: "About", id: "about" },
+  { label: "Contact", id: "contact" },
 ];
 
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const { pathname } = useLocation();
-  const isCurrent = (href: string) => !href.includes("#") && (pathname === href || pathname.startsWith(`${href}/`));
+/** Which home-page section sits in the thin band around 40–45% of the viewport. */
+const useActiveSection = (enabled: boolean) => {
+  const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    if (!enabled) {
+      setActive(null);
+      return;
+    }
+    const seen = new Set<string>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => (e.isIntersecting ? seen.add(e.target.id) : seen.delete(e.target.id)));
+        setActive(links.map((l) => l.id).filter((id) => seen.has(id)).pop() ?? null);
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    links.forEach((l) => {
+      const el = document.getElementById(l.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [enabled]);
+
+  return active;
+};
+
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+  const { pathname, hash } = useLocation();
+  const active = useActiveSection(pathname === "/");
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname, hash]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-xl shadow-[0_1px_0_0_hsl(var(--border)/0.5)]"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto flex items-center justify-between py-3 px-6">
-        <Link to="/" className="flex items-center gap-2.5 group animate-in fade-in slide-in-from-left-4 duration-700">
-          <img
-            src={logo}
-            alt="Ashutosh Writes logo"
-            className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110"
-          />
-          <span className="text-[15px] font-bold tracking-tight animate-in fade-in duration-700 delay-300 fill-mode-both">
+    <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-border bg-background">
+      <nav aria-label="Primary" className="wrap flex h-16 items-center justify-between">
+        <TransitionLink to="/" className="flex items-center gap-2.5">
+          <img src={logo} alt="Ashutosh Writes logo" className="h-8 w-8 object-contain" />
+          <span className="text-[15px] font-bold tracking-tight">
             <span className="text-foreground">ashutoshwrites.</span>
             <span className="text-accent">online</span>
           </span>
-        </Link>
+        </TransitionLink>
 
-        {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-1 animate-in fade-in duration-500 delay-700 fill-mode-both">
+        <ul className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                aria-current={isCurrent(l.href) ? "page" : undefined}
-                className={`px-3.5 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 hover:bg-muted/60 ${
-                  isCurrent(l.href) ? "text-accent" : "text-muted-foreground hover:text-foreground"
-                }`}
+            <li key={l.id}>
+              <Link
+                to={`/#${l.id}`}
+                aria-current={active === l.id ? "location" : undefined}
+                className="nav-link"
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
-        <a
-          href="/#contact"
-          className="hidden md:inline-flex items-center rounded-lg bg-foreground px-5 py-2 text-[13px] font-semibold text-background hover:bg-accent transition-all duration-200 animate-in fade-in slide-in-from-right-4 duration-500 delay-1000 fill-mode-both"
+        <Link
+          to="/#contact"
+          className="hidden items-center rounded-sm bg-accent px-4 py-2 text-[13px] font-medium text-accent-foreground transition-colors duration-120 ease-cross hover:bg-foreground md:inline-flex"
         >
           Start a Project
-        </a>
+        </Link>
 
-        {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground p-2 rounded-lg hover:bg-muted/60 transition-colors"
-          onClick={() => setOpen(!open)}
+          type="button"
+          className="p-2 text-foreground md:hidden"
+          onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
           aria-expanded={open}
           aria-controls="mobile-menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile menu */}
       {open && (
-        <div id="mobile-menu" className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border/50 px-6 pb-6 animate-in slide-in-from-top-2 duration-200">
-          <ul className="flex flex-col gap-1 pt-3">
+        <div
+          id="mobile-menu"
+          className="animate-in fade-in border-t border-border bg-background pb-6 duration-200 md:hidden"
+        >
+          <ul className="wrap flex flex-col pt-2">
             {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  aria-current={isCurrent(l.href) ? "page" : undefined}
-                  className={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-all hover:bg-muted/60 ${
-                    isCurrent(l.href) ? "text-accent" : "text-muted-foreground hover:text-foreground"
-                  }`}
+              <li key={l.id} className="border-b border-border">
+                <Link
+                  to={`/#${l.id}`}
+                  aria-current={active === l.id ? "location" : undefined}
+                  className="block py-3.5 text-base font-medium text-foreground"
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
-            <li className="mt-2">
-              <a
-                href="/#contact"
-                onClick={() => setOpen(false)}
-                className="inline-flex items-center rounded-lg bg-foreground px-5 py-2.5 text-sm font-semibold text-background"
+            <li className="pt-5">
+              <Link
+                to="/#contact"
+                className="inline-flex w-full items-center justify-center rounded-sm bg-accent px-4 py-3 text-sm font-medium text-accent-foreground"
               >
                 Start a Project
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
       )}
-    </nav>
+    </header>
   );
 };
 

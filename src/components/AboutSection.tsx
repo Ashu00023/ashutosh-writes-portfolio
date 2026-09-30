@@ -6,31 +6,39 @@ const highlights = [
 ];
 
 const AboutSection = () => (
-  <section id="about" className="py-24">
-    <div className="container mx-auto px-6 max-w-2xl">
-      <h2 className="font-heading text-3xl md:text-4xl text-foreground tracking-tight mb-8">
+  <section id="about" className="tempo-std border-t border-border">
+    <div className="wrap grid grid-cols-12 gap-x-8">
+      <h2 className="col-span-12 text-[clamp(2rem,4vw,3rem)] font-normal leading-[1.05] tracking-[-0.02em] md:col-span-4">
         Research first. Writing second.
       </h2>
 
-      <div className="space-y-5 text-muted-foreground leading-relaxed mb-10">
-        <p>
-          I am <span className="text-foreground font-medium">Ashutosh</span> — an independent writer focused on AI, fintech, cybersecurity and SaaS. Most online content is written to be skimmed. I write to be read.
-        </p>
-        <p>
-          I specialize in long-form content where the difficult part is not filling a page — it is understanding the subject, finding reliable evidence, identifying what existing coverage misses, and turning that research into something people can actually understand.
-        </p>
-        <p>
-          I use AI where it improves research and workflow efficiency, but the argument, judgment, structure and final editorial decisions remain mine.
+      <div className="col-span-12 mt-8 md:col-span-7 md:col-start-6 md:mt-0">
+        <div className="reading space-y-6">
+          <p>
+            I am <span className="font-medium text-foreground">Ashutosh</span> — an independent writer focused
+            on AI, fintech, cybersecurity and SaaS. Most online content is written to be skimmed. I write to be
+            read.
+          </p>
+          <p>
+            I specialize in long-form content where the difficult part is not filling a page — it is
+            understanding the subject, finding reliable evidence, identifying what existing coverage misses, and
+            turning that research into something people can actually understand.
+          </p>
+        </div>
+
+        <ul className="mt-12 border-t border-border">
+          {highlights.map((h) => (
+            <li key={h} className="border-b border-border py-3.5 text-sm text-foreground">
+              {h}
+            </li>
+          ))}
+        </ul>
+
+        <p className="folio mt-8 max-w-[56ch]">
+          <span className="text-foreground">Disclosure.</span> I use AI where it improves research and workflow
+          efficiency, but the argument, judgment, structure and final editorial decisions remain mine.
         </p>
       </div>
-
-      <ul className="border-t border-border/60 pt-6 space-y-3">
-        {highlights.map((h) => (
-          <li key={h} className="text-sm text-foreground pl-4 border-l border-accent/50">
-            {h}
-          </li>
-        ))}
-      </ul>
     </div>
   </section>
 );

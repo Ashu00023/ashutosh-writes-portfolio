@@ -10,40 +10,36 @@ export const contacts = [
 ];
 
 const ContactSection = () => (
-  <section id="contact" className="py-24">
-    <div className="container mx-auto px-6 max-w-4xl">
-      <div className="grid gap-12 md:grid-cols-5">
-        <div className="md:col-span-2">
-          <h2 className="font-heading text-3xl md:text-4xl text-foreground tracking-tight mb-6">
-            Let&rsquo;s Work Together
-          </h2>
-          <p className="text-muted-foreground leading-relaxed mb-8">
-            Ready to grow your traffic with premium, human-written content? Reach out through any channel below.
-          </p>
-
-          <ul className="border-t border-border/60 divide-y divide-border/60">
-            {contacts.map((c) => {
-              const external = c.href.startsWith("http");
-              return (
-                <li key={c.href}>
-                  <a
-                    href={c.href}
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noopener noreferrer" : undefined}
-                    className="flex items-center justify-between gap-3 py-3.5 text-sm text-muted-foreground hover:text-accent transition-colors duration-200"
-                  >
-                    <span className="break-all">{c.label}</span>
-                    {external && <ArrowUpRight size={14} className="shrink-0" />}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
-        <div className="md:col-span-3">
-          <SeoBlogInquiryForm />
-        </div>
+  <section id="contact" className="tempo-std pt-[clamp(3rem,6vw,4.5rem)]">
+    <div className="wrap grid grid-cols-12 gap-x-8 gap-y-12">
+      <div className="col-span-12 md:col-span-5">
+        <h2 className="text-[clamp(2rem,4vw,3rem)] font-normal leading-[1.05] tracking-[-0.02em]">
+          Let&rsquo;s Work Together
+        </h2>
+        <p className="reading mt-6 text-[1.0625rem] text-muted-foreground">
+          Ready to grow your traffic with premium, human-written content? Reach out through any channel below.
+        </p>
+        <ul className="mt-8 divide-y divide-border border-y border-border">
+          {contacts.map((c) => {
+            const external = c.href.startsWith("http");
+            return (
+              <li key={c.href}>
+                <a
+                  href={c.href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  className="flex items-center justify-between gap-3 py-3.5 font-mono text-[13px] text-muted-foreground transition-colors duration-120 ease-cross hover:text-accent"
+                >
+                  <span className="break-all">{c.label}</span>
+                  {external && <ArrowUpRight size={14} className="shrink-0" />}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <div className="col-span-12 md:col-span-6 md:col-start-7">
+        <SeoBlogInquiryForm />
       </div>
     </div>
   </section>

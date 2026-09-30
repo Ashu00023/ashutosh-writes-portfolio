@@ -14,10 +14,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Newsreader', 'Georgia', 'serif'],
+        heading: ['Newsreader Variable', 'Newsreader', 'Georgia', 'serif'],
         body: ['General Sans', '-apple-system', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       colors: {
+        ledger: "hsl(var(--ledger))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -66,6 +68,15 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      transitionDuration: {
+        120: "120ms",
+        360: "360ms",
+        600: "600ms",
+      },
+      transitionTimingFunction: {
+        arrive: "cubic-bezier(0.16, 1, 0.3, 1)",
+        cross: "cubic-bezier(0.65, 0, 0.35, 1)",
       },
       keyframes: {
         "accordion-down": {

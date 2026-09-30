@@ -130,8 +130,8 @@ const Work = () => {
             <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">
               Portfolio
             </p>
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight leading-[1.1]">
-              Selected <span className="font-display italic text-accent font-normal">Work</span>
+            <h1 className="text-4xl md:text-6xl font-normal text-foreground tracking-[-0.02em] leading-[1.05]">
+              Selected Work
             </h1>
             <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
               Independent research samples showing how I approach complex topics, source evidence,

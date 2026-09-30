@@ -2,7 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
+   import NotFound from "./pages/NotFound.tsx";
+   import RouteScroll from "@/components/RouteScroll";
 const Blog = lazy(() => import("./pages/Blog.tsx"));
 const Work = lazy(() => import("./pages/Work.tsx"));
 const Author = lazy(() => import("./pages/Author.tsx"));
@@ -13,9 +14,10 @@ const Disclaimer = lazy(() => import("./pages/legal/Disclaimer.tsx"));
 
 const App = () => (
   <TooltipProvider>
-    <BrowserRouter>
-      <Suspense fallback={<div style={{ minHeight: "100vh", background: "hsl(60 10% 98%)" }} />}>
-        <div className="bg-bloom min-h-screen">
+   <BrowserRouter>
+         <RouteScroll />
+      <Suspense fallback={<div style={{ minHeight: "100vh",  }}background: "hsl(70 15% 92%)" />}>
+        <div className="min-h-screen">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/blog" element={<Blog />} />

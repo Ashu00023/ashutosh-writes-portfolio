@@ -93,8 +93,8 @@ const Blog = () => {
 
           <ScrollReveal className="text-center mb-14">
             <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">The Blog</p>
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight leading-[1.15]">
-              Latest <span className="font-display italic text-accent font-normal">Writing</span>
+            <h1 className="text-4xl md:text-6xl font-normal text-foreground tracking-[-0.02em] leading-[1.05]">
+              Latest Writing
             </h1>
             <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
               Long-form pieces on the ideas shaping AI, finance, and content. Every article is written by{" "}

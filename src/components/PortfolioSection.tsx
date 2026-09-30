@@ -1,107 +1,107 @@
-import { useEffect } from "react";
-import { ArrowUpRight, FileText } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { prefetchSamples, prefetchOne } from "@/lib/prefetch";
-import { workItems, type WorkItem } from "@/data/work";
+import { workItems } from "@/data/work";
+import TransitionLink from "@/components/TransitionLink";
 
 const featured = workItems.slice(0, 4);
 
-const isSpaRoute = (href: string) => href.startsWith("/blog/");
-
-const BlogCard = ({ b }: { b: WorkItem }) => (
-  <article
-    className="group flex flex-col border-b border-border/60 pb-10"
-    onMouseEnter={() => prefetchOne(b.liveUrl)}
-    onTouchStart={() => prefetchOne(b.liveUrl)}
-  >
-    <div className="grid sm:grid-cols-[1fr_1.4fr] gap-6 items-start">
-      <div className="overflow-hidden bg-muted aspect-[16/10]">
-        <img
-          src={b.image}
-          alt={b.title}
-          loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-        />
-      </div>
-      <div>
-        <p className="text-xs text-muted-foreground mb-2">{b.niche} — Independent research sample</p>
-        <h3 className="font-heading text-xl text-foreground leading-snug mb-3">{b.title}</h3>
-
-        <div className="space-y-2.5 mb-5">
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            <span className="text-foreground font-medium">Problem: </span>{b.problem}
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            <span className="text-foreground font-medium">Approach: </span>{b.approach}
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            <span className="text-foreground font-medium">Demonstrates: </span>{b.demonstrates}
-          </p>
-        </div>
-
-        <div className="flex flex-wrap gap-x-5 gap-y-2">
-        <a  
-            href={b.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm font-medium text-foreground hover:text-accent transition-colors"
-          >
-            View live article <ArrowUpRight size={14} />
-          </a>
-          {isSpaRoute(b.transcriptHref) ? (
-            <Link
-              to={b.transcriptHref}
-              className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-accent transition-colors"
-            >
-              <FileText size={14} /> Read clean transcript
-            </Link>
-          ) : (
-          <a  
-              href={b.transcriptHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-accent transition-colors"
-            >
-              <FileText size={14} /> Read clean transcript
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-  </article>
-);
-
 const PortfolioSection = () => {
+  const [active, setActive] = useState(0);
+  const item = featured[active];
+
   useEffect(() => {
     prefetchSamples();
   }, []);
+
   return (
-    <section id="portfolio" className="py-24 bg-card/40">
-      <div className="container mx-auto px-6 max-w-4xl">
-        <div className="mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl text-foreground tracking-tight mb-4">
+    <section id="portfolio" className="tempo-std border-t border-border">
+      <div className="wrap">
+        <header className="mb-12 grid grid-cols-12 gap-x-8 md:mb-16">
+          <h2 className="col-span-12 text-[clamp(2rem,4.5vw,3.5rem)] font-normal leading-[1.02] tracking-[-0.02em] md:col-span-5">
             Featured writing samples
           </h2>
-          <p className="text-base text-muted-foreground max-w-xl">
-            Independent research samples across AI, fintech, cybersecurity and technology — researched, structured and written exactly as I would deliver for a client.
+          <p className="reading col-span-12 mt-4 text-muted-foreground md:col-span-5 md:col-start-8 md:mt-2">
+            Independent research samples across AI, fintech, cybersecurity and technology — researched,
+            structured and written exactly as I would deliver for a client.
           </p>
+        </header>
+
+        <div className="grid grid-cols-12 gap-x-8">
+          <ol className="index-list col-span-12 border-t border-border md:col-span-7">
+            {featured.map((b, i) => (
+              <li
+                key={b.title}
+                className="index-row relative border-b border-border"
+                onMouseEnter={() => {
+                  setActive(i);
+                  prefetchOne(b.liveUrl);
+                }}
+                onFocusCapture={() => setActive(i)}
+                onTouchStart={() => prefetchOne(b.liveUrl)}
+              >
+                <a
+                  href={b.liveUrl}
+                  className="group grid grid-cols-[2.5rem_1fr] items-baseline gap-x-4 py-6 after:absolute after:inset-0 md:py-8"
+                >
+                  <span className="folio">{String(i + 1).padStart(2, "0")}</span>
+                  <span>
+                    <span className="block font-heading text-[clamp(1.375rem,2.4vw,2rem)] leading-[1.15] tracking-[-0.01em] text-foreground transition-transform duration-200 ease-arrive group-hover:translate-x-1 group-focus-visible:translate-x-1">
+                      {b.title}
+                    </span>
+                    <span className="folio mt-2 block">
+                      {b.niche} · {b.stat}
+                    </span>
+                    <span className="mt-3 block text-sm leading-relaxed text-muted-foreground md:hidden">
+                      {b.problem}
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
+
+          <aside className="sticky top-28 col-span-5 hidden self-start md:block">
+            <div key={active} className="animate-in fade-in duration-200">
+              <p className="folio mb-6">{item.format} · Independent research sample</p>
+              <dl className="space-y-6">
+                {[
+                  ["Problem", item.problem],
+                  ["Approach", item.approach],
+                  ["Demonstrates", item.demonstrates],
+                ].map(([term, text]) => (
+                  <div key={term}>
+                    <dt className="folio">{term}</dt>
+                    <dd className="mt-1 text-[1.0625rem] leading-relaxed text-foreground">{text}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+                <a href={item.liveUrl} className="link-seal">
+                  View live article <ArrowUpRight size={14} />
+                </a>
+                {item.transcriptHref.startsWith("/blog/") ? (
+                  <Link to={item.transcriptHref} className="link-seal text-muted-foreground">
+                    Read clean transcript
+                  </Link>
+                ) : (
+                  <a href={item.transcriptHref} className="link-seal text-muted-foreground">
+                    Read clean transcript
+                  </a>
+                )}
+              </div>
+            </div>
+          </aside>
         </div>
 
-        <div className="space-y-10">
-          {featured.map((b) => (
-            <BlogCard key={b.title} b={b} />
-          ))}
-        </div>
-
-        <div className="mt-10 flex flex-col items-center gap-4 text-center">
-          <Link
-            to="/work"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-accent transition-colors"
-          >
+        <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4">
+          <TransitionLink to="/work" className="link-seal">
             View all work <ArrowUpRight size={14} />
-          </Link>
-          <p className="text-sm text-muted-foreground italic max-w-md">
-            Every piece starts with search intent and primary research, then goes through structural and line editing.
+          </TransitionLink>
+          <p className="max-w-md text-sm text-muted-foreground">
+            Every piece starts with search intent and primary research, then goes through structural and line
+            editing.
           </p>
         </div>
       </div>

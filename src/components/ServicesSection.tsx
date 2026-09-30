@@ -38,27 +38,29 @@ const services = [
 ];
 
 const ServicesSection = () => (
-  <section id="services" className="py-24">
-    <div className="container mx-auto px-6 max-w-4xl">
-      <h2 className="font-heading text-3xl md:text-4xl text-foreground tracking-tight mb-14">
+  <section id="services" className="border-t border-border pt-[clamp(4.5rem,9vw,7rem)] pb-[clamp(3rem,6vw,4.5rem)]">
+    <div className="wrap grid grid-cols-12 gap-x-8">
+      <h2 className="col-span-12 text-[clamp(2rem,4vw,3rem)] font-normal leading-[1.05] tracking-[-0.02em] md:col-span-4">
         What I offer
       </h2>
 
-      <div className="divide-y divide-border/60 border-t border-border/60">
-        {services.map((s) => (
-          <div key={s.title} className="py-8">
-            <h3 className="font-heading text-xl text-foreground mb-3">{s.title}</h3>
-            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-1.5 mb-4">
-              {s.points.map((p) => (
-                <li key={p} className="text-sm text-muted-foreground">{p}</li>
-              ))}
-            </ul>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline underline-offset-4"
-            >
-              Start a project <ArrowUpRight size={14} />
-            </a>
+      <div className="col-span-12 mt-10 border-t border-border md:col-span-8 md:mt-0">
+        {services.map((s, i) => (
+          <div key={s.title} className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-border py-8">
+            <span className="folio pt-1.5">{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <h3 className="text-xl font-normal leading-snug text-foreground">{s.title}</h3>
+              <ul className="mt-4 grid gap-x-8 gap-y-1.5 sm:grid-cols-2">
+                {s.points.map((p) => (
+                  <li key={p} className="text-sm text-muted-foreground">
+                    {p}
+                  </li>
+                ))}
+              </ul>
+              <a href="#contact" className="link-seal mt-5 text-accent">
+                Start a project <ArrowUpRight size={14} />
+              </a>
+            </div>
           </div>
         ))}
       </div>

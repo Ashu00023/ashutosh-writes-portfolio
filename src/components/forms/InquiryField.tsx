@@ -27,13 +27,13 @@ export const TextField = ({
       id={id}
       aria-invalid={!!error}
       className={cn(
-        "bg-background/60 border-border/60 focus:border-accent",
-        error && "border-red-500/70 focus:border-red-500",
+        "bg-background/60 border-border focus:border-ledger",
+        error && "border-accent/70 focus:border-accent",
       )}
       {...rest}
     />
     {hint && !error && <p className="text-xs text-muted-foreground">{hint}</p>}
-    {error && <p className="text-xs text-red-500">{error}</p>}
+    {error && <p className="text-xs text-accent">{error}</p>}
   </div>
 );
 

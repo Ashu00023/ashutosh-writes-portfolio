@@ -1,5 +1,6 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { type ReactNode } from "react";
+import { distance, duration as dur, easeArrive } from "@/lib/motion";
 
 type Direction = "up" | "down" | "left" | "right";
 
@@ -13,17 +14,17 @@ interface ScrollRevealProps {
 }
 
 const offsets: Record<Direction, { x: number; y: number }> = {
-  up: { x: 0, y: 40 },
-  down: { x: 0, y: -40 },
-  left: { x: 40, y: 0 },
-  right: { x: -40, y: 0 },
+  up: { x: 0, y: distance.md },
+  down: { x: 0, y: -distance.md },
+  left: { x: distance.md, y: 0 },
+  right: { x: -distance.md, y: 0 },
 };
 
 const ScrollReveal = ({
   children,
   direction = "up",
   delay = 0,
-  duration = 0.6,
+  duration = dur.base,
   className,
   once = true,
 }: ScrollRevealProps) => {
@@ -37,8 +38,8 @@ const ScrollReveal = ({
       x: 0,
       y: 0,
       transition: reduceMotion
-        ? { duration: 0.2, delay: 0 }
-        : { duration, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+        ? { duration: dur.fast, delay: 0 }
+        : { duration, delay, ease: easeArrive },
     },
   };
 

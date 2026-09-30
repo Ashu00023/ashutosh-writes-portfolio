@@ -80,8 +80,8 @@ const SeoBlogInquiryForm = ({ onSuccess }: { onSuccess?: () => void }) => {
   if (done) {
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-16 text-center">
-        <CheckCircle size={56} className="text-green-500" />
-        <h3 className="text-xl font-bold text-foreground">Thanks — your project brief is in.</h3>
+        <CheckCircle size={40} strokeWidth={1.5} className="text-ledger" />   
+        <h3 className="font-heading text-2xl font-normal text-foreground">Thanks — your project brief is in.</h3>
         <p className="text-sm text-muted-foreground max-w-sm">
           I'll review it personally and reply within 24 hours with scope, questions and next steps.
         </p>
@@ -137,19 +137,19 @@ const SeoBlogInquiryForm = ({ onSuccess }: { onSuccess?: () => void }) => {
       />
 
       {serverError && (
-        <div className="text-sm text-red-500 border border-red-500/40 bg-red-500/5 rounded-lg px-4 py-3">
+        <div className="text-sm text-accent border border-accent/40 bg-accent/5 px-4 py-3">
           {serverError}
         </div>
       )}
 
-      <button
-        type="submit"
-        disabled={submitting}
-        className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent text-accent-foreground font-semibold py-3.5 hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
-      >
-        {submitting && <Loader2 size={18} className="animate-spin" />}
-        {submitting ? "Sending…" : "Send inquiry"}
-      </button>
+         <button
+           type="submit"
+           disabled={submitting}
+           className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-accent py-3.5 text-sm font-medium text-accent-foreground transition-colors duration-120 ease-cross hover:bg-foreground disabled:cursor-not-allowed disabled:opacity-60"
+         >
+           {submitting && <Loader2 size={18} className="animate-spin" />}
+           {submitting ? "Sending…" : "Send inquiry"}
+         </button>
       <p className="text-xs text-muted-foreground text-center">
         I reply within 24 hours. Your details stay private.
       </p>
