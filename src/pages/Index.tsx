@@ -4,7 +4,9 @@ import HeroSection from "@/components/HeroSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import ProcessSection from "@/components/ProcessSection";
 import AboutSection from "@/components/AboutSection";
+import TeamSection from "@/components/TeamSection";
 import ServicesSection from "@/components/ServicesSection";
+import PricingSection from "@/components/PricingSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import seo from "@/data/seo-data.json";
@@ -52,12 +54,14 @@ const Index = () => (
       </script>
     </Helmet>
     <Navbar />
-    <main>
+    <main className="rd-page">
       <HeroSection />
       <PortfolioSection />
       <ProcessSection />
       <AboutSection />
+      <TeamSection />
       <ServicesSection />
+      <PricingSection />
       <ContactSection />
     </main>
     <Footer />
