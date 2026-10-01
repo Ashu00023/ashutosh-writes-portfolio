@@ -36,6 +36,7 @@ const columns = [
     links: [
       { label: "SEO Blogs", href: "/#services" },
       { label: "Content Strategy", href: "/#services" },
+      { label: "Pricing", href: "/#pricing" },
     ],
   },
   {
@@ -43,6 +44,7 @@ const columns = [
     links: [
       { label: "Home", href: "/#home" },
       { label: "About", href: "/#about" },
+      { label: "Team", href: "/#team" },
       { label: "Author", href: "/author/ashutosh-mahapatra" },
       { label: "Method", href: "/#process" },
       { label: "Contact", href: "/#contact" },

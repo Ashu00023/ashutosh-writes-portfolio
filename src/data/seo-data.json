@@ -5,7 +5,7 @@
     "@id": "https://ashutoshwrites.online/#person",
     "name": "Ashutosh Mahapatra",
     "url": "https://ashutoshwrites.online/",
-    "jobTitle": "Research-Driven Content Writer — AI, Fintech & SaaS",
+    "jobTitle": "Founder, Content Strategy & Lead Editorial — Ashutosh Writes",
     "knowsAbout": [
       "AI content strategy",
       "Fintech writing",
@@ -22,17 +22,17 @@
     "@id": "https://ashutoshwrites.online/#service",
     "name": "Ashutosh Writes",
     "url": "https://ashutoshwrites.online/",
-    "description": "Research-driven SEO and thought-leadership content for AI, fintech, SaaS, cybersecurity and technology companies.",
+    "description": "Research-driven editorial web pages: strategy, copywriting, custom HTML/CSS and Schema.org JSON-LD — for AI, fintech, SaaS, cybersecurity and technology companies.",
     "founder": { "@id": "https://ashutoshwrites.online/#person" },
     "areaServed": "Worldwide",
-    "serviceType": ["Research-driven SEO content", "B2B thought leadership", "Content strategy", "Technical content"]
+    "serviceType": ["Research-driven SEO content", "B2B thought leadership", "Content strategy", "Technical content", "Fully coded editorial web pages", "Schema.org JSON-LD & technical SEO"]
   },
   "routes": {
     "home": {
       "path": "/",
       "outFile": "index.html",
-      "title": "Research-Driven SEO Content for AI, Fintech & SaaS | Ashutosh Mahapatra",
-      "description": "Research-driven long-form content for AI, fintech, SaaS and technology companies — combining primary-source research, search strategy and strong editorial thinking.",
+      "title": "Fully Coded Editorial Pages for AI, Fintech & SaaS | Ashutosh Writes",
+      "description": "We research, write, design and code publish-ready editorial web pages for AI, fintech and SaaS brands, with custom HTML/CSS and Schema.org JSON-LD built in.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },

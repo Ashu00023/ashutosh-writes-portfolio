@@ -1,14 +1,11 @@
 import { useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
-import { ArrowUpRight, FileText } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ScrollReveal from "@/components/ScrollReveal";
 import { workItems, nicheFilters, formatFilters, type WorkItem } from "@/data/work";
 import { prefetchOne } from "@/lib/prefetch";
 import seo from "@/data/seo-data.json";
-
-const isSpaRoute = (href: string) => href.startsWith("/blog/");
 
 const canonical = `${seo.siteUrl}/work`;
 
@@ -66,23 +63,6 @@ const WorkCard = ({ item }: { item: WorkItem }) => (
         >
           View Live Article <ArrowUpRight size={15} />
         </a>
-        {isSpaRoute(item.transcriptHref) ? (
-          <Link
-            to={item.transcriptHref}
-            className="inline-flex items-center gap-1.5 border border-border text-foreground text-sm font-semibold px-4 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-colors duration-200"
-          >
-            <FileText size={14} /> Read Clean Transcript
-          </Link>
-        ) : (
-           <a         
-            href={item.transcriptHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 border border-border text-foreground text-sm font-semibold px-4 py-2.5 rounded-lg hover:border-accent hover:text-accent transition-colors duration-200"
-          >
-            <FileText size={14} /> Read Clean Transcript
-          </a>
-        )}
       </div>
       <p className="mt-5 pt-4 border-t border-border/60 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.12em]">
         {item.format} · {item.stat}
