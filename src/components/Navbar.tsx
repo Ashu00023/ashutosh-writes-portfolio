@@ -1,132 +1,134 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo-new.webp";
-import TransitionLink from "@/components/TransitionLink";
+import { useScrollFrame } from "@/hooks/useScrollFrame";
 
 const links = [
-  { label: "Work", id: "portfolio" },
-  { label: "Method", id: "process" },
-  { label: "About", id: "about" },
-  { label: "Contact", id: "contact" },
+  { label: "Home", href: "/#home", section: "home" },
+  { label: "Work", href: "/work", section: "portfolio" },
+  { label: "Services", href: "/#services", section: "services" },
+  { label: "Pricing", href: "/#pricing", section: "pricing" },
+  { label: "Approach", href: "/#approach", section: "approach" },
+  { label: "About", href: "/#about", section: "about" },
+  { label: "Team", href: "/#team", section: "team" },
+  { label: "Blog", href: "/blog", section: "" },
+  { label: "Author", href: "/author/ashutosh-mahapatra", section: "" },
+  { label: "Contact", href: "/#contact", section: "contact" },
 ];
 
-/** Which home-page section sits in the thin band around 40–45% of the viewport. */
-const useActiveSection = (enabled: boolean) => {
-  const [active, setActive] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!enabled) {
-      setActive(null);
-      return;
-    }
-    const seen = new Set<string>();
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => (e.isIntersecting ? seen.add(e.target.id) : seen.delete(e.target.id)));
-        setActive(links.map((l) => l.id).filter((id) => seen.has(id)).pop() ?? null);
-      },
-      { rootMargin: "-40% 0px -55% 0px" },
-    );
-    links.forEach((l) => {
-      const el = document.getElementById(l.id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, [enabled]);
-
-  return active;
-};
+/** Homepage sections in page order. `process` has no link of its own, so it borrows Approach. */
+const order = ["home", "portfolio", "approach", "process", "about", "team", "services", "pricing", "contact"];
+const borrow: Record<string, string> = { process: "approach" };
 
 const Navbar = () => {
+  const { pathname } = useLocation();
+  const home = pathname === "/";
+  const [scrolled, setScrolled] = useState(false);
+  const [dark, setDark] = useState(false);
   const [open, setOpen] = useState(false);
-  const { pathname, hash } = useLocation();
-  const active = useActiveSection(pathname === "/");
+  const [section, setSection] = useState<string | null>(null);
+  const [hover, setHover] = useState<number | null>(null);
+  const [pill, setPill] = useState({ left: 0, width: 0, show: false });
+  const items = useRef<(HTMLAnchorElement | null)[]>([]);
+
+  useScrollFrame(() => {
+    setScrolled(window.scrollY > 20);
+    if (!home) {
+      setSection(null);
+      return;
+    }
+    const vh = window.innerHeight;
+    let current = order[0];
+    for (const id of order) {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= vh * 0.4) current = id;
+    }
+    setSection(borrow[current] ?? current);
+  }, [pathname]);
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname, hash]);
+    const onStage = (e: Event) => setDark((e as CustomEvent<number>).detail > 0.5);
+    window.addEventListener("aw:stage", onStage);
+    return () => window.removeEventListener("aw:stage", onStage);
+  }, []);
+
+  useEffect(() => setOpen(false), [pathname]);
+
+  const isCurrent = (i: number) => {
+    const l = links[i];
+    if (home) return l.section !== "" && l.section === section;
+    return !l.href.includes("#") && (pathname === l.href || pathname.startsWith(`${l.href}/`));
+  };
+  const activeIndex = links.findIndex((_, i) => isCurrent(i));
+  const target = hover ?? (activeIndex >= 0 ? activeIndex : null);
 
   useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
+    const move = () => {
+      const el = target === null ? null : items.current[target];
+      setPill(el ? { left: el.offsetLeft, width: el.offsetWidth, show: true } : (p) => ({ ...p, show: false }));
+    };
+    move();
+    window.addEventListener("resize", move);
+    return () => window.removeEventListener("resize", move);
+  }, [target]);
+
+  const cls = ["rd-nav", scrolled ? "rd-s" : "", dark && !open ? "rd-dk" : ""].join(" ");
 
   return (
-    <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-border bg-background">
-      <nav aria-label="Primary" className="wrap flex h-16 items-center justify-between">
-        <TransitionLink to="/" className="flex items-center gap-2.5">
-          <img src={logo} alt="Ashutosh Writes logo" className="h-8 w-8 object-contain" />
-          <span className="text-[15px] font-bold tracking-tight">
-            <span className="text-foreground">ashutoshwrites.</span>
-            <span className="text-accent">online</span>
+    <>
+    <header className={cls}>
+      <div className="rd-wrap">
+        <Link to="/" className="rd-brand" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <img src={logo} alt="Ashutosh Writes logo" className="h-9 w-9 object-contain" />
+          <span>
+            ashutoshwrites.<b>online</b>
           </span>
-        </TransitionLink>
-
-        <ul className="hidden items-center gap-8 md:flex">
-          {links.map((l) => (
-            <li key={l.id}>
-              <Link
-                to={`/#${l.id}`}
-                aria-current={active === l.id ? "location" : undefined}
-                className="nav-link"
-              >
-                {l.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <Link
-          to="/#contact"
-          className="hidden items-center rounded-sm bg-accent px-4 py-2 text-[13px] font-medium text-accent-foreground transition-colors duration-120 ease-cross hover:bg-foreground md:inline-flex"
-        >
-          Start a Project
         </Link>
+
+        <nav className="rd-links" aria-label="Primary" onMouseLeave={() => setHover(null)}>
+          <i className="rd-pill" style={{ left: pill.left, width: pill.width, opacity: pill.show ? 1 : 0 }} />
+          {links.map((l, i) => (
+            <a
+              key={l.href}
+              href={l.href}
+              ref={(el) => (items.current[i] = el)}
+              aria-current={isCurrent(i) ? (home ? "location" : "page") : undefined}
+              className={isCurrent(i) ? "rd-on" : ""}
+              onMouseEnter={() => setHover(i)}
+              onFocus={() => setHover(i)}
+              onBlur={() => setHover(null)}
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+
+        <a className="rd-cta" href="/#contact">
+          Start a Project
+        </a>
 
         <button
           type="button"
-          className="p-2 text-foreground md:hidden"
-          onClick={() => setOpen((o) => !o)}
+          className="rd-bg"
           aria-label="Toggle menu"
           aria-expanded={open}
           aria-controls="mobile-menu"
+          onClick={() => setOpen((o) => !o)}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={24} /> : <Menu size={24} />}
         </button>
-      </nav>
-
-      {open && (
-        <div
-          id="mobile-menu"
-          className="animate-in fade-in border-t border-border bg-background pb-6 duration-200 md:hidden"
-        >
-          <ul className="wrap flex flex-col pt-2">
-            {links.map((l) => (
-              <li key={l.id} className="border-b border-border">
-                <Link
-                  to={`/#${l.id}`}
-                  aria-current={active === l.id ? "location" : undefined}
-                  className="block py-3.5 text-base font-medium text-foreground"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-            <li className="pt-5">
-              <Link
-                to="/#contact"
-                className="inline-flex w-full items-center justify-center rounded-sm bg-accent px-4 py-3 text-sm font-medium text-accent-foreground"
-              >
-                Start a Project
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
+      </div>
     </header>
+
+      <nav id="mobile-menu" aria-label="Mobile" className={`rd-sheet${open ? " rd-o" : ""}`}>
+        {links.map((l, i) => (
+          <a key={l.href} href={l.href} style={{ "--i": i } as React.CSSProperties} onClick={() => setOpen(false)}>
+            {l.label}
+          </a>
+        ))}
+      </nav>
+    </>
   );
 };
 
