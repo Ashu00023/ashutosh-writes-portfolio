@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script>
+      // Phones only, homepage only: start downloading the hero card image before React has rendered it.
+      (function () {
+        if (location.pathname !== "/" || !window.matchMedia("(max-width: 820px)").matches) return;
+        var l = document.createElement("link");
+        l.rel = "preload";
+        l.as = "image";
+        l.type = "image/webp";
+        l.href = "/ai-content-blog-thumbnail.webp";
+        l.setAttribute("fetchpriority", "high");
+        document.head.appendChild(l);
+      })();
+    </script>
     <link rel="preconnect" href="https://api.fontshare.com" />
     <link
       rel="preload"
