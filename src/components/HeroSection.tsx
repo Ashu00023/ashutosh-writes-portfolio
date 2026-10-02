@@ -41,10 +41,17 @@ const HeroSection = () => {
               data-h
               style={{ "--d": 3 } as React.CSSProperties}
             >
-              <img src={anchor.image} alt={`Thumbnail for ${anchor.title}`} width={800} height={450} />
+              <img
+                src={anchor.image}
+                alt={`Thumbnail for ${anchor.title}`}
+                width={800}
+                height={450}
+                fetchPriority="high"
+                decoding="async"
+              />
               <div>
                 <small>Anchor piece</small>
-                <h3>{anchor.title}</h3>
+                <div className="rd-at">{anchor.title}</div>
                 <p>{anchor.approach}</p>
               </div>
             </a>
