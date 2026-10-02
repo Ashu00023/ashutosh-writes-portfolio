@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { workItems } from "@/data/work";
 import { prefetchOne, prefetchSamples } from "@/lib/prefetch";
 import { clamp, ease, hexToRgb, reducedMotion, useScrollFrame } from "@/hooks/useScrollFrame";
@@ -23,6 +23,31 @@ const PortfolioSection = () => {
       document.body.style.background = "";
       document.documentElement.style.removeProperty("--bg-now");
       window.dispatchEvent(new CustomEvent("aw:stage", { detail: 0 }));
+    };
+  }, []);
+
+  // Stacked (phone) layout: each sample reveals once as it scrolls into view. Skipped for reduced motion
+  // and when IntersectionObserver is missing, so content is never left hidden. Styles: #portfolio[data-rv] in redesign.css.
+  useLayoutEffect(() => {
+    const root = section.current;
+    if (!root || typeof IntersectionObserver === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    root.setAttribute("data-rv", "");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting || e.boundingClientRect.top < 0) {
+            e.target.closest(".rd-ch")?.setAttribute("data-in", "");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: "0px 0px -8% 0px" },
+    );
+    root.querySelectorAll(".rd-mf").forEach((el) => io.observe(el));
+    return () => {
+      io.disconnect();
+      root.removeAttribute("data-rv");
     };
   }, []);
 
@@ -102,21 +127,23 @@ const PortfolioSection = () => {
                   <img src={it.image} alt={`${it.title} thumbnail`} width={800} height={450} loading="lazy" decoding="async" />
                   <figcaption>{it.stat}</figcaption>
                 </figure>
-                <h3>{it.title}</h3>
-                <p><b>Problem: </b>{it.problem}</p>
-                <p><b>Approach: </b>{it.approach}</p>
-                <p><b>Demonstrates: </b>{it.demonstrates}</p>
-                <div className="rd-lk">
-                  <a
-                    href={it.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onMouseEnter={() => prefetchOne(it.liveUrl)}
-                    onFocus={() => prefetchOne(it.liveUrl)}
-                    onTouchStart={() => prefetchOne(it.liveUrl)}
-                  >
-                    View live article
-                  </a>
+                <div className="rd-tx">
+                  <h3>{it.title}</h3>
+                  <p><b>Problem: </b>{it.problem}</p>
+                  <p><b>Approach: </b>{it.approach}</p>
+                  <p><b>Demonstrates: </b>{it.demonstrates}</p>
+                  <div className="rd-lk">
+                    <a
+                      href={it.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onMouseEnter={() => prefetchOne(it.liveUrl)}
+                      onFocus={() => prefetchOne(it.liveUrl)}
+                      onTouchStart={() => prefetchOne(it.liveUrl)}
+                    >
+                      View live article
+                    </a>
+                  </div>
                 </div>
               </article>
             ))}
