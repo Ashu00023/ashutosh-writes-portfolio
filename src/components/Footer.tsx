@@ -63,7 +63,7 @@ const legalLinks = [
   { label: "Disclaimer", href: "/disclaimer" },
 ];
 
-const linkClass = "text-sm text-muted-foreground transition-colors duration-120 ease-cross hover:text-accent";
+const linkClass = "text-sm text-muted-foreground transition-colors duration-120 ease-cross hover:text-accent max-md:inline-block max-md:py-1.5";
 const isOutside = (href: string) => /^(https?:|mailto:|tel:)/.test(href);
 const isRoute = (href: string) => !href.includes("#") && href !== "/";
 
@@ -106,7 +106,7 @@ const Footer = () => (
         <ul className="flex flex-wrap items-center gap-x-6 gap-y-3">
           {legalLinks.map((link) => (
             <li key={link.href}>
-              <Link to={link.href} className="folio transition-colors duration-120 ease-cross hover:text-accent">
+              <Link to={link.href} className="folio transition-colors duration-120 ease-cross hover:text-accent max-md:inline-block max-md:py-2">
                 {link.label}
               </Link>
             </li>

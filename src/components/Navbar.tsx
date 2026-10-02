@@ -9,7 +9,7 @@ const links = [
   { label: "Work", href: "/work", section: "portfolio" },
   { label: "Services", href: "/#services", section: "services" },
   { label: "Pricing", href: "/#pricing", section: "pricing" },
-  { label: "Approach", href: "/#approach", section: "approach" },
+  { label: "Approach", href: "/#process", section: "process" },
   { label: "About", href: "/#about", section: "about" },
   { label: "Team", href: "/#team", section: "team" },
   { label: "Blog", href: "/blog", section: "" },
@@ -17,9 +17,8 @@ const links = [
   { label: "Contact", href: "/#contact", section: "contact" },
 ];
 
-/** Homepage sections in page order. `process` has no link of its own, so it borrows Approach. */
-const order = ["home", "portfolio", "approach", "process", "about", "team", "services", "pricing", "contact"];
-const borrow: Record<string, string> = { process: "approach" };
+/** Homepage sections in page order. */
+const order = ["home", "portfolio", "process", "about", "team", "services", "pricing", "contact"];
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -44,7 +43,7 @@ const Navbar = () => {
       const el = document.getElementById(id);
       if (el && el.getBoundingClientRect().top <= vh * 0.4) current = id;
     }
-    setSection(borrow[current] ?? current);
+    setSection(current);
   }, [pathname]);
 
   useEffect(() => {
@@ -54,6 +53,19 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => setOpen(false), [pathname]);
+
+  // Mobile menu: Escape closes it, and it closes if the window grows into the desktop nav.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onResize = () => window.innerWidth > 1180 && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [open]);
 
   const isCurrent = (i: number) => {
     const l = links[i];
@@ -111,12 +123,12 @@ const Navbar = () => {
         <button
           type="button"
           className="rd-bg"
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((o) => !o)}
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
         </button>
       </div>
     </header>

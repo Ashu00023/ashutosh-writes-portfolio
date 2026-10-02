@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { workItems, nicheFilters, formatFilters, type WorkItem } from "@/data/work";
 import { prefetchOne } from "@/lib/prefetch";
@@ -34,10 +35,10 @@ const WorkCard = ({ item }: { item: WorkItem }) => (
       <span className="self-start text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em] mb-4">
         {item.niche}
       </span>
-      <h3 className="text-lg font-bold text-foreground tracking-tight leading-snug mb-2">
+      <h2 className="text-lg font-bold text-foreground tracking-tight leading-snug mb-2">
         {item.title}
-      </h3>
-      <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/70 mb-4">
+      </h2>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground mb-4">
         Independent research sample
       </p>
       <div className="space-y-3 mb-6 flex-1">
@@ -122,7 +123,7 @@ const Work = () => {
           <div className="max-w-6xl mx-auto mb-10 space-y-3">
             <div className="flex flex-wrap gap-2.5">
               {nicheFilters.map((n) => (
-                <button key={n} type="button" onClick={() => setNiche(n)} className={pill(niche === n)}>
+                <button key={n} type="button" aria-pressed={niche === n} onClick={() => setNiche(n)} className={pill(niche === n)}>
                   {n}
                 </button>
               ))}
@@ -132,6 +133,7 @@ const Work = () => {
                 <button
                   key={f}
                   type="button"
+                  aria-pressed={format === f}
                   onClick={() => setFormat(f)}
                   className={pill(format === f)}
                 >
@@ -156,6 +158,7 @@ const Work = () => {
           )}
         </div>
       </main>
+      <Footer />
     </>
   );
 };
