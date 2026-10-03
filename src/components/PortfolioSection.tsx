@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { workItems } from "@/data/work";
 import { prefetchOne, prefetchSamples } from "@/lib/prefetch";
-import { clamp, ease, hexToRgb, reducedMotion, useScrollFrame } from "@/hooks/useScrollFrame";
+import { clamp, ease, reducedMotion, useScrollFrame } from "@/hooks/useScrollFrame";
 
 const items = workItems.slice(0, 4);
 
@@ -10,18 +10,18 @@ const PIN_QUERY = "(min-width: 860px) and (min-height: 620px)";
 
 const PortfolioSection = () => {
   const section = useRef<HTMLElement>(null);
+  const stage = useRef<HTMLDivElement>(null);
+  const wl = useRef<HTMLDivElement>(null);
   const bar = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const activeRef = useRef(0);
   const pinMq = useRef<MediaQueryList | null>(null);
-  // Cached between frames so scrolling never re-reads styles or re-writes unchanged values.
-  const paint = useRef({ from: [] as number[], to: [] as number[], col: "", st: "", dark: false });
+  // Cached between frames so scrolling never re-writes unchanged values.
+  const paint = useRef({ st: "", dark: false });
 
   useEffect(() => {
     prefetchSamples();
     return () => {
-      document.body.style.background = "";
-      document.documentElement.style.removeProperty("--bg-now");
       window.dispatchEvent(new CustomEvent("aw:stage", { detail: 0 }));
     };
   }, []);
@@ -58,25 +58,17 @@ const PortfolioSection = () => {
     const w = el.getBoundingClientRect(); // read first, write after
     const p = paint.current;
 
-    if (!p.from.length) {
-      const cs = getComputedStyle(document.documentElement);
-      p.from = hexToRgb(cs.getPropertyValue("--paper"));
-      p.to = hexToRgb(cs.getPropertyValue("--stage"));
-    }
-
-    // paper -> stage handoff (page background), and tell the nav
+    // paper -> stage handoff: 0 = cream page, 1 = black stage
     const t = ease(clamp((vh * 0.85 - w.top) / (vh * 0.5))) * (1 - ease(clamp((vh * 0.55 - w.bottom) / (vh * 0.5))));
-    const col = `rgb(${p.from.map((v, i) => Math.round(v + (p.to[i] - v) * t)).join(",")})`;
-    if (col !== p.col) {
-      p.col = col;
-      document.body.style.background = col;
-      document.documentElement.style.setProperty("--bg-now", col);
-    }
-    // the section text fades in with the dark stage (see .rd-wl in redesign.css)
-    const st = t.toFixed(2);
+
+    // The page background itself is never repainted. Only two opacities move, both compositor-only
+    // (see .rd-stg and .rd-wl in redesign.css): the fixed black layer, and the section text, which
+    // fades in once the stage is about 25% there.
+    const st = t.toFixed(3);
     if (st !== p.st) {
       p.st = st;
-      el.style.setProperty("--st", st);
+      if (stage.current) stage.current.style.opacity = st;
+      if (wl.current) wl.current.style.opacity = String(clamp((t - 0.25) / 0.35));
     }
     const dark = t > 0.5;
     if (dark !== p.dark) {
@@ -109,8 +101,10 @@ const PortfolioSection = () => {
 
   return (
     <section id="portfolio" ref={section} aria-labelledby="portfolio-title">
+      {/* Fixed black layer behind the page. Fading its opacity replaces repainting the whole page background. */}
+      <div className="rd-stg" ref={stage} aria-hidden="true" />
       <div className="rd-pin rd-wrap">
-        <div className="rd-wl">
+        <div className="rd-wl" ref={wl}>
           <div>
             <h2 id="portfolio-title">Featured writing samples</h2>
             <p className="rd-sub">
