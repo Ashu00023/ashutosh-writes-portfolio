@@ -11,7 +11,8 @@ html{scroll-padding-top:84px}
 .rd-mut{color:var(--mut)}
 /* nav */
 .rd-nav{position:fixed;inset:0 0 auto;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .5s,color .5s,backdrop-filter .5s}
-.rd-nav.rd-s{background:color-mix(in srgb,var(--bg-now,var(--paper)) 76%,transparent);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2)}
+.rd-nav.rd-s{background:color-mix(in srgb,var(--paper) 76%,transparent);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2)}
+.rd-nav.rd-s.rd-dk{background:color-mix(in srgb,var(--stage) 76%,transparent)}
 .rd-nav.rd-dk{color:var(--sink)}
 .rd-nav .rd-wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 .rd-brand{font-weight:600;font-size:15px;letter-spacing:-.01em;animation:rd-bi .9s var(--ease) both}.rd-brand b{color:var(--acc);font-weight:600}.rd-dk .rd-brand b{color:var(--acc2)}
@@ -54,7 +55,9 @@ html{scroll-padding-top:84px}
 /* work */
 #portfolio{height:480vh;position:relative}
 .rd-pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr);gap:clamp(28px,5vw,80px);align-items:center;color:var(--sink);padding-top:72px}
-.rd-wl{display:flex;flex-direction:column;height:min(650px,80svh);opacity:clamp(0,calc((var(--st,1) - .25) / .35),1)}
+/* Fixed black layer behind the page. PortfolioSection.tsx fades its opacity from 0 to 1 as the section arrives; the short transition smooths uneven scroll events. */
+.rd-stg{position:fixed;top:0;left:0;width:100%;height:120vh;z-index:-1;background:var(--stage);opacity:0;pointer-events:none;will-change:opacity;transition:opacity .22s linear}
+.rd-wl{display:flex;flex-direction:column;height:min(650px,80svh);transition:opacity .22s linear}
 .rd-wl h2{font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.1}.rd-wl .rd-sub{font-size:13.5px;line-height:1.5;opacity:.6;margin-top:10px}
 .rd-chs{position:relative;flex:1;margin:26px 0 18px}
 .rd-ch{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .5s,transform .9s var(--ease),visibility 0s .9s;pointer-events:none}.rd-ch.rd-a{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:opacity .5s,transform .9s var(--ease),visibility 0s}
