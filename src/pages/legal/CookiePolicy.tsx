@@ -4,66 +4,41 @@ const CookiePolicy = () => (
   <LegalLayout
     title="Cookie Policy"
     metaTitle="Cookie Policy | Ashutosh Mahapatra"
-    description="Which cookies ashutoshwrites.online uses — essential, analytics, and advertising — and how you can control them."
+    description="ashutoshwrites.online sets no analytics or advertising cookies. This page explains third-party fonts, external links and your browser controls."
     path="/cookie-policy"
     breadcrumbLabel="Cookie Policy"
-    updated="11 September 2026"
-    intro="Cookies are small text files stored on your device. This page lists the categories used here and how to control each one."
+    updated="3 October 2026"
+    intro="Cookies are small text files stored on your device. This page explains what this site does with them."
   >
-    <h2>1. Essential cookies</h2>
+    <h2>1. Cookies on this site</h2>
     <p>
-      These keep the site working: remembering that you have already seen the intro animation in this browsing session,
-      preserving form state while you type, and protecting the enquiry form against abuse. They store no advertising
-      identifiers and cannot be switched off without breaking basic functionality.
+      This site does not set cookies for analytics, advertising or tracking, and it does not currently set any cookies
+      of its own. Because of that, there is no cookie consent banner.
     </p>
 
-    <h2>2. Analytics cookies</h2>
+    <h2>2. Third-party fonts</h2>
     <p>
-      These help me understand which articles are read, how visitors arrive, and where pages underperform. The data is
-      aggregated and is not used to identify you personally. Blocking them does not affect your ability to read anything
-      on the site.
+      The main pages load fonts from Fontshare, and some article pages load fonts from Google Fonts. These services
+      receive your IP address and browser details when a page loads. See their own privacy policies for how they
+      handle that data.
     </p>
 
-    <h2>3. Advertising cookies</h2>
+    <h2>3. External links</h2>
     <p>
-      This site may display advertising in future, including through Google AdSense. When advertising is active,
-      third-party vendors — including Google — may set cookies to measure ad performance and to serve ads based on your
-      prior visits to this and other websites. You can opt out of personalised advertising through{" "}
-      <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">
-        Google Ads Settings
-      </a>{" "}
-      or{" "}
-      <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer">
-        aboutads.info
-      </a>
-      .
+      Links to sites such as LinkedIn, Instagram and WhatsApp take you away from this site. Those sites may set their
+      own cookies once you visit them, under their own policies.
     </p>
 
-    <h2>4. Third-party cookies</h2>
+    <h2>4. Your browser controls</h2>
     <p>
-      Embedded or linked third-party services may set their own cookies when you interact with them. Those cookies are
-      governed by the provider's own policy, not this one.
+      You can block or delete cookies in your browser settings at any time. Doing so will not affect how this site
+      works.
     </p>
 
-    <h2>5. Consent</h2>
+    <h2>5. If this changes</h2>
     <p>
-      Where consent is legally required — for example in the EU, UK, and comparable jurisdictions — non-essential
-      analytics and advertising cookies are set only after consent is given. This site is built so a consent banner can
-      be enabled the moment advertising or region-gated analytics goes live, with your choice recorded and revocable at
-      any time.
-    </p>
-
-    <h2>6. Controlling cookies in your browser</h2>
-    <p>
-      Every major browser lets you view, block, and delete cookies from its privacy or site-settings panel. Blocking all
-      cookies may affect how some parts of this and other websites behave.
-    </p>
-
-    <h2>7. Changes and contact</h2>
-    <p>
-      This policy will be updated when the cookies in use change. For questions, email{" "}
-      <a href="mailto:ashutosh@mail.ashutoshwrites.online">ashutosh@mail.ashutoshwrites.online</a>. See also the{" "}
-      <a href="/privacy-policy">Privacy Policy</a>.
+      If I add analytics, advertising or any other tool that uses cookies, I will add a consent choice and update this
+      page and the <a href="/privacy-policy">Privacy Policy</a> before those tools load.
     </p>
   </LegalLayout>
 );
