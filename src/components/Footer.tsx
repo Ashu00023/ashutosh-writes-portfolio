@@ -61,6 +61,7 @@ const legalLinks = [
   { label: "Terms of Use", href: "/terms-of-use" },
   { label: "Cookie Policy", href: "/cookie-policy" },
   { label: "Disclaimer", href: "/disclaimer" },
+  { label: "Refund Policy", href: "/refund-policy" },
 ];
 
 const linkClass = "text-sm text-muted-foreground transition-colors duration-120 ease-cross hover:text-accent max-md:inline-block max-md:py-1.5";
@@ -116,13 +117,13 @@ const Footer = () => (
 
       <div className="mt-8 flex flex-col items-start justify-between gap-6 border-t border-border pt-8 md:flex-row md:items-center">
         <div className="flex items-center gap-2.5">
-          <img src={logo} alt="Ashutosh Writes logo" className="h-7 w-7 object-contain" />
+          <img src={logo} alt="" className="h-7 w-7 object-contain" />
           <span className="text-sm font-bold tracking-tight">
             <span className="text-foreground">ashutoshwrites.</span>
             <span className="text-accent">online</span>
           </span>
         </div>
-        <p className="folio">© {new Date().getFullYear()} Ashutosh Mahapatra. All rights reserved.</p>
+        <p className="folio">© {new Date().getFullYear()} Ashutosh Mahapatra, Bhubaneswar, Odisha, India. All rights reserved.</p>
       </div>
     </div>
   </footer>

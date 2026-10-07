@@ -26,14 +26,16 @@ export const TextField = ({
     <Input
       id={id}
       aria-invalid={!!error}
+      aria-required={required || undefined}
+      aria-describedby={error ? `${id}-error` : hint ? `${id}-hint` : undefined}
       className={cn(
         "bg-background/60 border-border focus:border-ledger",
         error && "border-accent/70 focus:border-accent",
       )}
       {...rest}
     />
-    {hint && !error && <p className="text-xs text-muted-foreground">{hint}</p>}
-    {error && <p className="text-xs text-accent">{error}</p>}
+    {hint && !error && <p id={`${id}-hint`} className="text-xs text-muted-foreground">{hint}</p>}
+    {error && <p id={`${id}-error`} className="text-xs text-accent">{error}</p>}
   </div>
 );
 
@@ -52,13 +54,15 @@ export const TextArea = ({
     <Textarea
       id={id}
       aria-invalid={!!error}
+      aria-required={required || undefined}
+      aria-describedby={error ? `${id}-error` : hint ? `${id}-hint` : undefined}
       className={cn(
         "bg-background/60 border-border/60 focus:border-accent min-h-[110px]",
         error && "border-red-500/70 focus:border-red-500",
       )}
       {...rest}
     />
-    {hint && !error && <p className="text-xs text-muted-foreground">{hint}</p>}
-    {error && <p className="text-xs text-red-500">{error}</p>}
+    {hint && !error && <p id={`${id}-hint`} className="text-xs text-muted-foreground">{hint}</p>}
+    {error && <p id={`${id}-error`} className="text-xs text-accent">{error}</p>}
   </div>
 );

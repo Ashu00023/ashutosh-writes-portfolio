@@ -26,7 +26,7 @@ const WorkCard = ({ item }: { item: WorkItem }) => (
     <div className="relative overflow-hidden bg-muted aspect-[16/9] flex items-center justify-center">
       <img
         src={item.image}
-        alt={item.title}
+        alt={item.thumbAlt}
         loading="lazy"
         className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
       />
@@ -105,7 +105,7 @@ const Work = () => {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
       <Navbar />
-      <main className="pt-32 pb-28">
+      <main id="main" tabIndex={-1} className="pt-32 pb-28 focus:outline-none">
         <div className="container mx-auto px-6">
           <ScrollReveal className="text-center mb-12">
             <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">

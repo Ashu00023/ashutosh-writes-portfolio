@@ -22,7 +22,7 @@ export const posts: Post[] = [
     title: "AI Personal Finance 2026",
     label: "AI + Finance",
     summary:
-      "Verified stats, structural trends, and the risks most AI finance coverage misses — built for readers who want signal over noise.",
+      "Sourced statistics, structural trends and the risks most AI finance coverage misses, built for readers who want signal over noise.",
     image: "/ai-content-blog-thumbnail.webp",
   },
   {
@@ -38,7 +38,7 @@ export const posts: Post[] = [
     title: "The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare",
     label: "Cybersecurity",
     summary:
-      "AI agents aren't sneaking in through shadow IT anymore — they're inheriting OAuth scope from platforms you already approved.",
+      "AI agents are no longer sneaking in through shadow IT. They inherit OAuth scope from platforms you already approved.",
     image: "/byoa-shadow-ai-blog-thumbnail.webp",
   },
   {
@@ -46,7 +46,7 @@ export const posts: Post[] = [
     title: "Who Eats the Loss When Your AI Agent Buys the Wrong Thing",
     label: "Fintech & AI",
     summary:
-      "Visa's April 2026 Core Rules update routed agent purchases into existing card-not-present dispute rules — fact-checked against primary sources.",
+      "Visa's April 2026 Core Rules update routed agent purchases into existing card-not-present dispute rules. Checked against primary sources.",
     image: "/visa-agentic-commerce-dispute-seo-thumbnail.webp",
     external: true,
   },

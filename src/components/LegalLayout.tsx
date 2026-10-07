@@ -56,7 +56,7 @@ const LegalLayout = ({
         </script>
       </Helmet>
       <Navbar />
-      <main className="min-h-screen pt-28 pb-20">
+      <main id="main" tabIndex={-1} className="min-h-screen pt-28 pb-20 focus:outline-none">
         <div className="container mx-auto px-6">
           <nav aria-label="Breadcrumb" className="max-w-3xl mx-auto mb-8">
             <ol className="flex items-center gap-2 text-xs text-muted-foreground">

@@ -43,7 +43,7 @@ const ContactSection = () => {
             Let&rsquo;s Work Together
           </h2>
           <p className="reading mt-6 text-[1.0625rem] text-muted-foreground">
-            Ready to grow your traffic with premium, human-written content? Reach out through any channel below.
+            Have a project in mind? Reach out through any channel below.
           </p>
           <ul className="mt-8 divide-y divide-border border-y border-border">
             {contacts.map((c) => {

@@ -54,7 +54,7 @@ const Index = () => (
       </script>
     </Helmet>
     <Navbar />
-    <main className="rd-page">
+    <main id="main" tabIndex={-1} className="rd-page focus:outline-none">
       <HeroSection />
       <PortfolioSection />
       <ProcessSection />

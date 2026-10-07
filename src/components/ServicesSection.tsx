@@ -34,7 +34,7 @@ const ServicesSection = () => {
                     <li key={p}>{p}</li>
                   ))}
                 </ul>
-                <a href="#contact">Start a project</a>
+                <a href="#contact" aria-label={`Start a project: ${s.title}`}>Start a project</a>
               </div>
             </div>
           </div>

@@ -12,13 +12,9 @@ const schema = z.object({
   email: z.string().trim().email("Please enter a valid email").max(255),
   company: z.string().trim().max(200).optional().or(z.literal("")),
   website: z.string().trim().max(300).optional().or(z.literal("")),
-  industry: z.string().trim().min(2, "Tell me your industry").max(200),
   serviceType: z.string().trim().min(1, "Please select what you need").max(100),
   topic: z.string().trim().min(5, "Tell me about the project").max(500),
-  scope: z.string().trim().max(50).optional().or(z.literal("")),
-  goal: z.string().trim().max(500).optional().or(z.literal("")),
   timeline: z.string().trim().max(200).optional().or(z.literal("")),
-  budget: z.string().trim().max(200).optional().or(z.literal("")),
   notes: z.string().trim().max(2000).optional().or(z.literal("")),
   // honeypot
   website_url: z.string().max(0).optional().or(z.literal("")),
@@ -27,8 +23,7 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 const initial: FormValues = {
-  name: "", email: "", company: "", website: "", industry: "", serviceType: "", topic: "",
-  scope: "", goal: "", timeline: "", budget: "", notes: "", website_url: "",
+  name: "", email: "", company: "", website: "", serviceType: "", topic: "", timeline: "", notes: "", website_url: "",
 };
 
 const SeoBlogInquiryForm = ({ onSuccess }: { onSuccess?: () => void }) => {
@@ -58,6 +53,9 @@ const SeoBlogInquiryForm = ({ onSuccess }: { onSuccess?: () => void }) => {
         if (!fieldErrs[key]) fieldErrs[key] = i.message;
       });
       setErrors(fieldErrs);
+      const order = ["name", "email", "company", "website", "topic", "serviceType", "timeline", "notes"];
+      const first = order.find((k) => fieldErrs[k as keyof FormValues]);
+      if (first) setTimeout(() => document.getElementById(first)?.focus(), 0);
       return;
     }
     setErrors({});
@@ -79,11 +77,11 @@ const SeoBlogInquiryForm = ({ onSuccess }: { onSuccess?: () => void }) => {
 
   if (done) {
     return (
-      <div className="flex flex-col items-center justify-center gap-4 py-16 text-center">
+      <div role="status" className="flex flex-col items-center justify-center gap-4 py-16 text-center">
         <CheckCircle size={40} strokeWidth={1.5} className="text-ledger" />   
-        <h3 className="font-heading text-2xl font-normal text-foreground">Thanks — your project brief is in.</h3>
+        <h3 className="font-heading text-2xl font-normal text-foreground">Thanks, your project brief is in.</h3>
         <p className="text-sm text-muted-foreground max-w-sm">
-          I'll review it personally and reply within 24 hours with scope, questions and next steps.
+          I will review it personally and aim to reply within 1 to 2 working days with scope, questions and next steps.
         </p>
       </div>
     );
@@ -91,23 +89,22 @@ const SeoBlogInquiryForm = ({ onSuccess }: { onSuccess?: () => void }) => {
 
   return (
     <form onSubmit={onSubmit} className="space-y-5" noValidate>
+      <p className="text-xs text-muted-foreground">Fields marked * are required.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <TextField id="name" label="Your name" required value={values.name} onChange={set("name")} error={errors.name} autoComplete="name" />
         <TextField id="email" label="Email" required type="email" value={values.email} onChange={set("email")} error={errors.email} autoComplete="email" />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <TextField id="company" label="Brand or company" value={values.company} onChange={set("company")} error={errors.company} />
-        <TextField id="website" label="Website" placeholder="https://" value={values.website} onChange={set("website")} error={errors.website} />
+        <TextField id="company" label="Brand or company" value={values.company} onChange={set("company")} error={errors.company} autoComplete="organization" />
+        <TextField id="website" label="Website" placeholder="https://" value={values.website} onChange={set("website")} error={errors.website} type="url" inputMode="url" autoComplete="url" />
       </div>
-      <TextField id="industry" label="Industry" required value={values.industry} onChange={set("industry")} error={errors.industry}
-        placeholder="e.g. AI, fintech, SaaS, cybersecurity" />
       <TextArea id="topic" label="Topic or project" required value={values.topic} onChange={set("topic")} error={errors.topic}
         placeholder="What do you need written? Share the topic, context or content problem." />
 
       <div className="space-y-2">
         <Label htmlFor="serviceType">What do you need? *</Label>
         <Select value={values.serviceType} onValueChange={setServiceType}>
-          <SelectTrigger id="serviceType" aria-invalid={Boolean(errors.serviceType)}>
+          <SelectTrigger id="serviceType" aria-required="true" aria-invalid={Boolean(errors.serviceType)} aria-describedby={errors.serviceType ? "serviceType-error" : undefined}>
             <SelectValue placeholder="Select a service" />
           </SelectTrigger>
           <SelectContent>
@@ -116,17 +113,10 @@ const SeoBlogInquiryForm = ({ onSuccess }: { onSuccess?: () => void }) => {
             ))}
           </SelectContent>
         </Select>
-        {errors.serviceType && <p className="text-xs text-destructive">{errors.serviceType}</p>}
+        {errors.serviceType && <p id="serviceType-error" className="text-xs text-accent">{errors.serviceType}</p>}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <TextField id="scope" label="Approximate scope" placeholder="e.g. 1 article, ~2,000 words" value={values.scope} onChange={set("scope")} error={errors.scope} />
-        <TextField id="timeline" label="Timeline" placeholder="e.g. within 7 days" value={values.timeline} onChange={set("timeline")} error={errors.timeline} />
-      </div>
-      <TextArea id="goal" label="Goal for this project" value={values.goal} onChange={set("goal")} error={errors.goal}
-        placeholder="Rank on Google? Educate readers? Support a launch? Something else?" />
-      <TextField id="budget" label="Budget range (optional)" value={values.budget} onChange={set("budget")} error={errors.budget}
-        placeholder="Helps me suggest the right scope" />
+      <TextField id="timeline" label="Timeline" placeholder="e.g. within 7 days" value={values.timeline} onChange={set("timeline")} error={errors.timeline} />
       <TextArea id="notes" label="Additional context" value={values.notes} onChange={set("notes")} error={errors.notes} />
 
       <input
@@ -137,7 +127,7 @@ const SeoBlogInquiryForm = ({ onSuccess }: { onSuccess?: () => void }) => {
       />
 
       {serverError && (
-        <div className="text-sm text-accent border border-accent/40 bg-accent/5 px-4 py-3">
+        <div role="alert" className="text-sm text-accent border border-accent/40 bg-accent/5 px-4 py-3">
           {serverError}
         </div>
       )}
@@ -151,7 +141,8 @@ const SeoBlogInquiryForm = ({ onSuccess }: { onSuccess?: () => void }) => {
            {submitting ? "Sending…" : "Send inquiry"}
          </button>
       <p className="text-xs text-muted-foreground text-center">
-        I reply within 24 hours. Your details stay private.
+        I aim to reply within 1 to 2 working days. By sending this form you agree that I may use these details to reply to your enquiry. They are stored for up to 12 months. See the{" "}
+        <a href="/privacy-policy" className="underline underline-offset-2 hover:text-accent">Privacy Policy</a>.
       </p>
     </form>
   );
