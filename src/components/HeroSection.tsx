@@ -15,7 +15,7 @@ const HeroSection = () => {
     <section id="home" className={`rd-hero${ready ? " rd-ld" : ""}`}>
       <div className="rd-wrap">
         <p className="rd-mut" data-h style={{ "--d": 0, fontSize: 14 } as React.CSSProperties}>
-          Ashutosh Writes — a three-person editorial and engineering team, Bhubaneswar, India
+          Ashutosh Writes: a three-person editorial and engineering team in Bhubaneswar, India
         </p>
         <h1>
           <span className="rd-ln"><span>Fully coded editorial web pages</span></span>
@@ -43,7 +43,7 @@ const HeroSection = () => {
             >
               <img
                 src={anchor.image}
-                alt={`Thumbnail for ${anchor.title}`}
+                alt={anchor.thumbAlt}
                 width={800}
                 height={450}
                 fetchPriority="high"
@@ -59,10 +59,10 @@ const HeroSection = () => {
 
           <div>
             <div className="rd-arch">
-              <img src="/profile.webp" alt="Ashutosh Mahapatra — Founder, Ashutosh Writes" width={576} height={576} loading="eager" decoding="async" />
+              <img src="/profile.webp" alt="Portrait of Ashutosh Mahapatra" width={576} height={576} loading="eager" decoding="async" />
             </div>
             <p className="rd-cap" data-h style={{ "--d": 4 } as React.CSSProperties}>
-              Ashutosh Mahapatra, Founder — Content Strategy &amp; Lead Editorial
+              Ashutosh Mahapatra, Founder, Content Strategy &amp; Lead Editorial
             </p>
           </div>
         </div>

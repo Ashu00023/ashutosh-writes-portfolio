@@ -118,7 +118,7 @@ const PortfolioSection = () => {
               <article key={it.title} className={`rd-ch${i === active ? " rd-a" : ""}`}>
                 {/* Stacked (phone) layout only: each thumbnail sits with its own article. Hidden on desktop. */}
                 <figure className="rd-mf">
-                  <img src={it.image} alt={`${it.title} thumbnail`} width={800} height={450} loading="lazy" decoding="async" />
+                  <img src={it.image} alt={it.thumbAlt} width={800} height={450} loading="lazy" decoding="async" />
                   <figcaption>{it.stat}</figcaption>
                 </figure>
                 <div className="rd-tx">
@@ -147,7 +147,7 @@ const PortfolioSection = () => {
             <div className="rd-ip"><i ref={bar} /></div>
             <div className="rd-ix">
               {items.map((it, i) => (
-                <button key={it.title} type="button" className={i === active ? "rd-a" : ""} onClick={() => jump(i)}>
+                <button key={it.title} type="button" className={i === active ? "rd-a" : ""} aria-pressed={i === active} aria-label={`${it.niche}: ${it.title}`} onClick={() => jump(i)}>
                   {it.niche}
                 </button>
               ))}
@@ -160,7 +160,7 @@ const PortfolioSection = () => {
         <div className="rd-fw">
           {items.map((it, i) => (
             <div key={it.title} className={`rd-fr${i === active ? " rd-a" : ""}`}>
-              <img src={it.image} alt={`${it.title} thumbnail`} width={800} height={450} loading="lazy" decoding="async" />
+              <img src={it.image} alt={it.thumbAlt} width={800} height={450} loading="lazy" decoding="async" />
               <span>{it.stat}</span>
             </div>
           ))}

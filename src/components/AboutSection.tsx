@@ -2,12 +2,12 @@ import { useRef } from "react";
 import { clamp, reducedMotion, useScrollFrame } from "@/hooks/useScrollFrame";
 
 const statement =
-  "I am Ashutosh — the founder and lead writer at Ashutosh Writes, focused on AI, fintech, cybersecurity and SaaS. Most online content is written to be skimmed. We write to be read.";
+  "I am Ashutosh, the founder and lead writer at Ashutosh Writes, focused on AI, fintech, cybersecurity and SaaS. We write long-form pieces for readers who want depth.";
 const words = statement.split(" ");
 
 const highlights = [
-  "Long-form content built around search intent, not word count",
-  "Structured for featured snippets and AI-generated answers",
+  "Long-form content built around search intent",
+  "Structured with clear headings, answer blocks and Schema markup",
   "Original research, primary sources, and a clear point of view",
   "Editorial judgment and final decisions made by a human editor",
 ];
@@ -21,7 +21,7 @@ const AboutSection = () => {
     const vh = window.innerHeight;
     const p = reducedMotion() ? 1 : clamp((vh * 0.82 - node.getBoundingClientRect().top) / (vh * 0.42));
     Array.from(node.children).forEach((child, i) => {
-      (child as HTMLElement).style.opacity = String(0.16 + 0.84 * clamp(p * (words.length + 5) - i));
+      (child as HTMLElement).style.opacity = String(0.6 + 0.4 * clamp(p * (words.length + 5) - i));
     });
   });
 

@@ -23,7 +23,7 @@ const Blog = () => {
   );
 
   const pageCanonical = page > 1 ? `${canonical}?page=${page}` : canonical;
-  const pageTitle = page > 1 ? `${blogIndex.title} — Page ${page}` : blogIndex.title;
+  const pageTitle = page > 1 ? `${blogIndex.title} | Page ${page}` : blogIndex.title;
 
   return (
     <>
@@ -75,7 +75,7 @@ const Blog = () => {
         </script>
       </Helmet>
       <Navbar />
-      <main className="min-h-screen pt-28 pb-20">
+      <main id="main" tabIndex={-1} className="min-h-screen pt-28 pb-20 focus:outline-none">
         <div className="container mx-auto px-6">
           <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto mb-8">
             <ol className="flex items-center gap-2 text-xs text-muted-foreground">

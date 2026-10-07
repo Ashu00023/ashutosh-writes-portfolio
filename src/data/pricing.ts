@@ -31,7 +31,7 @@ export const tiers: Tier[] = [
     price: "$4,500–9,000",
     unit: "per month, four pages",
     perPage: "Works out to $1,125–2,250 per page",
-    blurb: "Four complete, interactive pages ready for immediate deployment, with no developer hours on your side.",
+    blurb: "Four complete, interactive pages, ready to deploy.",
     features: [
       "Strategy and copywriting for all four pages",
       "Custom HTML/CSS",

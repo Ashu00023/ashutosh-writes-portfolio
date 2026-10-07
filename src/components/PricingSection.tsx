@@ -44,7 +44,7 @@ const PricingSection = () => (
                 <li key={f}>{f}</li>
               ))}
             </ul>
-            <a className="rd-b1" href="#contact">Request a quote</a>
+            <a className="rd-b1" href="#contact" aria-label={`Request a quote for ${t.name}`}>Request a quote</a>
           </article>
         ))}
       </div>

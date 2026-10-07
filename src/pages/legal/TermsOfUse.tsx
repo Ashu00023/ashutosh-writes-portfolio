@@ -7,7 +7,7 @@ const TermsOfUse = () => (
     description="The terms that govern your use of ashutoshwrites.online, including intellectual property, acceptable use, and limitation of liability."
     path="/terms-of-use"
     breadcrumbLabel="Terms of Use"
-    updated="11 September 2026"
+    updated="3 October 2026"
     intro="By browsing this website you agree to the terms below. If you do not agree with them, please stop using the site."
   >
     <h2>1. Acceptance of terms</h2>
@@ -53,7 +53,8 @@ const TermsOfUse = () => (
     <h2>5. Enquiries and no automatic engagement</h2>
     <p>
       Submitting the enquiry form does not create a client relationship. A project begins only when scope, timeline, and
-      fees are agreed in writing.
+      fees are agreed in writing. Paid work is also covered by the{" "}
+      <a href="/refund-policy">Payment, Refund and Revision Policy</a>.
     </p>
 
     <h2>6. Third-party links</h2>
@@ -91,7 +92,7 @@ const TermsOfUse = () => (
 
     <h2>11. Contact</h2>
     <p>
-      Ashutosh Mahapatra —{" "}
+      Ashutosh Mahapatra:{" "}
       <a href="mailto:ashutosh@mail.ashutoshwrites.online">ashutosh@mail.ashutoshwrites.online</a>
     </p>
   </LegalLayout>

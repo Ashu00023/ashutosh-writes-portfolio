@@ -17,7 +17,7 @@ const socials = [
 ];
 
 const focusAreas = [
-  { title: "Artificial intelligence", copy: "How AI systems actually change work, money, and trust — beyond the launch cycle." },
+  { title: "Artificial intelligence", copy: "How AI systems change work, money and trust, beyond the launch cycle." },
   { title: "Cybersecurity", copy: "Threat models teams live with: identity, OAuth scope, agent permissions, and shadow adoption." },
   { title: "Business & fintech", copy: "Personal finance, B2B SaaS economics, and the incentives behind product decisions." },
 ];
@@ -72,7 +72,7 @@ const Author = () => (
       </script>
     </Helmet>
     <Navbar />
-    <main className="min-h-screen pt-28 pb-20">
+    <main id="main" tabIndex={-1} className="min-h-screen pt-28 pb-20 focus:outline-none">
       <div className="container mx-auto px-6">
         <nav aria-label="Breadcrumb" className="max-w-5xl mx-auto mb-8">
           <ol className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -105,7 +105,7 @@ const Author = () => (
                 Ashutosh <span className="font-display italic text-accent font-normal">Mahapatra</span>
               </h1>
               <p className="mt-3 text-sm font-semibold text-foreground">
-                Technology writer — AI, cybersecurity, and business
+                Technology writer covering AI, cybersecurity and business
               </p>
               <div className="mt-6 space-y-4 text-base text-muted-foreground leading-relaxed">
                 <p>

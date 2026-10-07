@@ -10,6 +10,7 @@ export type WorkItem = {
   approach: string;
   demonstrates: string;
   image: string;
+  thumbAlt: string;
   liveUrl: string;
   transcriptHref: string;
 };
@@ -25,6 +26,7 @@ export const workItems: WorkItem[] = [
     approach: "Built an original thesis on why human creators are earning an authenticity premium in 2026, backed by editorial analysis rather than a recycled take.",
     demonstrates: "Originating a point of view in a saturated topic and defending it with structured argument.",
     image: "/ai-content-blog-thumbnail.webp",
+    thumbAlt: "Cover image for the Authenticity Premium article: a brass drafting compass on blueprint sketches beside a headline about audiences rejecting AI content",
     liveUrl: "/static-blogs/ai-authenticity-premium-2026.html",
     transcriptHref: seo.routes.humanCreativityVsAi.path,
   },
@@ -32,12 +34,13 @@ export const workItems: WorkItem[] = [
     niche: "AI Fintech",
     category: "Fintech",
     format: "SEO Blog",
-    stat: "18 verified stats",
+    stat: "18 sourced statistics",
     title: "Scaling Trust for an AI-Powered Personal Finance Audience",
-    problem: "AI personal-finance content was crowded with surface-level listicles built on zero verified data.",
-    approach: "Built a long-form authority piece anchored in 18 verified stats, mapped five structural trends, and added a risk framework most coverage skips.",
+    problem: "AI personal-finance content was crowded with surface-level listicles with little sourced data.",
+    approach: "Built a long-form authority piece anchored in 18 sourced statistics, mapped five structural trends, and added a risk framework most coverage skips.",
     demonstrates: "Turning scattered data points into a structured, evidence-backed trend and risk analysis.",
     image: "/ai-finance-blog-thumbnail.webp",
+    thumbAlt: "Cover image for the AI personal finance article: the title The AI Money Gap, a large 52% statistic and a line chart",
     liveUrl: "/static-blogs/ai-personal-finance-2026.html",
     transcriptHref: seo.routes.aiPersonalFinance2026.path,
   },
@@ -51,6 +54,7 @@ export const workItems: WorkItem[] = [
     approach: "Wrote a technical threat brief on inherited OAuth scope nobody reviewed, grounded in CVE-2025-32711 and a three-pillar governance framework.",
     demonstrates: "Researching and explaining a technical security issue with primary-source verification and a usable governance framework.",
     image: "/byoa-shadow-ai-blog-thumbnail.webp",
+    thumbAlt: "Cover image for the shadow AI article: the line It's already inside, 150,000 agents by 2028, above a small device on a dark table",
     liveUrl: "/static-blogs/byoa-shadow-ai-blog.html",
     transcriptHref: seo.routes.byoaShadowAi.path,
   },
@@ -64,6 +68,7 @@ export const workItems: WorkItem[] = [
     approach: "Wrote a fact-checked breakdown of who eats the loss when an agent buys the wrong thing, verified against Visa's and Mastercard's own rule text.",
     demonstrates: "Tracing a regulatory/payments question to primary-source rule text and explaining the liability outcome clearly.",
     image: "/visa-agentic-commerce-dispute-seo-thumbnail.webp",
+    thumbAlt: "Cover image for the Visa dispute article: a payment card resting on printed documents beside the title Visa Already Decided Who Eats the Loss",
     liveUrl: "/visa-agentic-commerce-disputes-seo.html",
     transcriptHref: seo.routes.visaAgenticCommerceDisputes.path,
   },

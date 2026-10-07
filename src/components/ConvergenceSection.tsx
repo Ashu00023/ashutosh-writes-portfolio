@@ -7,7 +7,7 @@ const pillars: Pillar[] = [
   {
     name: "Research",
     sub: "Primary-source research, evidence checking, source traceability and original synthesis.",
-    specifics: ["18 sourced statistics in the finance authority piece", "Primary sources over aggregator lists", "Every claim traceable to a report, filing or CVE"],
+    specifics: ["18 sourced statistics in the finance authority piece", "Primary sources over aggregator lists", "Key claims linked to a report, filing or CVE"],
   },
   {
     name: "Search Strategy",
@@ -17,7 +17,7 @@ const pillars: Pillar[] = [
   {
     name: "Editorial Craft",
     sub: "Clear arguments, strong pacing, precise language and rigorous editing.",
-    specifics: ["Line-by-line editing passes", "Narrative pacing that holds past 2,000 words", "Precise language over filler"],
+    specifics: ["Line-by-line editing passes", "Narrative pacing for long-form pieces", "Precise language over filler"],
   },
 ];
 

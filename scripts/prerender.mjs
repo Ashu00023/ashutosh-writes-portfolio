@@ -170,112 +170,74 @@ function homeBodyHtml(seo) {
   </ul>
 </nav>
 <main>
-<section id="home">
-    <img src="/profile.webp" alt="Ashutosh Mahapatra — SEO Blog Writer" width="288" height="288" fetchpriority="high">
-    <p>SEO Blog Writing</p>
-    <h1>Long-form content that earns attention &mdash; not chases it.</h1>
-    <p>I write deeply researched SEO blogs for founders and brands who want readers to finish the article &mdash; and search engines to rank it.</p>
-    <p>Human-Written / Research-Led</p>
-    <p>Topics: AI &amp; Cybersecurity, Fintech, Creator Economy</p>
-    <p><strong>Ashutosh Mahapatra</strong> &mdash; Freelance Writer &middot; Bhubaneswar, IN</p>
-    <p><a href="/#portfolio">View Portfolio</a> <a href="/#contact">Hire Me</a></p>
+  <section id="home">
+    <img src="/profile.webp" alt="Portrait of Ashutosh Mahapatra" width="288" height="288" fetchpriority="high">
+    <p>Ashutosh Writes: a three-person editorial and engineering team in Bhubaneswar, India</p>
+    <h1>Fully coded editorial web pages for AI, fintech, and SaaS.</h1>
+    <p>We build interactive, fully coded editorial web assets, from deep B2B research and clear copy to front-end design, custom HTML/CSS and Schema markup, ready to publish.</p>
+    <p><a href="/#portfolio">View Portfolio</a> <a href="/#pricing">See Pricing</a></p>
   </section>
 
   <section id="trust">
     <ul>
-      <li>18+ verified stats &mdash; research-backed</li>
-      <li>1 CVE cited &mdash; fully sourced and verified</li>
-      <li>3 niches &mdash; fintech, AI, cybersecurity</li>
-      <li>100% &mdash; human-written, zero spun copy</li>
+      <li>4 independent research samples across AI, fintech, cybersecurity &amp; technology</li>
+      <li>18+ sourced statistics in the finance authority piece</li>
+      <li>Primary-source research: reports, filings, rules &amp; technical sources</li>
+      <li>Complex technical and financial topics translated clearly</li>
     </ul>
   </section>
 
   <section id="portfolio">
-    <h2>Featured Writing Samples</h2>
-    <p>Self-directed samples across AI, fintech, and creator-economy topics &mdash; researched, structured, and written exactly as I'd deliver for a client, engineered for ranking, retention, and revenue.</p>
+    <h2>Featured writing samples</h2>
+    <p>Independent research samples across AI, fintech, cybersecurity and technology, researched, structured and written as I would deliver for a client.</p>
     <article>
       <h3><a href="${seo.routes.humanCreativityVsAi.path}">Winning the Authenticity Premium in the AI-Slop Era</a></h3>
-      <p>Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026 &mdash; built to rank and to convert.</p>
+      <p>Built an original thesis on why human creators are earning an authenticity premium in 2026, backed by editorial analysis rather than a recycled take.</p>
     </article>
     <article>
       <h3><a href="${seo.routes.aiPersonalFinance2026.path}">Scaling Trust for an AI-Powered Personal Finance Audience</a></h3>
-      <p>AI finance content was crowded with surface-level listicles and zero verified data. I built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.</p>
+      <p>A long-form authority piece anchored in 18 sourced statistics, five structural trends and a risk framework most coverage skips.</p>
     </article>
     <article>
       <h3><a href="${seo.routes.byoaShadowAi.path}">Why BYOA Is B2B SaaS's Next Data Nightmare</a></h3>
-      <p>Shadow AI coverage was stuck describing 2019-era shadow IT. I wrote a threat brief on how agents ship pre-embedded inside approved platforms, inheriting OAuth scope nobody reviewed, backed by CVE-2025-32711 and a three-pillar governance framework.</p>
+      <p>A technical threat brief on inherited OAuth scope nobody reviewed, grounded in CVE-2025-32711 and a three-pillar governance framework.</p>
+    </article>
+    <article>
+      <h3><a href="${seo.routes.visaAgenticCommerceDisputes.path}">Untangling Liability in Visa's New Agentic Commerce Dispute Rules</a></h3>
+      <p>A breakdown of who bears the loss when an AI agent buys the wrong thing, checked against Visa's and Mastercard's own rule text.</p>
     </article>
     <p><a href="/work">View all work</a></p>
-    <p><em>Every piece starts with search intent and primary research - then gets written by hand, line by line.</em></p>
-  </section>
-
-  <section id="approach">
-    <h2>Where rankings meet retention</h2>
-    <p>Every piece I ship sits at the intersection of three things:</p>
-    <article>
-      <h3>Research</h3>
-      <p>Primary sources, verified data, no AI-hallucinated stats. 18 verified stats per authority piece, primary sources over aggregator lists, every claim traceable to a report or CVE.</p>
-    </article>
-    <article>
-      <h3>SEO Strategy</h3>
-      <p>Search intent, structure, featured-snippet ready. Question-based headings mapped to real queries, answer blocks sized for featured snippets, internal-link architecture planned up front.</p>
-    </article>
-    <article>
-      <h3>Craft</h3>
-      <p>Sentence-level writing, narrative pacing, editing by hand. Line-by-line editing passes, narrative pacing that holds past 2,000 words, zero spun or AI-generated copy.</p>
-    </article>
-  </section>
-
-  <section id="process">
-    <h2>How a piece actually gets made</h2>
-    <ol>
-      <li><strong>Brief &amp; Research</strong> &mdash; Understand the audience, gather primary sources, verify every stat before writing a word</li>
-      <li><strong>Outline &amp; SEO Mapping</strong> &mdash; Structure built around search intent and featured-snippet formatting, not word count targets</li>
-      <li><strong>Draft</strong> &mdash; Written by hand, sentence by sentence &mdash; no AI-generated drafts</li>
-      <li><strong>Structural Edit</strong> &mdash; Cut anything that doesn't earn its place; check argument flow and pacing</li>
-      <li><strong>Delivery &amp; Handoff</strong> &mdash; Clean formatting, source list, and a short rationale note on key decisions</li>
-    </ol>
-  </section>
-
-  <section id="about">
-    <h2>I write the kind of content people actually finish.</h2>
-    <p>I am Ashutosh &mdash; a freelance writer working with founders, creators, and brands who care more about the reader than the algorithm. Most online content is written to be skimmed. I write to be read.</p>
-    <p>My process is slow on purpose: real research, primary sources, a clear argument, and language that respects the reader&rsquo;s time. The result is work that ranks on Google, holds attention to the last line, and sounds like a person &mdash; because a person wrote it.</p>
-    <p>Where it helps, I use AI for structural research and SEO &mdash; but every argument, transition, and final line is still written by hand.</p>
-    <ul>
-      <li>Long-form SEO blogs built around search intent, not word count</li>
-      <li>Structured for featured snippets, AI answers, and page-one rankings</li>
-      <li>Original research, primary sources, and a clear point of view</li>
-      <li>Every line written by hand &mdash; no AI drafts, no spun copy</li>
-    </ul>
   </section>
 
   <section id="services">
-    <h2>What I Offer</h2>
+    <h2>What we offer</h2>
     <article>
-      <h3>SEO Blog Writing</h3>
-      <ul>
-        <li>High-quality, keyword-optimized blog posts</li>
-        <li>Designed to rank on Google page 1</li>
-        <li>100% human-written content</li>
-        <li>Focus on traffic + conversions</li>
-      </ul>
+      <h3>Research-Driven Authority Articles</h3>
+      <p>Search-intent research, competitor and content-gap analysis, primary-source research, original angle and thesis, SEO architecture, long-form writing and editing, citations and source list.</p>
     </article>
     <article>
-      <h3>Search Intent &amp; Content Strategy</h3>
-      <ul>
-        <li>Keyword and competitor gap research</li>
-        <li>Topic clusters mapped to buyer intent</li>
-        <li>Briefs built from primary sources</li>
-        <li>Structured for featured snippets and AI answers</li>
-        <li>Long-form content built around search intent, not word count</li>
-      </ul>
+      <h3>B2B Technical &amp; Thought-Leadership Content</h3>
+      <p>Industry analysis for AI, SaaS, fintech and cybersecurity, technical explainers, emerging-trend analysis, regulatory and market developments, founder and executive thought leadership.</p>
     </article>
+    <article>
+      <h3>Content Strategy &amp; Research</h3>
+      <p>Keyword research, search intent mapping, topic clusters, content-gap analysis, editorial roadmap and research-backed briefs.</p>
+    </article>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <ul>
+      <li><strong>Core Asset</strong>: 1 fully coded web page, $1,200&ndash;2,400 per page</li>
+      <li><strong>Flagship Series</strong>: 4-part fully coded web series, $4,500&ndash;9,000 per month</li>
+      <li><strong>Pilot</strong>: 4-part text &amp; strategy, $1,600&ndash;2,000 per month</li>
+    </ul>
+    <p>Final pricing depends on scope. See the <a href="/refund-policy">Payment, Refund and Revision Policy</a>.</p>
   </section>
 
   <section id="contact">
     <h2>Let&rsquo;s Work Together</h2>
-    <p>Ready to grow your traffic with premium, human-written content? Reach out through any channel below.</p>
+    <p>Have a project in mind? Reach out through any channel below.</p>
     <ul>
       <li><a href="mailto:ashutosh@mail.ashutoshwrites.online">ashutosh@mail.ashutoshwrites.online</a></li>
       <li><a href="tel:+919040451510">+91 9040451510</a></li>
@@ -331,7 +293,7 @@ function blogIndexBodyHtml(seo) {
   <p>Long-form pieces on the ideas shaping AI, finance, and content.</p>
   <article>
     <h2><a href="${seo.routes.aiPersonalFinance2026.path}">AI Personal Finance 2026</a></h2>
-    <p>Verified stats, structural trends, and the risks most AI finance coverage misses &mdash; built for readers who want signal over noise.</p>
+    <p>Sourced statistics, structural trends and the risks most AI finance coverage misses, built for readers who want signal over noise.</p>
   </article>
   <article>
     <h2><a href="${seo.routes.humanCreativityVsAi.path}">The Authenticity Premium in the AI-Slop Era</a></h2>
@@ -339,7 +301,7 @@ function blogIndexBodyHtml(seo) {
   </article>
   <article>
     <h2><a href="${seo.routes.byoaShadowAi.path}">The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare</a></h2>
-    <p>AI agents aren&rsquo;t sneaking in through shadow IT anymore &mdash; they&rsquo;re inheriting OAuth scope from platforms you already approved.</p>
+    <p>AI agents are no longer sneaking in through shadow IT. They inherit OAuth scope from platforms you already approved.</p>
   </article>
 </main>`.trim();
 }
@@ -352,8 +314,8 @@ function authorBodyHtml(seo) {
 <nav aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; Author</nav>
 <main>
   <h1>Ashutosh Mahapatra</h1>
-  <p>Technology writer &mdash; AI, cybersecurity, and business.</p>
-  <p>I write long-form, research-backed articles about technology and money. My work starts with primary sources &mdash; filings, CVEs, vendor documentation, published research &mdash; and every piece is written by hand. Where AI helps, I use it for structural research and SEO mapping, never to generate the prose.</p>
+  <p>Technology writer covering AI, cybersecurity and business.</p>
+  <p>I write long-form, research-backed articles about technology and money. My work starts with primary sources (filings, CVEs, vendor documentation, published research). I use AI where it helps with research and workflow, but the argument, structure and final wording are mine.</p>
   <h2>Articles by Ashutosh Mahapatra</h2>
   <ul>
 ${items}
@@ -377,11 +339,17 @@ ${items}
 }
 
 const legalSections = {
+  refundPolicy: [
+    "Deposits and payment schedule",
+    "Revision rounds and acceptance",
+    "Refund and cancellation terms",
+    "Ownership, AI use and delivery limits",
+  ],
   privacyPolicy: [
     "Information collected and how it is used",
-    "Third-party services, analytics, and Google AdSense",
+    "Service providers: hosting, database, email delivery and fonts",
     "Legal bases, retention, and international transfers",
-    "Your GDPR and CCPA rights, and how to exercise them",
+    "Your privacy rights, and how to exercise them",
   ],
   termsOfUse: [
     "Intellectual property and content ownership",
@@ -390,16 +358,16 @@ const legalSections = {
     "Limitation of liability and governing law",
   ],
   cookiePolicy: [
-    "Essential cookies",
-    "Analytics cookies",
-    "Advertising cookies, including Google AdSense",
+    "No analytics or advertising cookies",
+    "Third-party fonts and external links",
+    "What would change this policy",
     "Consent and browser-level controls",
   ],
   disclaimer: [
     "Educational purpose of all content",
     "No financial, legal, or professional advice",
     "Research, sourcing, and how AI is used",
-    "Accuracy, timeliness, and advertising independence",
+    "Accuracy, timeliness, and external links",
   ],
 };
 
@@ -408,16 +376,16 @@ function workIndexBodyHtml(seo) {
 <nav aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; Work</nav>
 <main>
   <h1>Selected Work</h1>
-  <p>Every piece here started with search intent and primary research &mdash; then got written by hand, line by line.</p>
+  <p>Every piece here started with search intent and primary research.</p>
   <article>
     <h2><a href="${seo.routes.humanCreativityVsAi.path}">Winning the Authenticity Premium in the AI-Slop Era</a></h2>
     <p>Creator Economy &middot; SEO Blog &middot; research-backed anchor article</p>
-    <p>Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026 - built to rank and to convert.</p>
+    <p>Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026.</p>
   </article>
   <article>
     <h2><a href="${seo.routes.aiPersonalFinance2026.path}">Scaling Trust for an AI-Powered Personal Finance Audience</a></h2>
-    <p>Fintech &middot; SEO Blog &middot; 18 verified stats</p>
-    <p>AI finance content was crowded with surface-level listicles and zero verified data. I built a long-form authority piece with 18 verified stats, 5 trends, and the risks most coverage misses.</p>
+    <p>Fintech &middot; SEO Blog &middot; 18 sourced statistics</p>
+    <p>AI finance content was crowded with surface-level listicles with little sourced data. I built a long-form authority piece with 18 sourced statistics, 5 trends, and the risks most coverage misses.</p>
   </article>
   <article>
     <h2><a href="${seo.routes.byoaShadowAi.path}">Why BYOA Is B2B SaaS's Next Data Nightmare</a></h2>
@@ -434,11 +402,11 @@ const caseStudyFrames = {
   aiPersonalFinance2026: {
     niche: "AI Fintech",
     format: "SEO Blog",
-    statHighlight: "18 verified stats",
+    statHighlight: "18 sourced statistics",
     challenge:
-      "AI finance content was crowded with surface-level listicles and zero verified data, so nothing in the niche earned a reader's trust.",
+      "AI finance content was crowded with surface-level listicles with little sourced data, so little in the niche earned a reader's trust.",
     approach:
-      "I built a long-form authority piece carrying 18 verified stats, 5 trends, and the risks most coverage skips entirely.",
+      "I built a long-form authority piece carrying 18 sourced statistics, 5 trends and the risks most coverage skips.",
     craftNotes: [
       "Verified every statistic before it went in, so each number can be traced to a primary source.",
       "Rewrote section headings as the direct questions readers ask, formatted for featured snippets and AI answers.",
@@ -450,7 +418,7 @@ const caseStudyFrames = {
     format: "SEO Blog",
     statHighlight: "CVE-2025-32711 cited",
     challenge:
-      "Shadow AI coverage was stuck describing 2019-era shadow IT — employees smuggling in unapproved tools — which no longer matches how AI actually enters a company.",
+      "Shadow AI coverage was stuck describing 2019-era shadow IT (employees smuggling in unapproved tools), which no longer matches how AI actually enters a company.",
     approach:
       "I wrote it as a threat brief: how agents ship pre-embedded inside already-approved platforms and inherit OAuth scope nobody reviewed, anchored to CVE-2025-32711 and closed with a three-pillar governance framework.",
     craftNotes: [
@@ -466,7 +434,7 @@ const caseStudyFrames = {
     challenge:
       "Audiences were already tuning out AI-generated content, but the niche had no anchor article explaining what was happening.",
     approach:
-      "I produced a research-backed analysis of why human creators are winning in 2026 — built to rank and to convert, not just to describe the trend.",
+      "I produced a research-backed analysis of why human creators are winning in 2026, written to explain the trend and not only describe it.",
     craftNotes: [
       "Positioned the piece as the niche's missing anchor article so it could absorb search demand around the topic.",
       "Supported the argument with original charts instead of restating other people's summaries.",
@@ -562,7 +530,7 @@ async function buildRoutes(seo) {
     bodyHtml: authorBodyHtml(seo),
   });
 
-  for (const key of ["privacyPolicy", "termsOfUse", "cookiePolicy", "disclaimer"]) {
+  for (const key of ["privacyPolicy", "termsOfUse", "cookiePolicy", "disclaimer", "refundPolicy"]) {
     const meta = seo.routes[key];
     routes.push({
       key,

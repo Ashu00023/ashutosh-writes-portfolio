@@ -92,7 +92,7 @@ const Navbar = () => {
     <header className={cls}>
       <div className="rd-wrap">
         <Link to="/" className="rd-brand" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <img src={logo} alt="Ashutosh Writes logo" className="h-9 w-9 object-contain" />
+          <img src={logo} alt="" className="h-9 w-9 object-contain" />
           <span>
             ashutoshwrites.<b>online</b>
           </span>

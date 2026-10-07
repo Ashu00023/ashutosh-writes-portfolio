@@ -71,6 +71,25 @@ Deno.serve(async (req) => {
       });
     }
 
+    if (body.type !== "seo_blog") {
+      return new Response(JSON.stringify({ error: "Invalid type" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const MAX: Record<string, number> = { name: 100, email: 255, company: 200, website: 300, serviceType: 100, topic: 500, timeline: 200, notes: 2000 };
+    const clean: Record<string, string> = {};
+    for (const k of Object.keys(MAX)) {
+      const v = body.data[k];
+      if (typeof v === "string" && v.trim()) clean[k] = v.trim().slice(0, MAX[k]);
+    }
+    if ((clean.name?.length ?? 0) < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean.email ?? "") || (clean.topic?.length ?? 0) < 5) {
+      return new Response(JSON.stringify({ error: "Invalid details" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
@@ -78,9 +97,9 @@ Deno.serve(async (req) => {
 
     const { error: insertErr } = await supabase.from("inquiries").insert({
       type: body.type,
-      payload: body.data,
-      name: body.data.name ?? null,
-      email: body.data.email ?? null,
+      payload: clean,
+      name: clean.name,
+      email: clean.email,
     });
     if (insertErr) {
       console.error("insert failed", insertErr);
@@ -92,8 +111,8 @@ Deno.serve(async (req) => {
 
     const title =
       body.type === "seo_blog" ? "SEO Blog Inquiry" : "YouTube Script Inquiry";
-    const subject = `New ${title} — ${body.data.name || "Unnamed visitor"}`;
-    const html = renderHtml(title, body.data);
+    const subject = `New ${title}: ${clean.name}`;
+    const html = renderHtml(title, clean);
 
     // Send via Resend if configured. If the API key is missing or the send
     // fails, the submission is still safely stored in the `inquiries` table.
@@ -111,7 +130,7 @@ Deno.serve(async (req) => {
             to: [OWNER_EMAIL],
             subject,
             html,
-            reply_to: body.data.email || undefined,
+            reply_to: clean.email,
           }),
         });
         if (!res.ok) {

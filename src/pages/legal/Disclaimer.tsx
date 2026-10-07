@@ -7,7 +7,7 @@ const Disclaimer = () => (
     description="Editorial disclaimer for ashutoshwrites.online: content is educational, is not financial, legal, or professional advice, and how research and AI are used."
     path="/disclaimer"
     breadcrumbLabel="Disclaimer"
-    updated="11 September 2026"
+    updated="3 October 2026"
     intro="Everything published here is written to inform. It is not advice, and it should not be the only thing you rely on before making a decision."
   >
     <h2>1. Educational purpose only</h2>

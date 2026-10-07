@@ -5,7 +5,7 @@
     "@id": "https://ashutoshwrites.online/#person",
     "name": "Ashutosh Mahapatra",
     "url": "https://ashutoshwrites.online/",
-    "jobTitle": "Founder, Content Strategy & Lead Editorial — Ashutosh Writes",
+    "jobTitle": "Founder, Content Strategy & Lead Editorial, Ashutosh Writes",
     "knowsAbout": [
       "AI content strategy",
       "Fintech writing",
@@ -22,7 +22,7 @@
     "@id": "https://ashutoshwrites.online/#service",
     "name": "Ashutosh Writes",
     "url": "https://ashutoshwrites.online/",
-    "description": "Research-driven editorial web pages: strategy, copywriting, custom HTML/CSS and Schema.org JSON-LD — for AI, fintech, SaaS, cybersecurity and technology companies.",
+    "description": "Research-driven editorial web pages: strategy, copywriting, custom HTML/CSS and Schema.org JSON-LD, for AI, fintech, SaaS, cybersecurity and technology companies.",
     "founder": { "@id": "https://ashutoshwrites.online/#person" },
     "areaServed": "Worldwide",
     "serviceType": ["Research-driven SEO content", "B2B thought leadership", "Content strategy", "Technical content", "Fully coded editorial web pages", "Schema.org JSON-LD & technical SEO"]
@@ -39,7 +39,7 @@
     "blogIndex": {
       "path": "/blog",
       "outFile": "blog/index.html",
-      "title": "Blog — Ashutosh Mahapatra",
+      "title": "Blog | Ashutosh Mahapatra",
       "description": "Latest writing on AI, finance, content strategy, and the craft of human-led storytelling.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
@@ -55,7 +55,7 @@
     "author": {
       "path": "/author/ashutosh-mahapatra",
       "outFile": "author/ashutosh-mahapatra/index.html",
-      "title": "Ashutosh Mahapatra — Technology Writer (AI, Cybersecurity, Business)",
+      "title": "Ashutosh Mahapatra | Technology Writer (AI, Cybersecurity, Business)",
       "description": "About Ashutosh Mahapatra: independent technology writer covering AI, cybersecurity, and business, with an archive of every published article.",
       "ogType": "profile",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
@@ -64,7 +64,7 @@
       "path": "/privacy-policy",
       "outFile": "privacy-policy/index.html",
       "title": "Privacy Policy | Ashutosh Mahapatra",
-      "description": "How ashutoshwrites.online handles personal data, cookies, analytics, advertising partners, and your privacy rights under GDPR and CCPA.",
+      "description": "What personal data ashutoshwrites.online collects through its enquiry form, which service providers handle it, how long it is kept, and your privacy rights.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
@@ -80,7 +80,7 @@
       "path": "/cookie-policy",
       "outFile": "cookie-policy/index.html",
       "title": "Cookie Policy | Ashutosh Mahapatra",
-      "description": "Which cookies ashutoshwrites.online uses — essential, analytics, and advertising — and how you can control them.",
+      "description": "ashutoshwrites.online sets no analytics or advertising cookies. This page explains third-party fonts, external links and your browser controls.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
@@ -92,11 +92,19 @@
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
+    "refundPolicy": {
+      "path": "/refund-policy",
+      "outFile": "refund-policy/index.html",
+      "title": "Payment, Refund and Revision Policy | Ashutosh Mahapatra",
+      "description": "Deposits, payment schedule, revision rounds, refunds and cancellation for paid projects with Ashutosh Writes.",
+      "ogType": "website",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
     "aiPersonalFinance2026": {
       "path": "/blog/ai-personal-finance-2026",
       "outFile": "blog/ai-personal-finance-2026/index.html",
       "title": "AI Personal Finance 2026: Stats, Tools & Risks Explained",
-      "description": "18 verified stats, 5 structural trends, and the risks most coverage misses — a data-driven look at how AI is reshaping personal finance in 2026.",
+      "description": "18 sourced statistics, 5 structural trends and the risks most coverage misses: a data-driven look at how AI is reshaping personal finance in 2026.",
       "ogType": "article",
       "ogImage": "https://ashutoshwrites.online/ai-finance-blog-thumbnail.png",
       "staticSource": "static-blogs/ai-personal-finance-2026.html"
