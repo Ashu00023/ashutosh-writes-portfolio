@@ -108,8 +108,7 @@ const PortfolioSection = () => {
           <div>
             <h2 id="portfolio-title">Featured writing samples</h2>
             <p className="rd-sub">
-              Independent research samples across AI, fintech, cybersecurity and technology — researched, structured
-              and written exactly as I would deliver for a client.
+              Independent research samples across AI, fintech, cybersecurity and technology, researched, structured and written as I would deliver for a client.
             </p>
           </div>
 

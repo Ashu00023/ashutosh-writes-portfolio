@@ -25,9 +25,7 @@ const HeroSection = () => {
         <div className="rd-hg">
           <div>
             <p className="rd-lede" data-h style={{ "--d": 1 } as React.CSSProperties}>
-              We build interactive, fully coded editorial web assets. From deep B2B research and high-converting copy
-              to front-end design, custom HTML/CSS, and Schema markup—we deliver publish-ready digital assets that rank
-              and convert.
+              We build interactive, fully coded editorial web assets, from deep B2B research and clear copy to front-end design, custom HTML/CSS and Schema markup, ready to publish.
             </p>
             <div className="rd-btns" data-h style={{ "--d": 2 } as React.CSSProperties}>
               <a className="rd-b1" href="#portfolio">View Portfolio</a>

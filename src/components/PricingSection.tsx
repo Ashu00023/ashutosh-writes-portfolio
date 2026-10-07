@@ -23,8 +23,7 @@ const PricingSection = () => (
         <div className="rd-one">
           <h3>With a fully coded page</h3>
           <p>
-            One handoff: a zipped file or a clean block of code that looks right on mobile, with technical SEO built into
-            the code. Zero developer hours from your team.
+            One handoff: a zipped file or a clean block of code that looks right on mobile, with technical SEO built into the code.
           </p>
         </div>
       </div>

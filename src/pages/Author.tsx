@@ -110,17 +110,13 @@ const Author = () => (
               <div className="mt-6 space-y-4 text-base text-muted-foreground leading-relaxed">
                 <p>
                   I write long-form, research-backed articles about technology and money for readers who are tired of
-                  recycled takes. My work starts with primary sources — filings, CVEs, vendor documentation, published
-                  research — and ends with an argument a specialist can read without wincing.
+                  recycled takes. My work starts with primary sources (filings, CVEs, vendor documentation, published research) and ends with an argument a specialist can read without wincing.
                 </p>
                 <p>
-                  Every piece is written by hand, sentence by sentence. Where AI helps, I use it for structural research
-                  and SEO mapping, never to generate the prose. Statistics get verified before they get published, and
-                  sources stay visible so readers can check the work themselves.
+                  I use AI where it helps with research and workflow, but the argument, structure and final wording are mine. I check statistics against their sources before publishing, and I keep sources visible so readers can check the work themselves.
                 </p>
                 <p>
-                  I work with founders, marketing leads, and editorial teams who need writing that ranks on Google and
-                  still holds up in front of an expert audience.
+                  I work with founders, marketing leads, and editorial teams who need writing that holds up in front of an expert audience.
                 </p>
               </div>
               <ul className="mt-7 flex flex-wrap gap-2.5" aria-label="Social profiles">

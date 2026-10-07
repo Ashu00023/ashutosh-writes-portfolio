@@ -26,9 +26,7 @@ const Disclaimer = () => (
 
     <h2>3. Research, sourcing, and AI use</h2>
     <p>
-      Every article is written by hand. Where AI tools help, they are used for structural research and SEO support — never
-      to generate the text you read. Statistics, quotes, and technical claims are traced back to primary or reputable
-      secondary sources, and sources are cited so you can check them yourself.
+      I use AI tools for research support and workflow efficiency. The argument, structure and final wording of each article are mine. I aim to trace statistics, quotes and technical claims back to primary or reputable secondary sources, and I cite them so you can check them yourself.
     </p>
 
     <h2>4. Accuracy and timeliness</h2>
@@ -53,8 +51,7 @@ const Disclaimer = () => (
 
     <h2>7. Advertising</h2>
     <p>
-      Advertising, including Google AdSense, may appear on this site. Ads are served by third parties and are not
-      editorial endorsements. Advertising never influences the content or conclusions of an article.
+      This site does not currently display advertising. If that changes, this page, the Privacy Policy and the Cookie Policy will be updated before any ads appear.
     </p>
 
     <h2>8. Contact</h2>

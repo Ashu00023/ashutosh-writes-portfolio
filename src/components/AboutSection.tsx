@@ -37,9 +37,7 @@ const AboutSection = () => {
         <div className="rd-ag">
           <div>
             <p>
-              I specialize in long-form content where the difficult part is not filling a page — it is understanding the
-              subject, finding reliable evidence, identifying what existing coverage misses, and turning that research
-              into something people can actually understand.
+              I specialize in long-form content built on understanding the subject, finding reliable evidence, identifying what existing coverage misses, and turning that research into something people can actually understand.
             </p>
             <p className="rd-disc">
               I use AI where it improves research and workflow efficiency, but the argument, judgment, structure and

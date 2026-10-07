@@ -109,8 +109,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const title =
-      body.type === "seo_blog" ? "SEO Blog Inquiry" : "YouTube Script Inquiry";
+    const title = "SEO Blog Inquiry";
     const subject = `New ${title}: ${clean.name}`;
     const html = renderHtml(title, clean);
 
