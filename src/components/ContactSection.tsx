@@ -40,10 +40,10 @@ const ContactSection = () => {
       <div className="wrap grid grid-cols-12 gap-x-0 gap-y-12 md:gap-x-8">
         <div className="col-span-12 md:col-span-5">
           <h2 className="text-[clamp(2rem,4vw,3rem)] font-normal leading-[1.05] tracking-[-0.02em]">
-            Let&rsquo;s Work Together
+            Tell us which page needs to rank and be cited.
           </h2>
           <p className="reading mt-6 text-[1.0625rem] text-muted-foreground">
-            Have a project in mind? Reach out through any channel below.
+            Share the topic or URL, your goal and a budget range. You will get a scoped quote.
           </p>
           <ul className="mt-8 divide-y divide-border border-y border-border">
             {contacts.map((c) => {

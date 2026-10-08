@@ -1,4 +1,4 @@
-import { pricingNote, tiers, usualRoute } from "@/data/pricing";
+import { pricingNote, singlePage, tiers, usualRoute } from "@/data/pricing";
 
 const PricingSection = () => (
   <section id="pricing" className="rd-sec rd-sand">
@@ -6,7 +6,7 @@ const PricingSection = () => (
       <div className="rd-hd">
         <h2 className="rd-big">Pricing</h2>
         <p>
-          Every plan includes strategy and copywriting. The difference is how much of the build, from design and code to
+          Every plan includes primary-source research, copywriting and on-page SEO, AEO and GEO structure. The difference is how much of the build, from design and code to
           Schema, we take off your team.
         </p>
       </div>
@@ -47,6 +47,10 @@ const PricingSection = () => (
           </article>
         ))}
       </div>
+      <p className="rd-fine">
+        {singlePage.text} Priced at {singlePage.price}.{" "}
+        <a href="#contact" aria-label={`Request a quote for ${singlePage.name}`}>Request a quote</a>
+      </p>
       <p className="rd-fine">{pricingNote}</p>
     </div>
   </section>

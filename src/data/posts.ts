@@ -18,15 +18,16 @@ export type Post = {
  */
 export const posts: Post[] = [
   {
-    href: seo.routes.aiPersonalFinance2026.path,
+    href: seo.routes.aiPersonalFinance2026.canonicalPath,
     title: "AI Personal Finance 2026",
     label: "AI + Finance",
     summary:
       "Sourced statistics, structural trends and the risks most AI finance coverage misses, built for readers who want signal over noise.",
     image: "/ai-content-blog-thumbnail.webp",
+    external: true,
   },
   {
-    href: seo.routes.humanCreativityVsAi.path,
+    href: seo.routes.humanCreativityVsAi.canonicalPath,
     title: "The Authenticity Premium in the AI-Slop Era",
     label: "AI + Content",
     summary:
@@ -34,15 +35,16 @@ export const posts: Post[] = [
     image: "/ai-finance-blog-thumbnail.webp",
   },
     {
-    href: seo.routes.byoaShadowAi.path,
-    title: "The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare",
+    href: seo.routes.byoaShadowAi.canonicalPath,
+    title: "AI agents aren't sneaking in through shadow IT anymore. They inherit OAuth scope from platforms you already approved.",
     label: "Cybersecurity",
     summary:
-      "AI agents are no longer sneaking in through shadow IT. They inherit OAuth scope from platforms you already approved.",
+      "AI agents aren't sneaking in through shadow IT anymore. They inherit OAuth scope from platforms you already approved.",
     image: "/byoa-shadow-ai-blog-thumbnail.webp",
+    external: true,
   },
   {
-    href: seo.routes.visaAgenticCommerceDisputes.path,
+    href: seo.routes.visaAgenticCommerceDisputes.canonicalPath,
     title: "Who Eats the Loss When Your AI Agent Buys the Wrong Thing",
     label: "Fintech & AI",
     summary:

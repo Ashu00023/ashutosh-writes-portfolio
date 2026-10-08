@@ -38,7 +38,7 @@ export const heroExcerpt: {
   articleMatch: "byoa-shadow-ai-blog",
   parts: [
     {
-      text: "CVE-2025-32711, better known as EchoLeak per the Aim Security researchers who found it, carries a CVSS score of 9.3 and stands as the first fully documented zero-click attack against a production AI agent.",
+      text: "CVE-2025-32711, better known as EchoLeak per the Aim Security researchers who found it, carries a CVSS score of 9.3, and Aim Security describes it as the first known zero-click attack on a major AI application.",
       source: "nvd",
     },
     {

@@ -2,16 +2,16 @@ import { useState } from "react";
 
 const services = [
   {
-    title: "Research-Driven Authority Articles",
-    points: ["Search-intent research", "Competitor and content-gap analysis", "Primary-source research", "Original angle and thesis", "SEO architecture", "Long-form writing and editing", "Citations and source list", "Tables and visuals when useful"],
+    title: "On-page SEO",
+    points: ["Search-intent and SERP analysis", "Title, H1 and heading architecture", "Internal linking and canonical hygiene", "Fast, accessible custom HTML/CSS", "Refreshes of existing pages that already rank"],
   },
   {
-    title: "B2B Technical & Thought-Leadership Content",
-    points: ["Industry analysis for AI, SaaS, fintech and cybersecurity", "Technical explainers", "Emerging-trend analysis", "Regulatory and market developments", "Founder and executive thought leadership"],
+    title: "AEO: answer engine optimization",
+    points: ["Answer-first blocks under every question heading", "FAQ and definition structure for snippets and People Also Ask", "Schema.org JSON-LD that mirrors the visible page", "Tables and step lists in extractable formats"],
   },
   {
-    title: "Content Strategy & Research",
-    points: ["Keyword research", "Search intent mapping", "Topic clusters", "Content-gap analysis", "Editorial roadmap", "Research-backed briefs"],
+    title: "GEO: generative engine optimization",
+    points: ["Primary-source research with dates, sample sizes and stated limits", "An original angle that adds information other pages lack", "Author and entity signals: byline, author page, Person schema", "Crawlable raw HTML for AI search bots", "Citation checks across ChatGPT, Perplexity, Gemini and Claude"],
   },
 ];
 

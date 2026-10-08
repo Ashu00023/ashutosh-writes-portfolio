@@ -105,7 +105,7 @@ const Author = () => (
                 Ashutosh <span className="font-display italic text-accent font-normal">Mahapatra</span>
               </h1>
               <p className="mt-3 text-sm font-semibold text-foreground">
-                Technology writer covering AI, cybersecurity and business
+                On-page SEO, GEO and AEO writer covering AI, fintech and cybersecurity
               </p>
               <div className="mt-6 space-y-4 text-base text-muted-foreground leading-relaxed">
                 <p>

@@ -1,16 +1,20 @@
 # Ashutosh Mahapatra
 
-> Ashutosh Mahapatra is a freelance technology writer in Bhubaneswar, India. He writes research-led long-form articles and builds fully coded editorial pages for AI, fintech, SaaS and cybersecurity companies.
+> Ashutosh Mahapatra runs Ashutosh Writes, a three-person editorial and engineering team in Bhubaneswar, India. We build on-page SEO, GEO and AEO pages for B2B SaaS and fintech teams: primary-source research, writing and custom-coded pages built to rank in Google and be cited in AI answers.
 
 ## Pages
 
-- [Homepage](https://ashutoshwrites.online/): Services, pricing, portfolio samples and contact details.
-- [Blog](https://ashutoshwrites.online/blog): Index of my long-form writing on AI, finance, content strategy, and human-led storytelling.
-- [Selected Work](https://ashutoshwrites.online/work): Case-study view of my writing samples across AI, cybersecurity, fintech, and the creator economy.
+- [Homepage](https://ashutoshwrites.online/): Services (on-page SEO, AEO, GEO), pricing in USD, portfolio samples and contact details.
+- [Blog](https://ashutoshwrites.online/blog): Index of long-form writing on AI, fintech, cybersecurity and search.
+- [Selected Work](https://ashutoshwrites.online/work): Case-study view of independent samples across AI, cybersecurity and fintech.
 - [Author: Ashutosh Mahapatra](https://ashutoshwrites.online/author/ashutosh-mahapatra): Biography, coverage areas, social profiles, and an archive of every published article.
-- [AI Personal Finance 2026](https://ashutoshwrites.online/blog/ai-personal-finance-2026): 18 sourced statistics, 5 structural trends and the risks most AI-finance coverage misses.
-- [Human Creativity vs AI: The Authenticity Premium](https://ashutoshwrites.online/blog/human-creativity-vs-ai-authenticity-premium-2026): Data on why audiences reject AI slop and how human creators win in 2026.
-- [The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare](https://ashutoshwrites.online/blog/byoa-shadow-ai-b2b-saas-2026): How AI agents inherit OAuth scope from platforms already approved, the BYOA risk chain, and a governance framework for enterprise security teams.
+
+## Articles
+
+- [Shadow AI Inside Approved SaaS: How Agents Inherit Access](https://ashutoshwrites.online/static-blogs/byoa-shadow-ai-blog.html): How vendor-embedded AI agents inherit OAuth scope from platforms already approved, what EchoLeak, Drift and Vercel prove and do not prove, dated EU AI Act obligations, and a governance framework for security teams.
+- [Untangling Liability in Visa's New Agentic Commerce Dispute Rules](https://ashutoshwrites.online/visa-agentic-commerce-disputes-seo.html): Who bears the loss when an AI agent buys the wrong thing, checked against primary rule text.
+- [AI Personal Finance 2026: Stats, Tools & Risks Explained](https://ashutoshwrites.online/static-blogs/ai-personal-finance-2026.html): Sourced statistics, structural trends and the risks most AI-finance coverage misses.
+- [AI vs Human Content in 2026: The Authenticity Premium](https://ashutoshwrites.online/static-blogs/ai-authenticity-premium-2026.html): What ranking and audience data show about AI-generated versus human-written content.
 
 ## Policies
 

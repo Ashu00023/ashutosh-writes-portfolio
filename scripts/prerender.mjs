@@ -155,6 +155,12 @@ function stampTemplate(template, { headHtml, bodyHtml }) {
 // update the matching string below in the same change.
 // ---------------------------------------------------------------------------
 
+/** Canonical path for an article: the static page when one is set, else the SPA route. */
+function articlePath(seo, key) {
+  const m = seo.routes[key];
+  return m.canonicalPath || m.path;
+}
+
 function homeBodyHtml(seo) {
   return `
 <nav aria-label="Primary">
@@ -172,18 +178,18 @@ function homeBodyHtml(seo) {
 <main>
   <section id="home">
     <img src="/profile.webp" alt="Portrait of Ashutosh Mahapatra" width="288" height="288" fetchpriority="high">
-    <p>Ashutosh Writes: a three-person editorial and engineering team in Bhubaneswar, India</p>
-    <h1>Fully coded editorial web pages for AI, fintech, and SaaS.</h1>
-    <p>We build interactive, fully coded editorial web assets, from deep B2B research and clear copy to front-end design, custom HTML/CSS and Schema markup, ready to publish.</p>
-    <p><a href="/#portfolio">View Portfolio</a> <a href="/#pricing">See Pricing</a></p>
+    <p>Ashutosh Writes: on-page SEO, GEO and AEO for B2B SaaS and fintech teams</p>
+    <h1>On-page SEO, GEO and AEO for SaaS and fintech teams.</h1>
+    <p>We research, write and code each page so it ranks in Google and gets cited in AI answers. Every claim is traced to a primary source, and the limits are stated.</p>
+    <p><a href="/#contact">Start a project</a> <a href="/#portfolio">See the proof</a></p>
   </section>
 
   <section id="trust">
     <ul>
-      <li>4 independent research samples across AI, fintech, cybersecurity &amp; technology</li>
-      <li>18+ sourced statistics in the finance authority piece</li>
-      <li>Primary-source research: reports, filings, rules &amp; technical sources</li>
-      <li>Complex technical and financial topics translated clearly</li>
+      <li>4 independent research samples across AI, fintech and cybersecurity</li>
+      <li>17 sources cited in the Shadow AI piece, with vendor claims labelled as such</li>
+      <li>20+ sourced statistics in the AI finance piece, with sample sizes and dates</li>
+      <li>Primary-source research: filings, rules, CVEs and technical documentation</li>
     </ul>
   </section>
 
@@ -191,20 +197,20 @@ function homeBodyHtml(seo) {
     <h2>Featured writing samples</h2>
     <p>Independent research samples across AI, fintech, cybersecurity and technology, researched, structured and written as I would deliver for a client.</p>
     <article>
-      <h3><a href="${seo.routes.humanCreativityVsAi.path}">Winning the Authenticity Premium in the AI-Slop Era</a></h3>
-      <p>Built an original thesis on why human creators are earning an authenticity premium in 2026, backed by editorial analysis rather than a recycled take.</p>
-    </article>
-    <article>
-      <h3><a href="${seo.routes.aiPersonalFinance2026.path}">Scaling Trust for an AI-Powered Personal Finance Audience</a></h3>
-      <p>A long-form authority piece anchored in 18 sourced statistics, five structural trends and a risk framework most coverage skips.</p>
-    </article>
-    <article>
-      <h3><a href="${seo.routes.byoaShadowAi.path}">Why BYOA Is B2B SaaS's Next Data Nightmare</a></h3>
-      <p>A technical threat brief on inherited OAuth scope nobody reviewed, grounded in CVE-2025-32711 and a three-pillar governance framework.</p>
+      <h3><a href="${articlePath(seo, "byoaShadowAi")}">Shadow AI Inside Approved SaaS: How Agents Inherit Access</a></h3>
+      <p>A technical threat brief on inherited OAuth scope nobody reviewed, with 17 cited sources, incident facts with their limits stated, and dated EU AI Act obligations.</p>
     </article>
     <article>
       <h3><a href="${seo.routes.visaAgenticCommerceDisputes.path}">Untangling Liability in Visa's New Agentic Commerce Dispute Rules</a></h3>
       <p>A breakdown of who bears the loss when an AI agent buys the wrong thing, checked against Visa's and Mastercard's own rule text.</p>
+    </article>
+    <article>
+      <h3><a href="${articlePath(seo, "aiPersonalFinance2026")}">Scaling Trust for an AI-Powered Personal Finance Audience</a></h3>
+      <p>A long-form authority piece anchored in 20+ sourced statistics, six structural trends and a risk framework most coverage skips.</p>
+    </article>
+    <article>
+      <h3><a href="${articlePath(seo, "humanCreativityVsAi")}">Winning the Authenticity Premium in the AI-Slop Era</a></h3>
+      <p>An original thesis on why human creators earn an authenticity premium in 2026, tested against ranking and audience data.</p>
     </article>
     <p><a href="/work">View all work</a></p>
   </section>
@@ -212,32 +218,33 @@ function homeBodyHtml(seo) {
   <section id="services">
     <h2>What we offer</h2>
     <article>
-      <h3>Research-Driven Authority Articles</h3>
-      <p>Search-intent research, competitor and content-gap analysis, primary-source research, original angle and thesis, SEO architecture, long-form writing and editing, citations and source list.</p>
+      <h3>On-page SEO</h3>
+      <p>Search-intent and SERP analysis, title, H1 and heading architecture, internal linking and canonical hygiene, fast custom HTML/CSS, and refreshes of existing pages that already rank.</p>
     </article>
     <article>
-      <h3>B2B Technical &amp; Thought-Leadership Content</h3>
-      <p>Industry analysis for AI, SaaS, fintech and cybersecurity, technical explainers, emerging-trend analysis, regulatory and market developments, founder and executive thought leadership.</p>
+      <h3>AEO: answer engine optimization</h3>
+      <p>Answer-first blocks under every question heading, FAQ and definition structure for snippets and People Also Ask, Schema.org JSON-LD that mirrors the visible page, and tables and step lists in extractable formats.</p>
     </article>
     <article>
-      <h3>Content Strategy &amp; Research</h3>
-      <p>Keyword research, search intent mapping, topic clusters, content-gap analysis, editorial roadmap and research-backed briefs.</p>
+      <h3>GEO: generative engine optimization</h3>
+      <p>Primary-source research with dates, sample sizes and stated limits, an original angle, author and entity signals, crawlable raw HTML for AI search bots, and citation checks across ChatGPT, Perplexity, Gemini and Claude.</p>
     </article>
   </section>
 
   <section id="pricing">
     <h2>Pricing</h2>
     <ul>
+      <li><strong>Foundation Sprint</strong>: 4 answer-ready articles a month, $1,600&ndash;2,000 per month</li>
+      <li><strong>Flagship Series</strong>: 4-part fully coded web series, from $6,500 per month</li>
+      <li><strong>Authority Program</strong>: fully coded pages plus a quarterly refresh, from $12,000 per month</li>
       <li><strong>Core Asset</strong>: 1 fully coded web page, $1,200&ndash;2,400 per page</li>
-      <li><strong>Flagship Series</strong>: 4-part fully coded web series, $4,500&ndash;9,000 per month</li>
-      <li><strong>Pilot</strong>: 4-part text &amp; strategy, $1,600&ndash;2,000 per month</li>
     </ul>
-    <p>Final pricing depends on scope. See the <a href="/refund-policy">Payment, Refund and Revision Policy</a>.</p>
+    <p>Prices in USD. Final pricing depends on scope. See the <a href="/refund-policy">Payment, Refund and Revision Policy</a>.</p>
   </section>
 
   <section id="contact">
-    <h2>Let&rsquo;s Work Together</h2>
-    <p>Have a project in mind? Reach out through any channel below.</p>
+    <h2>Tell us which page needs to rank and be cited.</h2>
+    <p>Share the topic or URL, your goal and a budget range. You will get a scoped quote.</p>
     <ul>
       <li><a href="mailto:ashutosh@mail.ashutoshwrites.online">ashutosh@mail.ashutoshwrites.online</a></li>
       <li><a href="tel:+919040451510">+91 9040451510</a></li>
@@ -259,8 +266,9 @@ function homeBodyHtml(seo) {
   <nav aria-label="Services">
     <h2>Services</h2>
     <ul>
-      <li><a href="/#services">SEO Blogs</a></li>
-      <li><a href="/#services">Content Strategy</a></li>
+      <li><a href="/#services">On-page SEO</a></li>
+      <li><a href="/#services">AEO</a></li>
+      <li><a href="/#services">GEO</a></li>
     </ul>
   </nav>
   <nav aria-label="Connect">
@@ -292,15 +300,15 @@ function blogIndexBodyHtml(seo) {
   <h1>Latest Writing</h1>
   <p>Long-form pieces on the ideas shaping AI, finance, and content.</p>
   <article>
-    <h2><a href="${seo.routes.aiPersonalFinance2026.path}">AI Personal Finance 2026</a></h2>
+    <h2><a href="${articlePath(seo, "aiPersonalFinance2026")}">AI Personal Finance 2026</a></h2>
     <p>Sourced statistics, structural trends and the risks most AI finance coverage misses, built for readers who want signal over noise.</p>
   </article>
   <article>
-    <h2><a href="${seo.routes.humanCreativityVsAi.path}">The Authenticity Premium in the AI-Slop Era</a></h2>
+    <h2><a href="${articlePath(seo, "humanCreativityVsAi")}">The Authenticity Premium in the AI-Slop Era</a></h2>
     <p>Why human creativity is winning in 2026 and how creators can turn authenticity into a durable competitive advantage.</p>
   </article>
   <article>
-    <h2><a href="${seo.routes.byoaShadowAi.path}">The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare</a></h2>
+    <h2><a href="${articlePath(seo, "byoaShadowAi")}">Shadow AI Inside Approved SaaS: How Agents Inherit Access</a></h2>
     <p>AI agents are no longer sneaking in through shadow IT. They inherit OAuth scope from platforms you already approved.</p>
   </article>
 </main>`.trim();
@@ -308,13 +316,13 @@ function blogIndexBodyHtml(seo) {
 
 function authorBodyHtml(seo) {
   const items = ["aiPersonalFinance2026", "humanCreativityVsAi", "byoaShadowAi"]
-    .map((key) => `    <li><a href="${seo.routes[key].path}">${seo.routes[key].title}</a></li>`)
+    .map((key) => `    <li><a href="${articlePath(seo, key)}">${seo.routes[key].title}</a></li>`)
     .join("\n");
   return `
 <nav aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; Author</nav>
 <main>
   <h1>Ashutosh Mahapatra</h1>
-  <p>Technology writer covering AI, cybersecurity and business.</p>
+  <p>On-page SEO, GEO and AEO writer covering AI, fintech and cybersecurity.</p>
   <p>I write long-form, research-backed articles about technology and money. My work starts with primary sources (filings, CVEs, vendor documentation, published research). I use AI where it helps with research and workflow, but the argument, structure and final wording are mine.</p>
   <h2>Articles by Ashutosh Mahapatra</h2>
   <ul>
@@ -322,7 +330,6 @@ ${items}
   </ul>
 </main>`.trim();
 }
-
 function legalBodyHtml(meta, sections) {
   const items = sections.map((section) => `    <li>${section}</li>`).join("\n");
   return `
@@ -378,23 +385,27 @@ function workIndexBodyHtml(seo) {
   <h1>Selected Work</h1>
   <p>Every piece here started with search intent and primary research.</p>
   <article>
-    <h2><a href="${seo.routes.humanCreativityVsAi.path}">Winning the Authenticity Premium in the AI-Slop Era</a></h2>
+    <h2><a href="${articlePath(seo, "byoaShadowAi")}">Shadow AI Inside Approved SaaS: How Agents Inherit Access</a></h2>
+    <p>AI &amp; Cybersecurity &middot; SEO Blog &middot; 17 sources cited</p>
+    <p>Shadow AI coverage often centers on employees adopting new tools; the harder case is agents that arrive inside platforms already approved. I wrote a threat brief on inherited OAuth scope nobody reviewed, grounded in CVE-2025-32711, three named incidents with their limits stated, dated EU AI Act obligations and a governance framework.</p>
+  </article>
+  <article>
+    <h2><a href="${seo.routes.visaAgenticCommerceDisputes.path}">Untangling Liability in Visa's New Agentic Commerce Dispute Rules</a></h2>
+    <p>Fintech &amp; AI &middot; SEO Blog &middot; 12 primary sources cited</p>
+    <p>Visa quietly routed AI-agent purchases into its existing card-not-present dispute rules, and most coverage skipped the liability question. I wrote a fact-checked breakdown of who eats the loss, verified against Visa's and Mastercard's own rule text.</p>
+  </article>
+  <article>
+    <h2><a href="${articlePath(seo, "aiPersonalFinance2026")}">Scaling Trust for an AI-Powered Personal Finance Audience</a></h2>
+    <p>Fintech &middot; SEO Blog &middot; 20+ sourced statistics</p>
+    <p>AI finance content was crowded with surface-level listicles with little sourced data. I built a long-form authority piece with 20+ sourced statistics, six trends, and the risks most coverage misses.</p>
+  </article>
+  <article>
+    <h2><a href="${articlePath(seo, "humanCreativityVsAi")}">Winning the Authenticity Premium in the AI-Slop Era</a></h2>
     <p>Creator Economy &middot; SEO Blog &middot; research-backed anchor article</p>
     <p>Audiences were tuning out AI-generated content but the niche had no anchor article. I produced a research-backed analysis on why human creators are winning in 2026.</p>
   </article>
-  <article>
-    <h2><a href="${seo.routes.aiPersonalFinance2026.path}">Scaling Trust for an AI-Powered Personal Finance Audience</a></h2>
-    <p>Fintech &middot; SEO Blog &middot; 18 sourced statistics</p>
-    <p>AI finance content was crowded with surface-level listicles with little sourced data. I built a long-form authority piece with 18 sourced statistics, 5 trends, and the risks most coverage misses.</p>
-  </article>
-  <article>
-    <h2><a href="${seo.routes.byoaShadowAi.path}">Why BYOA Is B2B SaaS's Next Data Nightmare</a></h2>
-    <p>AI &amp; Cybersecurity &middot; SEO Blog &middot; CVE-2025-32711 cited</p>
-    <p>Shadow AI coverage was stuck describing 2019-era shadow IT. I wrote a threat brief on how agents ship pre-embedded inside approved platforms, inheriting OAuth scope nobody reviewed, backed by CVE-2025-32711 and a three-pillar governance framework.</p>
-  </article>
 </main>`.trim();
 }
-
 // Per-post Challenge/Approach/Craft Notes copy, mirrored from the
 // <CaseStudyFrame> props in src/pages/blog-posts/*.tsx. Keep in sync with
 // those files — if you edit the props there, edit the matching entry here.
@@ -402,11 +413,11 @@ const caseStudyFrames = {
   aiPersonalFinance2026: {
     niche: "AI Fintech",
     format: "SEO Blog",
-    statHighlight: "18 sourced statistics",
+    statHighlight: "20+ sourced statistics",
     challenge:
       "AI finance content was crowded with surface-level listicles with little sourced data, so little in the niche earned a reader's trust.",
     approach:
-      "I built a long-form authority piece carrying 18 sourced statistics, 5 trends and the risks most coverage skips.",
+      "I built a long-form authority piece carrying 20+ sourced statistics, 6 trends and the risks most coverage skips.",
     craftNotes: [
       "Verified every statistic before it went in, so each number can be traced to a primary source.",
       "Rewrote section headings as the direct questions readers ask, formatted for featured snippets and AI answers.",
@@ -560,7 +571,7 @@ async function buildRoutes(seo) {
     routes.push({
       key,
       ...meta,
-      canonical: `${seo.siteUrl}${meta.path}`,
+      canonical: `${seo.siteUrl}${meta.canonicalPath || meta.path}`,
       jsonLdList: jsonLd.length
         ? jsonLd
         : [JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: meta.title })],

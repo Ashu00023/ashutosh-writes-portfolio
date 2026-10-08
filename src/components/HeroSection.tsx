@@ -15,21 +15,21 @@ const HeroSection = () => {
     <section id="home" className={`rd-hero${ready ? " rd-ld" : ""}`}>
       <div className="rd-wrap">
         <p className="rd-mut" data-h style={{ "--d": 0, fontSize: 14 } as React.CSSProperties}>
-          Ashutosh Writes: a three-person editorial and engineering team in Bhubaneswar, India
+          Ashutosh Writes: on-page SEO, GEO and AEO for B2B SaaS and fintech teams
         </p>
         <h1>
-          <span className="rd-ln"><span>Fully coded editorial web pages</span></span>
-          <span className="rd-ln"><span>for AI, fintech, and SaaS.</span></span>
+          <span className="rd-ln"><span>On-page SEO, GEO and AEO</span></span>
+          <span className="rd-ln"><span>for SaaS and fintech teams.</span></span>
         </h1>
 
         <div className="rd-hg">
           <div>
             <p className="rd-lede" data-h style={{ "--d": 1 } as React.CSSProperties}>
-              We build interactive, fully coded editorial web assets, from deep B2B research and clear copy to front-end design, custom HTML/CSS and Schema markup, ready to publish.
+              We research, write and code each page so it ranks in Google and gets cited in AI answers. Every claim is traced to a primary source, and the limits are stated.
             </p>
             <div className="rd-btns" data-h style={{ "--d": 2 } as React.CSSProperties}>
-              <a className="rd-b1" href="#portfolio">View Portfolio</a>
-              <a className="rd-b2" href="#pricing">See Pricing</a>
+              <a className="rd-b1" href="#contact">Start a project</a>
+              <a className="rd-b2" href="#portfolio">See the proof</a>
             </div>
             <a
               className="rd-anc"

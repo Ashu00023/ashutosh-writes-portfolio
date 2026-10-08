@@ -5,15 +5,12 @@ import logo from "@/assets/logo-new.webp";
 import { useScrollFrame } from "@/hooks/useScrollFrame";
 
 const links = [
-  { label: "Home", href: "/#home", section: "home" },
   { label: "Work", href: "/work", section: "portfolio" },
   { label: "Services", href: "/#services", section: "services" },
   { label: "Pricing", href: "/#pricing", section: "pricing" },
   { label: "Approach", href: "/#process", section: "process" },
   { label: "About", href: "/#about", section: "about" },
-  { label: "Team", href: "/#team", section: "team" },
   { label: "Blog", href: "/blog", section: "" },
-  { label: "Author", href: "/author/ashutosh-mahapatra", section: "" },
   { label: "Contact", href: "/#contact", section: "contact" },
 ];
 

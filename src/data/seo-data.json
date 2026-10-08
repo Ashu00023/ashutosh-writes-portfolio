@@ -7,6 +7,9 @@
     "url": "https://ashutoshwrites.online/",
     "jobTitle": "Founder, Content Strategy & Lead Editorial, Ashutosh Writes",
     "knowsAbout": [
+      "On-page SEO",
+      "Answer engine optimization (AEO)",
+      "Generative engine optimization (GEO)",
       "AI content strategy",
       "Fintech writing",
       "Cybersecurity content",
@@ -22,17 +25,17 @@
     "@id": "https://ashutoshwrites.online/#service",
     "name": "Ashutosh Writes",
     "url": "https://ashutoshwrites.online/",
-    "description": "Research-driven editorial web pages: strategy, copywriting, custom HTML/CSS and Schema.org JSON-LD, for AI, fintech, SaaS, cybersecurity and technology companies.",
+    "description": "On-page SEO, GEO and AEO for B2B SaaS and fintech teams: primary-source research, writing and custom-coded pages built to rank in Google and be cited in AI answers.",
     "founder": { "@id": "https://ashutoshwrites.online/#person" },
     "areaServed": "Worldwide",
-    "serviceType": ["Research-driven SEO content", "B2B thought leadership", "Content strategy", "Technical content", "Fully coded editorial web pages", "Schema.org JSON-LD & technical SEO"]
+    "serviceType": ["On-page SEO", "Answer engine optimization (AEO)", "Generative engine optimization (GEO)", "Fully coded editorial web pages", "Schema.org JSON-LD that mirrors visible content", "Research-driven B2B content"]
   },
   "routes": {
     "home": {
       "path": "/",
       "outFile": "index.html",
-      "title": "Fully Coded Editorial Pages for AI, Fintech & SaaS | Ashutosh Writes",
-      "description": "We research, write, design and code publish-ready editorial web pages for AI, fintech and SaaS brands, with custom HTML/CSS and Schema.org JSON-LD built in.",
+      "title": "On-Page SEO, GEO & AEO for SaaS & Fintech | Ashutosh Writes",
+      "description": "We research, write and code on-page SEO, GEO and AEO pages for B2B SaaS and fintech teams. Built to rank in Google and be cited in AI answers.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
@@ -47,16 +50,16 @@
     "work": {
       "path": "/work",
       "outFile": "work/index.html",
-      "title": "Research-Driven Content Samples | Ashutosh Mahapatra",
-      "description": "Independent research and writing samples across AI, fintech, cybersecurity and technology.",
+      "title": "SEO, GEO & AEO Work Samples | Ashutosh Mahapatra",
+      "description": "Four independent samples across AI, fintech and cybersecurity, each built for search and AI answers, with primary sources cited.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
     "author": {
       "path": "/author/ashutosh-mahapatra",
       "outFile": "author/ashutosh-mahapatra/index.html",
-      "title": "Ashutosh Mahapatra | Technology Writer (AI, Cybersecurity, Business)",
-      "description": "About Ashutosh Mahapatra: independent technology writer covering AI, cybersecurity, and business, with an archive of every published article.",
+      "title": "Ashutosh Mahapatra | On-Page SEO, GEO & AEO Writer",
+      "description": "Ashutosh Mahapatra writes research-led, search- and answer-ready articles on AI, fintech and cybersecurity, with an archive of every published piece.",
       "ogType": "profile",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
@@ -104,28 +107,31 @@
       "path": "/blog/ai-personal-finance-2026",
       "outFile": "blog/ai-personal-finance-2026/index.html",
       "title": "AI Personal Finance 2026: Stats, Tools & Risks Explained",
-      "description": "18 sourced statistics, 5 structural trends and the risks most coverage misses: a data-driven look at how AI is reshaping personal finance in 2026.",
+      "description": "21 sourced statistics, 6 structural trends, and the risks most coverage misses. A data-driven look at how AI is reshaping personal finance in 2026.",
       "ogType": "article",
-      "ogImage": "https://ashutoshwrites.online/ai-finance-blog-thumbnail.png",
-      "staticSource": "static-blogs/ai-personal-finance-2026.html"
+      "ogImage": "https://ashutoshwrites.online/static-blogs/og-ai-personal-finance-2026.jpg",
+      "staticSource": "static-blogs/ai-personal-finance-2026.html",
+      "canonicalPath": "/static-blogs/ai-personal-finance-2026.html"
     },
     "humanCreativityVsAi": {
       "path": "/blog/human-creativity-vs-ai-authenticity-premium-2026",
       "outFile": "blog/human-creativity-vs-ai-authenticity-premium-2026/index.html",
-      "title": "The Authenticity Premium: Why Human Creators Beat AI in 2026",
-      "description": "AI content is flooding the internet, but audiences are rejecting it. Discover the data behind the Authenticity Premium and why human creativity is your best SEO strategy for 2026.",
+      "title": "AI vs Human Content in 2026: The Authenticity Premium",
+      "description": "Semrush found human-written pages hold 80.5% of Google's #1 spots; Ahrefs found 5.3% of top-3 pages are fully AI. What the data really shows.",
       "ogType": "article",
-      "ogImage": "https://ashutoshwrites.online/ai-content-blog-thumbnail.jpg",
-      "staticSource": "static-blogs/ai-authenticity-premium-2026.html"
+      "ogImage": "https://ashutoshwrites.online/static-blogs/charts/authenticity-premium.png",
+      "staticSource": "static-blogs/ai-authenticity-premium-2026.html",
+      "canonicalPath": "/static-blogs/ai-authenticity-premium-2026.html"
     },
     "byoaShadowAi": {
       "path": "/blog/byoa-shadow-ai-b2b-saas-2026",
       "outFile": "blog/byoa-shadow-ai-b2b-saas-2026/index.html",
-      "title": "The Shadow AI Crisis: Why BYOA Is B2B SaaS's Next Data Nightmare",
-      "description": "Shadow AI in 2026 doesn't look like shadow IT. It ships as a feature update inside a platform you already approved, inheriting OAuth scope nobody reviewed.",
+      "title": "Shadow AI Inside Approved SaaS: How Agents Inherit Access",
+      "description": "Shadow AI no longer needs a new app. Embedded agents inherit OAuth scope you already approved. Incidents, EU AI Act dates, and a governance framework.",
       "ogType": "article",
       "ogImage": "https://ashutoshwrites.online/byoa-shadow-ai-blog-thumbnail.png",
-      "staticSource": "static-blogs/byoa-shadow-ai-blog.html"
+      "staticSource": "static-blogs/byoa-shadow-ai-blog.html",
+      "canonicalPath": "/static-blogs/byoa-shadow-ai-blog.html"
     },
     "visaAgenticCommerceDisputes": {
       "path": "/visa-agentic-commerce-disputes-seo.html",
