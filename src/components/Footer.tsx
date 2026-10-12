@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-new.webp";
 import TransitionLink from "@/components/TransitionLink";
-import { contacts } from "./ContactSection";
+import { contacts } from "@/data/site";
 
 const connectOrder = [
   (href: string) => href.startsWith("mailto:"),
