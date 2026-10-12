@@ -1,13 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import PortfolioSection from "@/components/PortfolioSection";
-import ProcessSection from "@/components/ProcessSection";
-import AboutSection from "@/components/AboutSection";
-import TeamSection from "@/components/TeamSection";
-import ServicesSection from "@/components/ServicesSection";
-import PricingSection from "@/components/PricingSection";
-import ContactSection from "@/components/ContactSection";
+import LedgerSection from "@/components/LedgerSection";
+import BuildSection from "@/components/BuildSection";
+import ResearchStrip from "@/components/ResearchStrip";
+import FitSection from "@/components/FitSection";
+import CloseSection from "@/components/CloseSection";
 import Footer from "@/components/Footer";
 import seo from "@/data/seo-data.json";
 
@@ -56,13 +54,11 @@ const Index = () => (
     <Navbar />
     <main id="main" tabIndex={-1} className="rd-page focus:outline-none">
       <HeroSection />
-      <PortfolioSection />
-      <ProcessSection />
-      <AboutSection />
-      <TeamSection />
-      <ServicesSection />
-      <PricingSection />
-      <ContactSection />
+      <BuildSection />
+      <LedgerSection />
+      <ResearchStrip />
+      <FitSection />
+      <CloseSection />
     </main>
     <Footer />
   </>
