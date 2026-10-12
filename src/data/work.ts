@@ -74,5 +74,4 @@ export const workItems: WorkItem[] = [
   },
 ];
 
-export const nicheFilters = ["All", "AI & Cybersecurity", "Fintech", "Creator Economy"];
-export const formatFilters = ["All formats", "SEO Blog"];
+

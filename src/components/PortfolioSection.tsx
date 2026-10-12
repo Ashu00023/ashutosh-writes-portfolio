@@ -106,9 +106,9 @@ const PortfolioSection = () => {
       <div className="rd-pin rd-wrap">
         <div className="rd-wl" ref={wl}>
           <div>
-            <h2 id="portfolio-title">Featured writing samples</h2>
+            <h2 id="portfolio-title">Featured research</h2>
             <p className="rd-sub">
-              Independent research samples across AI, fintech, cybersecurity and technology, researched, structured and written as I would deliver for a client.
+              Four independent articles in fintech and AI security, researched to primary sources, structured for search and answer engines, and written as we would deliver for a client.
             </p>
           </div>
 
@@ -134,7 +134,7 @@ const PortfolioSection = () => {
                       onFocus={() => prefetchOne(it.liveUrl)}
                       onTouchStart={() => prefetchOne(it.liveUrl)}
                     >
-                      View live article
+                      Read the article
                     </a>
                   </div>
                 </div>
@@ -150,7 +150,7 @@ const PortfolioSection = () => {
                   {it.niche}
                 </button>
               ))}
-              <a className="rd-all" href="/work">View all work</a>
+
             </div>
           </div>
         </div>
