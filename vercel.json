@@ -1,36 +1,109 @@
 {
   "redirects": [
-    { "source": "/blog/ai-personal-finance-2026", "destination": "/static-blogs/ai-personal-finance-2026.html", "permanent": true },
-    { "source": "/blog/ai-personal-finance-2026/", "destination": "/static-blogs/ai-personal-finance-2026.html", "permanent": true },
-    { "source": "/blog/human-creativity-vs-ai-authenticity-premium-2026", "destination": "/static-blogs/ai-authenticity-premium-2026.html", "permanent": true },
-    { "source": "/blog/human-creativity-vs-ai-authenticity-premium-2026/", "destination": "/static-blogs/ai-authenticity-premium-2026.html", "permanent": true },
-    { "source": "/blog/byoa-shadow-ai-b2b-saas-2026", "destination": "/static-blogs/byoa-shadow-ai-blog.html", "permanent": true },
-    { "source": "/blog/byoa-shadow-ai-b2b-saas-2026/", "destination": "/static-blogs/byoa-shadow-ai-blog.html", "permanent": true }
+    {
+      "source": "/blog",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/blog/",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/cookie-policy",
+      "destination": "/privacy-policy#cookies",
+      "permanent": true
+    },
+    {
+      "source": "/disclaimer",
+      "destination": "/terms-of-use#disclaimer",
+      "permanent": true
+    },
+    {
+      "source": "/refund-policy",
+      "destination": "/terms-of-use#payments",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-personal-finance-2026",
+      "destination": "/static-blogs/ai-personal-finance-2026.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-personal-finance-2026/",
+      "destination": "/static-blogs/ai-personal-finance-2026.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/human-creativity-vs-ai-authenticity-premium-2026",
+      "destination": "/static-blogs/ai-authenticity-premium-2026.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/human-creativity-vs-ai-authenticity-premium-2026/",
+      "destination": "/static-blogs/ai-authenticity-premium-2026.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/byoa-shadow-ai-b2b-saas-2026",
+      "destination": "/static-blogs/byoa-shadow-ai-blog.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/byoa-shadow-ai-b2b-saas-2026/",
+      "destination": "/static-blogs/byoa-shadow-ai-blog.html",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/((?!assets/|.*\\..*).*)", "destination": "/index.html" }
+    {
+      "source": "/((?!assets/|.*\\..*).*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/(.*)\\.(png|jpe?g|webp|avif|svg|gif|ico)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=86400" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, stale-while-revalidate=86400"
+        }
       ]
     }
   ]

@@ -1,13 +1,16 @@
-# Ashutosh Mahapatra
+# Ashutosh Writes
 
-> Ashutosh Mahapatra runs Ashutosh Writes, a three-person editorial and engineering team in Bhubaneswar, India. We build on-page SEO, GEO and AEO pages for B2B SaaS and fintech teams: primary-source research, writing and custom-coded pages built to rank in Google and be cited in AI answers.
+> Ashutosh Writes is a boutique editorial studio for fintech and AI-security teams, led by Ashutosh Mahapatra in Bhubaneswar, India. We write long-form articles researched to primary sources, with article-level SEO, GEO and AEO and content strategy. Every article ships with a source ledger. We do not do full-site SEO audits or volume content.
 
 ## Pages
 
-- [Homepage](https://ashutoshwrites.online/): Services (on-page SEO, AEO, GEO), pricing in USD, portfolio samples and contact details.
-- [Blog](https://ashutoshwrites.online/blog): Index of long-form writing on AI, fintech, cybersecurity and search.
-- [Selected Work](https://ashutoshwrites.online/work): Case-study view of independent samples across AI, cybersecurity and fintech.
-- [Author: Ashutosh Mahapatra](https://ashutoshwrites.online/author/ashutosh-mahapatra): Biography, coverage areas, social profiles, and an archive of every published article.
+- [Homepage](https://ashutoshwrites.online/): What the studio does, the source-ledger standard, research samples and who the studio is for.
+- [Services](https://ashutoshwrites.online/services): Editorial articles, article-level search (SEO, AEO, GEO), content strategy, and the free Article Check.
+- [Method](https://ashutoshwrites.online/method): The five-step process, the six-field source ledger, and what we test instead of promising rankings or citations.
+- [Research](https://ashutoshwrites.online/work): Four independent articles in fintech and AI security, plus how we audited our own site for AI-crawler visibility.
+- [About](https://ashutoshwrites.online/about): The three-person editorial and engineering team.
+- [Free Article Check](https://ashutoshwrites.online/contact): Send one article and receive a written claim-verification and AI-citation report.
+- [Author: Ashutosh Mahapatra](https://ashutoshwrites.online/author/ashutosh-mahapatra): Biography, coverage areas and an archive of every published article.
 
 ## Articles
 
@@ -18,8 +21,5 @@
 
 ## Policies
 
-- [Privacy Policy](https://ashutoshwrites.online/privacy-policy): Enquiry form data, service providers, retention and your privacy rights.
-- [Terms of Use](https://ashutoshwrites.online/terms-of-use): Intellectual property, acceptable use, and limitation of liability.
-- [Cookie Policy](https://ashutoshwrites.online/cookie-policy): No analytics or advertising cookies; third-party fonts and external links.
-- [Disclaimer](https://ashutoshwrites.online/disclaimer): Educational content only. No financial, legal, or professional advice.
-- [Payment, Refund and Revision Policy](https://ashutoshwrites.online/refund-policy): Deposits, revision rounds, refunds and cancellation for paid projects.
+- [Privacy Policy](https://ashutoshwrites.online/privacy-policy): Article Check form data, cookies and fonts, service providers, retention and your privacy rights.
+- [Terms of Use](https://ashutoshwrites.online/terms-of-use): Intellectual property, acceptable use, editorial disclaimer, payment, refund and revision terms, and limitation of liability.
