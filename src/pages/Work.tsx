@@ -1,166 +1,79 @@
-import { useMemo, useState } from "react";
-import { Helmet } from "react-helmet-async";
-import { ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ScrollReveal from "@/components/ScrollReveal";
-import { workItems, nicheFilters, formatFilters, type WorkItem } from "@/data/work";
-import { prefetchOne } from "@/lib/prefetch";
-import seo from "@/data/seo-data.json";
+import PageMeta from "@/components/PageMeta";
+import PortfolioSection from "@/components/PortfolioSection";
+import CloseSection from "@/components/CloseSection";
+import { posts } from "@/data/posts";
 
-const canonical = `${seo.siteUrl}/work`;
-
-const pill = (active: boolean) =>
-  `px-4 py-2 rounded-lg text-[13px] font-semibold border transition-all duration-200 ${
-    active
-      ? "bg-foreground text-background border-foreground"
-      : "border-border text-muted-foreground hover:text-foreground hover:border-accent/40"
-  }`;
-
-const WorkCard = ({ item }: { item: WorkItem }) => (
-  <article
-    className="group flex flex-col rounded-xl bg-background border border-border/60 overflow-hidden hover:shadow-xl hover:border-accent/30 transition-all duration-300 h-full"
-    onMouseEnter={() => prefetchOne(item.liveUrl)}
-    onTouchStart={() => prefetchOne(item.liveUrl)}
-  >
-    <div className="relative overflow-hidden bg-muted aspect-[16/9] flex items-center justify-center">
-      <img
-        src={item.image}
-        alt={item.thumbAlt}
-        loading="lazy"
-        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-      />
-    </div>
-    <div className="flex flex-col flex-1 p-6">
-      <span className="self-start text-[10px] font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-md uppercase tracking-[0.15em] mb-4">
-        {item.niche}
-      </span>
-      <h2 className="text-lg font-bold text-foreground tracking-tight leading-snug mb-2">
-        {item.title}
-      </h2>
-      <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground mb-4">
-        Independent research sample
-      </p>
-      <div className="space-y-3 mb-6 flex-1">
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent mb-1">Problem / Opportunity</p>
-          <p className="text-sm text-muted-foreground leading-relaxed">{item.problem}</p>
+const Work = () => (
+  <>
+    <PageMeta route="work" crumb="Research" />
+    <Navbar />
+    <main id="main" tabIndex={-1} className="rd-page focus:outline-none">
+      <section className="st-top" style={{ paddingBottom: 0 }}>
+        <div className="rd-wrap">
+          <p className="st-eyebrow">Research</p>
+          <h1>Independent articles, researched like client work.</h1>
+          <p className="st-lede">
+            Fintech and AI-security articles written without a client brief. Each one is sourced to primary documents, structured for search and answer engines, and written as we would deliver it for you.
+          </p>
         </div>
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent mb-1">Approach</p>
-          <p className="text-sm text-muted-foreground leading-relaxed">{item.approach}</p>
-        </div>
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent mb-1">What it demonstrates</p>
-          <p className="text-sm text-muted-foreground leading-relaxed">{item.demonstrates}</p>
-        </div>
-      </div>
-      <div className="flex flex-wrap gap-3">
-        <a        
-          href={item.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 bg-foreground text-background text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-accent transition-colors duration-200"
-        >
-          View Live Article <ArrowUpRight size={15} />
-        </a>
-      </div>
-      <p className="mt-5 pt-4 border-t border-border/60 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.12em]">
-        {item.format} · {item.stat}
-      </p>
-    </div>
-  </article>
-);
+      </section>
 
-const Work = () => {
-  const [niche, setNiche] = useState("All");
-  const [format, setFormat] = useState("All formats");
+      <PortfolioSection />
 
-  const filtered = useMemo(
-    () =>
-      workItems.filter(
-        (w) =>
-          (niche === "All" || w.category === niche) &&
-          (format === "All formats" || w.format === format)
-      ),
-    [niche, format]
-  );
-
-  return (
-    <>
-      <Helmet>
-        <title>Research-Driven Content Samples | Ashutosh Mahapatra</title>
-        <meta
-          name="description"
-          content="Independent research and writing samples across AI, fintech, cybersecurity and technology."
-        />
-        <link rel="canonical" href={canonical} />
-        <meta property="og:title" content="Research-Driven Content Samples" />
-        <meta
-          property="og:description"
-          content="Independent research and writing samples across AI, fintech, cybersecurity and technology."
-        />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
-      <Navbar />
-      <main id="main" tabIndex={-1} className="pt-32 pb-28 focus:outline-none">
-        <div className="container mx-auto px-6">
-          <ScrollReveal className="text-center mb-12">
-            <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-4">
-              Portfolio
+      <section id="audit" className="rd-sec">
+        <div className="rd-wrap st-split">
+          <div>
+            <p className="st-eyebrow">Our own articles, checked first</p>
+            <h2 className="rd-big" style={{ marginTop: 14 }}>An article that AI crawlers cannot read cannot be cited.</h2>
+          </div>
+          <div>
+            <p>
+              Our site is built with React. When we fetched it the way most AI crawlers do, with a plain request that does not run JavaScript, it came back as an empty shell: no headline and no article text.
             </p>
-            <h1 className="text-4xl md:text-6xl font-normal text-foreground tracking-[-0.02em] leading-[1.05]">
-              Selected Work
-            </h1>
-            <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
-              Independent research samples showing how I approach complex topics, source evidence,
-              structure information and turn it into publishable content.
+            <p>
+              Google still indexed it, because Googlebot renders JavaScript. Most AI crawlers do not. So the articles ranked, and the engines that answer questions could not see them.
             </p>
-          </ScrollReveal>
-
-          <div className="max-w-6xl mx-auto mb-10 space-y-3">
-            <div className="flex flex-wrap gap-2.5">
-              {nicheFilters.map((n) => (
-                <button key={n} type="button" aria-pressed={niche === n} onClick={() => setNiche(n)} className={pill(niche === n)}>
-                  {n}
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-2.5">
-              {formatFilters.map((f) => (
-                <button
-                  key={f}
-                  type="button"
-                  aria-pressed={format === f}
-                  onClick={() => setFormat(f)}
-                  className={pill(format === f)}
-                >
-                  {f}
-                </button>
-              ))}
+            <p>
+              <strong>The fix.</strong> Every page now ships as real HTML, generated at build time, and the build fails if any page comes out empty. Each article also has one canonical address, and the sitemap carries last-modified dates.
+            </p>
+            <p>
+              We have not yet measured the effect on AI citations. When we have, we will publish the result here, including if it is zero.
+            </p>
+            <p className="st-small">
+              Check it yourself: <code>curl -s https://ashutoshwrites.online/ | grep -i "Ashutosh Mahapatra"</code>. This is the same check we run on your article in a free Article Check.
+            </p>
+            <div className="rd-btns" style={{ margin: "20px 0 0" }}>
+              <a className="rd-b1" href="/contact">Get a free Article Check</a>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            {filtered.map((item, i) => (
-              <ScrollReveal key={item.title} direction="up" delay={i * 0.1}>
-                <WorkCard item={item} />
-              </ScrollReveal>
+      <section className="rd-sec rd-sand">
+        <div className="rd-wrap">
+          <h2 className="rd-big">All articles</h2>
+          <ul className="st-list">
+            {posts.map((p) => (
+              <li key={p.href}>
+                <a href={p.href}>
+                  <small>{p.label}</small>
+                  <div>
+                    <b>{p.title}</b>
+                    <span>{p.summary}</span>
+                  </div>
+                </a>
+              </li>
             ))}
-          </div>
-
-          {filtered.length === 0 && (
-            <p className="text-center text-sm text-muted-foreground mt-10">
-              Nothing in this combination yet.
-            </p>
-          )}
+          </ul>
         </div>
-      </main>
-      <Footer />
-    </>
-  );
-};
+      </section>
+
+      <CloseSection />
+    </main>
+    <Footer />
+  </>
+);
 
 export default Work;

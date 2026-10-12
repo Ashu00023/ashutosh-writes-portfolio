@@ -12,7 +12,7 @@ const canonical = `${seo.siteUrl}${author.path}`;
 
 const socials = [
   { label: "LinkedIn", href: "https://linkedin.com/in/ashutosh-mahapatra" },
-  { label: "Instagram", href: "https://instagram.com/ashutosh.writes" },
+
   { label: "Email", href: "mailto:ashutosh@mail.ashutoshwrites.online" },
 ];
 
@@ -105,7 +105,7 @@ const Author = () => (
                 Ashutosh <span className="font-display italic text-accent font-normal">Mahapatra</span>
               </h1>
               <p className="mt-3 text-sm font-semibold text-foreground">
-                On-page SEO, GEO and AEO writer covering AI, fintech and cybersecurity
+                Editorial writer covering AI, fintech and cybersecurity, with article-level SEO, GEO and AEO
               </p>
               <div className="mt-6 space-y-4 text-base text-muted-foreground leading-relaxed">
                 <p>

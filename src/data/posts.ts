@@ -23,7 +23,7 @@ export const posts: Post[] = [
     label: "AI + Finance",
     summary:
       "Sourced statistics, structural trends and the risks most AI finance coverage misses, built for readers who want signal over noise.",
-    image: "/ai-content-blog-thumbnail.webp",
+    image: "/ai-finance-blog-thumbnail.webp",
     external: true,
   },
   {
@@ -32,11 +32,12 @@ export const posts: Post[] = [
     label: "AI + Content",
     summary:
       "Why human creativity is winning in 2026 and how creators can turn authenticity into a durable competitive advantage.",
-    image: "/ai-finance-blog-thumbnail.webp",
+    image: "/ai-content-blog-thumbnail.webp",
+    external: true,
   },
-    {
+  {
     href: seo.routes.byoaShadowAi.canonicalPath,
-    title: "AI agents aren't sneaking in through shadow IT anymore. They inherit OAuth scope from platforms you already approved.",
+    title: "Shadow AI Inside Approved SaaS: How Agents Inherit Access",
     label: "Cybersecurity",
     summary:
       "AI agents aren't sneaking in through shadow IT anymore. They inherit OAuth scope from platforms you already approved.",
