@@ -7,6 +7,7 @@ import "@fontsource/ibm-plex-mono/latin-500.css";
 import App from "./App.tsx";
 import "./index.css";
 import "./redesign.css";
+import "./site.css";
 
 createRoot(document.getElementById("root")!).render(
   <HelmetProvider>

@@ -18,48 +18,85 @@
       "Technical writing",
       "Research-driven editorial"
     ],
-    "sameAs": ["https://linkedin.com/in/ashutosh-mahapatra"]
+    "sameAs": [
+      "https://linkedin.com/in/ashutosh-mahapatra"
+    ]
   },
   "professionalService": {
     "@type": "ProfessionalService",
     "@id": "https://ashutoshwrites.online/#service",
     "name": "Ashutosh Writes",
     "url": "https://ashutoshwrites.online/",
-    "description": "On-page SEO, GEO and AEO for B2B SaaS and fintech teams: primary-source research, writing and custom-coded pages built to rank in Google and be cited in AI answers.",
-    "founder": { "@id": "https://ashutoshwrites.online/#person" },
+    "description": "A boutique editorial studio for fintech and AI-security teams: long-form articles researched to primary sources, with article-level SEO, GEO and AEO and content strategy, each shipped with a source ledger.",
+    "founder": {
+      "@id": "https://ashutoshwrites.online/#person"
+    },
     "areaServed": "Worldwide",
-    "serviceType": ["On-page SEO", "Answer engine optimization (AEO)", "Generative engine optimization (GEO)", "Fully coded editorial web pages", "Schema.org JSON-LD that mirrors visible content", "Research-driven B2B content"]
+    "serviceType": [
+      "Editorial articles",
+      "Article-level SEO",
+      "Answer engine optimization (AEO)",
+      "Generative engine optimization (GEO)",
+      "Content strategy",
+      "Article refresh and re-verification",
+      "Schema.org JSON-LD that mirrors visible content"
+    ],
+    "email": "ashutosh@mail.ashutoshwrites.online"
   },
   "routes": {
     "home": {
       "path": "/",
       "outFile": "index.html",
-      "title": "On-Page SEO, GEO & AEO for SaaS & Fintech | Ashutosh Writes",
-      "description": "We research, write and code on-page SEO, GEO and AEO pages for B2B SaaS and fintech teams. Built to rank in Google and be cited in AI answers.",
+      "title": "Editorial Articles for Fintech & AI-Security | Ashutosh Writes",
+      "description": "A boutique editorial studio for fintech and AI-security teams. Long-form articles researched to primary sources, built to rank in Google and be cited in AI answers.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
-    "blogIndex": {
-      "path": "/blog",
-      "outFile": "blog/index.html",
-      "title": "Blog | Ashutosh Mahapatra",
-      "description": "Latest writing on AI, finance, content strategy, and the craft of human-led storytelling.",
+    "services": {
+      "path": "/services",
+      "outFile": "services/index.html",
+      "title": "Services: Editorial Articles, Article-Level SEO & Strategy | Ashutosh Writes",
+      "description": "Editorial articles, article-level SEO, GEO and AEO, and content strategy for fintech and AI-security teams, researched to primary sources.",
+      "ogType": "website",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
+    "method": {
+      "path": "/method",
+      "outFile": "method/index.html",
+      "title": "Method: How an Article Gets Made | Ashutosh Writes",
+      "description": "Five steps from brief to handoff, plus the source ledger: every statistic traced to a primary source, with its date and limits stated.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
     "work": {
       "path": "/work",
       "outFile": "work/index.html",
-      "title": "SEO, GEO & AEO Work Samples | Ashutosh Mahapatra",
-      "description": "Four independent samples across AI, fintech and cybersecurity, each built for search and AI answers, with primary sources cited.",
+      "title": "Research: Independent Fintech & AI-Security Articles | Ashutosh Writes",
+      "description": "Independent research articles across fintech, AI and cybersecurity, each built for search and AI answers with primary sources cited, plus an audit of our own site.",
+      "ogType": "website",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
+    "about": {
+      "path": "/about",
+      "outFile": "about/index.html",
+      "title": "About Ashutosh Writes | Founder and Team",
+      "description": "Ashutosh Mahapatra leads a three-person editorial and engineering team in Bhubaneswar, India, writing source-verified articles for fintech and AI-security teams.",
+      "ogType": "website",
+      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
+    },
+    "contact": {
+      "path": "/contact",
+      "outFile": "contact/index.html",
+      "title": "Free Article Check | Ashutosh Writes",
+      "description": "Send one article. We verify its claims, review it for search and answer engines, and test whether AI engines cite it. Free, a few per month.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
     "author": {
       "path": "/author/ashutosh-mahapatra",
       "outFile": "author/ashutosh-mahapatra/index.html",
-      "title": "Ashutosh Mahapatra | On-Page SEO, GEO & AEO Writer",
-      "description": "Ashutosh Mahapatra writes research-led, search- and answer-ready articles on AI, fintech and cybersecurity, with an archive of every published piece.",
+      "title": "Ashutosh Mahapatra | Fintech & AI-Security Editorial Writer",
+      "description": "Ashutosh Mahapatra writes research-led articles on AI, fintech and cybersecurity, with article-level SEO, GEO and AEO, and an archive of every published piece.",
       "ogType": "profile",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
@@ -67,7 +104,7 @@
       "path": "/privacy-policy",
       "outFile": "privacy-policy/index.html",
       "title": "Privacy Policy | Ashutosh Mahapatra",
-      "description": "What personal data ashutoshwrites.online collects through its enquiry form, which service providers handle it, how long it is kept, and your privacy rights.",
+      "description": "What personal data ashutoshwrites.online collects, which providers handle it, how long it is kept, cookies and fonts, and your privacy rights.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
@@ -75,31 +112,7 @@
       "path": "/terms-of-use",
       "outFile": "terms-of-use/index.html",
       "title": "Terms of Use | Ashutosh Mahapatra",
-      "description": "The terms that govern your use of ashutoshwrites.online, including intellectual property, acceptable use, and limitation of liability.",
-      "ogType": "website",
-      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
-    },
-    "cookiePolicy": {
-      "path": "/cookie-policy",
-      "outFile": "cookie-policy/index.html",
-      "title": "Cookie Policy | Ashutosh Mahapatra",
-      "description": "ashutoshwrites.online sets no analytics or advertising cookies. This page explains third-party fonts, external links and your browser controls.",
-      "ogType": "website",
-      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
-    },
-    "disclaimer": {
-      "path": "/disclaimer",
-      "outFile": "disclaimer/index.html",
-      "title": "Disclaimer | Ashutosh Mahapatra",
-      "description": "Editorial disclaimer for ashutoshwrites.online: content is educational, is not financial, legal, or professional advice, and how research and AI are used.",
-      "ogType": "website",
-      "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
-    },
-    "refundPolicy": {
-      "path": "/refund-policy",
-      "outFile": "refund-policy/index.html",
-      "title": "Payment, Refund and Revision Policy | Ashutosh Mahapatra",
-      "description": "Deposits, payment schedule, revision rounds, refunds and cancellation for paid projects with Ashutosh Writes.",
+      "description": "Terms for ashutoshwrites.online: intellectual property, acceptable use, the educational disclaimer, payment, revision and refund terms, and limits of liability.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
