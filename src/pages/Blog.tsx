@@ -8,7 +8,13 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { POSTS_PER_PAGE, posts } from "@/data/posts";
 import seo from "@/data/seo-data.json";
 
-const { blogIndex } = seo.routes;
+const blogIndex = {
+  path: "/blog",
+  title: "Blog | Ashutosh Mahapatra",
+  description: "Latest writing on AI, finance, content strategy, and the craft of human-led storytelling.",
+  ogType: "website",
+  ogImage: seo.routes.home.ogImage,
+};
 const canonical = `${seo.siteUrl}${blogIndex.path}`;
 const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
 
