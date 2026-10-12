@@ -4,6 +4,8 @@ export type Member = {
   role: string;
   focus: string;
   bio?: string;
+  /** Optional portrait, e.g. "/team/amlan.webp" placed in /public/team. Shows initials until set. */
+  photo?: string;
 };
 
 export const team: Member[] = [

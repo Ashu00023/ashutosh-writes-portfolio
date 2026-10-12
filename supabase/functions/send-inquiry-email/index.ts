@@ -77,13 +77,26 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
-    const MAX: Record<string, number> = { name: 100, email: 255, company: 200, website: 300, serviceType: 100, topic: 500, timeline: 200, notes: 2000 };
+    const MAX: Record<string, number> = { name: 100, email: 255, company: 200, website: 300, serviceType: 100, topic: 500, timeline: 200, notes: 2000, articleUrl: 500, intent: 30, consent: 10 };
     const clean: Record<string, string> = {};
     for (const k of Object.keys(MAX)) {
       const v = body.data[k];
       if (typeof v === "string" && v.trim()) clean[k] = v.trim().slice(0, MAX[k]);
     }
-    if ((clean.name?.length ?? 0) < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean.email ?? "") || (clean.topic?.length ?? 0) < 5) {
+    const isCheck = clean.intent === "article_check";
+    const validUrl = (u: string) => {
+      try {
+        const p = new URL(u);
+        return p.protocol === "https:" || p.protocol === "http:";
+      } catch {
+        return false;
+      }
+    };
+    const baseOk = (clean.name?.length ?? 0) >= 2 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean.email ?? "");
+    const ok = isCheck
+      ? baseOk && validUrl(clean.articleUrl ?? "") && clean.consent === "yes"
+      : baseOk && (clean.topic?.length ?? 0) >= 5;
+    if (!ok) {
       return new Response(JSON.stringify({ error: "Invalid details" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -109,7 +122,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const title = "SEO Blog Inquiry";
+    const title = isCheck ? "Article Check request" : "SEO Blog Inquiry";
     const subject = `New ${title}: ${clean.name}`;
     const html = renderHtml(title, clean);
 

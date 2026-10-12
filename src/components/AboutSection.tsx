@@ -2,11 +2,11 @@ import { useRef } from "react";
 import { clamp, reducedMotion, useScrollFrame } from "@/hooks/useScrollFrame";
 
 const statement =
-  "I am Ashutosh, founder of Ashutosh Writes, a three-person editorial and engineering team in Bhubaneswar, India. We build on-page SEO, GEO and AEO pages for B2B SaaS and fintech teams.";
+  "I am Ashutosh, founder of Ashutosh Writes, a three-person editorial and engineering team in Bhubaneswar, India. We write source-verified articles for fintech and AI-security teams.";
 const words = statement.split(" ");
 
 const highlights = [
-  "Pages built around search intent and the questions AI engines answer",
+  "Articles built around search intent and the questions AI engines answer",
   "Answer-first headings, extractable facts and Schema that mirrors the page",
   "Original research, primary sources, and stated limits on every claim",
   "Editorial judgment and final decisions made by a human editor",
@@ -37,7 +37,7 @@ const AboutSection = () => {
         <div className="rd-ag">
           <div>
             <p>
-              I specialize in long-form pages built on understanding the subject, finding reliable evidence, identifying what existing coverage misses, and turning that research into something people can actually understand.
+              I specialize in long-form articles built on understanding the subject, finding reliable evidence, identifying what existing coverage misses, and turning that research into something people can actually understand.
             </p>
             <p className="rd-disc">
               I use AI where it improves research and workflow efficiency, but the argument, judgment, structure and

@@ -1,0 +1,138 @@
+import { useState } from "react";
+import { z } from "zod";
+import { CheckCircle, Loader2 } from "lucide-react";
+import { TextField, TextArea } from "./InquiryField";
+
+const schema = z.object({
+  name: z.string().trim().min(2, "Please enter your name").max(100),
+  email: z.string().trim().email("Please enter a valid email").max(255),
+  articleUrl: z
+    .string()
+    .trim()
+    .max(500)
+    .url("Please enter the full article link, starting with https://")
+    .refine((u) => /^https?:\/\//i.test(u), "Please enter the full article link, starting with https://"),
+  company: z.string().trim().max(200).optional().or(z.literal("")),
+  notes: z.string().trim().max(2000).optional().or(z.literal("")),
+  consent: z.literal(true, { errorMap: () => ({ message: "Please tick the box so we can reply to you" }) }),
+  // honeypot
+  website_url: z.string().max(0).optional().or(z.literal("")),
+});
+
+type Values = {
+  name: string; email: string; articleUrl: string; company: string; notes: string; consent: boolean; website_url: string;
+};
+type Errors = Partial<Record<keyof Values, string>>;
+
+const initial: Values = { name: "", email: "", articleUrl: "", company: "", notes: "", consent: false, website_url: "" };
+
+const ArticleCheckForm = () => {
+  const [values, setValues] = useState<Values>(initial);
+  const [errors, setErrors] = useState<Errors>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [done, setDone] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
+
+  const set = (k: keyof Values) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setValues((v) => ({ ...v, [k]: e.target.value }));
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setServerError(null);
+    const parsed = schema.safeParse(values);
+    if (!parsed.success) {
+      const errs: Errors = {};
+      parsed.error.issues.forEach((i) => {
+        const key = i.path[0] as keyof Values;
+        if (!errs[key]) errs[key] = i.message;
+      });
+      setErrors(errs);
+      const first = ["name", "email", "articleUrl", "consent"].find((k) => errs[k as keyof Values]);
+      if (first) setTimeout(() => document.getElementById(first)?.focus(), 0);
+      return;
+    }
+    setErrors({});
+    setSubmitting(true);
+    try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      const { consent: _consent, ...rest } = parsed.data;
+      // type stays "seo_blog" so the existing inquiries table constraint accepts it. The intent field tells the two kinds apart.
+      const { error } = await supabase.functions.invoke("send-inquiry-email", {
+        body: { type: "seo_blog", data: { ...rest, intent: "article_check", consent: "yes" } },
+      });
+      if (error) throw error;
+      setDone(true);
+    } catch (err) {
+      setServerError(err instanceof Error ? err.message : "Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  if (done) {
+    return (
+      <div role="status" className="flex flex-col items-center justify-center gap-4 py-12 text-center">
+        <CheckCircle size={40} strokeWidth={1.5} className="text-ledger" />
+        <h3 className="font-heading text-2xl font-normal text-foreground">Thanks, your article is in the queue.</h3>
+        <p className="max-w-sm text-sm text-muted-foreground">
+          We will confirm within 1 to 2 working days and send your report as soon as the check is done.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={onSubmit} className="space-y-5" noValidate>
+      <p className="text-xs text-muted-foreground">Fields marked * are required.</p>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <TextField id="name" label="Your name" required value={values.name} onChange={set("name")} error={errors.name} autoComplete="name" />
+        <TextField id="email" label="Work email" required type="email" value={values.email} onChange={set("email")} error={errors.email} autoComplete="email" />
+      </div>
+      <TextField
+        id="articleUrl" label="Article link" required type="url" inputMode="url" placeholder="https://"
+        value={values.articleUrl} onChange={set("articleUrl")} error={errors.articleUrl}
+        hint="A published article, or a link to a Google Doc anyone with the link can view."
+      />
+      <TextField id="company" label="Company" value={values.company} onChange={set("company")} error={errors.company} autoComplete="organization" />
+      <TextArea id="notes" label="Anything we should know?" value={values.notes} onChange={set("notes")} error={errors.notes}
+        placeholder="Who the article is for, the keyword it targets, or what worries you about it." />
+
+      <input
+        type="text" tabIndex={-1} autoComplete="off" aria-hidden="true"
+        value={values.website_url} onChange={set("website_url")}
+        style={{ position: "absolute", left: "-10000px", width: 1, height: 1, opacity: 0 }}
+      />
+
+      <div className="space-y-1.5">
+        <label htmlFor="consent" className="flex items-start gap-3 text-xs leading-relaxed text-muted-foreground">
+          <input
+            id="consent" type="checkbox" checked={values.consent}
+            onChange={(e) => setValues((v) => ({ ...v, consent: e.target.checked }))}
+            aria-required="true" aria-invalid={Boolean(errors.consent)}
+            className="mt-0.5 h-4 w-4 shrink-0 accent-[hsl(var(--accent))]"
+          />
+          <span>
+            I agree that Ashutosh Writes may use these details to reply to me and run the check. They are stored for up to 12 months. See the{" "}
+            <a href="/privacy-policy" className="underline underline-offset-2 hover:text-accent">Privacy Policy</a>. *
+          </span>
+        </label>
+        {errors.consent && <p className="text-xs text-accent">{errors.consent}</p>}
+      </div>
+
+      {serverError && (
+        <div role="alert" className="border border-accent/40 bg-accent/5 px-4 py-3 text-sm text-accent">{serverError}</div>
+      )}
+
+      <button
+        type="submit" disabled={submitting}
+        className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-accent py-3.5 text-sm font-medium text-accent-foreground transition-colors duration-120 ease-cross hover:bg-foreground disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {submitting && <Loader2 size={18} className="animate-spin" />}
+        {submitting ? "Sending…" : "Request my free Article Check"}
+      </button>
+      <p className="text-center text-xs text-muted-foreground">We reply within 1 to 2 working days. No obligation.</p>
+    </form>
+  );
+};
+
+export default ArticleCheckForm;
