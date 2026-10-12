@@ -44,7 +44,7 @@ export const posts: Post[] = [
     external: true,
   },
   {
-    href: seo.routes.visaAgenticCommerceDisputes.canonicalPath,
+    href: seo.routes.visaAgenticCommerceDisputes.path,
     title: "Who Eats the Loss When Your AI Agent Buys the Wrong Thing",
     label: "Fintech & AI",
     summary:
