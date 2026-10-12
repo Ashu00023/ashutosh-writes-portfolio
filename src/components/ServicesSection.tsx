@@ -2,8 +2,8 @@ import { useState } from "react";
 
 const services = [
   {
-    title: "On-page SEO",
-    points: ["Search-intent and SERP analysis", "Title, H1 and heading architecture", "Internal linking and canonical hygiene", "Fast, accessible custom HTML/CSS", "Refreshes of existing pages that already rank"],
+    title: "Article-level SEO",
+    points: ["Search-intent and SERP analysis for the article", "Title, H1 and heading architecture", "Internal links and canonical set for the article", "Fast, accessible HTML/CSS when you want a coded page", "Refreshes of articles that already rank"],
   },
   {
     title: "AEO: answer engine optimization",
@@ -15,12 +15,12 @@ const services = [
   },
 ];
 
-const ServicesSection = () => {
+const ServicesSection = ({ title = "What we offer" }: { title?: string }) => {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section id="services" className="rd-sec">
       <div className="rd-wrap">
-        <h2 className="rd-big" style={{ marginBottom: 56 }}>What we offer</h2>
+        <h2 className="rd-big" style={{ marginBottom: 56 }}>{title}</h2>
         {services.map((s, i) => (
           <div key={s.title} className={`rd-sv${open === i ? " rd-o" : ""}`}>
             <button type="button" aria-expanded={open === i} onClick={() => setOpen(open === i ? null : i)}>
@@ -34,7 +34,7 @@ const ServicesSection = () => {
                     <li key={p}>{p}</li>
                   ))}
                 </ul>
-                <a href="#contact" aria-label={`Start a project: ${s.title}`}>Start a project</a>
+                <a href="/contact" aria-label={`Get a free Article Check: ${s.title}`}>Get a free Article Check</a>
               </div>
             </div>
           </div>

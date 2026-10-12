@@ -16,7 +16,11 @@ const TeamSection = () => {
         <div ref={ref} className="rd-team">
           {team.map((m, i) => (
             <article key={m.name} className={`rd-mem${seen ? " rd-v" : ""}`} data-r style={{ "--d": i } as React.CSSProperties}>
-              <div className="rd-plate" aria-hidden="true">{m.initials}</div>
+              {m.photo ? (
+                <img className="rd-photo" src={m.photo} alt={`Portrait of ${m.name}`} width={152} height={190} loading="lazy" decoding="async" />
+              ) : (
+                <div className="rd-plate" aria-hidden="true">{m.initials}</div>
+              )}
               <h3>{m.name}</h3>
               <p className="rd-role">{m.role}</p>
               <p className="rd-spec">{m.focus}</p>

@@ -24,7 +24,7 @@ const ProcessSection = () => {
   return (
     <section id="process" className="rd-sec rd-sand">
       <div className="rd-wrap">
-        <h2 className="rd-big" style={{ maxWidth: "14em" }}>How a piece gets made</h2>
+        <h2 className="rd-big" style={{ maxWidth: "14em" }}>Five steps, from brief to handoff</h2>
         <div className="rd-pr" ref={row}>
           <div className="rd-pl"><i /></div>
           {steps.map((s, i) => (
