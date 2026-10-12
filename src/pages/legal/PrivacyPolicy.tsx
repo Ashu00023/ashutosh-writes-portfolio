@@ -4,10 +4,10 @@ const PrivacyPolicy = () => (
   <LegalLayout
     title="Privacy Policy"
     metaTitle="Privacy Policy | Ashutosh Mahapatra"
-    description="What personal data ashutoshwrites.online collects through its enquiry form, which service providers handle it, how long it is kept, and your privacy rights."
+    description="What personal data ashutoshwrites.online collects through its Article Check form, how it uses cookies and third-party fonts, which service providers handle your data, how long it is kept, and your privacy rights."
     path="/privacy-policy"
     breadcrumbLabel="Privacy Policy"
-    updated="3 October 2026"
+    updated="11 October 2026"
     intro="This policy explains what personal data this website collects, why, who handles it, how long it is kept, and the choices you have."
   >
     <h2>1. Who is responsible for your data</h2>
@@ -21,11 +21,11 @@ const PrivacyPolicy = () => (
     <h2>2. What I collect</h2>
     <ul>
       <li>
-        <strong>Enquiry form:</strong> your name, email address, the service you need and a description of your
-        project. Optional fields are your company, website, timeline and any extra context you choose to add.
+        <strong>Article Check form:</strong> your name, work email address and the link to the article you want
+        checked. Optional fields are your company and any extra context you choose to add.
       </li>
       <li>
-        <strong>Messages:</strong> anything you send me by email, WhatsApp, LinkedIn or Instagram, together with the
+        <strong>Messages:</strong> anything you send me by email or LinkedIn, together with the
         contact details those platforms show me.
       </li>
       <li>
@@ -40,7 +40,7 @@ const PrivacyPolicy = () => (
 
     <h2>3. Why I use your data</h2>
     <ul>
-      <li>To reply to your enquiry and prepare a proposal, which you ask for when you submit the form.</li>
+      <li>To reply to your request, run the Article Check and prepare a proposal if you ask for one.</li>
       <li>To deliver the work and manage invoices if you hire me.</li>
       <li>To keep records that tax and accounting law require.</li>
       <li>To keep the site secure and working, which is my legitimate interest.</li>
@@ -59,14 +59,34 @@ const PrivacyPolicy = () => (
       <li>My two collaborators, only when a project needs them, and under a duty of confidentiality.</li>
     </ul>
     <p>
-      If you contact me through WhatsApp, LinkedIn or Instagram, that platform's own privacy policy also applies to
-      the conversation.
+      If you contact me through LinkedIn, that platform's own privacy policy also applies to the conversation.
     </p>
 
-    <h2>5. Cookies</h2>
+    <h2 id="cookies">5. Cookies, local storage and fonts</h2>
     <p>
-      This site sets no analytics or advertising cookies. See the <a href="/cookie-policy">Cookie Policy</a> for
-      details.
+      This site does not set cookies for analytics, advertising or tracking. It stores one small value in your
+      browser's local storage, <strong>aw:consent-v1</strong>, to remember that you accepted these policies so the
+      notice does not appear on every page. It is strictly necessary for that purpose, it is never sent to a server,
+      and you can clear it in your browser settings at any time.
+    </p>
+    <ul>
+      <li>
+        <strong>Third-party fonts:</strong> the main pages load fonts from Fontshare, and some article pages load fonts
+        from Google Fonts. These services receive your IP address and browser details when a page loads. See their own
+        privacy policies for how they handle that data.
+      </li>
+      <li>
+        <strong>External links:</strong> links to sites such as LinkedIn take you away from this site. Those sites may
+        set their own cookies once you visit them, under their own policies.
+      </li>
+      <li>
+        <strong>Your browser controls:</strong> you can block or delete cookies in your browser settings at any time.
+        Doing so will not affect how this site works.
+      </li>
+    </ul>
+    <p>
+      If I add analytics, advertising or any other tool that uses cookies, I will add a consent choice and update this
+      page before those tools load.
     </p>
 
     <h2>6. How long I keep your data</h2>
