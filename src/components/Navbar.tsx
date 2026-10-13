@@ -5,17 +5,14 @@ import logo from "@/assets/logo-new.webp";
 import { useScrollFrame } from "@/hooks/useScrollFrame";
 
 const links = [
-  { label: "Work", href: "/work", section: "portfolio" },
-  { label: "Services", href: "/#services", section: "services" },
-  { label: "Pricing", href: "/#pricing", section: "pricing" },
-  { label: "Approach", href: "/#process", section: "process" },
-  { label: "About", href: "/#about", section: "about" },
-  { label: "Blog", href: "/blog", section: "" },
-  { label: "Contact", href: "/#contact", section: "contact" },
+  { label: "Services", href: "/services", section: "" },
+  { label: "Method", href: "/method", section: "" },
+  { label: "Research", href: "/work", section: "" },
+  { label: "About", href: "/about", section: "" },
 ];
 
 /** Homepage sections in page order. */
-const order = ["home", "portfolio", "process", "about", "team", "services", "pricing", "contact"];
+const order = ["home"];
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -113,8 +110,8 @@ const Navbar = () => {
           ))}
         </nav>
 
-        <a className="rd-cta" href="/#contact">
-          Start a Project
+        <a className="rd-cta" href="/contact">
+          Free Article Check
         </a>
 
         <button
@@ -136,6 +133,9 @@ const Navbar = () => {
             {l.label}
           </a>
         ))}
+        <a href="/contact" style={{ "--i": links.length } as React.CSSProperties} onClick={() => setOpen(false)}>
+          Free Article Check
+        </a>
       </nav>
     </>
   );
