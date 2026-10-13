@@ -13,7 +13,7 @@ export type Post = {
 
 /**
  * Single source of truth for every published article.
- * The blog index, the author archive, and the sitemap all read from here, so a
+ * The research page, the author archive, and the sitemap all read from here, so a
  * new post appears everywhere the moment it is added to this array.
  */
 export const posts: Post[] = [
@@ -55,5 +55,5 @@ export const posts: Post[] = [
   },
 ];
 
-/** Posts per page on the blog index and author archive. */
+/** Posts per page on the author archive. */
 export const POSTS_PER_PAGE = 9;
