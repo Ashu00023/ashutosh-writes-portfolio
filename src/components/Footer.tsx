@@ -1,68 +1,40 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-new.webp";
 import TransitionLink from "@/components/TransitionLink";
-import { contacts } from "@/data/site";
-
-const connectOrder = [
-  (href: string) => href.startsWith("mailto:"),
-  (href: string) => href.includes("wa.me"),
-  (href: string) => href.includes("linkedin.com"),
-  (href: string) => href.includes("instagram.com"),
-];
-
-const connectLinks = connectOrder
-  .map((matches) => contacts.find((contact) => matches(contact.href)))
-  .filter((contact): contact is (typeof contacts)[number] => Boolean(contact))
-  .map((contact) => ({
-    label: contact.href.startsWith("mailto:")
-      ? "Email"
-      : contact.href.includes("linkedin.com")
-        ? "LinkedIn"
-        : contact.label,
-    href: contact.href,
-  }));
+import { EMAIL, LINKEDIN } from "@/data/site";
 
 const columns = [
   {
-    title: "Work",
+    title: "Explore",
     links: [
-      { label: "Featured Work", href: "/#portfolio" },
-      { label: "All Work", href: "/work" },
-      { label: "Blog", href: "/blog" },
+      { label: "Services", href: "/services" },
+      { label: "Method", href: "/method" },
+      { label: "Research", href: "/work" },
+      { label: "About", href: "/about" },
+      { label: "Author", href: "/author/ashutosh-mahapatra" },
     ],
   },
   {
     title: "Services",
     links: [
-      { label: "On-page SEO", href: "/#services" },
-      { label: "AEO", href: "/#services" },
-      { label: "GEO", href: "/#services" },
-      { label: "Pricing", href: "/#pricing" },
-    ],
-  },
-  {
-    title: "Site",
-    links: [
-      { label: "Home", href: "/#home" },
-      { label: "About", href: "/#about" },
-      { label: "Team", href: "/#team" },
-      { label: "Author", href: "/author/ashutosh-mahapatra" },
-      { label: "Method", href: "/#process" },
-      { label: "Contact", href: "/#contact" },
+      { label: "Editorial articles", href: "/services#articles" },
+      { label: "Article-level search", href: "/services#search" },
+      { label: "Content strategy", href: "/services#strategy" },
+      { label: "Free Article Check", href: "/contact" },
     ],
   },
   {
     title: "Connect",
-    links: connectLinks,
+    links: [
+      { label: "Email", href: `mailto:${EMAIL}` },
+      { label: "LinkedIn", href: LINKEDIN },
+    ],
   },
 ];
 
 const legalLinks = [
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms of Use", href: "/terms-of-use" },
-  { label: "Cookie Policy", href: "/cookie-policy" },
-  { label: "Disclaimer", href: "/disclaimer" },
-  { label: "Refund Policy", href: "/refund-policy" },
 ];
 
 const linkClass = "text-sm text-muted-foreground transition-colors duration-120 ease-cross hover:text-accent max-md:inline-block max-md:py-1.5";
@@ -72,7 +44,7 @@ const isRoute = (href: string) => !href.includes("#") && href !== "/";
 const Footer = () => (
   <footer className="border-t border-border py-14">
     <div className="wrap">
-      <div className="grid grid-cols-2 gap-x-8 gap-y-10 pb-14 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-x-8 gap-y-10 pb-14 md:grid-cols-3">
         {columns.map((column) => (
           <nav key={column.title} aria-label={column.title}>
             <h2 className="folio mb-4 text-foreground">{column.title}</h2>
