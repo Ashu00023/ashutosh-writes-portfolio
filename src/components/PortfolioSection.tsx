@@ -8,7 +8,18 @@ const items = workItems.slice(0, 4);
 /** The pinned side-by-side layout needs a real desktop-sized window. Phones (even in landscape) get the stacked layout. */
 const PIN_QUERY = "(min-width: 860px) and (min-height: 620px)";
 
-const PortfolioSection = () => {
+type Props = {
+  title?: string;
+  intro?: string;
+  /** The page opens on the black stage (header above this section included), so the stage starts at full strength instead of fading in with scroll. */
+  fromTop?: boolean;
+};
+
+const PortfolioSection = ({
+  title = "Featured research",
+  intro = "Four independent articles in fintech and AI security, researched to primary sources, structured for search and answer engines, and written as we would deliver for a client.",
+  fromTop = false,
+}: Props) => {
   const section = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const wl = useRef<HTMLDivElement>(null);
@@ -58,8 +69,10 @@ const PortfolioSection = () => {
     const w = el.getBoundingClientRect(); // read first, write after
     const p = paint.current;
 
-    // paper -> stage handoff: 0 = cream page, 1 = black stage
-    const t = ease(clamp((vh * 0.85 - w.top) / (vh * 0.5))) * (1 - ease(clamp((vh * 0.55 - w.bottom) / (vh * 0.5))));
+    // paper -> stage handoff: 0 = cream page, 1 = black stage.
+    // fromTop: the page already starts on the stage, so only the hand-back to cream at the end is scroll-driven.
+    const enter = fromTop ? 1 : ease(clamp((vh * 0.85 - w.top) / (vh * 0.5)));
+    const t = enter * (1 - ease(clamp((vh * 0.55 - w.bottom) / (vh * 0.5))));
 
     // The page background itself is never repainted. Only two opacities move, both compositor-only
     // (see .rd-stg and .rd-wl in redesign.css): the fixed black layer, and the section text, which
@@ -102,14 +115,12 @@ const PortfolioSection = () => {
   return (
     <section id="portfolio" ref={section} aria-labelledby="portfolio-title">
       {/* Fixed black layer behind the page. Fading its opacity replaces repainting the whole page background. */}
-      <div className="rd-stg" ref={stage} aria-hidden="true" />
+      <div className="rd-stg" ref={stage} aria-hidden="true" style={fromTop ? { opacity: 1 } : undefined} />
       <div className="rd-pin rd-wrap">
         <div className="rd-wl" ref={wl}>
           <div>
-            <h2 id="portfolio-title">Featured research</h2>
-            <p className="rd-sub">
-              Four independent articles in fintech and AI security, researched to primary sources, structured for search and answer engines, and written as we would deliver for a client.
-            </p>
+            <h2 id="portfolio-title">{title}</h2>
+            <p className="rd-sub">{intro}</p>
           </div>
 
           <div className="rd-chs">

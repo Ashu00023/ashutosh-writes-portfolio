@@ -2,6 +2,10 @@
 .st-top{padding:clamp(120px,14vw,176px) 0 clamp(8px,2vw,24px)}
 .st-top h1{font-size:clamp(2.2rem,5.2vw,4.2rem);line-height:1.02;letter-spacing:-.035em;font-weight:340;max-width:15em;margin-top:18px}
 .st-top .st-lede{margin-top:22px}
+/* Page header that sits on the black stage (Work, Research). Pairs with PortfolioSection fromTop. */
+.st-onstage{color:var(--sink)}
+.st-onstage .st-lede{color:color-mix(in srgb,var(--sink) 72%,transparent)}
+.st-onstage .st-eyebrow{color:var(--acc2)}
 .st-lede{font-size:clamp(1.05rem,1.5vw,1.2rem);line-height:1.6;color:var(--mut);max-width:36em}
 .st-eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
 .st-small{font-size:13px;line-height:1.5;color:var(--mut)}
