@@ -298,12 +298,12 @@ export function aboutBodyHtml() {
     <p>I am Ashutosh, founder of Ashutosh Writes, a three-person writing and engineering team in Bhubaneswar, India. We write source-verified articles for fintech and AI-security teams.</p>
     <p>I specialize in long-form articles built on understanding the subject, finding reliable evidence, identifying what existing coverage misses, and turning that research into something people can actually understand.</p>
     <p>I use AI where it improves research and workflow efficiency, but the argument, judgment, structure and final decisions remain mine.</p>
-    ${list(["Articles built around search intent and the questions AI engines answer", "Answer-first headings, extractable facts and Schema that mirrors the page", "Original research, primary sources, and stated limits on every claim", "Editorial judgment and final decisions made by a human editor"])}
+    ${list(["Articles built around search intent and the questions AI engines answer", "Answer-first headings, extractable facts and Schema that mirrors the page", "Original research, primary sources, and stated limits on every claim", "Judgment and final decisions made by a human editor"])}
   </section>
   <section>
     <h2>Our Team</h2>
-    <p>Research and editorial direction from the founder. Front-end engineering and technical SEO from the specialists who build every page.</p>
-    <article><h3>Ashutosh Mahapatra</h3><p>Founder. Content Strategy &amp; Lead Editorial.</p><p>Writer and overall architect of every engagement. Leads the research, strategy and editorial direction, and owns the final edit.</p></article>
+    <p>Research and writing direction from the founder. Front-end engineering and technical SEO from the specialists who build every page.</p>
+    <article><h3>Ashutosh Mahapatra</h3><p>Founder. Content Strategy &amp; Lead Writer.</p><p>Writer and overall architect of every engagement. Leads the research, strategy and writing direction, and owns the final edit.</p></article>
     <article><h3>Amlan Udaya Sarangi</h3><p>Lead Front-End Developer. Custom HTML/CSS, UI/UX Design &amp; Responsive Web Engineering.</p></article>
     <article><h3>Soubhagya Ranjan Rout</h3><p>Technical SEO Specialist. Schema.org JSON-LD, Structured Data Architecture &amp; On-Page SEO.</p></article>
   </section>
@@ -326,7 +326,7 @@ export function authorBodyHtml(seo) {
     .concat(`<a href="${seo.routes.visaAgenticCommerceDisputes.path}">${seo.routes.visaAgenticCommerceDisputes.title}</a>`);
   return wrap(`
   <h1>Ashutosh Mahapatra</h1>
-  <p>Editorial writer covering AI, fintech and cybersecurity, with article-level SEO, GEO and AEO</p>
+  <p>Writer covering AI, fintech and cybersecurity, with on-page SEO, GEO and AEO built into every article</p>
   <p>I write long-form, research-backed articles about technology and money for readers who are tired of recycled takes. My work starts with primary sources (filings, CVEs, vendor documentation, published research) and ends with an argument a specialist can read without wincing.</p>
   <p>I use AI where it helps with research and workflow, but the argument, structure and final wording are mine.</p>
   <h2>Articles by Ashutosh Mahapatra</h2>
