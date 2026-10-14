@@ -7,18 +7,22 @@ import { useScrollFrame } from "@/hooks/useScrollFrame";
 const links = [
   { label: "Services", href: "/services", section: "" },
   { label: "Method", href: "/method", section: "" },
-  { label: "Research", href: "/work", section: "" },
+  { label: "Work", href: "/work", section: "" },
+  { label: "Research", href: "/research", section: "" },
   { label: "About", href: "/about", section: "" },
+  { label: "Author", href: "/author/ashutosh-mahapatra", section: "" },
+  { label: "Contact", href: "/contact", section: "" },
 ];
 
 /** Homepage sections in page order. */
 const order = ["home"];
 
-const Navbar = () => {
+/** `startDark`: the page opens on the black stage (Work, Research), so the bar must not flash light first. */
+const Navbar = ({ startDark = false }: { startDark?: boolean }) => {
   const { pathname } = useLocation();
   const home = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(startDark);
   const [open, setOpen] = useState(false);
   const [section, setSection] = useState<string | null>(null);
   const [hover, setHover] = useState<number | null>(null);
@@ -133,9 +137,6 @@ const Navbar = () => {
             {l.label}
           </a>
         ))}
-        <a href="/contact" style={{ "--i": links.length } as React.CSSProperties} onClick={() => setOpen(false)}>
-          Free Article Check
-        </a>
       </nav>
     </>
   );

@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import seo from "@/data/seo-data.json";
 
-type RouteKey = "services" | "method" | "work" | "about" | "contact";
+type RouteKey = "services" | "method" | "work" | "research" | "about" | "contact";
 
 /** Title, description, canonical, social tags and breadcrumb schema for a page, read from seo-data.json. */
 const PageMeta = ({ route, crumb }: { route: RouteKey; crumb: string }) => {

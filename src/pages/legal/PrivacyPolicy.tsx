@@ -1,4 +1,5 @@
 import LegalLayout from "@/components/LegalLayout";
+import { EMAIL } from "@/data/site";
 
 const PrivacyPolicy = () => (
   <LegalLayout
@@ -7,7 +8,7 @@ const PrivacyPolicy = () => (
     description="What personal data ashutoshwrites.online collects through its Article Check form, how it uses cookies and third-party fonts, which service providers handle your data, how long it is kept, and your privacy rights."
     path="/privacy-policy"
     breadcrumbLabel="Privacy Policy"
-    updated="11 October 2026"
+    updated="14 October 2026"
     intro="This policy explains what personal data this website collects, why, who handles it, how long it is kept, and the choices you have."
   >
     <h2>1. Who is responsible for your data</h2>
@@ -117,7 +118,7 @@ const PrivacyPolicy = () => (
       <li>complain to your local data protection authority.</li>
     </ul>
     <p>
-      To use any of these rights, or to raise a privacy grievance, email <a href="mailto:ashutosh@mail.ashutoshwrites.online">ashutosh@mail.ashutoshwrites.online</a>. I aim to respond within 30 days.
+      To use any of these rights, or to raise a privacy grievance, email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>. I aim to respond within 30 days.
     </p>
 
     <h2>9. Security</h2>
@@ -138,7 +139,7 @@ const PrivacyPolicy = () => (
     <h2>12. Contact</h2>
     <p>
       Ashutosh Mahapatra, Bhubaneswar, Odisha, India.{" "}
-      <a href="mailto:ashutosh@mail.ashutoshwrites.online">ashutosh@mail.ashutoshwrites.online</a>
+      <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
     </p>
   </LegalLayout>
 );

@@ -26,8 +26,8 @@ const ResearchStrip = () => (
         ))}
       </div>
       <div className="st-more">
-        <a className="rd-b1" href="/work">See all research</a>
-        <a className="rd-b2" href="/work#audit">How we audited our own site</a>
+        <a className="rd-b1" href="/research">See all research</a>
+        <a className="rd-b2" href="/research#audit">How we audited our own site</a>
       </div>
     </div>
   </section>

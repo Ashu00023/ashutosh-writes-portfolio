@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { posts } from "@/data/posts";
 import seo from "@/data/seo-data.json";
+import { EMAIL } from "@/data/site";
 
 const { author } = seo.routes;
 const canonical = `${seo.siteUrl}${author.path}`;
@@ -13,7 +14,7 @@ const canonical = `${seo.siteUrl}${author.path}`;
 const socials = [
   { label: "LinkedIn", href: "https://linkedin.com/in/ashutosh-mahapatra" },
 
-  { label: "Email", href: "mailto:ashutosh@mail.ashutoshwrites.online" },
+  { label: "Email", href: `mailto:${EMAIL}` },
 ];
 
 const focusAreas = [

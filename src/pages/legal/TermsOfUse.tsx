@@ -1,4 +1,5 @@
 import LegalLayout from "@/components/LegalLayout";
+import { EMAIL } from "@/data/site";
 
 const TermsOfUse = () => (
   <LegalLayout
@@ -7,7 +8,7 @@ const TermsOfUse = () => (
     description="The terms that govern your use of ashutoshwrites.online: intellectual property, acceptable use, editorial disclaimer, payment, refund and revision terms, and limitation of liability."
     path="/terms-of-use"
     breadcrumbLabel="Terms of Use"
-    updated="11 October 2026"
+    updated="14 October 2026"
     intro="By browsing this website you agree to the terms below. If you do not agree with them, please stop using the site."
   >
     <h2>1. Acceptance of terms</h2>
@@ -175,7 +176,7 @@ const TermsOfUse = () => (
     <h2>13. Contact</h2>
     <p>
       Ashutosh Mahapatra:{" "}
-      <a href="mailto:ashutosh@mail.ashutoshwrites.online">ashutosh@mail.ashutoshwrites.online</a>
+      <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
     </p>
   </LegalLayout>
 );

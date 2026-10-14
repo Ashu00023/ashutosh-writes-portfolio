@@ -9,16 +9,18 @@ const columns = [
     links: [
       { label: "Services", href: "/services" },
       { label: "Method", href: "/method" },
-      { label: "Research", href: "/work" },
+      { label: "Work", href: "/work" },
+      { label: "Research", href: "/research" },
       { label: "About", href: "/about" },
       { label: "Author", href: "/author/ashutosh-mahapatra" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
     title: "Services",
     links: [
-      { label: "Editorial articles", href: "/services#articles" },
-      { label: "Article-level search", href: "/services#search" },
+      { label: "On-page SEO, GEO & AEO", href: "/services#search" },
+      { label: "Research-led articles", href: "/services#articles" },
       { label: "Content strategy", href: "/services#strategy" },
       { label: "Free Article Check", href: "/contact" },
     ],

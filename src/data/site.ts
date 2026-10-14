@@ -1,5 +1,5 @@
 /** Single source for contact details, so an address or link changes here only. */
-export const EMAIL = "ashutosh@mail.ashutoshwrites.online";
+export const EMAIL = "ashutosh@ashutoshwrites.in";
 export const LINKEDIN = "https://linkedin.com/in/ashutosh-mahapatra";
 
 export const contacts = [

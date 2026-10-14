@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 /** Lazy route chunks are loaded before the transition starts, so the new page is ready when the browser snapshots it. */
 const preloaders: Record<string, () => Promise<unknown>> = {
   "/work": () => import("@/pages/Work"),
+  "/research": () => import("@/pages/Research"),
   "/author/ashutosh-mahapatra": () => import("@/pages/Author"),
 };
 

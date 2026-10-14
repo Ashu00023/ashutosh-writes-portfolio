@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import seo from "@/data/seo-data.json";
+import { EMAIL } from "@/data/site";
 
 type LegalLayoutProps = {
   title: string;
@@ -86,10 +87,10 @@ const LegalLayout = ({
           <div className="max-w-3xl mx-auto mt-10 text-sm text-muted-foreground">
             Questions about this page?{" "}
             <a
-              href="mailto:ashutosh@mail.ashutoshwrites.online"
+              href={`mailto:${EMAIL}`}
               className="font-semibold text-accent hover:underline"
             >
-              ashutosh@mail.ashutoshwrites.online
+              {EMAIL}
             </a>
           </div>
         </div>
