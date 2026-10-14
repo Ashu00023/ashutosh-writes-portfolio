@@ -23,6 +23,7 @@ import {
   servicesBodyHtml,
   methodBodyHtml,
   workBodyHtml,
+  researchBodyHtml,
   aboutBodyHtml,
   contactBodyHtml,
   authorBodyHtml,
@@ -158,7 +159,8 @@ async function buildRoutes(seo) {
   const PAGES = [
     ["services", "Services", servicesBodyHtml],
     ["method", "Method", methodBodyHtml],
-    ["work", "Research", workBodyHtml],
+    ["work", "Work", workBodyHtml],
+    ["research", "Research", researchBodyHtml],
     ["about", "About", aboutBodyHtml],
     ["contact", "Contact", contactBodyHtml],
   ];
