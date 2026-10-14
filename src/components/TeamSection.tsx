@@ -9,7 +9,7 @@ const TeamSection = () => {
         <div className="rd-hd">
           <h2 className="rd-big">Our Team</h2>
           <p>
-            Research and editorial direction from the founder. Front-end engineering and technical SEO from the
+            Research and writing direction from the founder. Front-end engineering and technical SEO from the
             specialists who build every page.
           </p>
         </div>

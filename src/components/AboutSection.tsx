@@ -2,14 +2,14 @@ import { useRef } from "react";
 import { clamp, reducedMotion, useScrollFrame } from "@/hooks/useScrollFrame";
 
 const statement =
-  "I am Ashutosh, founder of Ashutosh Writes, a three-person editorial and engineering team in Bhubaneswar, India. We write source-verified articles for fintech and AI-security teams.";
+  "I am Ashutosh, founder of Ashutosh Writes, a three-person writing and engineering team in Bhubaneswar, India. We write source-verified articles for fintech and AI-security teams.";
 const words = statement.split(" ");
 
 const highlights = [
   "Articles built around search intent and the questions AI engines answer",
   "Answer-first headings, extractable facts and Schema that mirrors the page",
   "Original research, primary sources, and stated limits on every claim",
-  "Editorial judgment and final decisions made by a human editor",
+  "Judgment and final decisions made by a human editor",
 ];
 
 const AboutSection = () => {
@@ -41,7 +41,7 @@ const AboutSection = () => {
             </p>
             <p className="rd-disc">
               I use AI where it improves research and workflow efficiency, but the argument, judgment, structure and
-              final editorial decisions remain mine.
+              final decisions remain mine.
             </p>
           </div>
           <ul className="rd-hl">

@@ -16,7 +16,7 @@ const About = () => (
           <p className="st-eyebrow">About</p>
           <h1>The editors behind the articles.</h1>
           <p className="st-lede">
-            Ashutosh Mahapatra leads a three-person editorial and engineering team in Bhubaneswar, India. Read his{" "}
+            Ashutosh Mahapatra leads a three-person writing and engineering team in Bhubaneswar, India. Read his{" "}
             <Link to="/author/ashutosh-mahapatra" className="text-accent underline underline-offset-4">author page</Link>{" "}
             for the full article archive.
           </p>

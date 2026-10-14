@@ -6,22 +6,9 @@ import CloseSection from "@/components/CloseSection";
 
 const blocks = [
   {
-    id: "articles",
-    title: "Editorial articles",
-    lede: "Long-form fintech, payments and AI-security articles, researched to primary sources and edited by a person, delivered ready to publish.",
-    get: [
-      "Primary-source research and a source ledger for every claim",
-      "An original angle that adds information other articles lack",
-      "Written and edited by a person, with AI used only for research support",
-      "Delivered as a Google Doc, or as a coded HTML/CSS page with Schema",
-      "Terms, scope and revisions agreed in writing before work starts",
-    ],
-    note: "Available as a single article or a monthly series.",
-  },
-  {
     id: "search",
-    title: "Article-level search: SEO, AEO and GEO",
-    lede: "For the articles we write and the ones you already have. We make each article rankable in Google and quotable by AI engines.",
+    title: "On-page SEO, GEO and AEO",
+    lede: "For the articles we write and the ones you already have. We make each article rankable in Google (SEO), quotable by generative AI engines (GEO) and answer-ready for snippets and assistants (AEO).",
     get: [
       "Search-intent mapping and heading architecture",
       "Answer-first blocks, FAQ and definition structure for answer engines",
@@ -32,13 +19,26 @@ const blocks = [
     note: "We work one article at a time. We do not do full-site audits or technical SEO programmes.",
   },
   {
+    id: "articles",
+    title: "Research-led articles",
+    lede: "Long-form fintech, payments and AI-security articles, researched to primary sources and edited by a person, delivered ready to publish with the on-page SEO, GEO and AEO already built in.",
+    get: [
+      "Primary-source research and a source ledger for every claim",
+      "An original angle that adds information other articles lack",
+      "Written and edited by a person, with AI used only for research support",
+      "Delivered as a Google Doc, or as a coded HTML/CSS page with Schema",
+      "Terms, scope and revisions agreed in writing before work starts",
+    ],
+    note: "Available as a single article or a monthly series.",
+  },
+  {
     id: "strategy",
     title: "Content strategy",
     lede: "Which articles to publish, in what order, and why. Built around what your buyers search and what AI engines already cite.",
     get: [
       "A topic map tied to search intent in your niche",
       "A gap review of what already ranks and what AI engines already quote",
-      "An editorial calendar built around claims you can back with evidence",
+      "A content calendar built around claims you can back with evidence",
       "Briefs that any writer can follow, ours or yours",
     ],
     note: "Available as a standalone plan or as the first step of a monthly series.",
@@ -76,7 +76,7 @@ const Services = () => (
       <section className="st-top">
         <div className="rd-wrap">
           <p className="st-eyebrow">Services</p>
-          <h1>Editorial articles, built to rank and to be cited.</h1>
+          <h1>On-page SEO, GEO and AEO, built into research-led articles.</h1>
           <p className="st-lede">
             Three services and one free way to start, all at article level. Fintech, payments and AI-security teams are our focus.
           </p>

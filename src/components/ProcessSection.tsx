@@ -4,7 +4,7 @@ import { clamp, reducedMotion, useScrollFrame } from "@/hooks/useScrollFrame";
 const steps = [
   { title: "Brief & Audience", description: "Understand the business, reader, search intent and desired outcome" },
   { title: "Research & Verification", description: "Gather primary sources and verify important claims before drafting" },
-  { title: "Search & Editorial Architecture", description: "Build the article around search intent, information hierarchy and the strongest original angle" },
+  { title: "SEO, GEO & AEO Architecture", description: "Build the article around search intent, information hierarchy and the strongest original angle" },
   { title: "Writing & Refinement", description: "Write, edit, tighten and test the argument for clarity and flow" },
   { title: "Delivery & Handoff", description: "Deliver the finished article, source list, SEO structure and useful implementation notes" },
 ];

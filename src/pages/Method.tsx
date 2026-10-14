@@ -68,7 +68,7 @@ const Method = () => (
             ))}
           </div>
           <p className="st-small" style={{ marginTop: 36, maxWidth: "44em" }}>
-            We use AI tools for research support and workflow efficiency. The argument, structure and final editorial decisions stay with a person.
+            We use AI tools for research support and workflow efficiency. The argument, structure and final decisions stay with a person.
           </p>
         </div>
       </section>

@@ -1,22 +1,22 @@
 const items = [
   {
-    tag: "Write",
-    title: "Editorial articles",
-    text: "Long-form articles researched to primary sources and edited to a publishable standard. Thought leadership and search-led pieces for fintech and AI-security buyers.",
-    href: "/services#articles",
-    link: "See what is included",
-  },
-  {
     tag: "Optimise",
-    title: "Article-level search",
-    text: "SEO, GEO and AEO built into each article, not bolted on: answer-first structure, Schema, and refreshes for older articles that deserve to rank or be cited.",
+    title: "On-page SEO, GEO & AEO",
+    text: "Search, generative-engine and answer-engine optimisation built into each article, not bolted on: intent-matched headings, answer-first blocks, Schema that mirrors the page, and refreshes for older articles that deserve to rank or be cited.",
     href: "/services#search",
     link: "See how it works",
   },
   {
+    tag: "Write",
+    title: "Research-led articles",
+    text: "Long-form articles researched to primary sources and written to a publishable standard, each with its on-page SEO, GEO and AEO already in place. Thought leadership and search-led pieces for fintech and AI-security buyers.",
+    href: "/services#articles",
+    link: "See what is included",
+  },
+  {
     tag: "Plan",
     title: "Content strategy",
-    text: "Topic and angle strategy for your niche, an editorial calendar, and a brief for every article, so each one earns its place.",
+    text: "Topic and angle strategy for your niche, a content calendar, and a brief for every article, so each one earns its place.",
     href: "/services#strategy",
     link: "See what you get",
   },

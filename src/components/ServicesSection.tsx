@@ -2,16 +2,16 @@ import { useState } from "react";
 
 const services = [
   {
-    title: "Article-level SEO",
+    title: "On-page SEO",
     points: ["Search-intent and SERP analysis for the article", "Title, H1 and heading architecture", "Internal links and canonical set for the article", "Fast, accessible HTML/CSS when you want a coded page", "Refreshes of articles that already rank"],
-  },
-  {
-    title: "AEO: answer engine optimization",
-    points: ["Answer-first blocks under every question heading", "FAQ and definition structure for snippets and People Also Ask", "Schema.org JSON-LD that mirrors the visible page", "Tables and step lists in extractable formats"],
   },
   {
     title: "GEO: generative engine optimization",
     points: ["Primary-source research with dates, sample sizes and stated limits", "An original angle that adds information other pages lack", "Author and entity signals: byline, author page, Person schema", "Crawlable raw HTML for AI search bots", "Citation checks across ChatGPT, Perplexity, Gemini and Claude"],
+  },
+  {
+    title: "AEO: answer engine optimization",
+    points: ["Answer-first blocks under every question heading", "FAQ and definition structure for snippets and People Also Ask", "Schema.org JSON-LD that mirrors the visible page", "Tables and step lists in extractable formats"],
   },
 ];
 

@@ -106,7 +106,7 @@ const Author = () => (
                 Ashutosh <span className="font-display italic text-accent font-normal">Mahapatra</span>
               </h1>
               <p className="mt-3 text-sm font-semibold text-foreground">
-                Editorial writer covering AI, fintech and cybersecurity, with article-level SEO, GEO and AEO
+                Writer covering AI, fintech and cybersecurity, with on-page SEO, GEO and AEO built into every article
               </p>
               <div className="mt-6 space-y-4 text-base text-muted-foreground leading-relaxed">
                 <p>
@@ -117,7 +117,7 @@ const Author = () => (
                   I use AI where it helps with research and workflow, but the argument, structure and final wording are mine. I check statistics against their sources before publishing, and I keep sources visible so readers can check the work themselves.
                 </p>
                 <p>
-                  I work with founders, marketing leads, and editorial teams who need writing that holds up in front of an expert audience.
+                  I work with founders, marketing leads, and content teams who need writing that holds up in front of an expert audience.
                 </p>
               </div>
               <ul className="mt-7 flex flex-wrap gap-2.5" aria-label="Social profiles">

@@ -17,7 +17,7 @@ const HeroSection = () => {
     <section id="home" className={`rd-hero${ready ? " rd-ld" : ""}`}>
       <div className="rd-wrap">
         <p className="rd-mut" data-h style={{ "--d": 0, fontSize: 14 } as React.CSSProperties}>
-          An editorial studio for fintech and AI-security teams
+          SEO, GEO and AEO articles for fintech and AI-security teams
         </p>
         <h1 className="st-h1">
           <span className="rd-ln"><span>Fintech and AI-security articles</span></span>
@@ -27,7 +27,7 @@ const HeroSection = () => {
         <div className="rd-hg">
           <div>
             <p className="rd-lede" data-h style={{ "--d": 1 } as React.CSSProperties}>
-              A boutique editorial studio. Every article is researched to primary sources, structured for search and answer engines, and delivered with the evidence behind each claim.
+              A boutique research-led writing studio. Every article is built for on-page SEO, GEO and AEO from the first draft, researched to primary sources, and delivered with the evidence behind each claim.
             </p>
             <div className="rd-btns" data-h style={{ "--d": 2 } as React.CSSProperties}>
               <a className="rd-b1" href="/contact">Get a free Article Check</a>
@@ -65,7 +65,7 @@ const HeroSection = () => {
               <img src="/profile.webp" alt="Portrait of Ashutosh Mahapatra" width={576} height={576} loading="eager" decoding="async" />
             </div>
             <p className="rd-cap" data-h style={{ "--d": 5 } as React.CSSProperties}>
-              Ashutosh Mahapatra, Founder, Content Strategy &amp; Lead Editorial
+              Ashutosh Mahapatra, Founder, Content Strategy &amp; Lead Writer
             </p>
             <div className="st-soc" data-h style={{ "--d": 6 } as React.CSSProperties}>
               <a className="st-ic" href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="Ashutosh Mahapatra on LinkedIn">

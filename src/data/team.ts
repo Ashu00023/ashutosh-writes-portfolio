@@ -13,8 +13,8 @@ export const team: Member[] = [
     initials: "A",
     name: "Ashutosh Mahapatra",
     role: "Founder",
-    focus: "Content Strategy & Lead Editorial",
-    bio: "Writer and overall architect of every engagement. Leads the research, strategy and editorial direction, and owns the final edit.",
+    focus: "Content Strategy & Lead Writer",
+    bio: "Writer and overall architect of every engagement. Leads the research, strategy and writing direction, and owns the final edit.",
   },
   {
     initials: "AS",
