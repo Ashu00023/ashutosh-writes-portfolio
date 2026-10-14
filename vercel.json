@@ -2,12 +2,12 @@
   "redirects": [
     {
       "source": "/blog",
-      "destination": "/work",
+      "destination": "/research",
       "permanent": true
     },
     {
       "source": "/blog/",
-      "destination": "/work",
+      "destination": "/research",
       "permanent": true
     },
     {
