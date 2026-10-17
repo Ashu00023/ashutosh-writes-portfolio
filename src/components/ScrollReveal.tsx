@@ -1,4 +1,4 @@
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { LazyMotion, domAnimation, m, useReducedMotion, type Variants } from "framer-motion";
 import { type ReactNode } from "react";
 import { distance, duration as dur, easeArrive } from "@/lib/motion";
 
@@ -44,7 +44,8 @@ const ScrollReveal = ({
   };
 
   return (
-    <motion.div
+    <LazyMotion features={domAnimation}>
+    <m.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once, amount: 0.15 }}
@@ -52,7 +53,8 @@ const ScrollReveal = ({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
+    </LazyMotion>
   );
 };
 

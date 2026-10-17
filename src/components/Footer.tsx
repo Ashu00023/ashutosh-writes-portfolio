@@ -49,7 +49,7 @@ const Footer = () => (
       <div className="grid grid-cols-2 gap-x-8 gap-y-10 pb-14 md:grid-cols-3">
         {columns.map((column) => (
           <nav key={column.title} aria-label={column.title}>
-            <h2 className="folio mb-4 text-foreground">{column.title}</h2>
+            <p className="folio mb-4 text-foreground">{column.title}</p>
             <ul className="space-y-3">
               {column.links.map((link) => (
                 <li key={`${column.title}-${link.href}-${link.label}`}>

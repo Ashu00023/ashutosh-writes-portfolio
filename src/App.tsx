@@ -1,6 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import RouteScroll from "@/components/RouteScroll";
@@ -24,7 +23,6 @@ const RouteFallback = () => {
 };
 
 const App = () => (
-  <TooltipProvider>
     <BrowserRouter>
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:text-foreground focus:shadow-lg">Skip to main content</a>
       <RouteScroll />
@@ -53,7 +51,6 @@ const App = () => (
       </Suspense>
       <ConsentBar />
     </BrowserRouter>
-  </TooltipProvider>
 );
 
 export default App;

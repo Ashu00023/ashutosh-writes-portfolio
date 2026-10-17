@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { workItems } from "@/data/work";
 import { heroExcerpt, sources } from "@/data/citations";
@@ -19,7 +19,8 @@ const CitedExcerpt = () => {
   const article = workItems.find((w) => w.liveUrl.includes(heroExcerpt.articleMatch));
 
   return (
-    <motion.figure
+    <LazyMotion features={domAnimation}>
+    <m.figure
       initial={{ opacity: 0, y: reduce ? 0 : distance.md }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: duration.base, ease: easeArrive, delay: FIGURE_DELAY }}
@@ -98,7 +99,8 @@ const CitedExcerpt = () => {
           );
         })}
       </ol>
-    </motion.figure>
+    </m.figure>
+    </LazyMotion>
   );
 };
 
