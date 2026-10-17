@@ -33,20 +33,7 @@ const Index = () => (
           "@graph": [
             seo.person,
             seo.professionalService,
-            {
-              "@type": "WebSite",
-              "@id": `${seo.siteUrl}/#website`,
-              url: `${seo.siteUrl}/`,
-              name: "Ashutosh Writes",
-              publisher: { "@id": seo.person["@id"] },
-            },
-            {
-              "@type": "Organization",
-              "@id": `${seo.siteUrl}/#organization`,
-              name: "Ashutosh Writes",
-              url: `${seo.siteUrl}/`,
-              founder: { "@id": seo.person["@id"] },
-            },
+            seo.website,
           ],
         })}
       </script>

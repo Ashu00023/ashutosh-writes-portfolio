@@ -42,7 +42,7 @@ const Research = () => (
               We have not yet measured the effect on AI citations. When we have, we will publish the result here, including if it is zero.
             </p>
             <p className="st-small">
-              Check it yourself: <code>curl -s https://ashutoshwrites.online/ | grep -i "Ashutosh Mahapatra"</code>. This is the same check we run on your article in a free Article Check.
+              Check it yourself: <code>curl -s https://ashutoshwrites.online/ | grep -c "Fintech and AI-security articles that rank"</code>. This is the same check we run on your article in a free Article Check.
             </p>
             <div className="rd-btns" style={{ margin: "20px 0 0" }}>
               <a className="rd-b1" href="/contact">Get a free Article Check</a>

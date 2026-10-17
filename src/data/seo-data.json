@@ -18,6 +18,9 @@
       "Technical writing",
       "Research-led content writing"
     ],
+    "description": "Fintech and AI-security writer. Researches articles to primary sources and builds on-page SEO, GEO and AEO into each one.",
+    "image": "https://ashutoshwrites.online/profile.webp",
+    "worksFor": { "@id": "https://ashutoshwrites.online/#service" },
     "sameAs": [
       "https://linkedin.com/in/ashutosh-mahapatra"
     ]
@@ -41,21 +44,30 @@
       "Article refresh and re-verification",
       "Schema.org JSON-LD that mirrors visible content"
     ],
+    "image": "https://ashutoshwrites.online/og-cover.jpg",
     "email": "ashutosh@ashutoshwrites.in"
+  },
+  "website": {
+    "@type": "WebSite",
+    "@id": "https://ashutoshwrites.online/#website",
+    "url": "https://ashutoshwrites.online/",
+    "name": "Ashutosh Writes",
+    "inLanguage": "en",
+    "publisher": { "@id": "https://ashutoshwrites.online/#service" }
   },
   "routes": {
     "home": {
       "path": "/",
       "outFile": "index.html",
-      "title": "SEO, GEO & AEO Articles for Fintech & AI-Security | Ashutosh Writes",
-      "description": "Research-led articles for fintech and AI-security teams, with on-page SEO, GEO and AEO built in. Sourced to primary documents, built to rank in Google and be cited in AI answers.",
+      "title": "SEO, GEO & AEO Articles for Fintech & AI | Ashutosh Writes",
+      "description": "Research-led articles for fintech and AI-security teams, with on-page SEO, GEO and AEO built in. Sourced to primary documents and built to be cited.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
     "services": {
       "path": "/services",
       "outFile": "services/index.html",
-      "title": "Services: SEO, GEO & AEO Articles and Strategy | Ashutosh Writes",
+      "title": "SEO, GEO & AEO Article Services | Ashutosh Writes",
       "description": "On-page SEO, GEO and AEO, research-led articles and content strategy for fintech and AI-security teams, researched to primary sources.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
@@ -71,7 +83,7 @@
     "work": {
       "path": "/work",
       "outFile": "work/index.html",
-      "title": "Work: Fintech & AI-Security Writing Samples | Ashutosh Writes",
+      "title": "Work: Fintech & AI-Security Samples | Ashutosh Writes",
       "description": "Four self-directed writing samples in fintech and AI security, each built with on-page SEO, GEO and AEO and sourced to primary documents. None is client work.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
@@ -79,8 +91,8 @@
     "research": {
       "path": "/research",
       "outFile": "research/index.html",
-      "title": "Research: Independent Fintech & AI-Security Articles | Ashutosh Writes",
-      "description": "Independent research articles across fintech, AI and cybersecurity, each built for search and AI answers with primary sources cited, plus an audit of our own site.",
+      "title": "Research: Fintech & AI-Security Articles | Ashutosh Writes",
+      "description": "Independent articles on fintech, AI and cybersecurity, each built for search and AI answers, with every statistic traced to a primary source.",
       "ogType": "website",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
@@ -103,8 +115,8 @@
     "author": {
       "path": "/author/ashutosh-mahapatra",
       "outFile": "author/ashutosh-mahapatra/index.html",
-      "title": "Ashutosh Mahapatra | SEO, GEO & AEO Writer for Fintech & AI-Security",
-      "description": "Ashutosh Mahapatra writes research-led articles on AI, fintech and cybersecurity, with on-page SEO, GEO and AEO built in, and an archive of every published piece.",
+      "title": "Ashutosh Mahapatra | Fintech & AI-Security Writer",
+      "description": "Ashutosh Mahapatra writes research-led articles on AI, fintech and cybersecurity, with on-page SEO, GEO and AEO built in.",
       "ogType": "profile",
       "ogImage": "https://ashutoshwrites.online/og-cover.jpg"
     },
