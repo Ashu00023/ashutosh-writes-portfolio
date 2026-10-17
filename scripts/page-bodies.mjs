@@ -32,7 +32,7 @@ const nav = `
 const footer = `
 <footer>
   <nav aria-label="Explore">
-    <h2>Explore</h2>
+    <p>Explore</p>
     <ul>
       <li><a href="/services">Services</a></li>
       <li><a href="/method">Method</a></li>
@@ -44,7 +44,7 @@ const footer = `
     </ul>
   </nav>
   <nav aria-label="Services">
-    <h2>Services</h2>
+    <p>Services</p>
     <ul>
       <li><a href="/services#search">On-page SEO, GEO &amp; AEO</a></li>
       <li><a href="/services#articles">Research-led articles</a></li>
@@ -53,7 +53,7 @@ const footer = `
     </ul>
   </nav>
   <nav aria-label="Connect">
-    <h2>Connect</h2>
+    <p>Connect</p>
     <ul>
       <li><a href="mailto:${EMAIL}">Email</a></li>
       <li><a href="${LINKEDIN}">LinkedIn</a></li>

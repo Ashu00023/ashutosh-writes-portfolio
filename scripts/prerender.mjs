@@ -91,7 +91,9 @@ function buildHeadTags({ title, description, canonical, ogType, ogImage, jsonLdL
   const lines = [
     `<title>${escapeHtml(title)}</title>`,
     `<meta name="description" content="${escapeHtml(description)}">`,
-    `<meta name="robots" content="index, follow">`,
+    `<meta name="robots" content="index, follow, max-image-preview:large">`,
+    `<meta property="og:site_name" content="Ashutosh Writes">`,
+    `<meta property="og:locale" content="en_US">`,
     `<link rel="canonical" href="${escapeHtml(canonical)}">`,
     `<meta property="og:title" content="${escapeHtml(title)}">`,
     `<meta property="og:description" content="${escapeHtml(description)}">`,
@@ -152,7 +154,7 @@ async function buildRoutes(seo) {
   };
 
   add("home", homeBodyHtml(seo), [
-    JSON.stringify({ "@context": "https://schema.org", "@graph": [seo.person, seo.professionalService] }),
+    JSON.stringify({ "@context": "https://schema.org", "@graph": [seo.person, seo.professionalService, seo.website] }),
   ]);
 
   // [seo-data key, breadcrumb label, body function]
@@ -245,7 +247,22 @@ async function main() {
       console.error(`[prerender] FAIL ${route.path}: ${err?.message ?? err}`);
     }
   }
-
+  // dist/404.html: Vercel serves this with a real 404 status for any URL that matches no file or rewrite.
+  try {
+    const notFoundHead = [
+      `<title>Page not found | Ashutosh Writes</title>`,
+      `<meta name="robots" content="noindex, follow">`,
+    ].join("\n    ");
+    const notFoundBody =
+      `<main id="main"><h1>Page not found</h1><p>That address does not exist on this site.</p>` +
+      `<p><a href="/">Home</a> · <a href="/research">Research</a> · <a href="/services">Services</a> · <a href="/contact">Contact</a></p></main>`;
+    const notFoundHtml = stampTemplate(template, { headHtml: notFoundHead, bodyHtml: notFoundBody });
+    await writeFile(join(DIST, "404.html"), notFoundHtml, "utf8");
+    console.log("[prerender] OK   404 -> dist/404.html (noindex)");
+  } catch (err) {
+    failures += 1;
+    console.error(`[prerender] FAIL 404.html: ${err?.message ?? err}`);
+  }
   if (failures > 0) {
     fail(`${failures} of ${routes.length} route(s) failed to prerender. Build should not be treated as SEO-safe.`);
   }

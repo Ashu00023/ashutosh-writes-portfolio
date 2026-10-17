@@ -57,10 +57,15 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/((?!assets/|.*\\..*).*)",
-      "destination": "/index.html"
-    }
+    { "source": "/services", "destination": "/services/index.html" },
+    { "source": "/method", "destination": "/method/index.html" },
+    { "source": "/work", "destination": "/work/index.html" },
+    { "source": "/research", "destination": "/research/index.html" },
+    { "source": "/about", "destination": "/about/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/privacy-policy", "destination": "/privacy-policy/index.html" },
+    { "source": "/terms-of-use", "destination": "/terms-of-use/index.html" },
+    { "source": "/author/ashutosh-mahapatra", "destination": "/author/ashutosh-mahapatra/index.html" }
   ],
   "headers": [
     {
