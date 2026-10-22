@@ -336,8 +336,8 @@ export function authorBodyHtml(seo) {
 export const legalSections = {
   privacyPolicy: [
     "What is collected through the Article Check form, and how it is used",
-    "Service providers: hosting, database, email delivery and fonts",
-    "Cookies, local storage and third-party fonts",
+    "Service providers: hosting, database, email delivery, fonts and Google Analytics (only if you accept it)",
+    "Cookies, local storage, Google Analytics cookies (set only after you accept) and third-party fonts",
     "Retention, international transfers, and your privacy rights",
   ],
   termsOfUse: [

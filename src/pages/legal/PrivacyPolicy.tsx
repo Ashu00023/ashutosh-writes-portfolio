@@ -5,10 +5,10 @@ const PrivacyPolicy = () => (
   <LegalLayout
     title="Privacy Policy"
     metaTitle="Privacy Policy | Ashutosh Mahapatra"
-    description="What personal data ashutoshwrites.online collects through its Article Check form, how it uses cookies and third-party fonts, which service providers handle your data, how long it is kept, and your privacy rights."
+    description="What personal data ashutoshwrites.online collects through its Article Check form, how it uses cookies, Google Analytics (only if you accept it) and third-party fonts, which service providers handle your data, how long it is kept, and your privacy rights."
     path="/privacy-policy"
     breadcrumbLabel="Privacy Policy"
-    updated="14 October 2026"
+    updated="22 October 2026"
     intro="This policy explains what personal data this website collects, why, who handles it, how long it is kept, and the choices you have."
   >
     <h2>1. Who is responsible for your data</h2>
@@ -33,10 +33,15 @@ const PrivacyPolicy = () => (
         <strong>Technical data:</strong> the hosting provider processes your IP address, browser type and the pages you
         request in server logs, so the site can be delivered and kept secure.
       </li>
+      <li>
+        <strong>Analytics data (only if you accept analytics):</strong> the pages you view, how you arrived at the
+        site, your approximate location, your device and browser details, and a random identifier stored in a cookie,
+        collected through Google Analytics.
+      </li>
     </ul>
     <p>
-      This site does not use analytics, advertising or tracking tools, and it does not take payments, so I never see
-      payment card details here.
+      Google Analytics loads only after you choose "Accept analytics" in the notice. This site does not use
+      advertising tools, and it does not take payments, so I never see payment card details here.
     </p>
 
     <h2>3. Why I use your data</h2>
@@ -45,6 +50,10 @@ const PrivacyPolicy = () => (
       <li>To deliver the work and manage invoices if you hire me.</li>
       <li>To keep records that tax and accounting law require.</li>
       <li>To keep the site secure and working, which is my legitimate interest.</li>
+      <li>
+        If you accept analytics, to understand which articles and pages are read and how people find them, based on
+        your consent.
+      </li>
     </ul>
     <p>I do not sell your personal data and I do not use it for advertising.</p>
 
@@ -57,6 +66,10 @@ const PrivacyPolicy = () => (
         <strong>Fontshare</strong> serves the fonts on the main pages, and <strong>Google Fonts</strong> serves fonts
         on some article pages. Your IP address reaches these services when a page loads.
       </li>
+      <li>
+        <strong>Google</strong> provides Google Analytics 4, but only if you accept analytics in the notice. Google
+        receives the analytics data described in section 2.
+      </li>
       <li>My two collaborators, only when a project needs them, and under a duty of confidentiality.</li>
     </ul>
     <p>
@@ -65,11 +78,37 @@ const PrivacyPolicy = () => (
 
     <h2 id="cookies">5. Cookies, local storage and fonts</h2>
     <p>
-      This site does not set cookies for analytics, advertising or tracking. It stores one small value in your
-      browser's local storage, <strong>aw:consent-v1</strong>, to remember that you accepted these policies so the
-      notice does not appear on every page. It is strictly necessary for that purpose, it is never sent to a server,
-      and you can clear it in your browser settings at any time.
+      No analytics cookies are set until you choose "Accept analytics" in the notice. If you choose "No thanks", none
+      are set. If you accept, Google Analytics sets two first-party cookies on this site:
     </p>
+    <ul>
+      <li>
+        <strong>_ga</strong> (lasts 2 years by default): a random identifier that lets Google Analytics tell
+        returning visitors apart from new ones.
+      </li>
+      <li>
+        <strong>{"_ga_<ID>"}</strong> (lasts 2 years by default): remembers the state of your current visit, so page
+        views can be grouped into one session. <em>ID</em> is this site's Google Analytics measurement ID without the
+        "G-" prefix.
+      </li>
+    </ul>
+    <p>
+      Browsers may shorten the lifetime of these cookies. Google Analytics data for this site is kept for 14 months.
+      This site sets no advertising cookies.
+    </p>
+    <p>
+      The site also stores two small values in your browser's local storage. Neither is sent to a server, and you can
+      clear both in your browser settings at any time:
+    </p>
+    <ul>
+      <li>
+        <strong>aw:analytics-v1</strong> remembers your analytics choice ("granted" or "denied") so the notice does not
+        appear on every page.
+      </li>
+      <li>
+        <strong>aw:consent-v1</strong> records the date you acknowledged these policies.
+      </li>
+    </ul>
     <ul>
       <li>
         <strong>Third-party fonts:</strong> the main pages load fonts from Fontshare, and some article pages load fonts
@@ -86,8 +125,9 @@ const PrivacyPolicy = () => (
       </li>
     </ul>
     <p>
-      If I add analytics, advertising or any other tool that uses cookies, I will add a consent choice and update this
-      page before those tools load.
+      <strong>Changing your choice:</strong> clear cookies and site data for ashutoshwrites.online in your browser
+      settings, and the notice will appear again. Data already collected before you withdraw consent stays in Google
+      Analytics until it expires, and you can ask me to have it deleted using the contact details in section 12.
     </p>
 
     <h2>6. How long I keep your data</h2>
@@ -95,6 +135,7 @@ const PrivacyPolicy = () => (
       <li>Enquiry form submissions are deleted from the database after 12 months.</li>
       <li>If we work together, the agreement and invoices are kept separately for as long as tax and accounting law require.</li>
       <li>Emails are kept for as long as the conversation or project needs them.</li>
+      <li>Google Analytics data is kept for 14 months, then deleted automatically.</li>
     </ul>
     <p>You can ask me to delete your data earlier at any time.</p>
 
@@ -132,8 +173,8 @@ const PrivacyPolicy = () => (
 
     <h2>11. Changes to this policy</h2>
     <p>
-      If I change how I handle personal data, I will update this page and its "Last updated" date. If I add analytics
-      or advertising, I will update this policy first.
+      If I change how I handle personal data, I will update this page and its "Last updated" date. If I add advertising
+      or any other tracking tool, I will update this policy first.
     </p>
 
     <h2>12. Contact</h2>
