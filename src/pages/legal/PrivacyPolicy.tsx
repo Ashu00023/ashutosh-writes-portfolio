@@ -1,11 +1,12 @@
 import LegalLayout from "@/components/LegalLayout";
 import { EMAIL } from "@/data/site";
+import seo from "@/data/seo-data.json";
 
 const PrivacyPolicy = () => (
   <LegalLayout
     title="Privacy Policy"
     metaTitle="Privacy Policy | Ashutosh Mahapatra"
-    description="What personal data ashutoshwrites.online collects through its Article Check form, how it uses cookies, Google Analytics (only if you accept it) and third-party fonts, which service providers handle your data, how long it is kept, and your privacy rights."
+    description={seo.routes.privacyPolicy.description}
     path="/privacy-policy"
     breadcrumbLabel="Privacy Policy"
     updated="22 October 2026"

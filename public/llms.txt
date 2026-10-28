@@ -15,10 +15,10 @@
 
 ## Articles
 
-- [Shadow AI Inside Approved SaaS: How Agents Inherit Access](https://ashutoshwrites.online/static-blogs/byoa-shadow-ai-blog.html): How vendor-embedded AI agents inherit OAuth scope from platforms already approved, what EchoLeak, Drift and Vercel prove and do not prove, dated EU AI Act obligations, and a governance framework for security teams.
-- [Untangling Liability in Visa's New Agentic Commerce Dispute Rules](https://ashutoshwrites.online/visa-agentic-commerce-disputes-seo.html): Who bears the loss when an AI agent buys the wrong thing, checked against primary rule text.
-- [AI Personal Finance 2026: Stats, Tools & Risks Explained](https://ashutoshwrites.online/static-blogs/ai-personal-finance-2026.html): Sourced statistics, structural trends and the risks most AI-finance coverage misses.
-- [AI vs Human Content in 2026: The Authenticity Premium](https://ashutoshwrites.online/static-blogs/ai-authenticity-premium-2026.html): What ranking and audience data show about AI-generated versus human-written content.
+- [Shadow AI Inside Approved SaaS: How Agents Inherit Access](https://ashutoshwrites.online/blog/shadow-ai-inside-approved-saas): How vendor-embedded AI agents inherit OAuth scope from platforms already approved, what EchoLeak, Drift and Vercel prove and do not prove, dated EU AI Act obligations, and a governance framework for security teams.
+- [Visa Already Decided Who Eats the Loss When Your AI Agent Buys the Wrong Thing](https://ashutoshwrites.online/blog/visa-agentic-commerce-disputes): Who bears the loss when an AI agent buys the wrong thing, checked against primary rule text.
+- [How AI is Rewiring Personal Finance in 2026: The Data, the Tools, and What Most Coverage Gets Wrong](https://ashutoshwrites.online/blog/ai-personal-finance-2026): Sourced statistics, structural trends and the risks most AI-finance coverage misses.
+- [AI Took Over the Internet. Now Audiences Are Revolting, and Human Creators Are Winning.](https://ashutoshwrites.online/blog/ai-vs-human-content-2026): What ranking and audience data show about AI-generated versus human-written content.
 
 ## Policies
 

@@ -18,8 +18,8 @@ export type Post = {
  */
 export const posts: Post[] = [
   {
-    href: seo.routes.aiPersonalFinance2026.canonicalPath,
-    title: "AI Personal Finance 2026",
+    href: seo.routes.aiPersonalFinance2026.path,
+    title: seo.routes.aiPersonalFinance2026.title,
     label: "AI + Finance",
     summary:
       "Sourced statistics, structural trends and the risks most AI finance coverage misses, built for readers who want signal over noise.",
@@ -27,8 +27,8 @@ export const posts: Post[] = [
     external: true,
   },
   {
-    href: seo.routes.humanCreativityVsAi.canonicalPath,
-    title: "The Authenticity Premium in the AI-Slop Era",
+    href: seo.routes.humanCreativityVsAi.path,
+    title: seo.routes.humanCreativityVsAi.title,
     label: "AI + Content",
     summary:
       "Why human creativity is winning in 2026 and how creators can turn authenticity into a durable competitive advantage.",
@@ -36,8 +36,8 @@ export const posts: Post[] = [
     external: true,
   },
   {
-    href: seo.routes.byoaShadowAi.canonicalPath,
-    title: "Shadow AI Inside Approved SaaS: How Agents Inherit Access",
+    href: seo.routes.byoaShadowAi.path,
+    title: seo.routes.byoaShadowAi.title,
     label: "Cybersecurity",
     summary:
       "AI agents aren't sneaking in through shadow IT anymore. They inherit OAuth scope from platforms you already approved.",
@@ -46,7 +46,7 @@ export const posts: Post[] = [
   },
   {
     href: seo.routes.visaAgenticCommerceDisputes.path,
-    title: "Who Eats the Loss When Your AI Agent Buys the Wrong Thing",
+    title: seo.routes.visaAgenticCommerceDisputes.title,
     label: "Fintech & AI",
     summary:
       "Visa's April 2026 Core Rules update routed agent purchases into existing card-not-present dispute rules. Checked against primary sources.",

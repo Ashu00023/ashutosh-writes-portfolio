@@ -1,0 +1,13 @@
+{
+  "name": "Ashutosh Writes",
+  "short_name": "Ashutosh Writes",
+  "description": "Research-led SEO, GEO and AEO articles for fintech and AI-security teams.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F6F4EE",
+  "theme_color": "#F6F4EE",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }
+  ]
+}

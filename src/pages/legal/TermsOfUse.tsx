@@ -1,11 +1,12 @@
 import LegalLayout from "@/components/LegalLayout";
 import { EMAIL } from "@/data/site";
+import seo from "@/data/seo-data.json";
 
 const TermsOfUse = () => (
   <LegalLayout
     title="Terms of Use"
     metaTitle="Terms of Use | Ashutosh Mahapatra"
-    description="The terms that govern your use of ashutoshwrites.online: intellectual property, acceptable use, editorial disclaimer, payment, refund and revision terms, and limitation of liability."
+    description={seo.routes.termsOfUse.description}
     path="/terms-of-use"
     breadcrumbLabel="Terms of Use"
     updated="14 October 2026"

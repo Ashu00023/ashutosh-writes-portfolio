@@ -1,60 +1,20 @@
 {
   "redirects": [
-    {
-      "source": "/blog",
-      "destination": "/research",
-      "permanent": true
-    },
-    {
-      "source": "/blog/",
-      "destination": "/research",
-      "permanent": true
-    },
-    {
-      "source": "/cookie-policy",
-      "destination": "/privacy-policy#cookies",
-      "permanent": true
-    },
-    {
-      "source": "/disclaimer",
-      "destination": "/terms-of-use#disclaimer",
-      "permanent": true
-    },
-    {
-      "source": "/refund-policy",
-      "destination": "/terms-of-use#payments",
-      "permanent": true
-    },
-    {
-      "source": "/blog/ai-personal-finance-2026",
-      "destination": "/static-blogs/ai-personal-finance-2026.html",
-      "permanent": true
-    },
-    {
-      "source": "/blog/ai-personal-finance-2026/",
-      "destination": "/static-blogs/ai-personal-finance-2026.html",
-      "permanent": true
-    },
-    {
-      "source": "/blog/human-creativity-vs-ai-authenticity-premium-2026",
-      "destination": "/static-blogs/ai-authenticity-premium-2026.html",
-      "permanent": true
-    },
-    {
-      "source": "/blog/human-creativity-vs-ai-authenticity-premium-2026/",
-      "destination": "/static-blogs/ai-authenticity-premium-2026.html",
-      "permanent": true
-    },
-    {
-      "source": "/blog/byoa-shadow-ai-b2b-saas-2026",
-      "destination": "/static-blogs/byoa-shadow-ai-blog.html",
-      "permanent": true
-    },
-    {
-      "source": "/blog/byoa-shadow-ai-b2b-saas-2026/",
-      "destination": "/static-blogs/byoa-shadow-ai-blog.html",
-      "permanent": true
-    }
+    { "source": "/blog", "destination": "/research", "permanent": true },
+    { "source": "/blog/", "destination": "/research", "permanent": true },
+    { "source": "/cookie-policy", "destination": "/privacy-policy#cookies", "permanent": true },
+    { "source": "/disclaimer", "destination": "/terms-of-use#disclaimer", "permanent": true },
+    { "source": "/refund-policy", "destination": "/terms-of-use#payments", "permanent": true },
+
+    { "source": "/static-blogs/ai-personal-finance-2026.html", "destination": "/blog/ai-personal-finance-2026", "permanent": true },
+    { "source": "/static-blogs/ai-authenticity-premium-2026.html", "destination": "/blog/ai-vs-human-content-2026", "permanent": true },
+    { "source": "/static-blogs/byoa-shadow-ai-blog.html", "destination": "/blog/shadow-ai-inside-approved-saas", "permanent": true },
+    { "source": "/visa-agentic-commerce-disputes-seo.html", "destination": "/blog/visa-agentic-commerce-disputes", "permanent": true },
+
+    { "source": "/blog/human-creativity-vs-ai-authenticity-premium-2026", "destination": "/blog/ai-vs-human-content-2026", "permanent": true },
+    { "source": "/blog/human-creativity-vs-ai-authenticity-premium-2026/", "destination": "/blog/ai-vs-human-content-2026", "permanent": true },
+    { "source": "/blog/byoa-shadow-ai-b2b-saas-2026", "destination": "/blog/shadow-ai-inside-approved-saas", "permanent": true },
+    { "source": "/blog/byoa-shadow-ai-b2b-saas-2026/", "destination": "/blog/shadow-ai-inside-approved-saas", "permanent": true }
   ],
   "rewrites": [
     { "source": "/services", "destination": "/services/index.html" },
@@ -65,50 +25,42 @@
     { "source": "/contact", "destination": "/contact/index.html" },
     { "source": "/privacy-policy", "destination": "/privacy-policy/index.html" },
     { "source": "/terms-of-use", "destination": "/terms-of-use/index.html" },
-    { "source": "/author/ashutosh-mahapatra", "destination": "/author/ashutosh-mahapatra/index.html" }
+    { "source": "/author/ashutosh-mahapatra", "destination": "/author/ashutosh-mahapatra/index.html" },
+
+    { "source": "/blog/ai-personal-finance-2026", "destination": "/static-blogs/ai-personal-finance-2026.html" },
+    { "source": "/blog/ai-personal-finance-2026/", "destination": "/static-blogs/ai-personal-finance-2026.html" },
+    { "source": "/blog/ai-vs-human-content-2026", "destination": "/static-blogs/ai-authenticity-premium-2026.html" },
+    { "source": "/blog/ai-vs-human-content-2026/", "destination": "/static-blogs/ai-authenticity-premium-2026.html" },
+    { "source": "/blog/shadow-ai-inside-approved-saas", "destination": "/static-blogs/byoa-shadow-ai-blog.html" },
+    { "source": "/blog/shadow-ai-inside-approved-saas/", "destination": "/static-blogs/byoa-shadow-ai-blog.html" },
+    { "source": "/blog/visa-agentic-commerce-disputes", "destination": "/visa-agentic-commerce-disputes-seo.html" },
+    { "source": "/blog/visa-agentic-commerce-disputes/", "destination": "/visa-agentic-commerce-disputes-seo.html" }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
         {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        },
-        {
-          "key": "Strict-Transport-Security",
-          "value": "max-age=63072000; includeSubDomains; preload"
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'inline-speculation-rules' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com; font-src 'self' data: https://cdn.fontshare.com https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
         }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
       "source": "/(.*)\\.(png|jpe?g|webp|avif|svg|gif|ico)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=2592000, stale-while-revalidate=86400"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=86400" }
       ]
     }
   ]

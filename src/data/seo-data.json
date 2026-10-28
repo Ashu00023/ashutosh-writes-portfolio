@@ -138,40 +138,19 @@
     },
     "aiPersonalFinance2026": {
       "path": "/blog/ai-personal-finance-2026",
-      "outFile": "blog/ai-personal-finance-2026/index.html",
-      "title": "AI Personal Finance 2026: Stats, Tools & Risks Explained",
-      "description": "21 sourced statistics, 6 structural trends, and the risks most coverage misses. A data-driven look at how AI is reshaping personal finance in 2026.",
-      "ogType": "article",
-      "ogImage": "https://ashutoshwrites.online/static-blogs/og-ai-personal-finance-2026.jpg",
-      "staticSource": "static-blogs/ai-personal-finance-2026.html",
-      "canonicalPath": "/static-blogs/ai-personal-finance-2026.html"
+      "title": "How AI is Rewiring Personal Finance in 2026: The Data, the Tools, and What Most Coverage Gets Wrong"
     },
     "humanCreativityVsAi": {
-      "path": "/blog/human-creativity-vs-ai-authenticity-premium-2026",
-      "outFile": "blog/human-creativity-vs-ai-authenticity-premium-2026/index.html",
-      "title": "AI vs Human Content in 2026: The Authenticity Premium",
-      "description": "Semrush found #1 Google pages were 80.5% likely to be human-written; Ahrefs found 5.3% of top-3 pages were 100% AI. What the data really shows.",
-      "ogType": "article",
-      "ogImage": "https://ashutoshwrites.online/static-blogs/charts/authenticity-premium.png",
-      "staticSource": "static-blogs/ai-authenticity-premium-2026.html",
-      "canonicalPath": "/static-blogs/ai-authenticity-premium-2026.html"
+      "path": "/blog/ai-vs-human-content-2026",
+      "title": "AI Took Over the Internet. Now Audiences Are Revolting, and Human Creators Are Winning."
     },
     "byoaShadowAi": {
-      "path": "/blog/byoa-shadow-ai-b2b-saas-2026",
-      "outFile": "blog/byoa-shadow-ai-b2b-saas-2026/index.html",
-      "title": "Shadow AI Inside Approved SaaS: How Agents Inherit Access",
-      "description": "Shadow AI no longer needs a new app. Embedded agents inherit OAuth scope you already approved. Incidents, EU AI Act dates, and a governance framework.",
-      "ogType": "article",
-      "ogImage": "https://ashutoshwrites.online/byoa-shadow-ai-blog-thumbnail.png",
-      "staticSource": "static-blogs/byoa-shadow-ai-blog.html",
-      "canonicalPath": "/static-blogs/byoa-shadow-ai-blog.html"
+      "path": "/blog/shadow-ai-inside-approved-saas",
+      "title": "Shadow AI Inside Approved SaaS: How Agents Inherit Access"
     },
     "visaAgenticCommerceDisputes": {
-      "path": "/visa-agentic-commerce-disputes-seo.html",
-      "title": "Visa Already Decided Who Eats the Loss When Your AI Agent Buys the Wrong Thing",
-      "description": "Visa's April 2026 Core Rules update routed agent purchases into existing card-not-present dispute rules. Fact-checked against primary sources.",
-      "ogType": "article",
-      "ogImage": "https://ashutoshwrites.online/visa-agentic-commerce-dispute-seo-thumbnail"
+      "path": "/blog/visa-agentic-commerce-disputes",
+      "title": "Visa Already Decided Who Eats the Loss When Your AI Agent Buys the Wrong Thing"
     }
   }
 }
