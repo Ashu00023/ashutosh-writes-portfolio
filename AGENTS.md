@@ -8,4 +8,4 @@
 - Keep st-prefixed site styles in src/site.css, loaded after redesign.css, to isolate the new page styling.
 - Mount ConsentBar once outside route suspense with device-local notice acknowledgement so it remains available across navigation without a remote service.
 - Redirect retired blog and legal routes to the research archive or consolidated policy sections so older in-app links remain usable.
-- Keep blog-index metadata local when the shared route catalog omits that entry; use a static article's path when it has no canonicalPath, so the existing blog remains compatible.
+- Keep each article's clean `/blog/<slug>` path and its single headline in src/data/seo-data.json; vercel.json rewrites that path to the static HTML file and 308-redirects the old file URL. Never rename a published path.
