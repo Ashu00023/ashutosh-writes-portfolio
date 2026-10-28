@@ -10,9 +10,11 @@
 // - New page: add a route block to src/data/seo-data.json (with "outFile"), add a body function to
 //   scripts/page-bodies.mjs, add one entry to PAGES below, and add the URL to public/sitemap.xml and
 //   public/llms.txt.
-// - Changed visible copy on a page: change the matching text in scripts/page-bodies.mjs.
-// - New article: add the route to seo-data.json (with "staticSource"), put the HTML in public/static-blogs/,
-//   add the key to ARTICLES below and the entry to src/data/posts.ts.
+// - Changed visible copy on a page: change the matching text in scripts/page-bodies.mjs. The privacy and terms
+//   pages are the exception: their text is read straight from src/pages/legal/*.tsx (scripts/legal-html.mjs).
+// - New article: put the HTML in public/static-blogs/ (it is served as-is, not prerendered), add an entry
+//   {path, title} to seo-data.json, add a rewrite and an entry in ARTICLE_KEYS (page-bodies.mjs), add it to
+//   src/data/posts.ts, src/data/work.ts, public/sitemap.xml and public/llms.txt. See SEO_GEO_STRATEGY.md.
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
@@ -28,13 +30,13 @@ import {
   contactBodyHtml,
   authorBodyHtml,
   legalBodyHtml,
-  legalSections,
+  ARTICLE_KEYS,
 } from "./page-bodies.mjs";
+import { readLegalPage } from "./legal-html.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 const DIST = resolve(ROOT, "dist");
-const PUBLIC = resolve(ROOT, "public");
 
 function fail(message) {
   console.error(`[prerender] FATAL: ${message}`);
@@ -47,44 +49,6 @@ function escapeHtml(str) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
-}
-
-/**
- * Mirrors the extraction logic in src/components/StaticHtmlPage.tsx so the
- * prerendered output matches exactly what real users see once React
- * hydrates the page: strips <script> tags (they're irrelevant to a
- * non-JS crawler and would just be dead weight/risk in the static file),
- * but keeps <style> blocks and promotes any JSON-LD to the returned list.
- */
-function extractStaticBlogParts(raw) {
-  const headMatch = raw.match(/<head[^>]*>([\s\S]*?)<\/head>/i);
-  const bodyMatch = raw.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-  const head = headMatch ? headMatch[1] : "";
-  const bodyRaw = bodyMatch ? bodyMatch[1] : raw;
-
-  const styles = Array.from(head.matchAll(/<style[^>]*>[\s\S]*?<\/style>/gi))
-    .map((m) => m[0])
-    .join("\n");
-
-  const jsonLd = Array.from(
-    head.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi),
-  )
-    .map((m) => m[1].trim())
-    .filter(Boolean);
-
-  const bodyNoScripts = bodyRaw.replace(
-    /<script([^>]*)>([\s\S]*?)<\/script>/gi,
-    (_full, attrs, code) => {
-      const typeMatch = attrs.match(/type=["']([^"']+)["']/i);
-      const type = typeMatch ? typeMatch[1] : undefined;
-      if (type && type.toLowerCase() === "application/ld+json" && code.trim()) {
-        jsonLd.push(code.trim());
-      }
-      return "";
-    },
-  );
-
-  return { styles, body: bodyNoScripts, jsonLd };
 }
 
 function buildHeadTags({ title, description, canonical, ogType, ogImage, jsonLdList }) {
@@ -134,14 +98,12 @@ function stampTemplate(template, { headHtml, bodyHtml }) {
   return html;
 }
 
-const ARTICLES = ["aiPersonalFinance2026", "humanCreativityVsAi", "byoaShadowAi"];
-
 const crumbs = (seo, label, path) =>
   JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: seo.siteUrl },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${seo.siteUrl}/` },
       { "@type": "ListItem", position: 2, name: label, item: `${seo.siteUrl}${path}` },
     ],
   });
@@ -170,38 +132,46 @@ async function buildRoutes(seo) {
     add(key, body(seo), [crumbs(seo, label, seo.routes[key].path)]);
   }
 
+  const authorUrl = `${seo.siteUrl}${seo.routes.author.path}`;
   add("author", authorBodyHtml(seo), [
     JSON.stringify({
       "@context": "https://schema.org",
       "@graph": [
-        { ...seo.person, mainEntityOfPage: `${seo.siteUrl}${seo.routes.author.path}` },
+        { ...seo.person, mainEntityOfPage: authorUrl },
+        {
+          "@type": "ProfilePage",
+          "@id": authorUrl,
+          url: authorUrl,
+          name: seo.routes.author.title,
+          description: seo.routes.author.description,
+          mainEntity: { "@id": seo.person["@id"] },
+        },
         {
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: seo.siteUrl },
-            { "@type": "ListItem", position: 2, name: "Author", item: `${seo.siteUrl}${seo.routes.author.path}` },
+            { "@type": "ListItem", position: 1, name: "Home", item: `${seo.siteUrl}/` },
+            { "@type": "ListItem", position: 2, name: "Author", item: authorUrl },
           ],
+        },
+        {
+          "@type": "ItemList",
+          name: "Articles by Ashutosh Mahapatra",
+          itemListElement: ARTICLE_KEYS.map((key, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: seo.routes[key].title,
+            url: `${seo.siteUrl}${seo.routes[key].path}`,
+          })),
         },
       ],
     }),
   ]);
 
-  for (const key of ["privacyPolicy", "termsOfUse"]) {
+  const LEGAL = { privacyPolicy: "PrivacyPolicy.tsx", termsOfUse: "TermsOfUse.tsx" };
+  for (const [key, file] of Object.entries(LEGAL)) {
     const meta = seo.routes[key];
-    add(key, legalBodyHtml(meta, legalSections[key]), [crumbs(seo, meta.title.split("|")[0].trim(), meta.path)]);
-  }
-
-  for (const key of ARTICLES) {
-    const meta = seo.routes[key];
-    const raw = await readFile(join(PUBLIC, meta.staticSource), "utf8");
-    const { styles, body, jsonLd } = extractStaticBlogParts(raw);
-    add(
-      key,
-      `${styles}\n<article>${body}</article>`,
-      jsonLd.length
-        ? jsonLd
-        : [JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: meta.title })],
-    );
+    const page = await readLegalPage(ROOT, file);
+    add(key, legalBodyHtml(page), [crumbs(seo, meta.title.split("|")[0].trim(), meta.path)]);
   }
 
   return routes;

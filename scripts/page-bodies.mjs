@@ -6,9 +6,11 @@ const EMAIL = "ashutosh@ashutoshwrites.in";
 const LINKEDIN = "https://linkedin.com/in/ashutosh-mahapatra";
 
 export function articlePath(seo, key) {
-  const m = seo.routes[key];
-  return m.canonicalPath || m.path;
+  return seo.routes[key].path;
 }
+
+/** Every article, in the order of src/data/posts.ts. The author page and its ItemList schema use this order. */
+export const ARTICLE_KEYS = ["aiPersonalFinance2026", "humanCreativityVsAi", "byoaShadowAi", "visaAgenticCommerceDisputes"];
 
 const list = (items) => `<ul>\n${items.map((i) => `    <li>${i}</li>`).join("\n")}\n  </ul>`;
 
@@ -82,15 +84,17 @@ const close = `
 const researchItems = (seo) => [
   {
     href: articlePath(seo, "byoaShadowAi"),
-    title: "Shadow AI Inside Approved SaaS: How Agents Inherit Access",
+    title: seo.routes.byoaShadowAi.title,
+    image: "/byoa-shadow-ai-blog-thumbnail.webp",
+    thumbAlt: "Cover image for the shadow AI article: the line It's already inside, 150,000 agents by 2028, above a small device on a dark table",
     meta: "Cybersecurity &middot; 17 sources cited",
     problem: "Shadow AI coverage often centers on employees adopting new tools; the harder case is agents that arrive inside platforms already approved.",
     approach: "Wrote a technical threat brief on inherited OAuth scope nobody reviewed, grounded in CVE-2025-32711, three named incidents with their limits stated, dated EU AI Act obligations and a governance framework.",
     demonstrates: "Researching and explaining a technical security issue with primary-source verification and a usable governance framework.",
   },
   {
-    href: seo.routes.visaAgenticCommerceDisputes.path,
-    title: "Untangling Liability in Visa's New Agentic Commerce Dispute Rules",
+    href: articlePath(seo, "visaAgenticCommerceDisputes"),
+    title: seo.routes.visaAgenticCommerceDisputes.title,
     meta: "Fintech &amp; AI &middot; 12 primary sources cited",
     problem: "Visa quietly routed AI-agent purchases into its existing card-not-present dispute rules, and most coverage skipped the actual liability question.",
     approach: "Wrote a fact-checked breakdown of who eats the loss when an agent buys the wrong thing, verified against Visa's and Mastercard's own rule text.",
@@ -98,7 +102,7 @@ const researchItems = (seo) => [
   },
   {
     href: articlePath(seo, "aiPersonalFinance2026"),
-    title: "Scaling Trust for an AI-Powered Personal Finance Audience",
+    title: seo.routes.aiPersonalFinance2026.title,
     meta: "AI Fintech &middot; 20+ sourced statistics",
     problem: "AI personal-finance content was crowded with surface-level listicles with little sourced data.",
     approach: "Built a long-form authority piece anchored in 20+ sourced statistics, mapped six structural trends, and added a risk framework most coverage skips.",
@@ -106,7 +110,7 @@ const researchItems = (seo) => [
   },
   {
     href: articlePath(seo, "humanCreativityVsAi"),
-    title: "Winning the Authenticity Premium in the AI-Slop Era",
+    title: seo.routes.humanCreativityVsAi.title,
     meta: "Thesis &middot; Semrush: #1 pages 80.5% likely human-written",
     problem: "Audiences were tuning out AI-generated content, but the niche had no anchor article explaining why.",
     approach: "Built an original thesis on why human creators are earning an authenticity premium in 2026, tested against Semrush and Ahrefs ranking data and audience-engagement research.",
@@ -146,6 +150,7 @@ export function homeBodyHtml(seo) {
     <p>Send one article. We verify its claims, review it for search and answer engines, and test whether AI engines cite it. A few per month.</p>
     <p>Ashutosh Mahapatra, Founder, Content Strategy &amp; Lead Writer</p>
     <p><a href="${LINKEDIN}">LinkedIn</a> <a href="mailto:${EMAIL}">${EMAIL}</a></p>
+    <a href="${r[0].href}"><img src="${r[0].image}" alt="${r[0].thumbAlt}" width="800" height="450"><small>Latest research</small><span>${r[0].title}</span><p>${r[0].approach}</p></a>
   </section>
 
   <section id="build">
@@ -275,15 +280,13 @@ ${r.map((i) => `    <article><h3><a href="${i.href}">${i.title}</a></h3><p>${i.m
     <p>Google still indexed it, because Googlebot renders JavaScript. Most AI crawlers do not. So the articles ranked, and the engines that answer questions could not see them.</p>
     <p><strong>The fix.</strong> Every page now ships as real HTML, generated at build time, and the build fails if any page comes out empty. Each article also has one canonical address, and the sitemap carries last-modified dates.</p>
     <p>We have not yet measured the effect on AI citations. When we have, we will publish the result here, including if it is zero.</p>
+    <p>Check it yourself: <code>curl -s https://ashutoshwrites.online/ | grep -c "Fintech and AI-security articles that rank"</code>. This is the same check we run on your article in a free Article Check.</p>
     <p><a href="/contact">Get a free Article Check</a></p>
   </section>
   <section>
     <h2>All articles</h2>
     <ul>
-      <li><a href="${articlePath(seo, "aiPersonalFinance2026")}">AI Personal Finance 2026</a></li>
-      <li><a href="${articlePath(seo, "humanCreativityVsAi")}">The Authenticity Premium in the AI-Slop Era</a></li>
-      <li><a href="${articlePath(seo, "byoaShadowAi")}">Shadow AI Inside Approved SaaS: How Agents Inherit Access</a></li>
-      <li><a href="${seo.routes.visaAgenticCommerceDisputes.path}">Who Eats the Loss When Your AI Agent Buys the Wrong Thing</a></li>
+${ARTICLE_KEYS.map((key) => `      <li><a href="${articlePath(seo, key)}">${seo.routes[key].title}</a></li>`).join("\n")}
     </ul>
   </section>
 ${close}`);
@@ -321,41 +324,31 @@ export function contactBodyHtml() {
 }
 
 export function authorBodyHtml(seo) {
-  const items = ["aiPersonalFinance2026", "humanCreativityVsAi", "byoaShadowAi"]
-    .map((key) => `<a href="${articlePath(seo, key)}">${seo.routes[key].title}</a>`)
-    .concat(`<a href="${seo.routes.visaAgenticCommerceDisputes.path}">${seo.routes.visaAgenticCommerceDisputes.title}</a>`);
+  const items = ARTICLE_KEYS.map((key) => `<a href="${articlePath(seo, key)}">${seo.routes[key].title}</a>`);
   return wrap(`
   <h1>Ashutosh Mahapatra</h1>
   <p>Writer covering AI, fintech and cybersecurity, with on-page SEO, GEO and AEO built into every article</p>
   <p>I write long-form, research-backed articles about technology and money for readers who are tired of recycled takes. My work starts with primary sources (filings, CVEs, vendor documentation, published research) and ends with an argument a specialist can read without wincing.</p>
   <p>I use AI where it helps with research and workflow, but the argument, structure and final wording are mine.</p>
-  <h2>Articles by Ashutosh Mahapatra</h2>
-  ${list(items)}`);
+  <p>I work with founders, marketing leads, and content teams who need writing that holds up in front of an expert audience.</p>
+  <p><a href="${LINKEDIN}">LinkedIn</a> <a href="mailto:${EMAIL}">Email</a></p>
+  <section>
+    <h2>What I cover</h2>
+    <article><h3>Artificial intelligence</h3><p>How AI systems change work, money and trust, beyond the launch cycle.</p></article>
+    <article><h3>Cybersecurity</h3><p>Threat models teams live with: identity, OAuth scope, agent permissions, and shadow adoption.</p></article>
+    <article><h3>Business &amp; fintech</h3><p>Personal finance, B2B SaaS economics, and the incentives behind product decisions.</p></article>
+  </section>
+  <section>
+    <h2>Articles by Ashutosh Mahapatra</h2>
+    ${list(items)}
+  </section>`);
 }
 
-export const legalSections = {
-  privacyPolicy: [
-    "What is collected through the Article Check form, and how it is used",
-    "Service providers: hosting, database, email delivery, fonts and Google Analytics (only if you accept it)",
-    "Cookies, local storage, Google Analytics cookies (set only after you accept) and third-party fonts",
-    "Retention, international transfers, and your privacy rights",
-  ],
-  termsOfUse: [
-    "Intellectual property and content ownership",
-    "Permitted use, attribution, and republication limits",
-    "Acceptable use and third-party links",
-    "Editorial disclaimer: educational content, no professional advice, how AI is used",
-    "Payment, refund and revision terms for paid projects",
-    "Limitation of liability and governing law",
-  ],
-};
-
-export function legalBodyHtml(meta, sections) {
-  const name = meta.title.split("|")[0].trim();
+export function legalBodyHtml(page) {
   return wrap(`
-  <h1>${name}</h1>
-  <p>${meta.description}</p>
-  <h2>What this page covers</h2>
-  ${list(sections)}
-  <p>Questions? Email <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>`);
+  <h1>${page.title}</h1>
+  <p>${page.intro}</p>
+  <p>Last updated: ${page.updated}</p>
+  ${page.bodyHtml}
+  <p>Questions about this page? <a href="mailto:${EMAIL}">${EMAIL}</a></p>`);
 }
