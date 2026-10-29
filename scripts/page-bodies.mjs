@@ -123,12 +123,15 @@ const serviceBlocks = [
   { id: "articles", title: "Research-led articles", lede: "Long-form fintech, payments and AI-security articles, researched to primary sources and edited by a person, delivered ready to publish with the on-page SEO, GEO and AEO already built in.", get: ["Primary-source research and a source ledger for every claim", "An original angle that adds information other articles lack", "Written and edited by a person, with AI used only for research support", "Delivered as a Google Doc, or as a coded HTML/CSS page with Schema", "Terms, scope and revisions agreed in writing before work starts"], note: "Available as a single article or a monthly series." },
   { id: "strategy", title: "Content strategy", lede: "Which articles to publish, in what order, and why. Built around what your buyers search and what AI engines already cite.", get: ["A topic map tied to search intent in your niche", "A gap review of what already ranks and what AI engines already quote", "A content calendar built around claims you can back with evidence", "Briefs that any writer can follow, ours or yours"], note: "Available as a standalone plan or as the first step of a monthly series." },
   { id: "article-check", title: "Article Check", lede: "Free, and the easiest way to start. Send one article and see the work before you commit to anything.", get: ["Every statistic, date and quote in the article checked against primary sources", "A test of whether ChatGPT, Perplexity, Gemini and Claude cite it, with prompts and dates recorded", "A check that your Schema matches the visible article", "A one-page written report, yours to keep"], note: "We take a few each month, because each one is done by hand." },
+    { id: "agency", title: "Works with your SEO agency", lede: "Already have an SEO agency or an in-house SEO team? We work inside their process, never around it. They keep your site strategy, technical SEO, links, publishing and reporting. We take the article.", get: ["A one-page lane sheet that sets out who owns what, shared with your SEO team at the start", "A site-readiness checklist for your SEO team: crawler access, server-rendered HTML, template Schema, canonicals and author pages", "Articles delivered in your agency's format, with draft access only. We never publish to your site", "Anything we find about your wider site goes to your SEO team first. We do not offer or pitch site-wide SEO", "A first article as a pilot, so everyone sees the workflow before any commitment"], note: "You pay us directly. If your SEO team is slow to reply, your article does not wait: we give you the checklist to forward. We measure whether an article is cited, not how much traffic AI search sends, so attribution stays with your SEO team's reporting." },
 ];
 
 const faqs = [
   ["What is a source ledger?", "A list of every statistic, date and quote in an article, with its primary source, the date of that source and what it does and does not prove. It ships with the article, so anyone can check it."],
-  ["Do you do full-site SEO audits?", "No. We work at article level: the article, its structure, its Schema and whether it gets cited. If you need a full-site technical audit, we will say so and point you to a specialist."],
-  ["Do you guarantee rankings or AI citations?", "No. Search results and AI answers depend on factors nobody controls, and AI answers change from run to run. We build articles to be rankable and quotable, then test and report what we see, including the misses."],
+  ["Do you do full-site SEO audits?", "No. We work at article level: the article, its structure, its Schema and whether it gets cited. If you need a full-site technical audit, we will say so, and we will work alongside the SEO team or agency you already have, or point you to a specialist if you have none.s or AI citations?""],
+["We already have an SEO agency. Can you work with them?", "Yes, and it is how we prefer to work. Your agency keeps strategy, technical SEO, links, publishing and reporting. We take the article: research, claim verification, structure, on-page SEO, a Schema draft and citation tests. A one-page lane sheet sets out who owns what, and we only ever need draft access."],
+["Will you try to replace our agency or sell us site-wide SEO?", "No. We do not offer site-wide or technical SEO. If we find an issue elsewhere on your site, it goes to your SEO team first, and that work stays with them."],
+  ["Do you guarantee rankings or AI citations?", "No. We test four things and report what we see: every claim is checked against its source, the article structure is correct, the Schema matches the visible page, and a fixed set of prompts is asked across ChatGPT, Perplexity, Gemini and Claude. AI answers vary between runs, so each prompt is repeated several times and we report how many runs cited the article, misses included. We record whether the article's URL was cited, the brand was mentioned or the brand was recommended. We measure whether an article is cited, not how much traffic AI search sends."],
   ["Do you use AI to write the articles?", "We use AI tools for research support and workflow efficiency. The argument, structure and final wording are written and edited by a person, and every claim is checked against its source before it goes in."],
   ["What do you need from us to start?", "A topic or an existing article, who it is for, and anything proprietary you want us to cite. For an Article Check, one URL is enough."],
   ["How is pricing set?", "Every engagement is scoped to your goals and quoted after your Article Check. We do not publish a price list because the work varies with research depth, delivery format and the number of articles."],
@@ -155,7 +158,7 @@ export function homeBodyHtml(seo) {
 
   <section id="build">
     <h2>What we do, at article level</h2>
-    <p>Three things, done well. We do not do full-site audits or volume content.</p>
+    <p>Three things, done well. We do not do full-site audits or volume content, and if you already have an SEO agency, <a href="/services#agency">we work with them</a>.</p>
     <article><h3>On-page SEO, GEO &amp; AEO</h3><p>Search, generative-engine and answer-engine optimisation built into each article, not bolted on: intent-matched headings, answer-first blocks, Schema that mirrors the page, and refreshes for older articles that deserve to rank or be cited.</p><p><a href="/services#search">See how it works</a></p></article>
     <article><h3>Research-led articles</h3><p>Long-form articles researched to primary sources and written to a publishable standard, each with its on-page SEO, GEO and AEO already in place. Thought leadership and search-led pieces for fintech and AI-security buyers.</p><p><a href="/services#articles">See what is included</a></p></article>
     <article><h3>Content strategy</h3><p>Topic and angle strategy for your niche, a content calendar, and a brief for every article, so each one earns its place.</p><p><a href="/services#strategy">See what you get</a></p></article>
@@ -173,8 +176,7 @@ export function homeBodyHtml(seo) {
       <li>A QA tester checks it on mobile</li>
     </ol>
     <h3>With us, one handoff</h3>
-    <p>A finished article, with Schema built in and the ledger behind it, as a Google Doc or a fully coded page. Researched, written and checked by one team, so nothing is lost between roles.</p>
-  </section>
+    <p>A finished article, with Schema built in and the ledger behind it, as a Google Doc or a fully coded page. Researched, written and checked by one team, so nothing is lost between roles. If you already have an SEO team or agency, the handoff goes to them, in their format.
 
   <section id="research">
     <h2>Research we published first</h2>
@@ -187,9 +189,9 @@ ${r.slice(0, 3).map((i) => `    <article><h3><a href="${i.href}">${i.title}</a><
     <h2>Who this is for</h2>
     <p>We would rather be the right fit for a few teams than a loose fit for many.</p>
     <h3>Built for</h3>
-    ${list(["Fintech, payments and AI-security teams", "B2B SaaS companies selling into those markets", "Teams where a wrong number in an article is a liability", "A content or marketing lead who needs articles an expert, or a compliance team, will read closely"])}
+    ${list(["Fintech, payments and AI-security teams", "B2B SaaS companies selling into those markets", "Teams where a wrong number in an article is a liability", "A content or marketing lead who needs articles an expert, or a compliance team, will read closely", "Teams that already work with an SEO agency or an in-house SEO team, and want a specialist for the article itself"])}
     <h3>Not for</h3>
-    ${list(["Full-site SEO audits or technical SEO programmes. We work at article level", "Volume content or bulk listicles", "Guaranteed rankings or guaranteed AI citations. We test and report, and never promise", "Articles written without sources"])}
+    ${list(["Full-site SEO audits or technical SEO programmes. We work at article level, alongside whoever runs your site", "Volume content or bulk listicles", "Guaranteed rankings or guaranteed AI citations. We test and report, and never promise", "Articles written without sources"])}
     <h3>One article</h3><p>A single finished article and its ledger. The simplest way to see the whole workflow.</p>
     <h3>A series</h3><p>Four or more connected articles built around one topic, so they support each other.</p>
     <h3>A programme</h3><p>New articles every month plus quarterly re-verification of the ones already live.</p>
@@ -240,7 +242,7 @@ export function methodBodyHtml() {
     <p>We never guarantee rankings or citations. We test four things and report what we see.</p>
     <h3>Claims</h3><p>Every statistic, date and quote is checked against its source before it goes in.</p>
     <h3>Structure</h3><p>Schema.org JSON-LD mirrors what is visible in the article, nothing more and nothing less.</p>
-    <h3>Citations</h3><p>A fixed set of prompts is asked across ChatGPT, Perplexity, Gemini and Claude, with the engine, prompt and date recorded. AI answers vary between runs, so we report misses as well as hits.</p>
+    <h3>Citations</h3><p>A fixed set of prompts is asked across ChatGPT, Perplexity, Gemini and Claude, with the engine, prompt and date recorded. AI answers vary between runs, so each prompt is repeated several times and we report how many runs cited the article, misses included. We record whether the article's URL was cited, the brand was mentioned or the brand was recommended. We measure whether an article is cited, not how much traffic AI search sends.</p>
     <h3>Crawlability</h3><p>The raw HTML contains the content, because most AI crawlers do not run JavaScript.</p>
     <p>We use AI tools for research support and workflow efficiency. The argument, structure and final decisions stay with a person.</p>
   </section>

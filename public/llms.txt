@@ -1,11 +1,11 @@
 # Ashutosh Writes
 
-> Ashutosh Writes is a boutique research-led writing studio for fintech and AI-security teams, led by Ashutosh Mahapatra in Bhubaneswar, India. We write long-form articles researched to primary sources, with on-page SEO, GEO and AEO built in, and content strategy. Every article ships with a source ledger. We do not do full-site SEO audits or volume content.
+> Ashutosh Writes is a boutique research-led writing studio for fintech and AI-security teams, led by Ashutosh Mahapatra in Bhubaneswar, India. We write long-form articles researched to primary sources, with on-page SEO, GEO and AEO built in, and content strategy. Every article ships with a source ledger. We do not do full-site SEO audits or volume content, and we work alongside a client's existing SEO agency or team rather than replacing it.
 
 ## Pages
 
 - [Homepage](https://ashutoshwrites.online/): What the studio does, the source-ledger standard, research samples and who the studio is for.
-- [Services](https://ashutoshwrites.online/services): On-page SEO, GEO and AEO, research-led articles, content strategy, and the free Article Check.
+- [Services](https://ashutoshwrites.online/services): On-page SEO, GEO and AEO, research-led articles, content strategy, how we work alongside your existing SEO agency or team, and the free Article Check.
 - [Method](https://ashutoshwrites.online/method): The five-step process, the six-field source ledger, and what we test instead of promising rankings or citations.
 - [Work](https://ashutoshwrites.online/work): Four self-directed writing samples in fintech and AI security, none of them client work, each built with on-page SEO, GEO and AEO.
 - [Research](https://ashutoshwrites.online/research): The independent research articles, plus how we audited our own site for AI-crawler visibility.
