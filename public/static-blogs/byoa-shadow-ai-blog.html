@@ -736,7 +736,7 @@ body .cve-tag,body .cap-source,body .pillar-num,body .disclaimer,body .eyebrow{f
 .corrections time{font-family:var(--font-mono);font-size:12px;font-weight:500;color:hsl(var(--subtle))}
 </style>
 <script src="/analytics.js" defer></script>
-</head>
+<link rel="stylesheet" href="/article-cta.css"></head>
 <body>
 
 <!-- ── MASTHEAD ── -->
@@ -870,7 +870,7 @@ body .cve-tag,body .cap-source,body .pillar-num,body .disclaimer,body .eyebrow{f
 
   <p>Platform defaults are tightening, but only for new consent requests. Microsoft's managed default consent policy now requires admin approval for more Graph permissions (message center item MC1304287), yet it doesn't revoke grants that already exist. A vendor's inherited scope from years ago stays exactly as it was.</p>
 
-  <h2 id="compliance">Shadow AI Compliance: GDPR, SOC 2, ISO 27001, and the EU AI Act</h2>
+  <aside class="aw-cta" aria-label="Article Check offer"><p><strong>Publishing security or AI-governance content for your own company?</strong> Send us one of your articles. We check every claim in it and test whether AI engines cite it. It is free.</p><p><a href="https://ashutoshwrites.online/contact?src=byoa-mid" data-aw-cta="byoa-mid">Get a free Article Check &rarr;</a></p></aside> <h2 id="compliance">Shadow AI Compliance: GDPR, SOC 2, ISO 27001, and the EU AI Act</h2>
   <p>When an embedded agent inside an approved platform processes personal data, which framework governs it, and who actually signed off on the legal basis? Worth putting to your compliance lead directly, because one unregistered agent can implicate several frameworks at once, and I don't think most orgs have mapped that out yet.</p>
   <p>SOC 2 is the more straightforward one from where I sit. The criteria don't name agents, but an agent that touches in-scope systems should fall under the same logical access (CC6), system operations (CC7), and change management (CC8) controls as any other component. An agent with no owner and no access review is the kind of gap that can surface as an exception; whether it does depends on how your controls are worded and on your auditor's judgment. ISO 27001:2022 Annex A.5.9 expects an inventory of information and other associated assets with named owners, so an unregistered agent that handles in-scope information is an inventory gap even in a certified ISMS.</p>
   <p>GDPR is where I'll admit I'm out of my depth a little. I'm not a lawyer, but reading Article 28 against how these platforms actually work, it requires a data processing agreement with any processor handling personal data. Most enterprise contracts with SaaS vendors were signed before those vendors' products could act autonomously. Your existing DPAs almost certainly don't contemplate an embedded agent as its own distinct processing operation. The legal basis regulators expect to find may not exist anywhere in your vendor stack, not because anyone was careless, but because the contract predates the capability by years. Get real counsel on this rather than a security engineer's read of it.</p>
@@ -943,7 +943,7 @@ body .cve-tag,body .cap-source,body .pillar-num,body .disclaimer,body .eyebrow{f
   <p>But the agents worth losing sleep over right now aren't the ones some employee snuck past you. They're sitting inside contracts you already signed, waiting for a vendor to ship the next update, and nobody's going to email you before that happens. The teams getting ahead of this aren't trying to ban agentic tools. That fight was lost before it started. They're the ones instrumenting behavior now, while they're running dozens of agents, so that running thousands doesn't land as a surprise at 2 AM.</p>
 
   <div class="cta-box">
-    Need security or AI-governance articles that rank, get cited, and hold up to a practitioner&rsquo;s read? <a href="https://ashutoshwrites.online/contact">Get a free Article Check</a>.
+    Need security or AI-governance articles that rank, get cited, and hold up to a practitioner&rsquo;s read? read? <a href="https://ashutoshwrites.online/contact?src=byoa-end" data-aw-cta="byoa-end">Get a free Article Check</a>.
   </div>
 
   <h2 id="sources">Sources and Verification</h2>
@@ -1055,7 +1055,7 @@ body .cve-tag,body .cap-source,body .pillar-num,body .disclaimer,body .eyebrow{f
 
   <div class="cta-box" style="margin-top:34px;">
     Need security or AI-governance articles that rank, get cited, and hold up to a practitioner&rsquo;s scrutiny, not just a search engine&rsquo;s? This piece is a self-initiated sample of how we write: primary-source research, answer-first structure and schema that mirrors the visible article. Send us one article. We check every claim in it and test whether AI engines cite it.<br><br>
-    <a href="https://ashutoshwrites.online/contact">Get a free Article Check</a> &nbsp;·&nbsp; <a href="mailto:ashutosh@ashutoshwrites.in">ashutosh@ashutoshwrites.in</a>
+    <a href="https://ashutoshwrites.online/contact?src=byoa-foot" data-aw-cta="byoa-foot">Get a free Article Check</a> &nbsp;·&nbsp; <a href="mailto:ashutosh@ashutoshwrites.in">ashutosh@ashutoshwrites.in</a>
   </div>
 
 </main>
