@@ -2,6 +2,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { TextField, TextArea } from "./InquiryField";
+import { Label } from "@/components/ui/label";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
@@ -13,18 +14,19 @@ const schema = z.object({
     .url("Please enter the full article link, starting with https://")
     .refine((u) => /^https?:\/\//i.test(u), "Please enter the full article link, starting with https://"),
   company: z.string().trim().max(200).optional().or(z.literal("")),
-  notes: z.string().trim().max(2000).optional().or(z.literal("")),
+  notes: z.string().trim().max(1900).optional().or(z.literal("")),
+  hasAgency: z.enum(["", "agency", "inhouse", "none", "unsure"]).optional(),
   consent: z.literal(true, { errorMap: () => ({ message: "Please tick the box so we can reply to you" }) }),
   // honeypot
   website_url: z.string().max(0).optional().or(z.literal("")),
 });
 
 type Values = {
-  name: string; email: string; articleUrl: string; company: string; notes: string; consent: boolean; website_url: string;
+  name: string; email: string; articleUrl: string; company: string; notes: string; hasAgency: string; consent: boolean; website_url: string;
 };
 type Errors = Partial<Record<keyof Values, string>>;
 
-const initial: Values = { name: "", email: "", articleUrl: "", company: "", notes: "", consent: false, website_url: "" };
+const initial: Values = { name: "", email: "", articleUrl: "", company: "", notes: "", hasAgency: "", consent: false, website_url: "" };
 
 const ArticleCheckForm = () => {
   const [values, setValues] = useState<Values>(initial);
@@ -33,7 +35,7 @@ const ArticleCheckForm = () => {
   const [done, setDone] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
-  const set = (k: keyof Values) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+  const set = (k: keyof Values) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setValues((v) => ({ ...v, [k]: e.target.value }));
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -55,10 +57,19 @@ const ArticleCheckForm = () => {
     setSubmitting(true);
     try {
       const { supabase } = await import("@/integrations/supabase/client");
-      const { consent: _consent, ...rest } = parsed.data;
+      const { consent: _consent, hasAgency, notes, ...rest } = parsed.data;
+      const agencyLabels: Record<string, string> = {
+        agency: "Yes, an outside SEO agency",
+        inhouse: "Yes, an in-house SEO team",
+        none: "No",
+        unsure: "Not sure",
+      };
+      // The edge function only accepts known fields, so this answer travels at the top of "notes".
+      const agencyLine = hasAgency && agencyLabels[hasAgency] ? `SEO support: ${agencyLabels[hasAgency]}` : "";
+      const combinedNotes = [agencyLine, notes].filter(Boolean).join("\n\n");
       // type stays "seo_blog" so the existing inquiries table constraint accepts it. The intent field tells the two kinds apart.
       const { error } = await supabase.functions.invoke("send-inquiry-email", {
-        body: { type: "seo_blog", data: { ...rest, intent: "article_check", consent: "yes" } },
+        body: { type: "seo_blog", data: { ...rest, ...(combinedNotes ? { notes: combinedNotes } : {}), intent: "article_check", consent: "yes" } },
       });
       if (error) throw error;
       setDone(true);
@@ -94,6 +105,22 @@ const ArticleCheckForm = () => {
         hint="A published article, or a link to a Google Doc anyone with the link can view."
       />
       <TextField id="company" label="Company" value={values.company} onChange={set("company")} error={errors.company} autoComplete="organization" />
+      <div className="space-y-1.5">
+        <Label htmlFor="hasAgency" className="text-sm font-medium text-foreground">Does an SEO agency or team look after your site?</Label>
+        <select
+          id="hasAgency"
+          value={values.hasAgency}
+          onChange={set("hasAgency")}
+          className="flex h-10 w-full rounded-md border border-border bg-background/60 px-3 py-2 text-sm text-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          <option value="">Choose one (optional)</option>
+          <option value="agency">Yes, an outside agency</option>
+          <option value="inhouse">Yes, an in-house SEO team</option>
+          <option value="none">No</option>
+          <option value="unsure">Not sure</option>
+        </select>
+        <p className="text-xs text-muted-foreground">If yes, we work with them. We never need publishing access.</p>
+      </div>
       <TextArea id="notes" label="Anything we should know?" value={values.notes} onChange={set("notes")} error={errors.notes}
         placeholder="Who the article is for, the keyword it targets, or what worries you about it." />
 
