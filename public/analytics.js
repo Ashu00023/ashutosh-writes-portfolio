@@ -20,8 +20,13 @@
 
   window.awAnalytics = {
     grant: function () { store("granted"); load(); },
-    deny: function () { store("denied"); }
+    deny: function () { store("denied"); },
+    track: function (name, params) { if (loaded) gtag("event", name, params || {}); }
   };
+  document.addEventListener("click", function (e) {
+    var el = e.target && e.target.closest ? e.target.closest("[data-aw-cta]") : null;
+    if (el) window.awAnalytics.track("cta_click", { cta_id: el.getAttribute("data-aw-cta"), page_path: location.pathname });
+  });
 
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}

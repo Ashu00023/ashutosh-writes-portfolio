@@ -66,12 +66,15 @@ const ArticleCheckForm = () => {
       };
       // The edge function only accepts known fields, so this answer travels at the top of "notes".
       const agencyLine = hasAgency && agencyLabels[hasAgency] ? `SEO support: ${agencyLabels[hasAgency]}` : "";
-      const combinedNotes = [agencyLine, notes].filter(Boolean).join("\n\n");
+      const src = (new URLSearchParams(window.location.search).get("src") || "").replace(/[^a-z0-9_-]/gi, "").slice(0, 40);
+      const srcLine = src ? `Came from: ${src}` : "";
+      const combinedNotes = [agencyLine, srcLine, notes].filter(Boolean).join("\n\n");
       // type stays "seo_blog" so the existing inquiries table constraint accepts it. The intent field tells the two kinds apart.
       const { error } = await supabase.functions.invoke("send-inquiry-email", {
         body: { type: "seo_blog", data: { ...rest, ...(combinedNotes ? { notes: combinedNotes } : {}), intent: "article_check", consent: "yes" } },
       });
       if (error) throw error;
+      (window as any).awAnalytics?.track?.("generate_lead", { form: "article_check", source: src || "direct", has_agency: hasAgency || "unanswered" });
       setDone(true);
     } catch (err) {
       setServerError(err instanceof Error ? err.message : "Something went wrong. Please try again or email us directly.");

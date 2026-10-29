@@ -1,0 +1,5 @@
+.aw-cta{box-sizing:border-box;width:min(44rem,calc(100% - 2rem));margin:2.5rem auto;padding:1.1rem 1.3rem;border:1px solid color-mix(in srgb,currentColor 30%,transparent);border-radius:12px;background:color-mix(in srgb,currentColor 4%,transparent);color:inherit;font-size:1rem;line-height:1.55}
+.aw-cta p{margin:0 0 .7rem;max-width:none;font-size:inherit}
+.aw-cta p:last-child{margin-bottom:0}
+.aw-cta a{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.aw-cta a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
