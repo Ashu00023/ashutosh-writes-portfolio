@@ -3,9 +3,10 @@ const builtFor = [
   "B2B SaaS companies selling into those markets",
   "Teams where a wrong number in an article is a liability",
   "A content or marketing lead who needs articles an expert, or a compliance team, will read closely",
+  "Teams that already work with an SEO agency or an in-house SEO team, and want a specialist for the article itself",
 ];
 const notFor = [
-  "Full-site SEO audits or technical SEO programmes. We work at article level",
+  "Full-site SEO audits or technical SEO programmes. We work at article level, alongside whoever runs your site",
   "Volume content or bulk listicles",
   "Guaranteed rankings or guaranteed AI citations. We test and report, and never promise",
   "Articles written without sources",

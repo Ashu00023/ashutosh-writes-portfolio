@@ -16,7 +16,7 @@ const ledgerFields = [
 const tests = [
   { t: "Claims", d: "Every statistic, date and quote is checked against its source before it goes in." },
   { t: "Structure", d: "Schema.org JSON-LD mirrors what is visible in the article, nothing more and nothing less." },
-  { t: "Citations", d: "A fixed set of prompts is asked across ChatGPT, Perplexity, Gemini and Claude, with the engine, prompt and date recorded. AI answers vary between runs, so we report misses as well as hits." },
+  { t: "Citations", d: "A fixed set of prompts is asked across ChatGPT, Perplexity, Gemini and Claude, with the engine, prompt and date recorded. AI answers vary between runs, so each prompt is repeated several times and we report how many runs cited the article, misses included. We record whether the article's URL was cited, the brand was mentioned or the brand was recommended. We measure whether an article is cited, not how much traffic AI search sends." },
   { t: "Crawlability", d: "The raw HTML contains the content, because most AI crawlers do not run JavaScript." },
 ];
 

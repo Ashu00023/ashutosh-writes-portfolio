@@ -27,7 +27,7 @@ const LedgerSection = () => (
         <div className="rd-one">
           <h3>With us, one handoff</h3>
           <p>
-            A finished article, with Schema built in and the ledger behind it, as a Google Doc or a fully coded page. Researched, written and checked by one team, so nothing is lost between roles.
+            A finished article, with Schema built in and the ledger behind it, as a Google Doc or a fully coded page. Researched, written and checked by one team, so nothing is lost between roles. If you already have an SEO team or agency, the handoff goes to them, in their format.
           </p>
         </div>
       </div>

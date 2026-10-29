@@ -27,7 +27,7 @@ const BuildSection = () => (
     <div className="rd-wrap">
       <div className="rd-hd">
         <h2 className="rd-big">What we do, at article level</h2>
-        <p>Three things, done well. We do not do full-site audits or volume content.</p>
+        <p>Three things, done well. We do not do full-site audits or volume content, and if you already have an SEO agency, <a href="/services#agency" className="underline underline-offset-2">we work with them</a>.</p>
       </div>
       <div className="st-cards">
         {items.map((it) => (

@@ -57,9 +57,21 @@ const blocks = [
   },
 ];
 
+const agencyGet = [
+  "A one-page lane sheet that sets out who owns what, shared with your SEO team at the start",
+  "A site-readiness checklist for your SEO team: crawler access, server-rendered HTML, template Schema, canonicals and author pages",
+  "Articles delivered in your agency's format, with draft access only. We never publish to your site",
+  "Anything we find about your wider site goes to your SEO team first. We do not offer or pitch site-wide SEO",
+  "A first article as a pilot, so everyone sees the workflow before any commitment",
+];
+const agencyNote =
+  "You pay us directly. If your SEO team is slow to reply, your article does not wait: we give you the checklist to forward. We measure whether an article is cited, not how much traffic AI search sends, so attribution stays with your SEO team's reporting.";
+
 const faqs = [
   { q: "What is a source ledger?", a: "A list of every statistic, date and quote in an article, with its primary source, the date of that source and what it does and does not prove. It ships with the article, so anyone can check it." },
-  { q: "Do you do full-site SEO audits?", a: "No. We work at article level: the article, its structure, its Schema and whether it gets cited. If you need a full-site technical audit, we will say so and point you to a specialist." },
+  { q: "Do you do full-site SEO audits?", a: "No. We work at article level: the article, its structure, its Schema and whether it gets cited. If you need a full-site technical audit, we will say so, and we will work alongside the SEO team or agency you already have, or point you to a specialist if you have none." },
+  { q: "We already have an SEO agency. Can you work with them?", a: "Yes, and it is how we prefer to work. Your agency keeps strategy, technical SEO, links, publishing and reporting. We take the article: research, claim verification, structure, on-page SEO, a Schema draft and citation tests. A one-page lane sheet sets out who owns what, and we only ever need draft access." },
+  { q: "Will you try to replace our agency or sell us site-wide SEO?", a: "No. We do not offer site-wide or technical SEO. If we find an issue elsewhere on your site, it goes to your SEO team first, and that work stays with them." },
   { q: "Do you guarantee rankings or AI citations?", a: "No. Search results and AI answers depend on factors nobody controls, and AI answers change from run to run. We build articles to be rankable and quotable, then test and report what we see, including the misses." },
   { q: "Do you use AI to write the articles?", a: "We use AI tools for research support and workflow efficiency. The argument, structure and final wording are written and edited by a person, and every claim is checked against its source before it goes in." },
   { q: "What do you need from us to start?", a: "A topic or an existing article, who it is for, and anything proprietary you want us to cite. For an Article Check, one URL is enough." },
@@ -105,6 +117,27 @@ const Services = () => (
               </div>
             </div>
           ))}
+
+          <div id="agency" className="st-blk">
+            <div>
+              <h2>Works with your SEO agency</h2>
+              <p className="st-lede">
+                Already have an SEO agency or an in-house SEO team? We work inside their process, never around it. They keep your site strategy, technical SEO, links, publishing and reporting. We take the article.
+              </p>
+            </div>
+            <div>
+              <h3>What you get</h3>
+              <ul className="rd-hl">
+                {agencyGet.map((g) => (
+                  <li key={g}>{g}</li>
+                ))}
+              </ul>
+              <p className="st-small">{agencyNote}</p>
+              <div className="rd-btns" style={{ margin: "20px 0 0" }}>
+                <a className="rd-b1" href="/contact">Get a free Article Check</a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
