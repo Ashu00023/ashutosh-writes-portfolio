@@ -3,6 +3,7 @@ import { z } from "zod";
 import { CheckCircle } from "lucide-react";
 import { TextField, TextArea } from "./InquiryField";
 import { Label } from "@/components/ui/label";
+import { EMAIL } from "@/data/site";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
@@ -35,6 +36,10 @@ const agencyLabels: Record<string, string> = {
   unsure: "Not sure",
 };
 
+type AnalyticsWindow = Window & {
+  awAnalytics?: { track?: (event: string, params?: Record<string, unknown>) => void };
+};
+
 const ArticleCheckForm = () => {
   const [values, setValues] = useState<Values>(initial);
   const [errors, setErrors] = useState<Errors>({});
@@ -58,35 +63,34 @@ const ArticleCheckForm = () => {
       return;
     }
     setErrors({});
-    setSubmitting(true);
-    try {
-      const { supabase } = await import("@/integrations/supabase/client");
-      const { consent: _consent, hasAgency, notes, ...rest } = parsed.data;
-      const agencyLabels: Record<string, string> = {
-        agency: "Yes, an outside SEO agency",
-        inhouse: "Yes, an in-house SEO team",
-        none: "No",
-        unsure: "Not sure",
-      };
-      // The edge function only accepts known fields, so this answer travels at the top of "notes".
-      const agencyLine = hasAgency && agencyLabels[hasAgency] ? `SEO support: ${agencyLabels[hasAgency]}` : "";
-      const src = (new URLSearchParams(window.location.search).get("src") || "").replace(/[^a-z0-9_-]/gi, "").slice(0, 40);
-      const srcLine = src ? `Came from: ${src}` : "";
-      const combinedNotes = [agencyLine, srcLine, notes].filter(Boolean).join("\n\n");
-      // type stays "seo_blog" so the existing inquiries table constraint accepts it. The intent field tells the two kinds apart.
-      const { error } = await supabase.functions.invoke("send-inquiry-email", {
-        body: { type: "seo_blog", data: { ...rest, ...(combinedNotes ? { notes: combinedNotes } : {}), intent: "article_check", consent: "yes" } },
-      });
-      if (error) throw error;
-      (window as any).awAnalytics?.track?.("generate_lead", { form: "article_check", source: src || "direct", has_agency: hasAgency || "unanswered" });
-      setDone(true);
-    } catch (err) {
-      setServerError(err instanceof Error ? err.message : "Something went wrong. Please try again or email us directly.");
-    } finally {
-      setSubmitting(false);
-    }
+
+    const { name, email, articleUrl, company, notes, hasAgency } = parsed.data;
+    const src = (new URLSearchParams(window.location.search).get("src") || "").replace(/[^a-z0-9_-]/gi, "").slice(0, 40);
+
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Article link: ${articleUrl}`,
+      company ? `Company: ${company}` : "",
+      hasAgency && agencyLabels[hasAgency] ? `SEO support: ${agencyLabels[hasAgency]}` : "",
+      src ? `Came from: ${src}` : "",
+      notes ? `\nNotes:\n${notes}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n")
+      .replace(/\n/g, "\r\n");
+
+    const subject = `Article Check request from ${name}`;
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    (window as AnalyticsWindow).awAnalytics?.track?.("generate_lead", {
+      form: "article_check",
+      source: src || "direct",
+      has_agency: hasAgency || "unanswered",
+    });
+    setDone(true);
   };
-  
+
   if (done) {
     return (
       <div role="status" className="flex flex-col items-center justify-center gap-4 py-12 text-center">
