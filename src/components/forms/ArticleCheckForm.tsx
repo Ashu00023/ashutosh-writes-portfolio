@@ -4,6 +4,9 @@ import { CheckCircle, Loader2 } from "lucide-react";
 import { TextField, TextArea } from "./InquiryField";
 import { Label } from "@/components/ui/label";
 
+// URL of the Supabase Edge Function, e.g. https://<project-ref>.supabase.co/functions/v1/send-inquiry-email
+const ENDPOINT = import.meta.env.VITE_INQUIRY_ENDPOINT as string | undefined;
+
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
@@ -14,7 +17,7 @@ const schema = z.object({
     .url("Please enter the full article link, starting with https://")
     .refine((u) => /^https?:\/\//i.test(u), "Please enter the full article link, starting with https://"),
   company: z.string().trim().max(200).optional().or(z.literal("")),
-  notes: z.string().trim().max(1900).optional().or(z.literal("")),
+  notes: z.string().trim().max(2000).optional().or(z.literal("")),
   hasAgency: z.enum(["", "agency", "inhouse", "none", "unsure"]).optional(),
   consent: z.literal(true, { errorMap: () => ({ message: "Please tick the box so we can reply to you" }) }),
   // honeypot
@@ -56,24 +59,23 @@ const ArticleCheckForm = () => {
     setErrors({});
     setSubmitting(true);
     try {
-      const { supabase } = await import("@/integrations/supabase/client");
-      const { consent: _consent, hasAgency, notes, ...rest } = parsed.data;
-      const agencyLabels: Record<string, string> = {
-        agency: "Yes, an outside SEO agency",
-        inhouse: "Yes, an in-house SEO team",
-        none: "No",
-        unsure: "Not sure",
-      };
-      // The edge function only accepts known fields, so this answer travels at the top of "notes".
-      const agencyLine = hasAgency && agencyLabels[hasAgency] ? `SEO support: ${agencyLabels[hasAgency]}` : "";
+      if (!ENDPOINT) throw new Error("The form is not connected yet. Please email us directly.");
+      const { hasAgency, ...rest } = parsed.data;
       const src = (new URLSearchParams(window.location.search).get("src") || "").replace(/[^a-z0-9_-]/gi, "").slice(0, 40);
-      const srcLine = src ? `Came from: ${src}` : "";
-      const combinedNotes = [agencyLine, srcLine, notes].filter(Boolean).join("\n\n");
-      // type stays "seo_blog" so the existing inquiries table constraint accepts it. The intent field tells the two kinds apart.
-      const { error } = await supabase.functions.invoke("send-inquiry-email", {
-        body: { type: "seo_blog", data: { ...rest, ...(combinedNotes ? { notes: combinedNotes } : {}), intent: "article_check", consent: "yes" } },
-      });
-      if (error) throw error;
+      let res: Response;
+      try {
+        res = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...rest, hasAgency: hasAgency || "", source: src }),
+        });
+      } catch {
+        throw new Error("Could not reach the server. Please try again or email us directly.");
+      }
+      if (!res.ok) {
+        const msg = await res.json().then((j) => j?.error).catch(() => null);
+        throw new Error(typeof msg === "string" && msg ? msg : "Something went wrong. Please try again or email us directly.");
+      }
       (window as any).awAnalytics?.track?.("generate_lead", { form: "article_check", source: src || "direct", has_agency: hasAgency || "unanswered" });
       setDone(true);
     } catch (err) {
@@ -82,7 +84,7 @@ const ArticleCheckForm = () => {
       setSubmitting(false);
     }
   };
-
+  
   if (done) {
     return (
       <div role="status" className="flex flex-col items-center justify-center gap-4 py-12 text-center">

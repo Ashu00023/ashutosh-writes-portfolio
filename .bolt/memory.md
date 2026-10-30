@@ -22,14 +22,10 @@
 ## Decisions, constraints & rationale
 
 - User insists on minimal, surgical find/replace edits; no refactor, no restyle, no other files touched.
-- Supabase edge function was intentionally NOT modified. Therefore unknown schema fields cannot be sent directly; the agency answer is embedded into the top of `notes` as `SEO support: <label>` before submission.
-- `notes` max length reduced from 2000 to 1900 to leave room for the prepended agency line.
 - `hasAgency` values: `""` | `"agency"` | `"inhouse"` | `"none"` | `"unsure"`. Only non-empty known values are mapped to human-readable labels in the notes payload.
 - `consent` is sent to the edge function as the literal string `"yes"` when accepted.
 - Change handler type widened to include `HTMLSelectElement` to support the new select.
 
 ## Open questions & assumptions
 
-- Assumes the edge function still only accepts the original known fields and would reject a top-level `hasAgency` key — hence the notes-packing approach.
 - Assumes 1900-char limit comfortably accommodates the `SEO support: ...` line plus user notes; exact combined cap not enforced beyond Zod's 1900 on `notes`.
-- No backend validation of `hasAgency` since it never travels as its own field.

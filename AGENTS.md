@@ -3,7 +3,7 @@
 - Compose the home page from HeroSection, BuildSection, LedgerSection, ResearchStrip, FitSection and CloseSection so the article-focused sections stay independent.
 - Keep page metadata in src/data/seo-data.json and use PageMeta for dedicated informational pages so their social and breadcrumb tags stay consistent.
 - Keep Services, Method, About and Contact as lazy-loaded routes so each can reuse the shared editorial sections without enlarging the initial page load.
-- Send Article Check requests through send-inquiry-email as seo_blog with intent article_check and explicit consent, so existing storage remains compatible while server validation distinguishes the request.
+- Send Article Check requests with fetch to the Supabase Edge Function URL in VITE_INQUIRY_ENDPOINT (send-inquiry-email, which stores the request and emails the owner). Do not add supabase-js or any Supabase key to the frontend.
 - Keep team portraits optional and retain initials as the fallback so missing images do not leave empty team entries.
 - Keep st-prefixed site styles in src/site.css, loaded after redesign.css, to isolate the new page styling.
 - Mount ConsentBar once outside route suspense with device-local notice acknowledgement so it remains available across navigation without a remote service.
