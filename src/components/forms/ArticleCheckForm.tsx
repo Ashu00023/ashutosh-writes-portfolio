@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { z } from "zod";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Loader2 } from "lucide-react";
 import { TextField, TextArea } from "./InquiryField";
 import { Label } from "@/components/ui/label";
-import { EMAIL } from "@/data/site";
+
+// URL of the Supabase Edge Function, e.g. https://<project-ref>.supabase.co/functions/v1/send-inquiry-email
+const ENDPOINT = import.meta.env.VITE_INQUIRY_ENDPOINT as string | undefined;
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
@@ -29,27 +31,19 @@ type Errors = Partial<Record<keyof Values, string>>;
 
 const initial: Values = { name: "", email: "", articleUrl: "", company: "", notes: "", hasAgency: "", consent: false, website_url: "" };
 
-const agencyLabels: Record<string, string> = {
-  agency: "Yes, an outside SEO agency",
-  inhouse: "Yes, an in-house SEO team",
-  none: "No",
-  unsure: "Not sure",
-};
-
-type AnalyticsWindow = Window & {
-  awAnalytics?: { track?: (event: string, params?: Record<string, unknown>) => void };
-};
-
 const ArticleCheckForm = () => {
   const [values, setValues] = useState<Values>(initial);
   const [errors, setErrors] = useState<Errors>({});
+  const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const set = (k: keyof Values) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setValues((v) => ({ ...v, [k]: e.target.value }));
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setServerError(null);
     const parsed = schema.safeParse(values);
     if (!parsed.success) {
       const errs: Errors = {};
@@ -63,42 +57,41 @@ const ArticleCheckForm = () => {
       return;
     }
     setErrors({});
-
-    const { name, email, articleUrl, company, notes, hasAgency } = parsed.data;
-    const src = (new URLSearchParams(window.location.search).get("src") || "").replace(/[^a-z0-9_-]/gi, "").slice(0, 40);
-
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Article link: ${articleUrl}`,
-      company ? `Company: ${company}` : "",
-      hasAgency && agencyLabels[hasAgency] ? `SEO support: ${agencyLabels[hasAgency]}` : "",
-      src ? `Came from: ${src}` : "",
-      notes ? `\nNotes:\n${notes}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n")
-      .replace(/\n/g, "\r\n");
-
-    const subject = `Article Check request from ${name}`;
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    (window as AnalyticsWindow).awAnalytics?.track?.("generate_lead", {
-      form: "article_check",
-      source: src || "direct",
-      has_agency: hasAgency || "unanswered",
-    });
-    setDone(true);
+    setSubmitting(true);
+    try {
+      if (!ENDPOINT) throw new Error("The form is not connected yet. Please email us directly.");
+      const { hasAgency, ...rest } = parsed.data;
+      const src = (new URLSearchParams(window.location.search).get("src") || "").replace(/[^a-z0-9_-]/gi, "").slice(0, 40);
+      let res: Response;
+      try {
+        res = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...rest, hasAgency: hasAgency || "", source: src }),
+        });
+      } catch {
+        throw new Error("Could not reach the server. Please try again or email us directly.");
+      }
+      if (!res.ok) {
+        const msg = await res.json().then((j) => j?.error).catch(() => null);
+        throw new Error(typeof msg === "string" && msg ? msg : "Something went wrong. Please try again or email us directly.");
+      }
+      (window as any).awAnalytics?.track?.("generate_lead", { form: "article_check", source: src || "direct", has_agency: hasAgency || "unanswered" });
+      setDone(true);
+    } catch (err) {
+      setServerError(err instanceof Error ? err.message : "Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (done) {
     return (
       <div role="status" className="flex flex-col items-center justify-center gap-4 py-12 text-center">
         <CheckCircle size={40} strokeWidth={1.5} className="text-ledger" />
-        <h3 className="font-heading text-2xl font-normal text-foreground">Your email is ready to send.</h3>
+        <h3 className="font-heading text-2xl font-normal text-foreground">Thanks, your article is in the queue.</h3>
         <p className="max-w-sm text-sm text-muted-foreground">
-          Your email app should have opened with your request filled in. Press send there to finish. If nothing opened, email{" "}
-          <a href={`mailto:${EMAIL}`} className="underline underline-offset-2 hover:text-accent">{EMAIL}</a> directly.
+          We will confirm within 1 to 2 working days and send your report as soon as the check is done.
         </p>
       </div>
     );
@@ -158,11 +151,16 @@ const ArticleCheckForm = () => {
         {errors.consent && <p className="text-xs text-accent">{errors.consent}</p>}
       </div>
 
+      {serverError && (
+        <div role="alert" className="border border-accent/40 bg-accent/5 px-4 py-3 text-sm text-accent">{serverError}</div>
+      )}
+
       <button
-        type="submit"
-        className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-accent py-3.5 text-sm font-medium text-accent-foreground transition-colors duration-120 ease-cross hover:bg-foreground"
+        type="submit" disabled={submitting}
+        className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-accent py-3.5 text-sm font-medium text-accent-foreground transition-colors duration-120 ease-cross hover:bg-foreground disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Request my free Article Check
+        {submitting && <Loader2 size={18} className="animate-spin" />}
+        {submitting ? "Sending…" : "Request my free Article Check"}
       </button>
       <p className="text-center text-xs text-muted-foreground">We reply within 1 to 2 working days. No obligation.</p>
     </form>

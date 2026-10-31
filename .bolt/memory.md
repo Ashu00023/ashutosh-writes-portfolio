@@ -22,10 +22,7 @@
 ## Decisions, constraints & rationale
 
 - User insists on minimal, surgical find/replace edits; no refactor, no restyle, no other files touched.
-- `hasAgency` values: `""` | `"agency"` | `"inhouse"` | `"none"` | `"unsure"`. Only non-empty known values are mapped to human-readable labels in the notes payload.
-- `consent` is sent to the edge function as the literal string `"yes"` when accepted.
-- Change handler type widened to include `HTMLSelectElement` to support the new select.
-
+- The form posts JSON to the Supabase Edge Function at VITE_INQUIRY_ENDPOINT. hasAgency ("" | "agency" | "inhouse" | "none" | "unsure") and source are separate fields, consent is boolean true, and notes max is 2000 (validated again on the server).
 ## Open questions & assumptions
 
 - Assumes 1900-char limit comfortably accommodates the `SEO support: ...` line plus user notes; exact combined cap not enforced beyond Zod's 1900 on `notes`.
